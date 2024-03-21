@@ -1,0 +1,101 @@
+@import "../fonts/fonts.scss";
+
+// frequently used styles
+$primary-color: #03300a;
+$secondary-color: #f8f4ee;
+$tertiary-color: #540b02;
+$sale-color: #e03932;
+$kansas-font: "NewKansasSemiBold";
+$montserrat-font: "Montserrat-Variable", sans-serif;
+// only for product listing/card headings
+$heading-weight: 700;
+$text-weight: 200;
+
+// global body styles
+@mixin bodyStyles {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: $primary-color;
+}
+
+// background colour for beige sections
+@mixin background {
+  background: $secondary-color;
+}
+
+// styling for headings i.e recommended products
+@mixin pageHeadings {
+  font-family: $kansas-font;
+  font-size: 30px;
+}
+
+// styling for normal text
+// for product listing headings add text-transform: uppercase; & $heading-weight
+@mixin standardText {
+  font-family: $montserrat-font;
+  font-size: 16px;
+}
+
+// styling for breadcrumbs
+@mixin breadcrumbs {
+  font-family: $montserrat-font;
+  font-size: 12px;
+}
+
+// styling for category page, recommended items and users also brought
+@mixin productContainer {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  background: white;
+  margin: 1.5em;
+}
+
+// styling for product title and favorite icon to sit horizontally
+// for category page, recommended items and users also brought
+@mixin favoriteFlex {
+  display: flex;
+  flex-direction: row;
+  width: 95%;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 0.5em;
+  height: 45px;
+}
+
+// variable mixin for button variations.
+// example of use- (buy now button)
+// .buy-now-button {
+//     @include button ($primary-color, $secondary-color, 197px);
+// }
+@mixin buttonStyles($bgcolor, $fontcolor, $width) {
+  background: $bgcolor;
+  color: $fontcolor;
+  width: $width;
+  font-weight: 300;
+  height: 33px;
+  padding: 0.5em;
+  border-radius: 8px;
+  border: none;
+  font-family: $montserrat-font;
+}
+
+// styling for wishlist & basket product display
+@mixin editableProductCard {
+}
+
+@mixin homepageCards($bgcolor, $fontcolor, $width) {
+  display: flex;
+  width: $width;
+  // height: 286px;
+  color: $fontcolor;
+  background-color: $bgcolor;
+  border: 11px solid $secondary-color;
+}
+
+@mixin homepageCardImg($width) {
+  max-width: $width;
+  margin: 0.75em;
+  border-radius: 8px;
+}
