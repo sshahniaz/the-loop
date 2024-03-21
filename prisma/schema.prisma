@@ -37,7 +37,7 @@ model Profile {
   deliveryAddress String?
   wishlist        String[]
   marketing       Boolean
-  customer        Customer      @relation(fields: [customerId], references: [id])
+  customer        Customer      @relation(fields: [customerId], references: [id], onUpdate: Cascade, onDelete: Cascade)
   customerId      String        @unique @db.ObjectId
 }
 
@@ -55,7 +55,7 @@ model CardDetails {
   expiryDate     DateTime
   billingAddress String
   cvv            String
-  Profile        Profile? @relation(fields: [profileId], references: [id])
+  Profile        Profile? @relation(fields: [profileId], references: [id], onUpdate: Cascade, onDelete: Cascade)
   profileId      String?  @db.ObjectId
 }
 
@@ -63,7 +63,7 @@ model Product {
   id             String       @id @default(auto()) @map("_id") @db.ObjectId
   name           String
   details        String
-  owner          Customer     @relation(fields: [ownerId], references: [id])
+  owner          Customer     @relation(fields: [ownerId], references: [id], onUpdate: Cascade, onDelete: Cascade)
   ownerId        String       @db.ObjectId
   price          Int
   discount       Int?
@@ -74,14 +74,14 @@ model Product {
   subCatagory    String
   sale           Int
   condition      String
-  Transactions   Transaction? @relation(fields: [transactionsId], references: [id])
+  Transactions   Transaction? @relation(fields: [transactionsId], references: [id], onUpdate: Cascade, onDelete: Cascade)
   transactionsId String?      @db.ObjectId
 }
 
 model Transaction {
   id                String    @id @default(auto()) @map("_id") @db.ObjectId
   products          Product[]
-  customer          Customer  @relation(fields: [customerId], references: [id])
+  customer          Customer  @relation(fields: [customerId], references: [id], onUpdate: Cascade, onDelete: Cascade)
   customerId        String    @db.ObjectId
   quantity          Int[]
   price             Int[]
@@ -94,7 +94,7 @@ model Transaction {
 
 model Delivery {
   id            String      @id @default(auto()) @map("_id") @db.ObjectId
-  transaction   Transaction @relation(fields: [transactionId], references: [id])
+  transaction   Transaction @relation(fields: [transactionId], references: [id], onUpdate: Cascade, onDelete: Cascade)
   transactionId String      @unique @db.ObjectId
   status        Boolean
   estimatedDate DateTime
