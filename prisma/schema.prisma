@@ -1,0 +1,111 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Customer {
+  id           String        @id @default(auto()) @map("_id") @db.ObjectId
+  email        String        @unique
+  password     String
+  profile      Profile?
+  product      Product[]
+  transactions Transaction[]
+  profileId    String?       @db.ObjectId
+}
+
+//Composite Types, works on find and findmany 
+//more info on: https://www.prisma.io/docs/orm/prisma-client/special-fields-and-types/composite-types
+
+model Profile {
+  id              String        @id @default(auto()) @map("_id") @db.ObjectId
+  active          Boolean
+  firstName       String
+  lastName        String
+  stars           Int
+  address         String?
+  cardDetails     CardDetails[]
+  deliveryAddress String?
+  wishlist        String[]
+  marketing       Boolean
+  customer        Customer      @relation(fields: [customerId], references: [id])
+  customerId      String        @unique @db.ObjectId
+}
+
+//Code consideration for wishlist parsing
+// const wishlistJson = profile.wishlist; // Assuming profile is the retrieved profile object
+// if (wishlistJson) {
+//   const productIds = JSON.parse(wishlistJson);
+//   // Use the productIds array for further processing
+// }
+
+model CardDetails {
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  name           String
+  cardNumber     String
+  expiryDate     DateTime
+  billingAddress String
+  cvv            String
+  Profile        Profile? @relation(fields: [profileId], references: [id])
+  profileId      String?  @db.ObjectId
+}
+
+model Product {
+  id             String       @id @default(auto()) @map("_id") @db.ObjectId
+  name           String
+  details        String
+  owner          Customer     @relation(fields: [ownerId], references: [id])
+  ownerId        String       @db.ObjectId
+  price          Int
+  discount       Int?
+  imageLink      String[]
+  colour         String
+  material       String
+  catagory       String
+  subCatagory    String
+  sale           Int
+  condition      String
+  Transactions   Transaction? @relation(fields: [transactionsId], references: [id])
+  transactionsId String?      @db.ObjectId
+}
+
+model Transaction {
+  id                String    @id @default(auto()) @map("_id") @db.ObjectId
+  products          Product[]
+  customer          Customer  @relation(fields: [customerId], references: [id])
+  customerId        String    @db.ObjectId
+  quantity          Int[]
+  price             Int[]
+  totalPrice        Int
+  deliveryAddress   String
+  transactionStatus String
+  delivery          Delivery?
+  createdAt         DateTime  @default(now())
+}
+
+model Delivery {
+  id            String      @id @default(auto()) @map("_id") @db.ObjectId
+  transaction   Transaction @relation(fields: [transactionId], references: [id])
+  transactionId String      @unique @db.ObjectId
+  status        Boolean
+  estimatedDate DateTime
+  deliveryDate  DateTime
+  sent          Boolean
+  received      Boolean
+  createdAt     DateTime    @default(now())
+}
+
+model FAQ {
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  question String
+  answer   String
+}
