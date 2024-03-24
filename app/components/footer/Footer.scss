@@ -1,0 +1,120 @@
+@import "/public/styles/mixins.scss";
+
+// ******* footer styling ********
+
+.footerContainer {
+  background-color: $primary-color;
+  color: $secondary-color;
+  display: flex;
+  justify-content: center;
+  align-items: normal;
+  font-family: $montserrat-font;
+  font-weight: 100;
+  line-height: 1.8rem;
+  margin-top: 1em;
+
+  h4 {
+    font-family: $kansas-font;
+    font-size: 22px;
+    margin-top: 1em;
+    padding: 0.75em 0;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  a {
+    transition: 0.3s;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  .icons {
+    .listIcon {
+      padding: 0 1em;
+      margin-top: 1.5em;
+    }
+
+    ul {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+    }
+  }
+
+  .footerLogo img {
+    width: 150px;
+  }
+
+  .categories,
+  .help,
+  .signup {
+    width: 33%;
+    text-align: center;
+  }
+
+  .help {
+    background-color: #d9d9d952;
+  }
+  #est {
+    font-size: 12px;
+  }
+
+  .signupPara {
+    margin-top: 1em;
+  }
+}
+
+// ***************** media queries ***************
+// max 576px
+@media screen and (max-width: 576px) {
+  .footerContainer {
+    flex-direction: column;
+
+    .categories,
+    .help,
+    .signup {
+      width: 100%;
+      text-align: center;
+    }
+    .categories,
+    .signup {
+      padding-bottom: 1em;
+    }
+  }
+}
+
+// 576px-768px
+@media screen and (min-width: 576px) and (max-width: 768px) {
+  .footerContainer {
+    flex-direction: column;
+
+    .categories,
+    .help,
+    .signup {
+      width: 100%;
+      text-align: center;
+    }
+    .categories,
+    .signup {
+      padding-bottom: 1em;
+    }
+  }
+}
+
+// // 76px-992px
+// @media screen and (min-width: 768px) and (max-width: 992px) {
+// }
+// // 992px-1200px
+// @media screen and (min-width: 992px) and (max-width: 1200px) {
+// }
+// // 1200px-1400px
+// @media screen and (min-width: 1200px) and (max-width: 1400px) {
+// }
+// // min 1400px
+// @media screen and (min-width: 1400px) {
+// }
