@@ -1,0 +1,19 @@
+@import "/public/styles/mixins.scss";
+
+.signupBtn {
+  @include buttonStyles($tertiary-color, $secondary-color, 90px);
+}
+
+.signupInput {
+  height: 35px;
+  width: 65%;
+  border-radius: 8px;
+  border: none;
+  margin: 1em;
+}
+
+::placeholder {
+  padding: 0.5em;
+  font-family: $montserrat-font;
+  font-weight: 200;
+}
