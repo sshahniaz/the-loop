@@ -1,6 +1,13 @@
 "use client";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import "./Input.scss";
+import Link from "next/link";
+
+import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
+import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
+import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 
 const Input = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -16,15 +23,49 @@ const Input = () => {
   };
 
   return (
-    <form action="" onSubmit={onSearch}>
-      <input
-        value={searchQuery}
-        onChange={(event) => setSearchQuery(event.target.value)}
-        type={"search"}
-        name={"search"}
-        placeholder={"Search for a product"}
-      />
-    </form>
+    <>
+      <div className="headerFlex">
+        <form action="" onSubmit={onSearch}>
+          <div className="searchForm">
+            <div className="searchIcon">
+              <SearchOutlinedIcon />
+            </div>
+            <input
+              value={searchQuery}
+              onChange={(event) => setSearchQuery(event.target.value)}
+              type={"search"}
+              name={"search"}
+              placeholder={"Search for a product"}
+            />
+          </div>
+        </form>
+        <img
+          className="headerLogo"
+          src="./assets/logored.svg"
+          alt=""
+          width="150px"
+        />
+
+        <ul className="headerIcons">
+          <li>Sell</li>
+          <li>
+            <Link href="#">
+              <AccountCircleOutlinedIcon />
+            </Link>
+          </li>
+          <li>
+            <Link href="#">
+              <LocalMallOutlinedIcon />
+            </Link>
+          </li>
+          <li>
+            <Link href="#">
+              <FavoriteBorderOutlinedIcon />
+            </Link>
+          </li>
+        </ul>
+      </div>
+    </>
   );
 };
 
