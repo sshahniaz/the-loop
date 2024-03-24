@@ -39,15 +39,20 @@ const Input = () => {
             />
           </div>
         </form>
-        <img
-          className="headerLogo"
-          src="./assets/logored.svg"
-          alt=""
-          width="150px"
-        />
+        <Link href="/">
+          {" "}
+          <img
+            className="headerLogo"
+            src="./assets/logored.svg"
+            alt=""
+            width="150px"
+          />
+        </Link>
 
         <ul className="headerIcons">
-          <li>Sell</li>
+          <li className="sellLink">
+            <Link href="/sell-form">Sell</Link>
+          </li>
           <li>
             <Link href="#">
               <AccountCircleOutlinedIcon />
