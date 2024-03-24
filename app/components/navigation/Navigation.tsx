@@ -15,6 +15,7 @@ export default async function Navigation() {
 
   return (
     <>
+      {/* <Input /> */}
       <Menu categories={categories} subcategories={subcategories} />
       {/* <Menu categories={categories} /> */}
     </>
