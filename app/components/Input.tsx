@@ -12,7 +12,7 @@ const Input = () => {
     const encodedSearchQuery = encodeURI(searchQuery);
     router.push(`/search?q=${encodedSearchQuery}`);
 
-    console.log("current query", encodedSearchQuery);
+    // console.log("current query", encodedSearchQuery);
   };
 
   return (
@@ -20,8 +20,9 @@ const Input = () => {
       <input
         value={searchQuery}
         onChange={(event) => setSearchQuery(event.target.value)}
-        type="text"
-        placeholder="Search for a product"
+        type={"search"}
+        name={"search"}
+        placeholder={"Search for a product"}
       />
     </form>
   );
