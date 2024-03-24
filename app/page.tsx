@@ -13,6 +13,24 @@ export default async function Home() {
         paragraph="Discover the range of throws."
         buttonName="Shop Now"
       />
+
+      <HomePageCard
+        img="/assets/saleImg.jpg"
+        imgName="sale"
+        link="#"
+        heading="S.A.L.E."
+        paragraph="Grab yourself a bargain today!"
+        buttonName="Shop Sale"
+      />
+
+      <HomePageCard
+        img="/assets/homedecorImg.jpg"
+        imgName="homeDecor"
+        link="#"
+        heading="Make a house a home"
+        paragraph="Shop the wide range of accessories available to make your home your own."
+        buttonName="Shop Home Decor"
+      />
     </main>
   );
 }
