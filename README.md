@@ -5,6 +5,9 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 First, run the development server:
 
 ```bash
+# install all dependencies if you are running from a new machine run below for all the deve pedendecies
+npm i
+
 npm run dev
 # or
 yarn dev
