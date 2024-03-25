@@ -1,6 +1,7 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import HomePageCard from "./components/homepagecards/HomePageCard";
+import SocialMediaCard from "./components/homepagecards/SocialMediaCard";
 
 export default async function Home() {
   return (
@@ -31,6 +32,8 @@ export default async function Home() {
         paragraph="Shop the wide range of accessories available to make your home your own."
         buttonName="Shop Home Decor"
       />
+
+      <SocialMediaCard />
     </main>
   );
 }
