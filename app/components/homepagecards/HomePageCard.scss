@@ -10,18 +10,16 @@ body {
   max-width: 45vw;
   margin: 1em;
 
-  h3,
   p {
     padding: 0.5em;
+    @include standardText;
+    font-weight: $text-weight;
   }
   h3 {
     font-family: $kansas-font;
     font-size: 27px;
   }
-  p {
-    @include standardText;
-    font-weight: $text-weight;
-  }
+
   img {
     @include homepageCardImg(50%);
   }
@@ -45,6 +43,10 @@ body {
     margin-top: 0.5em;
     margin-left: 0.5em;
   }
+  a {
+    color: $sale-color;
+    text-decoration: none;
+  }
 }
 
 #homeDecor {
@@ -56,8 +58,12 @@ body {
 
   button {
     @include buttonStyles($secondary-color, #130e3f, 75%);
-    margin-top: 0.5em;
-    margin-left: 0.5em;
+
+    margin: 0.75em 0.5em;
+  }
+  a {
+    color: #130e3f;
+    text-decoration: none;
   }
 }
 
@@ -79,15 +85,20 @@ body {
   }
   .cardInfo {
     background-color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    height: 25vh;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: center;
+    // align-items: flex-start;
+    // height: 25vh;
     width: 100%;
-    position: relative;
-    top: 111px;
-    right: 10px;
+    padding: 0.5em;
+    // position: relative;
+    // top: 111px;
+    // right: 10px;
+  }
+  a {
+    color: $secondary-color;
+    text-decoration: none;
   }
 }
 

@@ -54,7 +54,7 @@ const Input = () => {
             <Link href="/sell-form">Sell</Link>
           </li>
           <li>
-            <Link href="#">
+            <Link href="/profile">
               <AccountCircleOutlinedIcon />
             </Link>
           </li>
@@ -64,7 +64,7 @@ const Input = () => {
             </Link>
           </li>
           <li>
-            <Link href="#">
+            <Link href="/favourites">
               <FavoriteBorderOutlinedIcon />
             </Link>
           </li>
