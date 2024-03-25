@@ -1,0 +1,14 @@
+/* montserrat font */
+// @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+/*  font-family: "Montserrat", sans-serif; */
+@font-face {
+    font-family: "Montserrat-Variable";
+    src: url("./Montserrat-VariableFont_wght.ttf") format("truetype");
+}
+
+/* new kansas font */
+@font-face {
+  font-family: "NewKansasSemiBold";
+  src: url("./NewKansasSemiBold.otf") format("truetype");
+  /* Add more src definitions for different font formats if needed */
+}

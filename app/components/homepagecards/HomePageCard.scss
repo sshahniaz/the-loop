@@ -1,0 +1,168 @@
+@import "/public/styles/mixins.scss";
+
+// ************ homepage cards styling ************
+
+body {
+  @include bodyStyles;
+}
+
+.cardFlex {
+  max-width: 45vw;
+  margin: 1em;
+
+  p {
+    padding: 0.5em;
+    @include standardText;
+    font-weight: $text-weight;
+  }
+  h3 {
+    font-family: $kansas-font;
+    font-size: 27px;
+  }
+
+  img {
+    @include homepageCardImg(50%);
+  }
+
+  .cardInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 50%;
+  }
+}
+
+#sale {
+  @include homepageCards($sale-color, $secondary-color, 45vw);
+  p {
+    color: $secondary-color;
+  }
+  button {
+    @include buttonStyles($secondary-color, $sale-color, 100%);
+    margin-top: 0.5em;
+    margin-left: 0.5em;
+  }
+  a {
+    color: $sale-color;
+    text-decoration: none;
+  }
+}
+
+#homeDecor {
+  @include homepageCards(#130e3f, $secondary-color, 45vw);
+
+  p {
+    color: $secondary-color;
+  }
+
+  button {
+    @include buttonStyles($secondary-color, #130e3f, 75%);
+
+    margin: 0.75em 0.5em;
+  }
+  a {
+    color: #130e3f;
+    text-decoration: none;
+  }
+}
+
+#throws {
+  @include homepageCards(#ddc7a6, $primary-color, 30vw);
+
+  img {
+    border-radius: 50%;
+  }
+  h3 {
+    font-size: 15px;
+  }
+  p {
+    font-size: 13px;
+  }
+
+  button {
+    @include buttonStyles($primary-color, $secondary-color, 75%);
+  }
+  .cardInfo {
+    background-color: white;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: center;
+    // align-items: flex-start;
+    // height: 25vh;
+    width: 100%;
+    padding: 0.5em;
+    // position: relative;
+    // top: 111px;
+    // right: 10px;
+  }
+  a {
+    color: $secondary-color;
+    text-decoration: none;
+  }
+}
+
+// ***************** media queries ***************
+// max 576px
+@media screen and (max-width: 576px) {
+  .cardFlex {
+    max-width: 95%;
+    margin: 1em 0.5em;
+  }
+
+  #sale,
+  #homeDecor,
+  #throws {
+    width: 100%;
+  }
+
+  img {
+    object-fit: cover;
+    width: 40%;
+  }
+  .cardInfo {
+    width: 100%;
+
+    button {
+      width: 100% !important;
+      height: 27px !important;
+      font-size: 12px;
+      margin: 1.5em 0 !important;
+    }
+  }
+  .cardInfo h3 {
+    font-size: 17px;
+    padding: 0.5em 0;
+  }
+
+  .cardInfo p {
+    font-size: 14px;
+    padding: 0;
+  }
+
+  #throws {
+    .cardInfo {
+      padding: 0.5em;
+      height: 25%;
+      position: static;
+      margin: 0.5em 0;
+    }
+  }
+}
+
+// 576px-768px
+@media screen and (min-width: 576px) and (max-width: 768px) {
+}
+
+// 76px-992px
+@media screen and (min-width: 768px) and (max-width: 992px) {
+}
+// 992px-1200px
+@media screen and (min-width: 992px) and (max-width: 1200px) {
+}
+// 1200px-1400px
+@media screen and (min-width: 1200px) and (max-width: 1400px) {
+}
+// min 1400px
+@media screen and (min-width: 1400px) {
+}

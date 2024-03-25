@@ -1,0 +1,61 @@
+@import "/public/styles/mixins.scss";
+
+body {
+  margin: auto;
+}
+.headerFlex {
+  display: flex;
+  padding: 1.5em;
+  justify-content: space-between;
+}
+
+.headerIcons {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: start;
+  li {
+    list-style: none;
+
+    padding-left: 0.75em;
+    padding-right: 0.5em;
+    font-size: 22px;
+  }
+
+  a {
+    color: $tertiary-color;
+  }
+
+  a:hover {
+    color: #c7bfb3;
+  }
+
+  .sellLink {
+    border: solid 2px $tertiary-color;
+    border-radius: 8px;
+    padding: 0.25em 1em;
+    font-size: 18px;
+    margin-top: -0.25em;
+    text-decoration: none;
+  }
+
+  .sellLink:hover {
+    border: solid 2px #c7bfb3;
+  }
+}
+
+.searchIcon {
+  color: $tertiary-color;
+  padding-top: 0.25em;
+}
+
+.searchForm {
+  display: flex;
+  align-items: start;
+  input {
+    padding: 0.5em;
+    font-family: $montserrat-font;
+    font-size: 15px;
+    border: none;
+    width: 250px;
+  }
+}
