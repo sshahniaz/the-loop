@@ -27,7 +27,7 @@ const page = () => {
   );
 
   if (data && data.products && data.products.length > 0) {
-    console.log(data.products);
+    // console.log(data.products);
   }
 
   return (

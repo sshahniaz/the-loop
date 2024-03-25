@@ -3,7 +3,7 @@ import React from "react";
 import Link from "next/link";
 
 interface MenuItemProps {
-  label: string[];
+  label: string;
   href: string;
 }
 
