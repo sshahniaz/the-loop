@@ -88,7 +88,6 @@ $text-weight: 200;
 @mixin homepageCards($bgcolor, $fontcolor, $width) {
   display: flex;
   width: $width;
-  // height: 286px;
   color: $fontcolor;
   background-color: $bgcolor;
   border: 11px solid $secondary-color;

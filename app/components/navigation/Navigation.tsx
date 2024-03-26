@@ -7,27 +7,24 @@ import Input from "../Input";
 
 export default async function Navigation() {
   const products = await prisma.product.findMany({
-    // where: {},
-
     select: {
+      type: true,
       catagory: true,
       subCatagory: true,
     },
     distinct: ["catagory"],
   });
 
-  // console.log(products.map);
-  // const categories = products.map((product) => product.catagory);
-  // console.log("Categories:", categories);
-  // const subcategories = products.map((product) => product.subCatagory);
-  // console.log("Subcategories:", subcategories);
+  // console.log(products);
+  const categories = products.map((product) => product.catagory);
+  console.log("Categories:", categories);
+  const subcategories = products.map((product) => product.subCatagory);
+  console.log("Subcategories:", subcategories);
 
   return (
     <>
       <Input />
-      {/* <Menu categories={categories} subcategories={subcategories} /> */}
-      <Menu products={products} />
-      {/* <Menu categories={categories} /> */}
+      {/* <Menu products={products} /> */}
     </>
   );
 }
