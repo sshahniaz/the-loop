@@ -18,7 +18,7 @@ export default function ProfilePage() {
   useEffect(() => {
     const fetchUser = async () => {
       // url to api endpoint
-      const URL = "http://localhost:3003/api/profile/";
+      const URL = "http://localhost:3000/api/profile/";
       // fetch data from end point and store in the data object
       const data = await fetch(URL).then((res) => res.json());
 
