@@ -4,6 +4,9 @@ body {
   @include bodyStyles;
 }
 
+main {
+  margin: auto;
+}
 .homepageContainer {
   width: 75%;
   margin: auto;

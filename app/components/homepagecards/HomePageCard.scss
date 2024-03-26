@@ -7,7 +7,7 @@ body {
 }
 
 .cardFlex {
-  width: 45vw;
+  max-width: 45vw;
   margin: 1em;
   height: 267px;
 
@@ -70,7 +70,7 @@ body {
 
 #throws {
   @include homepageCards(#ddc7a6, $primary-color, 35vw);
-
+  max-width: 35vw;
   img {
     border-radius: 50%;
   }
@@ -154,21 +154,20 @@ body {
       margin: 0;
     }
   }
+  #sale,
+  #homeDecor,
+  #throws {
+    width: 100%;
+    border: none;
+    // img {
+    //   border-radius: 8px;
+    // }
+  }
 }
 
 // .cardInfo {
 //   padding-left: 0.5em;
 // }
-
-#sale,
-#homeDecor,
-#throws {
-  width: 100%;
-  border: none;
-  img {
-    border-radius: 8px;
-  }
-}
 
 // 76px-992px
 @media screen and (min-width: 768px) and (max-width: 992px) {
