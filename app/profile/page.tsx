@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import useSWR from 'swr';
 
@@ -10,7 +12,7 @@ interface ProfileData {
 }
 
 const getData = async () => {
-  const res = await fetch("http://localhost:3000/api/profile/65faf8493a25aae6e6aedda2");
+  const res = await fetch("http://localhost:3002/api/profile/65faf8493a25aae6e6aedda2");
   return await res.json();
 };
 
