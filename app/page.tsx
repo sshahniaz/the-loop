@@ -3,6 +3,7 @@ import styles from "./page.module.css";
 import "./homePage.scss";
 import HomePageCard from "./components/homepagecards/HomePageCard";
 import SocialMediaCard from "./components/homepagecards/SocialMediaCard";
+import PersonalDetails from "./components/profile/PersonalDetails";
 
 export default async function Home() {
   return (

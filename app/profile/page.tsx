@@ -1,34 +1,46 @@
-'use client';
+"use client";
+import { useState, useEffect } from "react";
 
-import React from 'react';
-import useSWR from 'swr';
-
-interface ProfileData {
-  firstName: string;
-  lastName: string;
-  stars: number;
-  address: string;
-  deliveryAddress: string;
+interface ProductApiResponse {
+  products: Product[];
 }
 
-const getData = async () => {
-  const res = await fetch("http://localhost:3002/api/profile/65faf8493a25aae6e6aedda2");
-  return await res.json();
-};
+interface Product {
+  name: string;
+  details: string;
+  image: string;
+}
 
-const page = () => {
-  const { data: profileData } = useSWR('profile', getData);
+export default function ProfilePage() {
+  const [products, setProducts] = useState<any[]>([]);
+  const [loading, isLoading] = useState(false);
+  const [error, setError] = useState(null);
+  useEffect(() => {
+    const fetchUser = async () => {
+      // url to api endpoint
+      const URL = "http://localhost:3000/api/profile/";
+      // fetch data from end point and store in the data object
+      const data = await fetch(URL).then((res) => res.json());
 
-  // if (error) return <div>Failed to load profile data</div>;
-  if (!profileData) return <div>Loading...</div>;
+      console.log(data);
+      setProducts(data);
+    };
+    fetchUser();
+  }, []);
 
   return (
-    <div>
-      <h1>{profileData.firstName} {profileData.lastName}</h1>
-      <p>Stars: {profileData.stars}</p>
-      <p>Delivery Address: {profileData.deliveryAddress}</p>
-    </div>
+    <ul>
+      {products.map((product, index) => (
+        <li key={index}>{product.name}</li>
+      ))}
+      {/* {products.map((product, index) => (
+            <li key={product.}></li>
+        ))} */}
+    </ul>
   );
-};
+}
 
-export default page;
+// async function getUserDetails(customerId: string) {
+//   const response = await fetch(`/api/profile${customerId}`, { method: "GET" });
+//   return response.json();
+// }

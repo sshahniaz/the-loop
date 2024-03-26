@@ -15,7 +15,7 @@ export default async function Navigation() {
     distinct: ["catagory"],
   });
 
-  // console.log(products);
+  // // console.log(products);
   // const categories = products.map((product) => product.catagory);
   // console.log("Categories:", categories);
   // const subcategories = products.map((product) => product.subCatagory);
