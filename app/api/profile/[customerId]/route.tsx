@@ -1,9 +1,17 @@
 import prisma from "@/prisma/client";
 
-export async function GET(request: Request) {
-  const profile = await prisma.profile.findUnique({
-    where: {
-      customerId: "65faf15c82787c2c9e5beb75",
-    },
-  });
+import { NextResponse } from "next/server";
+
+export async function GET() {
+  try {
+    const products = await prisma.product.findMany({
+      where: {
+        ownerId: "65fc1d82bffb6b8984064dd4",
+      },
+    });
+
+    return NextResponse.json(products);
+  } catch (error) {
+    return NextResponse.json({ error: "Error fetching data" });
+  }
 }

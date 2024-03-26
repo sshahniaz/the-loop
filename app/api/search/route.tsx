@@ -45,7 +45,7 @@ export async function GET(request: Request) {
           ],
         },
       });
-      console.log("Fetched products:", products);
+      // console.log("Fetched products:", products);
       return Response.json({ products });
     } catch (error) {
       return Response.json({ message: "not found" }, { status: 500 });

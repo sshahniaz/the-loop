@@ -13,30 +13,6 @@ type ProductModel = {
 };
 
 const Menu = ({ products }: ProductModel) => {
-  // console.log(products);
-
-  // const getUniqueProducts = () => {
-  //   const uniqueProducts: {
-  //     type: string;
-  //     catagory: string;
-  //     subCatagory: string;
-  //   }[] = [];
-  //   const uniqueKey = new Set();
-
-  //   products.forEach((product) => {
-  //     const key = `${product.type}-${product.catagory}-${product.subCatagory}`;
-
-  //     if (!uniqueKey.has(key)) {
-  //       uniqueProducts.push(product);
-  //       uniqueKey.add(key);
-  //     }
-  //   });
-  //   return uniqueProducts;
-  //   console.log(uniqueProducts);
-  // };
-
-  // const uniqueProducts = getUniqueProducts();
-
   return (
     <nav>
       <ul>
