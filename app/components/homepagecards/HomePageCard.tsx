@@ -14,7 +14,6 @@ interface Props {
 const HomePageCard = (props: Props) => {
   return (
     <div>
-      {" "}
       <>
         <div className="cardFlex" id={props.imgName}>
           <img src={props.img} alt={props.imgName} />

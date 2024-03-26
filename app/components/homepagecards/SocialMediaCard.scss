@@ -8,23 +8,62 @@
   font-family: $montserrat-font;
   font-weight: 200;
   font-size: 16px;
-  padding: 1.5em;
+  height: 267px;
+
+  a {
+    color: $secondary-color;
+  }
 
   img {
-    width: 50%;
+    width: 45%;
     object-fit: contain;
   }
 
   .icons {
     width: 40%;
+
     ul {
       display: flex;
       justify-content: space-evenly;
+      padding: 0;
     }
-    margin: 1em;
     .listIcon {
       color: white;
       display: flex;
     }
   }
+}
+
+@media screen and (max-width: 576px) {
+  .socialMediaCardFlex {
+    border: none;
+    width: 95%;
+    margin: 2em 0.5em;
+    height: 200px;
+
+    img {
+      margin-top: 0.5em;
+      width: 35%;
+    }
+    p {
+      margin: 0;
+    }
+  }
+}
+
+// 576px-768px
+@media screen and (min-width: 576px) and (max-width: 768px) {
+}
+
+// 76px-992px
+@media screen and (min-width: 768px) and (max-width: 992px) {
+}
+// 992px-1200px
+@media screen and (min-width: 992px) and (max-width: 1200px) {
+}
+// 1200px-1400px
+@media screen and (min-width: 1200px) and (max-width: 1400px) {
+}
+// min 1400px
+@media screen and (min-width: 1400px) {
 }

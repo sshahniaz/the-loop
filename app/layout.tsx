@@ -21,7 +21,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         {/* <Input /> */}
-        <Navigation />
+        {/* <Navigation /> */}
         {children}
         <Footer />
       </body>
