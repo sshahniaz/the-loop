@@ -35,7 +35,7 @@ model Profile {
   address         String?
   cardDetails     CardDetails[]
   deliveryAddress String?
-  wishlist        String[]
+  wishlist        String[]      @db.ObjectId
   marketing       Boolean
   customer        Customer      @relation(fields: [customerId], references: [id], onUpdate: Cascade, onDelete: Cascade)
   customerId      String        @unique @db.ObjectId
