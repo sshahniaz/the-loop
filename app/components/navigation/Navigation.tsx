@@ -16,10 +16,10 @@ export default async function Navigation() {
   });
 
   // console.log(products);
-  const categories = products.map((product) => product.catagory);
-  console.log("Categories:", categories);
-  const subcategories = products.map((product) => product.subCatagory);
-  console.log("Subcategories:", subcategories);
+  // const categories = products.map((product) => product.catagory);
+  // console.log("Categories:", categories);
+  // const subcategories = products.map((product) => product.subCatagory);
+  // console.log("Subcategories:", subcategories);
 
   return (
     <>
