@@ -34,8 +34,8 @@ const BillingInfo = ({ billingInfo }: userBillingInfo) => {
   };
 
   return (
-    <div className="personalDetails">
-      <h2>Personal Details</h2>
+    <div className="billingInfo">
+      <h2>Billing</h2>
       {isEdit ? (
         <form>
           <div>
