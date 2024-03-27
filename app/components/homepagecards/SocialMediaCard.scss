@@ -40,12 +40,12 @@
   .socialMediaCardFlex {
     border: none;
     width: 95%;
-    margin: 2em 0.5em;
+    margin: 1.5em 0.5em;
     height: 200px;
 
     img {
       margin-top: 0.5em;
-      width: 35%;
+      width: 30%;
     }
     p {
       margin: 0;
@@ -58,6 +58,9 @@
   .socialMediaCardFlex {
     width: 100%;
     border: none;
+    img {
+      width: 30%;
+    }
   }
 }
 

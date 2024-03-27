@@ -90,7 +90,7 @@ body {
 // max 576px
 @media screen and (max-width: 556px) {
   .cardFlex {
-    max-width: 95%;
+    // width: 95%;
     margin: 1em 0.5em;
     height: 200px;
   }
@@ -98,7 +98,7 @@ body {
   #sale,
   #homeDecor,
   #throws {
-    width: 100%;
+    width: 95%;
     border: none;
     h3 {
       font-size: 15px;
@@ -143,6 +143,9 @@ body {
     }
 
     .cardInfo {
+      padding: 0.5em;
+      // padding-top: 1.5em;
+      justify-content: center;
       width: 60%;
       h3 {
         margin: 0;
