@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 
-interface userBillingInfo {
-  billingInfo: {
+interface userAddressInfo {
+  addressData: {
     firstName: string;
     lastName: string;
     address: string;
   };
 }
 
-const BillingInfo = ({ billingInfo }: userBillingInfo) => {
+const AddressInfo = ({ addressData }: userAddressInfo) => {
   const [isEdit, setIsEdit] = useState(false);
   const [userData, setUserData] = useState({
-    billingInfo,
+    addressData,
   });
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -29,12 +29,12 @@ const BillingInfo = ({ billingInfo }: userBillingInfo) => {
   };
 
   const handleCancel = () => {
-    setUserData({ billingInfo }); // Reset to original data
+    setUserData({ addressData }); // Reset to original data
     setIsEdit(false);
   };
 
   return (
-    <div className="billingInfo">
+    <div className="addressData">
       <h2>Billing</h2>
       {isEdit ? (
         <form>
@@ -44,7 +44,7 @@ const BillingInfo = ({ billingInfo }: userBillingInfo) => {
               type="text"
               id="firstName"
               name="firstName"
-              value={userData.billingInfo.firstName}
+              value={userData.addressData.firstName}
               onChange={handleChange}
             />
           </div>
@@ -54,7 +54,7 @@ const BillingInfo = ({ billingInfo }: userBillingInfo) => {
               type="text"
               id="lastName"
               name="lastName"
-              value={userData.billingInfo.lastName}
+              value={userData.addressData.lastName}
               onChange={handleChange}
             />
           </div>
@@ -64,7 +64,7 @@ const BillingInfo = ({ billingInfo }: userBillingInfo) => {
               type="address"
               id="address"
               name="address"
-              value={userData.billingInfo.address}
+              value={userData.addressData.address}
               onChange={handleChange}
             />
           </div>
@@ -78,13 +78,13 @@ const BillingInfo = ({ billingInfo }: userBillingInfo) => {
       ) : (
         <div>
           <p>
-            <strong>First Name:</strong> {userData.billingInfo.firstName}
+            <strong>First Name:</strong> {userData.addressData.firstName}
           </p>
           <p>
-            <strong>Last Name:</strong> {userData.billingInfo.lastName}
+            <strong>Last Name:</strong> {userData.addressData.lastName}
           </p>
           <p>
-            <strong>Address:</strong> {userData.billingInfo.address}
+            <strong>Address:</strong> {userData.addressData.address}
           </p>
           <button type="button" onClick={handleEdit}>
             Edit
@@ -95,4 +95,4 @@ const BillingInfo = ({ billingInfo }: userBillingInfo) => {
   );
 };
 
-export default BillingInfo;
+export default AddressInfo;
