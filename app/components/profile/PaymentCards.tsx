@@ -6,109 +6,128 @@ interface userPaymentCards {
     cardNumber: string;
     expiryDate: string;
     billingAddress: string;
+    [key: string]: any;
   }[];
 }
+
 const PaymentCards = ({ cards }: userPaymentCards) => {
   const [isEdit, setIsEdit] = useState(false);
-  const [userData, setUserData] = useState({
-    cards,
-  });
+  const [editedCardIndex, setEditedCardIndex] = useState<number | null>(null);
+  const [editedCards, setEditedCards] =
+    useState<userPaymentCards["cards"]>(cards); // Renamed to editedCards
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setUserData({ ...userData, [event.target.name]: event.target.value });
-  };
-
-  const handleEdit = () => {
-    setIsEdit(!isEdit);
-  };
-
-  const handleSave = () => {
-    //impliment api later
-    console.log("Saving data:", userData);
-    setIsEdit(false);
+  const handleEdit = (index: number) => {
+    setIsEdit(true);
+    setEditedCardIndex(index);
   };
 
   const handleCancel = () => {
-    setUserData({ cards }); // Reset to original data
     setIsEdit(false);
+    setEditedCardIndex(null);
+  };
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    if (editedCardIndex !== null) {
+      // Update specific card based on editedCardIndex
+      const updatedCards = [...editedCards]; // Create a copy to avoid mutation
+      updatedCards[editedCardIndex][name] = value;
+
+      setEditedCards(updatedCards);
+    }
+  };
+
+  const handleSave = () => {
+    // Implement api later
+    console.log("Saving data:", editedCards);
+    setIsEdit(false);
+    setEditedCardIndex(null);
   };
 
   return (
     <div className="personalDetails">
-      <h2>Personal Details</h2>
-      {userData.cards.map((cards, index) => (
-        <li key={index}>
-          {isEdit ? (
-            <form>
+      <h2>Payment Cards</h2>
+      {editedCards.map(
+        (
+          card,
+          index // Use editedCards here
+        ) => (
+          <li key={index}>
+            {isEdit && editedCardIndex === index ? ( // Check for edit and matching index
+              <form>
+                <div>
+                  <label htmlFor={`name-${index}`}>Name:</label>
+                  <input
+                    type="text"
+                    id={`name-${index}`}
+                    name="name"
+                    value={card.name}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div>
+                  <label htmlFor={`cardNumber-${index}`}>Card Number:</label>
+                  <input
+                    type="text"
+                    id={`cardNumber-${index}`}
+                    name="cardNumber"
+                    value={card.cardNumber}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div>
+                  <label htmlFor={`expiryDate-${index}`}>Expiry Date:</label>
+                  <input
+                    type="text"
+                    id={`expiryDate-${index}`}
+                    name="expiryDate"
+                    value={card.expiryDate}
+                    onChange={handleChange}
+                    // Add appropriate input type for expiry date (e.g., "date")
+                  />
+                </div>
+                <div>
+                  <label htmlFor={`billingAddress-${index}`}>
+                    Billing Address:
+                  </label>
+                  <input
+                    type="text"
+                    id={`billingAddress-${index}`}
+                    name="billingAddress"
+                    value={card.billingAddress}
+                    onChange={handleChange}
+                  />
+                </div>
+                <button type="button" onClick={handleSave}>
+                  Save
+                </button>
+                <button type="button" onClick={handleCancel}>
+                  Cancel
+                </button>
+              </form>
+            ) : (
               <div>
-                <label htmlFor="firstName">Name:</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={userData.cards[index].name}
-                  onChange={handleChange}
-                />
+                <p>
+                  <strong>Name:</strong> {card.name}
+                </p>
+                <p>
+                  <strong>Card Number:</strong> {card.cardNumber.slice(-4)}{" "}
+                  {/* Display last 4 digits */}
+                </p>
+                <p>
+                  <strong>Expiry Date:</strong> {card.expiryDate}
+                </p>
+                <p>
+                  <strong>Billing Address:</strong> {card.billingAddress}
+                </p>
+                <button type="button" onClick={() => handleEdit(index)}>
+                  Edit
+                </button>
               </div>
-              <div>
-                <label htmlFor="cardNumber">Card Number:</label>
-                <input
-                  type="text"
-                  id="cardNumber"
-                  name="cardNumber"
-                  value={userData.cards[index].cardNumber}
-                  onChange={handleChange}
-                />
-              </div>
-              <div>
-                <label htmlFor="expiryDate">Expiry Date:</label>
-                <input
-                  type="expiryDate"
-                  id="expiryDate"
-                  name="expiryDate"
-                  value={userData.cards[index].expiryDate}
-                  onChange={handleChange}
-                />
-              </div>
-              <div>
-                <label htmlFor="billingAddress">Billing Address:</label>
-                <input
-                  type="billingAddress"
-                  id="billingAddress"
-                  name="billingAddress"
-                  value={userData.cards[index].billingAddress}
-                  onChange={handleChange}
-                />
-              </div>
-              <button type="button" onClick={handleSave}>
-                Save
-              </button>
-              <button type="button" onClick={handleCancel}>
-                Cancel
-              </button>
-            </form>
-          ) : (
-            <div>
-              <p>
-                <strong>Name:</strong> {userData.cards[index].name}
-              </p>
-              <p>
-                <strong>Card Number:</strong> {userData.cards[index].cardNumber}
-              </p>
-              <p>
-                <strong>Expiry Date:</strong> {userData.cards[index].expiryDate}
-              </p>
-              <p>
-                <strong>Billing Address:</strong>{" "}
-                {userData.cards[index].billingAddress}
-              </p>
-              <button type="button" onClick={handleEdit}>
-                Edit
-              </button>
-            </div>
-          )}
-        </li>
-      ))}
+            )}
+          </li>
+        )
+      )}
     </div>
   );
 };
