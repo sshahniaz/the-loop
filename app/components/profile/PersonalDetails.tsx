@@ -8,10 +8,14 @@ interface userDetails {
   };
 }
 
-const PersonalDetails = ({ details }: userDetails) => {
+const PersonalDetails = ({
+  details: { firstName, lastName, email },
+}: userDetails) => {
   const [isEdit, setIsEdit] = useState(false);
   const [userData, setUserData] = useState({
-    details,
+    firstName,
+    lastName,
+    email,
   });
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -29,7 +33,7 @@ const PersonalDetails = ({ details }: userDetails) => {
   };
 
   const handleCancel = () => {
-    setUserData({ details }); // Reset to original data
+    setUserData({ firstName, lastName, email }); // Reset to original data
     setIsEdit(false);
   };
 
@@ -44,7 +48,7 @@ const PersonalDetails = ({ details }: userDetails) => {
               type="text"
               id="firstName"
               name="firstName"
-              value={userData.details.firstName}
+              value={userData.firstName}
               onChange={handleChange}
             />
           </div>
@@ -54,7 +58,7 @@ const PersonalDetails = ({ details }: userDetails) => {
               type="text"
               id="lastName"
               name="lastName"
-              value={userData.details.lastName}
+              value={userData.lastName}
               onChange={handleChange}
             />
           </div>
@@ -64,7 +68,7 @@ const PersonalDetails = ({ details }: userDetails) => {
               type="email"
               id="email"
               name="email"
-              value={userData.details.email}
+              value={userData.email}
               onChange={handleChange}
             />
           </div>
@@ -78,13 +82,13 @@ const PersonalDetails = ({ details }: userDetails) => {
       ) : (
         <div>
           <p>
-            <strong>First Name:</strong> {userData.details.firstName}
+            <strong>First Name:</strong> {userData.firstName}
           </p>
           <p>
-            <strong>Last Name:</strong> {userData.details.lastName}
+            <strong>Last Name:</strong> {userData.lastName}
           </p>
           <p>
-            <strong>Email:</strong> {userData.details.email}
+            <strong>Email:</strong> {userData.email}
           </p>
           <button type="button" onClick={handleEdit}>
             Edit

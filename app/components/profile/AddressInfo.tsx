@@ -8,10 +8,14 @@ interface userAddressInfo {
   };
 }
 
-const AddressInfo = ({ addressData }: userAddressInfo) => {
+const AddressInfo = ({
+  addressData: { firstName, lastName, address },
+}: userAddressInfo) => {
   const [isEdit, setIsEdit] = useState(false);
   const [userData, setUserData] = useState({
-    addressData,
+    firstName,
+    lastName,
+    address,
   });
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -29,7 +33,7 @@ const AddressInfo = ({ addressData }: userAddressInfo) => {
   };
 
   const handleCancel = () => {
-    setUserData({ addressData }); // Reset to original data
+    setUserData({ firstName, lastName, address }); // Reset to original data
     setIsEdit(false);
   };
 
@@ -44,7 +48,7 @@ const AddressInfo = ({ addressData }: userAddressInfo) => {
               type="text"
               id="firstName"
               name="firstName"
-              value={userData.addressData.firstName}
+              value={userData.firstName}
               onChange={handleChange}
             />
           </div>
@@ -54,7 +58,7 @@ const AddressInfo = ({ addressData }: userAddressInfo) => {
               type="text"
               id="lastName"
               name="lastName"
-              value={userData.addressData.lastName}
+              value={userData.lastName}
               onChange={handleChange}
             />
           </div>
@@ -64,7 +68,7 @@ const AddressInfo = ({ addressData }: userAddressInfo) => {
               type="address"
               id="address"
               name="address"
-              value={userData.addressData.address}
+              value={userData.address}
               onChange={handleChange}
             />
           </div>
@@ -78,13 +82,13 @@ const AddressInfo = ({ addressData }: userAddressInfo) => {
       ) : (
         <div>
           <p>
-            <strong>First Name:</strong> {userData.addressData.firstName}
+            <strong>First Name:</strong> {userData.firstName}
           </p>
           <p>
-            <strong>Last Name:</strong> {userData.addressData.lastName}
+            <strong>Last Name:</strong> {userData.lastName}
           </p>
           <p>
-            <strong>Address:</strong> {userData.addressData.address}
+            <strong>Address:</strong> {userData.address}
           </p>
           <button type="button" onClick={handleEdit}>
             Edit
