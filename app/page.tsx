@@ -7,7 +7,7 @@ import PersonalDetails from "./components/profile/PersonalDetails";
 
 export default async function Home() {
   return (
-    <main className={styles.main}>
+    <main className="homepageContainer">
       <div className="firstSecondInfoCard">
         <HomePageCard
           img="/assets/throwImg.jpg"

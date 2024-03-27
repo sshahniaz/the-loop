@@ -7,19 +7,8 @@ body {
 }
 
 .cardFlex {
-  max-width: 45vw;
   margin: 1em;
   height: 267px;
-
-  p {
-    padding: 0.5em;
-    @include standardText;
-    font-weight: $text-weight;
-  }
-  h3 {
-    font-family: $kansas-font;
-    font-size: 27px;
-  }
 
   img {
     @include homepageCardImg(50%);
@@ -28,9 +17,17 @@ body {
   .cardInfo {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: flex-start;
-    max-width: 50%;
+    padding-left: 0.5em;
+    width: 50%;
+    p {
+      @include standardText;
+      font-weight: $text-weight;
+    }
+    h3 {
+      font-family: $kansas-font;
+      font-size: 27px;
+    }
   }
 }
 
@@ -41,8 +38,8 @@ body {
   }
   button {
     @include buttonStyles($secondary-color, $sale-color, 75%);
-    margin-top: 0.5em;
-    margin-left: 0.5em;
+    // margin-top: 0.5em;
+    // margin-left: 0.5em;
   }
   a {
     color: $sale-color;
@@ -60,7 +57,7 @@ body {
   button {
     @include buttonStyles($secondary-color, #130e3f, 75%);
 
-    margin: 0.75em 0.5em;
+    // margin: 0.75em 0.5em;
   }
   a {
     color: #130e3f;
@@ -70,16 +67,10 @@ body {
 
 #throws {
   @include homepageCards(#ddc7a6, $primary-color, 35vw);
-  max-width: 35vw;
+
   img {
     border-radius: 50%;
   }
-  // h3 {
-  //   font-size: 15px;
-  // }
-  // p {
-  //   font-size: 13px;
-  // }
 
   button {
     @include buttonStyles($primary-color, $secondary-color, 75%);
@@ -100,7 +91,7 @@ body {
 @media screen and (max-width: 556px) {
   .cardFlex {
     max-width: 95%;
-    margin: 1.5em 0.5em;
+    margin: 1em 0.5em;
     height: 200px;
   }
 
@@ -109,6 +100,16 @@ body {
   #throws {
     width: 100%;
     border: none;
+    h3 {
+      font-size: 15px;
+      padding: 0.5em 0;
+    }
+
+    p {
+      font-size: 13px;
+      padding: 0;
+      margin: 0;
+    }
   }
 
   #throws {
@@ -129,29 +130,24 @@ body {
       font-size: 12px;
       margin: 1.5em 0 !important;
     }
-    h3 {
-      font-size: 15px;
-      padding: 0.5em 0;
-    }
-
-    p {
-      font-size: 13px;
-      padding: 0;
-      margin: 0;
-    }
   }
 }
 
 // 576px-768px
-@media screen and (min-width: 576px) and (max-width: 768px) {
+@media screen and (min-width: 576px) and (max-width: 767px) {
   .cardFlex {
     height: 270px;
     img {
       object-fit: fill;
-      width: 50%;
+      width: 40%;
     }
-    h3 {
-      margin: 0;
+
+    .cardInfo {
+      width: 60%;
+      h3 {
+        margin: 0;
+        font-size: 20px;
+      }
     }
   }
   #sale,
@@ -159,21 +155,98 @@ body {
   #throws {
     width: 100%;
     border: none;
-    // img {
-    //   border-radius: 8px;
-    // }
   }
 }
 
-// .cardInfo {
-//   padding-left: 0.5em;
-// }
+// 768px-992px
+@media screen and (min-width: 767px) and (max-width: 992px) {
+  .cardFlex {
+    margin: 0.25em;
+    height: 220px;
+    img {
+      width: 50%;
+    }
+    .cardInfo {
+      padding: 0.5em;
 
-// 76px-992px
-@media screen and (min-width: 768px) and (max-width: 992px) {
+      p {
+        margin: 0;
+        font-size: 14px;
+      }
+      h3 {
+        font-size: 20px;
+      }
+    }
+    #sale,
+    #throws {
+      margin-top: 1.5em;
+    }
+    button {
+      margin-top: 1em;
+      width: 150px !important;
+    }
+  }
+  #homeDecor {
+    padding-top: 0.5em;
+    margin-top: 0;
+  }
+
+  #throws {
+    width: 40vw;
+    img {
+      margin: auto;
+      height: 70%;
+      width: 70%;
+      .cardInfo {
+        width: 30%;
+      }
+    }
+  }
+  #sale,
+  #homeDecor {
+    width: 50vw;
+  }
 }
 // 992px-1200px
 @media screen and (min-width: 992px) and (max-width: 1200px) {
+  .cardFlex {
+    // margin: 0.25em;
+    height: 240px;
+    img {
+      width: 50%;
+    }
+    .cardInfo {
+      padding: 0.5em;
+
+      p {
+        margin: 0;
+        font-size: 14px;
+      }
+      h3 {
+        font-size: 20px;
+      }
+    }
+    #sale,
+    #throws {
+      margin-top: 1.5em;
+    }
+    button {
+      margin-top: 1em;
+      width: 90% !important;
+    }
+  }
+  #homeDecor {
+    padding-top: 0.5em;
+    margin-top: 0;
+  }
+
+  #throws {
+    width: 38vw;
+  }
+  #sale,
+  #homeDecor {
+    width: 50vw;
+  }
 }
 // 1200px-1400px
 @media screen and (min-width: 1200px) and (max-width: 1400px) {
