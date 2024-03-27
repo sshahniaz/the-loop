@@ -2,7 +2,7 @@
 import { useState, useEffect, use } from "react";
 
 import { usePathname } from "next/navigation";
-
+import PersonalDetails from "../components/profile/PersonalDetails";
 interface ProductApiResponse {
   products: Product[];
 }
@@ -31,8 +31,15 @@ export default function ProfilePage() {
     fetchUser();
   }, []);
 
+  const details = {
+    firstName: "john",
+    lastName: "doe",
+    email: "j.doe@mail.com",
+  };
+
   return (
     <>
+      <PersonalDetails details={details} />
       <h1>{pathname}</h1>
       <ul>
         {products.map((product, index) => (
