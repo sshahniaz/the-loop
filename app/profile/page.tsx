@@ -1,5 +1,7 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
+
+import { usePathname } from "next/navigation";
 
 interface ProductApiResponse {
   products: Product[];
@@ -12,6 +14,7 @@ interface Product {
 }
 
 export default function ProfilePage() {
+  const pathname = usePathname();
   const [products, setProducts] = useState<any[]>([]);
   const [loading, isLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -29,14 +32,17 @@ export default function ProfilePage() {
   }, []);
 
   return (
-    <ul>
-      {products.map((product, index) => (
-        <li key={index}>{product.name}</li>
-      ))}
-      {/* {products.map((product, index) => (
+    <>
+      <h1>{pathname}</h1>
+      <ul>
+        {products.map((product, index) => (
+          <li key={index}>{product.name}</li>
+        ))}
+        {/* {products.map((product, index) => (
             <li key={product.}></li>
         ))} */}
-    </ul>
+      </ul>
+    </>
   );
 }
 
