@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { usePathname } from "next/navigation";
+import SellingComponent from "@/app/components/profile/Selling";
 export default function ProfilePage() {
   // get the pathname
   const pathname = usePathname();
@@ -28,7 +29,8 @@ export default function ProfilePage() {
 
   return (
     <>
-      <h1>{searchParams}</h1>
+      {/* pass the product data  */}
+      <SellingComponent products={products} />
       <ul>
         {products.map((product, index) => (
           <li key={index}>{product.name}</li>

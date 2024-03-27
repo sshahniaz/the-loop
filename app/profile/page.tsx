@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect, use } from "react";
-
 import { usePathname } from "next/navigation";
+// import SellingComponent from "../components/profile/Selling";
 
 interface ProductApiResponse {
   products: Product[];
@@ -34,6 +34,7 @@ export default function ProfilePage() {
   return (
     <>
       <h1>{pathname}</h1>
+      <h1>Hello</h1>
       <ul>
         {products.map((product, index) => (
           <li key={index}>{product.name}</li>
