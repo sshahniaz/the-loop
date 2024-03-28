@@ -4,16 +4,18 @@ import "./homePage.scss";
 import HomePageCard from "./components/homepagecards/HomePageCard";
 import SocialMediaCard from "./components/homepagecards/SocialMediaCard";
 import PersonalDetails from "./components/profile/PersonalDetails";
-
+import QuickLinks from "./components/navigation/QuickLinks";
 export default async function Home() {
   return (
     <main className="homepageContainer">
       <div className="firstSecondInfoCard">
+        <QuickLinks />
+
         <HomePageCard
           img="/assets/throwImg.jpg"
           imgName="throws"
           link="#"
-          heading="Perfect throws for cozy days"
+          heading="Perfect chairs for cozy days"
           paragraph="Discover the range of throws."
           buttonName="Shop Now"
         />

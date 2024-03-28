@@ -21,7 +21,7 @@ const MenuItem = async ({ catagory }: MenuItemProps) => {
           <Link key={index} href={`/categories/${menuCats.name}`}>
             {menuCats.name}
           </Link>
-          <ul>
+          <ul className="menuLevel3">
             {menuCats.subCatagory.map((subCat, index) => (
               <li key={index}>
                 <Link href={`/categories/${subCat.name}`}>{subCat.name}</Link>

@@ -43,7 +43,6 @@
 }
 
 // searchbar & header styling
-@import "/public/styles/mixins.scss";
 
 body {
   margin: auto;
@@ -104,6 +103,13 @@ body {
   }
 }
 
+// .menuLv2 {
+//   display: none;
+// }
+
+// .menuLv2:hover {
+//   display: block;
+// }
 @media (max-width: 799px) {
   .navigationContainer {
     width: 100%;
