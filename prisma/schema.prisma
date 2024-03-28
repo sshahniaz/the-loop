@@ -110,3 +110,18 @@ model FAQ {
   question String
   answer   String
 }
+
+model Nav {
+  id       String     @id @default(auto()) @map("_id") @db.ObjectId
+  name     String
+  catagory Catagory[]
+}
+
+type Catagory {
+  name        String
+  subCatagory SubCatagory[]
+}
+
+type SubCatagory {
+  name String
+}
