@@ -11,9 +11,12 @@ const QuickLinks = () => {
       {/* <QuickLinksItem LinkProps={links[0]} /> */}
 
       <ul>
-        <li>
-          <Link href="/categories/lighting"> lighting </Link>
-        </li>
+      {links.map((pageR, index) => (
+        <QuickLinksItem href={pageR}/>
+      ))}
+        {/* <li>
+          <Link href={`/categories/${pageR}`}> lighting </Link>
+        </li> */}
       </ul>
       {/* <ul>
         <li>

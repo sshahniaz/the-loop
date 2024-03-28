@@ -5,10 +5,15 @@ interface LinkProps {
   href: string;
 }
 
-const QuickLinksItem = () => {
+const QuickLinksItem = ({href}:LinkProps) => {
   return (
     <>
-      <ul>
+      <li>
+        <img src="" alt="" />
+        <Link href={`/categories/${href}`}>{ href }</Link>
+      </li>
+
+      {/* <ul>
         <li>
           <img src="" alt="" />
           <Link href="#">Lighting</Link>
@@ -29,7 +34,7 @@ const QuickLinksItem = () => {
           <img src="" alt="" />
           <Link href="#">Bedroom Furniture</Link>
         </li>
-      </ul>
+      </ul> */}
     </>
   );
 };
