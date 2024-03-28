@@ -8,7 +8,7 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
 import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
-
+import Image from "next/image";
 const Input = () => {
   const [searchQuery, setSearchQuery] = useState("");
   //
@@ -41,11 +41,12 @@ const Input = () => {
         </form>
         <Link href="/">
           {" "}
-          <img
+          <Image
             className="headerLogo"
-            src="./assets/logored.svg"
-            alt=""
-            width="150px"
+            src="/assets/logored.svg"
+            height={100}
+            width={150}
+            alt="main logo"
           />
         </Link>
 
