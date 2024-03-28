@@ -1,18 +1,37 @@
-"use client";
+
 import React from "react";
 import Link from "next/link";
-
+import prisma from "@/prisma/client";
 interface MenuItemProps {
-  label: string;
-  href: string;
+  catagory: ({
+    name: string;
+} & {
+    subCatagory: {
+        name: string;
+    }[];
+})[]
 }
 
-const MenuItem = ({ label, href }: MenuItemProps) => {
+const MenuItem = async ({catagory}:MenuItemProps) => {
+
+  
+  // console.log(navCats)
+
   return (
     <div className="menuItem">
-      <span className="heading">
-        <Link href={href}>{label}</Link>
+        {catagory.map((menuCats, index) => (
+          <span className="heading">
+            
+          <Link key={index} href="#">{menuCats.name }</Link>
+            <ul>
+              {menuCats.subCatagory.map((subCat, index) => (
+                <li key={index}>
+                  <Link href="#">{subCat.name }</Link>
+                </li>
+              ))}
+          </ul>
       </span>
+        ))}
     </div>
   );
 };

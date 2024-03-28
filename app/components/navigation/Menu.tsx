@@ -4,21 +4,34 @@ import MenuItem from "./MenuItem";
 import Link from "next/link";
 import { Limelight } from "next/font/google";
 
-type ProductModel = {
-  products: {
-    type: string;
-    catagory: string;
-    subCatagory: string;
+type ProductTypesModel = {
+  productTypes: {
+    name: string;
+    catagory: ({
+        name: string;
+    } & {
+        subCatagory: {
+            name: string;
+        }[];
+    })[]
+    // subCatagory: string;
   }[];
 };
 
-const Menu = ({ products }: ProductModel) => {
+const Menu = ({ productTypes }: ProductTypesModel) => {
+
+  // console.log(productTypes)
   return (
     <nav className="navbar">
       <ul className="navigationLinkContainer">
-        {products.map((product, index) => (
+        {productTypes.map((product, index) => (
           <li className="navigationLink" key={index}>
-            <Link href="#">{product.type}</Link>
+            <Link href={`/categories/${product.name}`}>{product.name}</Link>
+            <ul className="menuLv2">
+              <li>
+                <MenuItem catagory={product.catagory} />
+              </li>
+            </ul>
           </li>
         ))}
         <li className="navigationLink">
