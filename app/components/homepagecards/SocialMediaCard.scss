@@ -9,13 +9,15 @@
   font-weight: 200;
   font-size: 16px;
   height: 267px;
+  margin: 1em;
+  width: 32em;
 
   a {
     color: $secondary-color;
   }
 
   img {
-    width: 45%;
+    width: 40%;
     object-fit: contain;
   }
 
@@ -38,12 +40,12 @@
   .socialMediaCardFlex {
     border: none;
     width: 95%;
-    margin: 2em 0.5em;
+    margin: 1.5em 0.5em;
     height: 200px;
 
     img {
       margin-top: 0.5em;
-      width: 35%;
+      width: 30%;
     }
     p {
       margin: 0;
@@ -52,17 +54,37 @@
 }
 
 // 576px-768px
-@media screen and (min-width: 576px) and (max-width: 768px) {
+@media screen and (min-width: 576px) and (max-width: 767px) {
+  .socialMediaCardFlex {
+    width: 100%;
+    border: none;
+    img {
+      width: 30%;
+    }
+  }
 }
 
 // 76px-992px
-@media screen and (min-width: 768px) and (max-width: 992px) {
+@media screen and (min-width: 767px) and (max-width: 992px) {
+  .socialMediaCardFlex {
+    margin: 0.25em;
+    height: 220px;
+    width: 40vw;
+  }
 }
 // 992px-1200px
 @media screen and (min-width: 992px) and (max-width: 1200px) {
+  .socialMediaCardFlex {
+    margin: 0.25em;
+    height: 240px;
+    width: 38vw;
+  }
 }
 // 1200px-1400px
 @media screen and (min-width: 1200px) and (max-width: 1400px) {
+  .socialMediaCardFlex {
+    width: 35vw;
+  }
 }
 // min 1400px
 @media screen and (min-width: 1400px) {

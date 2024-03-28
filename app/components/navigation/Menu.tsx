@@ -14,46 +14,25 @@ type ProductModel = {
 
 const Menu = ({ products }: ProductModel) => {
   return (
-    <nav>
-      <ul>
+    <nav className="navbar">
+      <ul className="navigationLinkContainer">
         {products.map((product, index) => (
-          <li>
-            {product.type}
-            <ul>
-              <li>
-                <Link href={`categories/${product.catagory}`}>
-                  {" "}
-                  {product.catagory}
-                </Link>
-                <ul>
-                  <li>
-                    <Link href={`categories/category/${product.subCatagory}`}>
-                      {product.subCatagory}
-                    </Link>
-                  </li>
-                </ul>
-              </li>
-            </ul>
+          <li className="navigationLink" key={index}>
+            <Link href="#">{product.type}</Link>
           </li>
         ))}
+        <li className="navigationLink">
+          <Link href="#">New Arrivals</Link>
+        </li>
+        <li className="navigationLink">
+          <Link className="saleLink" href="#">
+            Sale
+          </Link>
+        </li>
+        <li className="navigationLink">
+          <Link href="#">Contact Us </Link>
+        </li>
       </ul>
-      {/* <ul>
-        {products.map((product, index) => (
-          <li>
-            <Link href={`categories/${product.catagory}`}>
-              {" "}
-              {product.catagory}
-            </Link>
-            <ul>
-              <li>
-                <Link href={`categories/category/${product.subCatagory}`}>
-                  {product.subCatagory}
-                </Link>
-              </li>
-            </ul>
-          </li>
-        ))}
-      </ul> */}
     </nav>
   );
 };

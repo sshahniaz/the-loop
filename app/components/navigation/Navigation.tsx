@@ -1,9 +1,8 @@
 import Menu from "./Menu";
-// import getAllCategoriesAndSubCategories from "@/app/api/database";
 import prisma from "@/prisma/client";
 import Link from "next/link";
-import Input from "../Input";
-// import products, { ProductModel } from "./Menu";
+import Input from "./Input";
+import "./Navigation.scss";
 
 export default async function Navigation() {
   const products = await prisma.product.findMany({
@@ -12,7 +11,7 @@ export default async function Navigation() {
       catagory: true,
       subCatagory: true,
     },
-    distinct: ["catagory"],
+    distinct: ["type"],
   });
 
   // // console.log(products);
@@ -23,8 +22,18 @@ export default async function Navigation() {
 
   return (
     <>
-      <Input />
-      {/* <Menu products={products} /> */}
+      <div className="menu">
+        <div className="navigationContainer">
+          <button id="hamburger">
+            <div className="hamburgerLine"></div>
+            <div className="hamburgerLine"></div>
+            <div className="hamburgerLine"></div>
+          </button>
+
+          <Input />
+          <Menu products={products} />
+        </div>
+      </div>
     </>
   );
 }

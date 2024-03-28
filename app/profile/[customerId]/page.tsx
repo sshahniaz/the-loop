@@ -4,6 +4,7 @@ import { useSearchParams } from "next/navigation";
 import { usePathname } from "next/navigation";
 import PersonalDetails from "@/app/components/profile/PersonalDetails";
 
+import SellingComponent from "@/app/components/profile/Selling";
 export default function ProfilePage() {
   // get the pathname
   const pathname = usePathname();
@@ -47,6 +48,8 @@ export default function ProfilePage() {
             <li key={product.}></li>
         ))} */}
       </ul>
+      {/* pass the product data  */}
+      <SellingComponent products={products} />
     </>
   );
 }
