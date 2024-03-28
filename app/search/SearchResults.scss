@@ -1,0 +1,9 @@
+@import "/public/styles/mixins.scss";
+
+.searchResultContainer {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+.searchResultCard {
+  width: 33%;
+}

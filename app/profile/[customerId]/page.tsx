@@ -31,14 +31,6 @@ export default function ProfilePage() {
     <>
       {/* pass the product data  */}
       <SellingComponent products={products} />
-      <ul>
-        {products.map((product, index) => (
-          <li key={index}>{product.name}</li>
-        ))}
-        {/* {products.map((product, index) => (
-            <li key={product.}></li>
-        ))} */}
-      </ul>
     </>
   );
 }
