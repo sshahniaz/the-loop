@@ -5,14 +5,17 @@ import Input from "./Input";
 import "./Navigation.scss";
 
 export default async function Navigation() {
-  const products = await prisma.product.findMany({
+  const navType = await prisma.nav.findMany({
     select: {
-      type: true,
+      name: true,
       catagory: true,
-      subCatagory: true,
     },
-    distinct: ["type"],
+    
   });
+
+  // console.log(navType);
+  
+  // navType[0].catagory[0].subCatagory[0].name
 
   // // console.log(products);
   // const categories = products.map((product) => product.catagory);
@@ -31,7 +34,7 @@ export default async function Navigation() {
           </button>
 
           <Input />
-          <Menu products={products} />
+          <Menu productTypes={navType} />
         </div>
       </div>
     </>
