@@ -3,9 +3,10 @@ import Link from "next/link";
 
 interface LinkProps {
   href: string;
+  
 }
 
-const QuickLinksItem = ({href}:LinkProps) => {
+const QuickLinksItem = ({href,}:LinkProps) => {
   return (
     <>
       <li>

@@ -12,7 +12,7 @@ const QuickLinks = () => {
 
       <ul>
       {links.map((pageR, index) => (
-        <QuickLinksItem href={pageR}/>
+        <QuickLinksItem key={index} href={pageR}/>
       ))}
         {/* <li>
           <Link href={`/categories/${pageR}`}> lighting </Link>
