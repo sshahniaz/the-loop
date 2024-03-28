@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-
+import EditIcon from "@mui/icons-material/Edit";
+import "./PersonalDetails.scss";
 interface userDetails {
   details: {
     firstName: string;
@@ -39,11 +40,18 @@ const PersonalDetails = ({
 
   return (
     <div className="personalDetails">
-      <h2>Personal Details</h2>
+      <div className="headingFlex">
+        <h2 className="personalDetailsHeading">My Details</h2>
+        <button type="button" onClick={handleEdit}>
+          <EditIcon />
+        </button>
+      </div>
       {isEdit ? (
         <form>
           <div>
-            <label htmlFor="firstName">First Name:</label>
+            <label className="nameHeadings" htmlFor="firstName">
+              First Name
+            </label>
             <input
               type="text"
               id="firstName"
@@ -53,21 +61,27 @@ const PersonalDetails = ({
             />
           </div>
           <div>
-            <label htmlFor="lastName">Last Name:</label>
+            <label htmlFor="lastName" className="nameHeadings">
+              Last Name
+            </label>
             <input
               type="text"
               id="lastName"
+              className="nameClass"
               name="lastName"
               value={userData.lastName}
               onChange={handleChange}
             />
           </div>
           <div>
-            <label htmlFor="email">Email:</label>
+            <label htmlFor="email" className="nameHeadings">
+              Email
+            </label>
             <input
               type="email"
               id="email"
               name="email"
+              className="nameClass"
               value={userData.email}
               onChange={handleChange}
             />
@@ -80,19 +94,17 @@ const PersonalDetails = ({
           </button>
         </form>
       ) : (
-        <div>
-          <p>
-            <strong>First Name:</strong> {userData.firstName}
-          </p>
-          <p>
-            <strong>Last Name:</strong> {userData.lastName}
-          </p>
-          <p>
-            <strong>Email:</strong> {userData.email}
-          </p>
-          <button type="button" onClick={handleEdit}>
-            Edit
-          </button>
+        <div className="personalDetailsDisplay">
+          <div className="personalDetailsFlex">
+            <p className="nameHeadings">First Name </p>
+            <p>{userData.firstName}</p>
+          </div>
+
+          <p className="nameHeadings">Last Name</p>
+          <p>{userData.lastName}</p>
+
+          <p className="nameHeadings">Email</p>
+          <p>{userData.email}</p>
         </div>
       )}
     </div>

@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { usePathname } from "next/navigation";
 import PersonalDetails from "@/app/components/profile/PersonalDetails";
-
 import SellingComponent from "@/app/components/profile/Selling";
+import "./ProfilePage.scss";
 export default function ProfilePage() {
   // get the pathname
   const pathname = usePathname();
@@ -38,18 +38,13 @@ export default function ProfilePage() {
   };
   return (
     <>
-      <h1>{searchParams}</h1>
-      <PersonalDetails details={details} />
-      <ul>
-        {products.map((product, index) => (
-          <li key={index}>{product.name}</li>
-        ))}
-        {/* {products.map((product, index) => (
-            <li key={product.}></li>
-        ))} */}
-      </ul>
-      {/* pass the product data  */}
-      <SellingComponent products={products} />
+      <div className="profilePageContainer">
+        <h1>{searchParams}</h1>
+        <PersonalDetails details={details} />
+
+        {/* pass the product data  */}
+        {/* <SellingComponent products={products} /> */}
+      </div>
     </>
   );
 }

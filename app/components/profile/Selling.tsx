@@ -14,37 +14,39 @@ type sellingModel = {
 const SellingComponent = ({ products }: sellingModel) => {
   return (
     <>
-      {products.map((product, index) => (
-        <div className="sellingComponentContainer" key={index}>
-          <img src={product.imageLink[0]} alt={product.name} />
-          <div className="sellingInfo">
-            <h3 className="sellingHeading">
-              {product.name} - £{product.price}
-            </h3>
-            <div className="chevronFlex">
-              <p>
-                {" "}
-                <Link href="#">Revise Product Listing</Link>
-              </p>
-              <span className="chevron">
-                <KeyboardArrowDownIcon />
-              </span>
-            </div>
-            <div className="chevronFlex">
-              <p>
-                {" "}
-                <Link href="#">Revise Product Listing</Link>
-              </p>
-              <span className="chevron">
-                <KeyboardArrowDownIcon />
-              </span>
-            </div>
-            {/* <div className="hrContainer">
+      <div className="sellingContainer">
+        {products.map((product, index) => (
+          <div className="sellingComponentContainer" key={index}>
+            <img src={product.imageLink[0]} alt={product.name} />
+            <div className="sellingInfo">
+              <h3 className="sellingHeading">
+                {product.name} - £{product.price}
+              </h3>
+              <div className="chevronFlex">
+                <p>
+                  {" "}
+                  <Link href="#">Revise Product Listing</Link>
+                </p>
+                <span className="chevron">
+                  <KeyboardArrowDownIcon />
+                </span>
+              </div>
+              <div className="chevronFlex">
+                <p>
+                  {" "}
+                  <Link href="#">End Product Listing</Link>
+                </p>
+                <span className="chevron">
+                  <KeyboardArrowDownIcon />
+                </span>
+              </div>
+              {/* <div className="hrContainer">
               <hr />
             </div> */}
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </>
   );
 };
