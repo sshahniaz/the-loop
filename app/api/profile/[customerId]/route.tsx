@@ -13,10 +13,7 @@ export async function GET(request: Request) {
       // console.log(url);
       const { pathname } = url;
       const customerId = pathname.split("/").slice(-1)[0];
-      // const customerId = "65faf8493a25aae6e6aedda3";
-      // const parsedUrl = new URL(url, 'http://localhost:3000');
-      // const userId = parsedUrl.searchParams.get()
-      // console.log(customerId);
+
       const products = await prisma.product.findMany({
         where: {
           ownerId: customerId,
@@ -30,15 +27,3 @@ export async function GET(request: Request) {
     }
   }
 }
-
-// try {
-//   const products = await prisma.product.findMany({
-//     where: {
-//       ownerId: "65fc1d82bffb6b8984064dd4",
-//     },
-//   });
-
-//   return NextResponse.json(products);
-// } catch (error) {
-//   return NextResponse.json({ error: "Error fetching data" });
-// }
