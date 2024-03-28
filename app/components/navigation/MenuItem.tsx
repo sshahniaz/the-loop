@@ -1,7 +1,7 @@
 
 import React from "react";
 import Link from "next/link";
-import prisma from "@/prisma/client";
+// import prisma from "@/prisma/client";
 interface MenuItemProps {
   catagory: ({
     name: string;
@@ -12,7 +12,7 @@ interface MenuItemProps {
 })[]
 }
 
-const MenuItem = async ({catagory}:MenuItemProps) => {
+const MenuItem = ({catagory}:MenuItemProps) => {
 
   
   // console.log(navCats)
