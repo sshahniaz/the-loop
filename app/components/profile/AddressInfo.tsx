@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-interface userAddressInfo {
+interface UserAddressInfo {
   addressData: {
     firstName: string;
     lastName: string;
@@ -10,7 +10,7 @@ interface userAddressInfo {
 
 const AddressInfo = ({
   addressData: { firstName, lastName, address },
-}: userAddressInfo) => {
+}: UserAddressInfo) => {
   const [isEdit, setIsEdit] = useState(false);
   const [userData, setUserData] = useState({
     firstName,
