@@ -1,0 +1,43 @@
+@import "/public/styles/mixins.scss";
+
+.homepageQuickLinkHeading {
+  @include pageHeadings;
+}
+
+.quickLinksMaster {
+  display: flex;
+  flex-direction: column;
+}
+.quickLinkContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.quickLinkText {
+  a {
+    font-family: $montserrat-font;
+    color: $primary-color;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+    font-weight: 600;
+  }
+}
+.quickLinkItem {
+  padding: 2em 2.5em;
+
+  li {
+    list-style: none;
+  }
+
+  img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+  }
+}
