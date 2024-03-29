@@ -32,7 +32,7 @@ const QuickLinks = () => {
     <>
       <div className="quickLinksMaster">
         <h2 className="homepageQuickLinkHeading">Popular Categories</h2>
-        <ul className="quickLinkItem">
+        <ul className="quickLinkContainer">
           <QuickLinksItem linkItems={links} />
         </ul>
       </div>
