@@ -36,7 +36,7 @@ const PaymentSection = ({ paymentMethods, onPaymentMethodChange }: PaymentSectio
    <div className="payment-section">
       <PaymentMethodSelection
         paymentMethods={paymentMethods}
-        selectedPaymentMethodId={selectedPaymentMethodId}
+        selectedPaymentMethodId={selectedPaymentMethodId || ''}
         onPaymentMethodChange={handlePaymentMethodChange}
       />
       {isAddingCard ? (
