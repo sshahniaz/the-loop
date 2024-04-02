@@ -52,7 +52,7 @@ const Wishlist = ({ usrProfile }: UserProfile) => {
           {wishlistItems.map((item, index) => (
             <WishlistItem
               key={index}
-              product={item}
+              productItem={item}
               onRemove={handleRemoveFromWishlist}
             />
           ))}
