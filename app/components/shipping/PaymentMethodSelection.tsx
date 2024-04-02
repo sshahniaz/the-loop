@@ -21,7 +21,6 @@ const PaymentMethodSelection = ({
 
   const handleAddCardClick = () => {
     setIsAddingCard(true);
-    //show 
   };
 
   return (

@@ -19,10 +19,11 @@ const PaymentSection = ({ paymentMethods, onPaymentMethodChange }: PaymentSectio
   }
 
   const handleAddCard = (card: any) => {  
-
-    
+    //Adding new cards to the paymentMethods array and updating the state
+    paymentMethods.push(card);
 
     console.log('Adding card:', card);
+    setSelectedPaymentMethodId(card.id);
     setIsAddingCard(false);
   }
 
