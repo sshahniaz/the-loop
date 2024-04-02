@@ -16,11 +16,12 @@ const Wishlist = ({ usrProfile }: UserProfile) => {
   useEffect(() => {
     const fetchWishlist = async () => {
       if (usrProfile.userId) {
-        const profile = await prisma.profile.findUnique({
-          where: { customerId: usrProfile.userId },
-          select: { wishlist: true }, // Select only the wishlist field
-        });
-        setWishlistItems(profile?.wishlist || []);
+        const wishlist: { wishlist: string[] } | null =
+          await prisma.profile.findUnique({
+            where: { customerId: usrProfile.userId },
+            select: { wishlist: true }, // Select only the wishlist field
+          });
+        setWishlistItems(wishlist !== undefined ? wishlist : []);
       }
     };
     fetchWishlist();
