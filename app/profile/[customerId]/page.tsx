@@ -33,6 +33,7 @@ export default function ProfilePage() {
   //test var
 
   const details = {
+    id: "65faf8493a25aae6e6aedda3",
     firstName: "john",
     lastName: "doe",
     email: "j.doe@mail.com",
