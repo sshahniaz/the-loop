@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import PersonalDetails from "@/app/components/profile/PersonalDetails";
 import SellingComponent from "@/app/components/profile/Selling";
 import "./ProfilePage.scss";
+import Wishlist from "@/app/components/wishlist/Wishlist";
 export default function ProfilePage() {
   // get the pathname
   const pathname = usePathname();
@@ -44,6 +45,17 @@ export default function ProfilePage() {
 
         {/* pass the product data  */}
         {/* <SellingComponent products={products} /> */}
+
+      {/*TODO: Fix the wishlist component by passing dynamic userId*/}
+      {/* Wishlist hardcoded for now */}
+        <Wishlist userId="65faf8493a25aae6e6aedda3" />
+        
+      {/*TODO: Usage of AddToWishlist component 
+      
+       <AddToWishlist productId={product.id} userId={userId} />
+      
+      */}
+
       </div>
     </>
   );

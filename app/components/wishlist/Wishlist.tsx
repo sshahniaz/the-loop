@@ -3,41 +3,36 @@ import WishlistItem from "./WishlistItem";
 import WishlistEmpty from "./WishlistEmpty";
 import prisma from "@/prisma/client";
 
-interface UserProfile {
-  usrProfile: {
-    userId: string;
-  };
-}
+interface WishlistProps { userId: string; }
 
-const Wishlist = ({ usrProfile }: UserProfile) => {
-  const [wishlistItems, setWishlistItems] = useState([]);
 
+const Wishlist = ({ userId }: WishlistProps) => {
   // Fetch wishlist items on component mount
+  const [wishlistItems, setWishlistItems] = useState<string[]>([]);
+  
   useEffect(() => {
     const fetchWishlist = async () => {
-      if (usrProfile.userId) {
-        const wishlist: { wishlist: string[] } | null =
+      if (userId) {
+        const wishlist =
           await prisma.profile.findUnique({
-            where: { customerId: usrProfile.userId },
+            where: { customerId: userId },
             select: { wishlist: true }, // Select only the wishlist field
           });
-        setWishlistItems(wishlist !== undefined ? wishlist : []);
+        setWishlistItems(wishlist?.wishlist || []);
       }
     };
     fetchWishlist();
   }, []);
 
-  const handleRemoveFromWishlist = async (productId) => {
+  const handleRemoveFromWishlist = async (itemId: string) => {
     const updatedWishlist = wishlistItems
-      .filter
-      //   (item) => item.toString() !== productId
-      ();
+      .filter((item) => item !== itemId);
     setWishlistItems(updatedWishlist);
 
-    // Update wishlist on server using prisma (optional)
-    if (usrProfile.userId) {
+    // Update wishlist on server using prisma 
+    if (userId) {
       await prisma.profile.update({
-        where: { customerId: usrProfile.userId },
+        where: { customerId: userId },
         data: { wishlist: updatedWishlist },
       });
     }
@@ -46,6 +41,7 @@ const Wishlist = ({ usrProfile }: UserProfile) => {
   return (
     <div className="wishlist">
       <h2>Wishlist</h2>
+      {/* Display message if no items in wishlist */}   
       {wishlistItems.length === 0 ? (
         <WishlistEmpty />
       ) : (
@@ -53,7 +49,7 @@ const Wishlist = ({ usrProfile }: UserProfile) => {
           {wishlistItems.map((item, index) => (
             <WishlistItem
               key={index}
-              productItem={item}
+              wLItem={item}
               onRemove={handleRemoveFromWishlist}
             />
           ))}

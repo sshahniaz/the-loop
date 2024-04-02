@@ -1,25 +1,33 @@
 import React from "react";
+import prisma from "@/prisma/client";
 
-interface WListItem {
-  productItem: {
-    id: string;
-    name: string;
-    image: string;
-    price: string;
-  };
+interface WListItemProps {
+  wLItem: string;
   onRemove: Function;
 }
 
-const WishlistItem = ({ productItem, onRemove }: WListItem) => {
+const WishlistItem = async ({ wLItem, onRemove }: WListItemProps) => {
+
+  // Add product details to the wishlist item
+  const productItem = await prisma.product.findUnique({
+    where: { id: wLItem },
+  });
+
+// If productItem is not found, return null
+if (!productItem) {
+    return null;
+  }
+
   return (
+    // Display product details and remove button
     <li key={productItem.id}>
       <div className="product-details">
         <p>{productItem.name}</p>
         {/* Add image and price if available in product data */}
-        {productItem.image && (
-          <img src={productItem.image} alt={productItem.name} />
+        {productItem.imageLink[0] && (
+          <img src={productItem.imageLink[0]} alt={productItem.name} />
         )}
-        {productItem.price && <span>Price: ${productItem.price}</span>}
+        {!!productItem.price && <span>Price: ${productItem.price}</span>}
       </div>
       <button onClick={() => onRemove(productItem.id)}>Remove</button>
     </li>
