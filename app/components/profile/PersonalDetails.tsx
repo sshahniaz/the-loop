@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, ChangeEvent } from "react";
 import EditIcon from "@mui/icons-material/Edit";
 import prisma from "@/prisma/client";
 import "./PersonalDetails.scss";
@@ -22,7 +22,7 @@ const PersonalDetails = ({
     email,
   });
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setUserData({ ...userData, [event.target.name]: event.target.value });
   };
 
@@ -32,7 +32,7 @@ const PersonalDetails = ({
 
   const handleSave = async () => {
     // Update user data using prisma
-    
+    'use server'
     await prisma.profile.update({
       where: { customerId: userData.id },
       data: {

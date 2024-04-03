@@ -4,6 +4,7 @@ import { useSearchParams } from "next/navigation";
 import { usePathname } from "next/navigation";
 import PersonalDetails from "@/app/components/profile/PersonalDetails";
 import SellingComponent from "@/app/components/profile/Selling";
+import Link from "next/link";
 import "./ProfilePage.scss";
 import Wishlist from "@/app/components/wishlist/Wishlist";
 export default function ProfilePage() {
@@ -56,7 +57,8 @@ export default function ProfilePage() {
        <AddToWishlist productId={product.id} userId={userId} />
       
       */}
-
+        {/* link to shippingPage with Link*/}
+        {/* <Link href="/shipping"></Link> */}
       </div>
     </>
   );

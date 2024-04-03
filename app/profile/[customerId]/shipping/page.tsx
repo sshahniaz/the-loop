@@ -1,14 +1,15 @@
-import React, {useState,useEffect} from 'react'
+"use client";
+
+import React, { useState, useEffect } from 'react'
 import prisma from '@/prisma/client'
+import { useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 import AddressInfo from '@/app/components/profile/AddressInfo'
 import BillingAddress from '@/app/components/profile/BillingAddress'
 import PersonalDetails from '@/app/components/profile/PersonalDetails'
 import PaymentSection from '@/app/components/ShippingInfo/PaymentSection'
 import PaymentMethod from '@/app/components/ShippingInfo/PaymentMethod'
 
-interface ShippingProps {
-  userId: string;
-}
 
 interface ProfileData {
   id: string;
@@ -22,12 +23,16 @@ interface Email {
   email: string;
 }
 
-const page = ({ userId }: ShippingProps) => {
+const page = () => {
   // State to store profile Data
   const [profileData, setProfileData] = useState<ProfileData>({} as ProfileData);
   // Set emal state
   const [email, setEmail] = useState<Email>({} as Email);
-  const [paymentMethods, setPaymentMethods] = useState<PaymentMethod[]>([]);
+  const [ paymentMethods, setPaymentMethods ] = useState<PaymentMethod[]>([]);
+  const [userId, setUserId] = useState<string>();
+  
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
   // combine profiledata and Email
   const userData = {
@@ -111,6 +116,19 @@ const page = ({ userId }: ShippingProps) => {
     
     // Fetch the profile data and payment methods when the component mounts
     useEffect(() => {
+
+      const fetchUser = async () => {
+      // url to api endpoint
+      const URL = `http://localhost:3000/api/${pathname}?${searchParams}`;
+
+      // const URL = `http://localhost:3000/api/profile/65faf8493a25aae6e6aedda3`;
+      console.log(pathname);
+      // fetch data from end point and store in the data object
+      setUserId(searchParams.get('customerId') || '');
+    };
+    fetchUser();
+      
+
       fetchProfileData();
       getPaymentMethods();
     }, [userId]);
