@@ -1,10 +1,21 @@
-"client component";
+"use client";
 import { listItem } from "@/app/actions/actions";
+import { useRef } from "react";
+import SellButton from "./SellButton";
 
 export default function Form() {
+  const ref = useRef<HTMLFormElement>(null);
+
   return (
     <div className="sellersForm">
-      <form action={listItem}>
+      <form
+        ref={ref}
+        action={async (formData) => {
+          // reset form
+          ref.current?.reset();
+          await listItem(formData);
+        }}
+      >
         {/* form part 1 */}
         <div className="formP1">
           <h3>Description</h3>
@@ -136,6 +147,7 @@ export default function Form() {
           {/* material */}
           <label htmlFor="material">Material</label>
           <select id="material" name="material">
+            <option value=""></option>
             <option value="wood">Wood</option>
             <option value="metal">Metal</option>
             <option value="plastic">Plastic</option>
@@ -198,7 +210,7 @@ export default function Form() {
             <option value="softwood">Softwood</option>
           </select>
         </div>
-        <button type="submit">Sell Item</button>
+        <SellButton />
       </form>
     </div>
   );
