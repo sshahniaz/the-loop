@@ -2,20 +2,68 @@
 import { listItem } from "@/app/actions/actions";
 import { useRef } from "react";
 import SellButton from "./SellButton";
+import { z } from "zod";
+import toast from "react-hot-toast";
+
+const ListItemSchema = z.object({
+  name: z
+    .string()
+    .min(3, {
+      message: "Field is required",
+    })
+    .max(150),
+  details: z
+    .string()
+    .min(50, {
+      message: "Please provide more detail",
+    })
+    .max(500, { message: "Character Limit reached" }),
+  condition: z.string().min(1, {
+    message: "Field is required",
+  }),
+  type: z.string().min(1, { message: "Field is required" }),
+  category: z.string().min(1, { message: "Field is required" }),
+  subCategory: z.string().min(1, { message: "Field is required" }),
+  price: z.string().min(1, { message: "Field is required" }),
+  colour: z.string().min(1, { message: "Field is required" }),
+  material: z.string().min(1, { message: "Field is required" }),
+});
 
 export default function Form() {
   const ref = useRef<HTMLFormElement>(null);
+  const clientAction = async (formData: FormData) => {
+    const newListItem = {
+      name: formData.get("name"),
+      details: formData.get("details"),
+      condition: formData.get("condition"),
+      type: formData.get("type"),
+      category: formData.get("category"),
+      subCategory: formData.get("subCategory"),
+      price: formData.get("price"),
+      colour: formData.get("colour"),
+      material: formData.get("material"),
+    };
+
+    const result = ListItemSchema.safeParse(newListItem);
+
+    if (!result.success) {
+      let errorMessage = "";
+      result.error.issues.forEach((issue) => {
+        errorMessage =
+          errorMessage + issue.path[0] + ": " + issue.message + ". ";
+      });
+
+      toast.error(errorMessage);
+      //   console.log(result.error.issues);
+      return;
+    }
+    ref.current?.reset();
+    await listItem(formData);
+  };
 
   return (
     <div className="sellersForm">
-      <form
-        ref={ref}
-        action={async (formData) => {
-          // reset form
-          ref.current?.reset();
-          await listItem(formData);
-        }}
-      >
+      <form ref={ref} action={clientAction}>
         {/* form part 1 */}
         <div className="formP1">
           <h3>Description</h3>
