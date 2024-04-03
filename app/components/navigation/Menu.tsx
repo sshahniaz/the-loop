@@ -1,37 +1,50 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import MenuItem from "./MenuItem";
 import Link from "next/link";
 import { Limelight } from "next/font/google";
+import { set } from "zod";
 
 type ProductTypesModel = {
   productTypes: {
     name: string;
     catagory: ({
-        name: string;
+      name: string;
     } & {
-        subCatagory: {
-            name: string;
-        }[];
-    })[]
+      subCatagory: {
+        name: string;
+      }[];
+    })[];
     // subCatagory: string;
   }[];
 };
 
 const Menu = ({ productTypes }: ProductTypesModel) => {
+  const [isHovered, setIsHovered] = useState(false);
 
-  // console.log(productTypes)
+  useEffect(() => {
+    setIsHovered(false);
+  }, []);
+  console.log(productTypes);
   return (
     <nav className="navbar">
       <ul className="navigationLinkContainer">
         {productTypes.map((product, index) => (
           <li className="navigationLink" key={index}>
-            <Link href={`/categories/${product.name}`}>{product.name}</Link>
-            <ul className="menuLv2">
-              <li>
-                <MenuItem catagory={product.catagory} />
-              </li>
-            </ul>
+            <Link
+              href={`/categories/${product.name}`}
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+            >
+              {product.name}
+            </Link>
+            <div className="menuLevel2">
+              <ul className="menuLv2">
+                <li>
+                  <MenuItem catagory={product.catagory} />
+                </li>
+              </ul>
+            </div>
           </li>
         ))}
         <li className="navigationLink">

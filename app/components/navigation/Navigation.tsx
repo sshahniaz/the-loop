@@ -1,8 +1,10 @@
+"use client";
 import Menu from "./Menu";
 import prisma from "@/prisma/client";
 import Link from "next/link";
 import Input from "./Input";
 import "./Navigation.scss";
+import { useState } from "react";
 
 export default async function Navigation() {
   const navType = await prisma.nav.findMany({
@@ -10,18 +12,7 @@ export default async function Navigation() {
       name: true,
       catagory: true,
     },
-    
   });
-
-  // console.log(navType);
-  
-  // navType[0].catagory[0].subCatagory[0].name
-
-  // // console.log(products);
-  // const categories = products.map((product) => product.catagory);
-  // console.log("Categories:", categories);
-  // const subcategories = products.map((product) => product.subCatagory);
-  // console.log("Subcategories:", subcategories);
 
   return (
     <>

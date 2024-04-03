@@ -43,7 +43,7 @@ export default function ProfilePage() {
         <PersonalDetails details={details} />
 
         {/* pass the product data  */}
-        {/* <SellingComponent products={products} /> */}
+        <SellingComponent products={products} />
       </div>
     </>
   );
