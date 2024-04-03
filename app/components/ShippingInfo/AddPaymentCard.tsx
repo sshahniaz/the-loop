@@ -4,16 +4,23 @@ import prisma from '@/prisma/client'
 interface UserPaymentCard {
   name: string;
   cardNumber: string;
-  expiryDate: string;
+  expiryDate: Date;
   billingAddress: string;
   cvv: string;
 }
-const AddPaymentCard = () => {
+
+interface AddPaymentCardProps {
+  onSubmit: (card: UserPaymentCard) => void;
+  onCancel: () => void;
+}
+
+
+const AddPaymentCard = ({onSubmit,onCancel}: AddPaymentCardProps) => {
   // AddPaymentCard components
   const [newCard, setNewCard] = useState<UserPaymentCard>({
     name: "",
     cardNumber: "",
-    expiryDate: "",
+    expiryDate: new Date(),
     billingAddress: "",
     cvv: "",
   });
@@ -26,7 +33,7 @@ const AddPaymentCard = () => {
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
     // Save user data to the database using prisma
-    await prisma.cardDetails.create({
+    const newCardData = await prisma.cardDetails.create({
       data: {
         name: newCard.name,
         cardNumber: newCard.cardNumber,
@@ -41,10 +48,11 @@ const AddPaymentCard = () => {
     setNewCard({
       name: "",
       cardNumber: "",
-      expiryDate: "",
+      expiryDate: new Date(),
       billingAddress: "",
       cvv: "",
     });
+    onSubmit(newCardData);
   };
 
   // Cancel the form submission
@@ -52,7 +60,7 @@ const AddPaymentCard = () => {
     setNewCard({
       name: "",
       cardNumber: "",
-      expiryDate: "",
+      expiryDate: new Date(),
       billingAddress: "",
       cvv: "",
     });
@@ -91,7 +99,7 @@ const AddPaymentCard = () => {
             type="text" // Consider using a date picker for better UX
             id="expiryDate"
             name="expiryDate"
-            value={newCard.expiryDate}
+            value={newCard.expiryDate.toString()}
             onChange={handleChange}
             required
           />
