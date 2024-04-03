@@ -68,13 +68,19 @@ export default function Form() {
         <div className="formP1">
           <h3>Description</h3>
           {/* name */}
-          <label htmlFor="name">Item Name</label>
+          <label htmlFor="name">
+            Item Name <span className="requiredField">*</span>
+          </label>
           <input id="name" name="name" type="text" />
           {/* deatils */}
-          <label htmlFor="details">Item Description</label>
+          <label htmlFor="details">
+            Item Description<span className="requiredField">*</span>
+          </label>
           <textarea name="details" id="details" cols={30} rows={10}></textarea>
           {/* condition */}
-          <label htmlFor="condition">Condition</label>
+          <label htmlFor="condition">
+            Condition<span className="requiredField">*</span>
+          </label>
           <select name="condition" id="condition">
             <option value=""></option>
             <option value="New">New</option>
@@ -87,7 +93,9 @@ export default function Form() {
         <div className="formP2">
           <h3>Category</h3>
           {/* item type */}
-          <label htmlFor="type">Type of Item</label>
+          <label htmlFor="type">
+            Type of Item<span className="requiredField">*</span>
+          </label>
           <select name="type" id="type">
             <option value=""></option>
             <option value="Furniture">Furniture</option>
@@ -95,7 +103,9 @@ export default function Form() {
             <option value="Lighting">Lighting</option>
           </select>
           {/* category */}
-          <label htmlFor="category">Item Category</label>
+          <label htmlFor="category">
+            Item Category<span className="requiredField">*</span>
+          </label>
           <select name="category" id="category">
             <option value=""></option>
             <option value="Seating">Seating</option>
@@ -109,7 +119,9 @@ export default function Form() {
           </select>
 
           {/* subcategory */}
-          <label htmlFor="subCatagory">Item Sub-Category</label>
+          <label htmlFor="subCatagory">
+            Item Sub-Category<span className="requiredField">*</span>
+          </label>
           <select name="subCategory" id="subCategory">
             <option value=""></option>
             <option value="Sofas">Sofas</option>
@@ -146,14 +158,18 @@ export default function Form() {
         {/* price */}
         <div className="formP3">
           <h3>Price</h3>
-          <label htmlFor="price">Price</label>
-          <input name="price" id="price" type="text" />
+          <label htmlFor="price">
+            Price<span className="requiredField">*</span>
+          </label>
+          <input name="price" id="price" type="text" placeholder="£" />
         </div>
         {/* form part 4 */}
         <div className="formP4">
           <h3>Specifications</h3>
           {/* colour */}
-          <label htmlFor="colour">Colour</label>
+          <label htmlFor="colour">
+            Colour<span className="requiredField">*</span>
+          </label>
           <select id="colour" name="colour">
             <option value=""></option>
             <option value="red">Red</option>
@@ -193,7 +209,9 @@ export default function Form() {
             <option value="skyblue">Sky Blue</option>
           </select>
           {/* material */}
-          <label htmlFor="material">Material</label>
+          <label htmlFor="material">
+            Material<span className="requiredField">*</span>
+          </label>
           <select id="material" name="material">
             <option value=""></option>
             <option value="wood">Wood</option>
@@ -257,6 +275,13 @@ export default function Form() {
             <option value="hardwood">Hardwood</option>
             <option value="softwood">Softwood</option>
           </select>
+        </div>
+        <div className="formP5">
+          <h3>Upload Images</h3>
+          {/* <label htmlFor="image">
+            Price<span className="requiredField">*</span>
+          </label> */}
+          <input name="image" id="image" type="file" multiple />
         </div>
         <SellButton />
       </form>

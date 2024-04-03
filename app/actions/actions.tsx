@@ -22,6 +22,7 @@ export async function listItem(formData: FormData) {
   const category = formData.get("category");
   const subCategory = formData.get("subCategory");
   const price = formData.get("price");
+  const imageLink = formData.get("image");
   const colour = formData.get("colour");
   const material = formData.get("material");
 

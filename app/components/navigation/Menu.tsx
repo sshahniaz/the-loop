@@ -25,7 +25,7 @@ const Menu = ({ productTypes }: ProductTypesModel) => {
   useEffect(() => {
     setIsHovered(false);
   }, []);
-  console.log(productTypes);
+  // console.log(productTypes);
   return (
     <nav className="navbar">
       <ul className="navigationLinkContainer">

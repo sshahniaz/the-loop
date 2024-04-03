@@ -1,12 +1,16 @@
 import { useState } from "react";
-import "./sellform.scss";
+
 import prisma from "@/prisma/client";
 import { revalidatePath } from "next/cache";
-import Form from "../components/SellForm";
-// import { string } from "zod";
-
+import Form from "../components/sellform/SellForm";
+import "../components/sellform/sellForm.scss";
 const SellersFormPage = () => {
-  return <Form />;
+  return (
+    <>
+      <h1 className="sellFormTitle"> Sell an Item</h1>
+      <Form />
+    </>
+  );
 };
 
 export default SellersFormPage;

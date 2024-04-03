@@ -1,10 +1,7 @@
-"use client";
 import Menu from "./Menu";
 import prisma from "@/prisma/client";
-import Link from "next/link";
 import Input from "./Input";
 import "./Navigation.scss";
-import { useState } from "react";
 
 export default async function Navigation() {
   const navType = await prisma.nav.findMany({
