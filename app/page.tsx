@@ -8,9 +8,10 @@ import QuickLinks from "./components/navigation/QuickLinks";
 export default async function Home() {
   return (
     <main className="homepageContainer">
+      {/* <div className="quickLinkContainer"> */}
+      <QuickLinks />
+      {/* </div> */}
       <div className="firstSecondInfoCard">
-        <QuickLinks />
-
         <HomePageCard
           img="/assets/throwImg.jpg"
           imgName="throws"

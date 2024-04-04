@@ -15,12 +15,16 @@
 
 .navigationLinkContainer {
   display: flex;
-  width: 75%;
   justify-content: space-evenly;
-  list-style: none;
   font-family: $montserrat-font;
-  font-size: 17px;
+  font-size: 18px;
   margin: auto;
+  list-style: none;
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
 
   .navigationLink {
     padding: 2em;
@@ -41,7 +45,39 @@
     color: $sale-color !important;
   }
 }
+.menuLevel2 {
+  display: none;
+  justify-content: start;
+  font-family: $kansas-font;
+  padding: 1em;
+  transition: 0.3s ease-in;
+}
 
+.menuItem {
+  display: flex;
+  position: absolute;
+  justify-content: start;
+  left: 0;
+  width: 100%;
+  background-color: $secondary-color;
+  padding: 1em;
+  line-height: 30px;
+}
+
+.navigationLink:hover .menuLevel2 {
+  display: flex;
+  transition: 0.3s;
+}
+.menuLevel3 {
+  font-family: $montserrat-font;
+  ul {
+    padding-left: 0;
+  }
+}
+
+.heading {
+  padding: 2em;
+}
 // searchbar & header styling
 
 body {

@@ -13,16 +13,7 @@ export async function GET(request: Request) {
       // console.log(url);
       const { pathname } = url;
       const quickLink = pathname.split("/").slice(-1)[0];
-      console.log(quickLink)
   
-      // const products = await prisma.product.findMany({
-      //   where: {
-      //     ownerId: customerId,
-      //   },
-      // });
-      // console.log(products);
-      // may need to use Response instead of NextResponse
-    //   return NextResponse.json(products);
     } catch (error) {
       return NextResponse.json({ error: "Error fetching data" });
     }
