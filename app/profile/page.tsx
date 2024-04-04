@@ -3,7 +3,7 @@ import { useState, useEffect, use } from "react";
 import { usePathname } from "next/navigation";
 import PersonalDetails from "../components/profile/PersonalDetails";
 // import SellingComponent from "../components/profile/Selling";
-
+import Link from "next/link";
 interface ProductApiResponse {
   products: Product[];
 }
@@ -39,9 +39,13 @@ export default function ProfilePage() {
     email: "j.doe@mail.com",
   };
 
+  const customerid = '65faf8493a25aae6e6aedda2';
+
   return (
     <>
       <PersonalDetails details={details} />
+
+      {/* <Link href={`/shipping/${customerid}`}> SHIPPING </Link> */}
       <h1>{pathname}</h1>
       <h1>Hello</h1>
       <ul>

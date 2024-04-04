@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import prisma from "@/prisma/client";
+import { updatePaymentCards } from "@/app/actions/ProfilePageActions";
 interface userPaymentCards {
   cards: {
     id: string;
@@ -42,16 +42,7 @@ const PaymentCards = ({ cards }: userPaymentCards) => {
   const handleSave = async () => {
     // Save user data to the database using prisma
     if (editedCardIndex !== null) {
-      await prisma.cardDetails.updateMany({
-        where: { id: editedCards[editedCardIndex].id },
-        data: {
-          name: editedCards[editedCardIndex].name,
-          cardNumber: editedCards[editedCardIndex].cardNumber,
-          expiryDate: editedCards[editedCardIndex].expiryDate,
-          billingAddress: editedCards[editedCardIndex].billingAddress,
-          cvv: editedCards[editedCardIndex].cvv,
-        },
-      });
+      updatePaymentCards(editedCards, editedCardIndex);
     }
 
     console.log("Saving data:", editedCards);
