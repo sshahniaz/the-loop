@@ -42,24 +42,24 @@ async function seed() {
     //   },
     // });
 
-    // // Seed Product
-    // const product1 = await prisma.product.create({
-    //   data: {
-    //     name: 'Product 1',
-    //     details: 'Product 1 details',
-    //     ownerId: customer1.id,
-    //     price: 100,
-    //     discount: 10,
-    //     imageLink: ['image1.jpg', 'image2.jpg'],
-    //     colour: 'Red',
-    //     material: 'Cotton',
-    //     type:'Fashion',
-    //     catagory: 'Clothing',
-    //     subCatagory: 'Shirts',
-    //     sale: 10,
-    //     condition: 'New',
-    //   },
-    // });
+    // Seed Product
+    const product1 = await prisma.product.create({
+      data: {
+        name: 'Test Product',
+        details: 'Test details',
+        ownerId: '65faf8493a25aae6e6aedda2',
+        price: 100,
+        discount: 10,
+        imageLink: ['image1.jpg', 'image2.jpg'],
+        colour: 'Red',
+        material: 'Cotton',
+        type:'Fashion',
+        catagory: 'Clothing',
+        subCatagory: 'Shirts',
+        sale: 10,
+        condition: 'New',
+      },
+    });
 
     // // Seed Transaction
     // const transaction1 = await prisma.transaction.create({
@@ -90,53 +90,53 @@ async function seed() {
 
     //Seed Nav
 
-    const navBar = await prisma.nav.createMany({
-      data: [
-        {
-          name: "Furniture",
-          catagory: [
-            {
-              name: "Seating",
-              subCatagory: [
-                { name: "Sofas"}, {name:"Armchairs"}, {name:"Dining Chairs"}, {name:"Stools"}
-              ]
-            }, { name: "Tables",
-              subCatagory: [
-                { name: "Coffee Tables"}, {name:"Dressing Tables"}, {name:"Dining Tables"}, {name:"Side Tables"}
-              ] }, { name: "Storage",
-              subCatagory: [
-                { name: "Sideboards"}, {name:"Cabinets"}, {name:"Chest of Drawers"}
-              ] }
-          ]
+    // const navBar = await prisma.nav.createMany({
+    //   data: [
+    //     {
+    //       name: "Furniture",
+    //       catagory: [
+    //         {
+    //           name: "Seating",
+    //           subCatagory: [
+    //             { name: "Sofas"}, {name:"Armchairs"}, {name:"Dining Chairs"}, {name:"Stools"}
+    //           ]
+    //         }, { name: "Tables",
+    //           subCatagory: [
+    //             { name: "Coffee Tables"}, {name:"Dressing Tables"}, {name:"Dining Tables"}, {name:"Side Tables"}
+    //           ] }, { name: "Storage",
+    //           subCatagory: [
+    //             { name: "Sideboards"}, {name:"Cabinets"}, {name:"Chest of Drawers"}
+    //           ] }
+    //       ]
 
-        },{name: "Home Decor",
-          catagory: [
-            {
-              name: "Accessories",
-              subCatagory: [
-                { name: "Candle Holders"}, {name:"Clocks"}, {name:"Vases"}, {name:"Picture Frames"}
-              ]
-            }, { name: "Mirrors",
-              subCatagory: [
-                { name: "Floor Mirrors"}, {name:"Wall Mirrors"}
-              ] }, { name: "Art",
-              subCatagory: [
-                { name: "Sculptures"}, {name:"Posters"}, {name:"Paintings"}
-              ] }
-          ]},{name: "Lighting",
-          catagory: [
-            {
-              name: "Lamps",
-              subCatagory: [
-                { name: "Floor Lamps"}, {name:"Table Lamps"}, {name:"Sconces"}, {name:"Lamp Bases"}, {name: "Lamp Shades"}
-              ]
-            }, { name: "Ceiling Lights",
-              subCatagory: [
-                { name: "Ceiling Shades"}, {name:"Chandeliers"}, {name:"Pendants"}
-              ] }
-          ]}
-      ]
-    });
+    //     },{name: "Home Decor",
+    //       catagory: [
+    //         {
+    //           name: "Accessories",
+    //           subCatagory: [
+    //             { name: "Candle Holders"}, {name:"Clocks"}, {name:"Vases"}, {name:"Picture Frames"}
+    //           ]
+    //         }, { name: "Mirrors",
+    //           subCatagory: [
+    //             { name: "Floor Mirrors"}, {name:"Wall Mirrors"}
+    //           ] }, { name: "Art",
+    //           subCatagory: [
+    //             { name: "Sculptures"}, {name:"Posters"}, {name:"Paintings"}
+    //           ] }
+    //       ]},{name: "Lighting",
+    //       catagory: [
+    //         {
+    //           name: "Lamps",
+    //           subCatagory: [
+    //             { name: "Floor Lamps"}, {name:"Table Lamps"}, {name:"Sconces"}, {name:"Lamp Bases"}, {name: "Lamp Shades"}
+    //           ]
+    //         }, { name: "Ceiling Lights",
+    //           subCatagory: [
+    //             { name: "Ceiling Shades"}, {name:"Chandeliers"}, {name:"Pendants"}
+    //           ] }
+    //       ]}
+    //   ]
+    // });
 
     console.log('Seed data created successfully!');
   } catch (error) {

@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, ChangeEvent } from "react";
 import EditIcon from "@mui/icons-material/Edit";
+import prisma from "@/prisma/client";
 import "./PersonalDetails.scss";
-interface userDetails {
+interface UserDetailsProps {
   details: {
+    id: string;
     firstName: string;
     lastName: string;
     email: string;
@@ -10,16 +12,17 @@ interface userDetails {
 }
 
 const PersonalDetails = ({
-  details: { firstName, lastName, email },
-}: userDetails) => {
+  details: { id,firstName, lastName, email },
+}: UserDetailsProps) => {
   const [isEdit, setIsEdit] = useState(false);
   const [userData, setUserData] = useState({
+    id,
     firstName,
     lastName,
     email,
   });
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setUserData({ ...userData, [event.target.name]: event.target.value });
   };
 
@@ -27,14 +30,30 @@ const PersonalDetails = ({
     setIsEdit(!isEdit);
   };
 
-  const handleSave = () => {
-    //impliment api later
+  const handleSave = async () => {
+    // Update user data using prisma
+    'use server'
+    await prisma.profile.update({
+      where: { customerId: userData.id },
+      data: {
+        firstName: userData.firstName,
+        lastName: userData.lastName,
+      },
+    });
+
+    //Update the email using prisma in customer table
+    await prisma.customer.update({
+      where: { id: userData.id },
+      data: {
+        email: userData.email,
+      },
+    });
     console.log("Saving data:", userData);
     setIsEdit(false);
   };
 
   const handleCancel = () => {
-    setUserData({ firstName, lastName, email }); // Reset to original data
+    setUserData({ id,firstName, lastName,email }); // Reset to original data
     setIsEdit(false);
   };
 
