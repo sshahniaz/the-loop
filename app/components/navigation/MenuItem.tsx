@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+// "use client";
 import Link from "next/link";
-// import prisma from "@/prisma/client";
 interface MenuItemProps {
   catagory: ({
     name: string;

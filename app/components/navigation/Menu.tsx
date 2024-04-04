@@ -2,8 +2,7 @@
 import React, { useEffect, useState } from "react";
 import MenuItem from "./MenuItem";
 import Link from "next/link";
-import { Limelight } from "next/font/google";
-import { set } from "zod";
+import { NavigationAction } from "@/app/actions/NavigationAction";
 
 type ProductTypesModel = {
   productTypes: {
@@ -20,12 +19,12 @@ type ProductTypesModel = {
 };
 
 const Menu = ({ productTypes }: ProductTypesModel) => {
-  const [isHovered, setIsHovered] = useState(false);
+  // const [isHovered, setIsHovered] = useState(false);
 
-  useEffect(() => {
-    setIsHovered(false);
-  }, []);
-  // console.log(productTypes);
+  // useEffect(() => {
+  //   setIsHovered(false);
+  // }, []);
+
   return (
     <nav className="navbar">
       <ul className="navigationLinkContainer">
@@ -33,8 +32,8 @@ const Menu = ({ productTypes }: ProductTypesModel) => {
           <li className="navigationLink" key={index}>
             <Link
               href={`/categories/${product.name}`}
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
+              // onMouseEnter={() => setIsHovered(true)}
+              // onMouseLeave={() => setIsHovered(false)}
             >
               {product.name}
             </Link>
@@ -62,5 +61,4 @@ const Menu = ({ productTypes }: ProductTypesModel) => {
     </nav>
   );
 };
-
 export default Menu;

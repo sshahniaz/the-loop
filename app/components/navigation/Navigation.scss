@@ -15,7 +15,6 @@
 
 .navigationLinkContainer {
   display: flex;
-
   justify-content: space-evenly;
   font-family: $montserrat-font;
   font-size: 18px;
@@ -24,6 +23,7 @@
 
   ul {
     list-style: none;
+    padding-left: 0;
   }
 
   .navigationLink {
@@ -50,14 +50,13 @@
   justify-content: start;
   font-family: $kansas-font;
   padding: 1em;
-  // width: 100%;
   transition: 0.3s ease-in;
 }
 
 .menuItem {
   display: flex;
   position: absolute;
-  justify-content: space-evenly;
+  justify-content: start;
   left: 0;
   width: 100%;
   background-color: $secondary-color;
@@ -71,6 +70,13 @@
 }
 .menuLevel3 {
   font-family: $montserrat-font;
+  ul {
+    padding-left: 0;
+  }
+}
+
+.heading {
+  padding: 2em;
 }
 // searchbar & header styling
 
