@@ -9,11 +9,10 @@ import Slider from "./components/carousel/Slider";
 export default async function Home() {
   return (
     <main className="homepageContainer">
-      {/* Hero Section */}
-      
+      {/* <div className="quickLinkContainer"> */}
+      <QuickLinks />
+      {/* </div> */}
       <div className="firstSecondInfoCard">
-        <QuickLinks />
-
         <HomePageCard
           img="/assets/throwImg.jpg"
           imgName="throws"
