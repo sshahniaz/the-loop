@@ -88,84 +88,11 @@ export default function Form() {
             <option value="Used-Fair">Used-Fair</option>
           </select>
         </div>
-        {/* form part 2 */}
-
-        <div className="formP2">
-          <h3>Category</h3>
-          {/* item type */}
-          <label htmlFor="type">
-            Type of Item<span className="requiredField">*</span>
-          </label>
-          <select name="type" id="type">
-            <option value=""></option>
-            <option value="Furniture">Furniture</option>
-            <option value="Home-Decor">Home-Decor</option>
-            <option value="Lighting">Lighting</option>
-          </select>
-          {/* category */}
-          <label htmlFor="category">
-            Item Category<span className="requiredField">*</span>
-          </label>
-          <select name="category" id="category">
-            <option value=""></option>
-            <option value="Seating">Seating</option>
-            <option value="Tables">Tables</option>
-            <option value="Storage">Storage</option>
-            <option value="Accessories">Accessories</option>
-            <option value="Mirrors">Mirrors</option>
-            <option value="Art">Art</option>
-            <option value="Lamps">Lamps</option>
-            <option value="Ceiling Lights">Ceiling Lights</option>
-          </select>
-
-          {/* subcategory */}
-          <label htmlFor="subCatagory">
-            Item Sub-Category<span className="requiredField">*</span>
-          </label>
-          <select name="subCategory" id="subCategory">
-            <option value=""></option>
-            <option value="Sofas">Sofas</option>
-            <option value="Armchairs">Armchairs</option>
-            <option value="Dining Chairs">Dining Chairs</option>
-            <option value="Stools">Stools</option>
-            <option value="Coffee Tables">Coffee Tables</option>
-            <option value="Dressing Tables">Dressing Tables</option>
-            <option value="Dining Tables">Dining Tables</option>
-            <option value="Side Tables">Side Tables</option>
-            <option value="Sideboards">Sideboards</option>
-            <option value="Cabinets">Cabinets</option>
-            <option value="Chest of Drawers">Chest of Drawers</option>
-            <option value="Candle Holders">Candle Holders</option>
-            <option value="Clocks">Clocks</option>
-            <option value="Vases">Vases</option>
-            <option value="Picture Frames">Picture Frames</option>
-            <option value="Floor Mirrors">Floor Mirrors</option>
-            <option value="Wall Mirrors">Wall Mirrors</option>
-            <option value="Sculptures">Sculptures</option>
-            <option value="Posters">Posters</option>
-            <option value="Paintings">Paintings</option>
-            <option value="Floor Lamps">Floor Lamps</option>
-            <option value="Table Lamps">Table Lamps</option>
-            <option value="Sconces">Sconces</option>
-            <option value="Lamp Bases">Lamp Bases</option>
-            <option value="Lamp Shades">Lamp Shades</option>
-            <option value="Ceiling Shades">Ceiling Shades</option>
-            <option value="Chandeliers">Chandeliers</option>
-            <option value="Pendants">Pendants</option>
-          </select>
-        </div>
-        {/* form part 3 */}
-        {/* price */}
-        <div className="formP3">
-          <h3>Price</h3>
-          <label htmlFor="price">
-            Price<span className="requiredField">*</span>
-          </label>
-          <input name="price" id="price" type="text" placeholder="£" />
-        </div>
-        {/* form part 4 */}
         <div className="formP4">
           <h3>Specifications</h3>
+          <h3>Upload Images</h3>
+
+          <input name="image" id="image" type="file" multiple />
           {/* colour */}
           <label htmlFor="colour">
             Colour<span className="requiredField">*</span>
@@ -276,13 +203,85 @@ export default function Form() {
             <option value="softwood">Softwood</option>
           </select>
         </div>
-        <div className="formP5">
-          <h3>Upload Images</h3>
-          {/* <label htmlFor="image">
-            Price<span className="requiredField">*</span>
-          </label> */}
-          <input name="image" id="image" type="file" multiple />
+        {/* form part 2 */}
+
+        <div className="formP2">
+          <h3>Category</h3>
+          {/* item type */}
+          <label htmlFor="type">
+            Type of Item<span className="requiredField">*</span>
+          </label>
+          <select name="type" id="type">
+            <option value=""></option>
+            <option value="Furniture">Furniture</option>
+            <option value="Home-Decor">Home-Decor</option>
+            <option value="Lighting">Lighting</option>
+          </select>
+          {/* category */}
+          <label htmlFor="category">
+            Item Category<span className="requiredField">*</span>
+          </label>
+          <select name="category" id="category">
+            <option value=""></option>
+            <option value="Seating">Seating</option>
+            <option value="Tables">Tables</option>
+            <option value="Storage">Storage</option>
+            <option value="Accessories">Accessories</option>
+            <option value="Mirrors">Mirrors</option>
+            <option value="Art">Art</option>
+            <option value="Lamps">Lamps</option>
+            <option value="Ceiling Lights">Ceiling Lights</option>
+          </select>
+
+          {/* subcategory */}
+          <label htmlFor="subCatagory">
+            Item Sub-Category<span className="requiredField">*</span>
+          </label>
+          <select name="subCategory" id="subCategory">
+            <option value=""></option>
+            <option value="Sofas">Sofas</option>
+            <option value="Armchairs">Armchairs</option>
+            <option value="Dining Chairs">Dining Chairs</option>
+            <option value="Stools">Stools</option>
+            <option value="Coffee Tables">Coffee Tables</option>
+            <option value="Dressing Tables">Dressing Tables</option>
+            <option value="Dining Tables">Dining Tables</option>
+            <option value="Side Tables">Side Tables</option>
+            <option value="Sideboards">Sideboards</option>
+            <option value="Cabinets">Cabinets</option>
+            <option value="Chest of Drawers">Chest of Drawers</option>
+            <option value="Candle Holders">Candle Holders</option>
+            <option value="Clocks">Clocks</option>
+            <option value="Vases">Vases</option>
+            <option value="Picture Frames">Picture Frames</option>
+            <option value="Floor Mirrors">Floor Mirrors</option>
+            <option value="Wall Mirrors">Wall Mirrors</option>
+            <option value="Sculptures">Sculptures</option>
+            <option value="Posters">Posters</option>
+            <option value="Paintings">Paintings</option>
+            <option value="Floor Lamps">Floor Lamps</option>
+            <option value="Table Lamps">Table Lamps</option>
+            <option value="Sconces">Sconces</option>
+            <option value="Lamp Bases">Lamp Bases</option>
+            <option value="Lamp Shades">Lamp Shades</option>
+            <option value="Ceiling Shades">Ceiling Shades</option>
+            <option value="Chandeliers">Chandeliers</option>
+            <option value="Pendants">Pendants</option>
+          </select>
         </div>
+
+        {/* form part 4 */}
+
+        {/* form part 3 */}
+        {/* price */}
+        <div className="formP3">
+          <h3>Price</h3>
+          <label htmlFor="price">
+            Price<span className="requiredField">*</span>
+          </label>
+          <input name="price" id="price" type="text" placeholder="£" />
+        </div>
+        {/* <div className="formP5"></div> */}
         <SellButton />
       </form>
     </div>

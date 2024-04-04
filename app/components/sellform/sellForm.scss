@@ -23,8 +23,7 @@
   .formP1,
   .formP2,
   .formP3,
-  .formP4,
-  .formP5 {
+  .formP4 {
     display: flex;
     flex-direction: column;
     background-color: $secondary-color;
@@ -51,8 +50,72 @@
     font-family: $montserrat-font;
     color: $secondary-color;
     width: 50%;
+    height: 40px;
     padding: 0.75em;
     border: none;
     border-radius: 8px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .sellFormTitle {
+    font-size: 25px;
+  }
+  .sellersForm {
+    form {
+      grid-template-columns: repeat(1, 1fr);
+      width: 100%;
+    }
+    h3 {
+      font-size: 17px !important;
+    }
+
+    label {
+      margin-top: 0.75em;
+      font-size: 12px;
+    }
+  }
+
+  button {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 576px) and (max-width: 667px) {
+  .sellFormTitle {
+    font-size: 25px;
+  }
+  .sellersForm {
+    form {
+      grid-template-columns: repeat(1, 1fr);
+      width: 100% !important;
+    }
+    h3 {
+      font-size: 18px !important;
+    }
+
+    label {
+      margin-top: 0.75em;
+      font-size: 15px;
+    }
+  }
+}
+
+@media screen and (min-width: 667px) and (max-width: 992px) {
+  .sellFormTitle {
+    font-size: 25px;
+  }
+  .sellersForm {
+    form {
+      width: 100%;
+    }
+    h3 {
+      font-size: 18px !important;
+    }
+
+    label {
+      margin-top: 0.75em;
+      font-size: 15px;
+    }
   }
 }
