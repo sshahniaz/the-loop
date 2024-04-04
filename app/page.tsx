@@ -57,6 +57,9 @@ export default async function Home() {
         <Card title="Post Items To New Home" href="https://example.com/article" linkItem="Learn More" />
         <Card title="Get Paid" href="https://example.com/resource" linkItem="Learn More" />
         </div>
+        <div>
+          <h6><span>*</span>Terms &amp; Conditions apply.</h6>
+        </div>
     </div>
     </main>
   );
