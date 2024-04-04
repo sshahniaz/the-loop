@@ -35,10 +35,11 @@ export async function listItem(formData: FormData) {
     .replace(/[\s_]+/g, '-')
     .toLowerCase();
 
+  //  Section for image upload
   const buffer = Buffer.from(await imageLink.arrayBuffer());
   const extension = mime.getExtension(imageLink.type);
   const relativeUploadDir = `public/assets/${type}/${category}/${subCategory}`;
-
+  
   const uploadDir = join(process.cwd(), relativeUploadDir);
 
   try {
