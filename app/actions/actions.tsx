@@ -44,11 +44,12 @@ export async function listItem(formData: FormData) {
       subCatagory: subCategory as string,
       sale: 0,
       condition: condition as string,
-      owner: {
-        connect: {
-          id: "65faf8493a25aae6e6aedda2",
-        },
-      },
+      ownerId: "65faf8493a25aae6e6aedda2",
+      // owner: {
+      //   connect: {
+      //     id: "65faf8493a25aae6e6aedda2",
+      //   },
+      // },
     },
   });
 
