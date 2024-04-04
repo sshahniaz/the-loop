@@ -5,9 +5,12 @@ import HomePageCard from "./components/homepagecards/HomePageCard";
 import SocialMediaCard from "./components/homepagecards/SocialMediaCard";
 import PersonalDetails from "./components/profile/PersonalDetails";
 import QuickLinks from "./components/navigation/QuickLinks";
+import Slider from "./components/carousel/Slider";
 export default async function Home() {
   return (
     <main className="homepageContainer">
+      {/* Hero Section */}
+      
       <div className="firstSecondInfoCard">
         <QuickLinks />
 
@@ -40,6 +43,9 @@ export default async function Home() {
         />
 
         <SocialMediaCard />
+        <div>
+        <Slider />
+      </div>
       </div>
     </main>
   );
