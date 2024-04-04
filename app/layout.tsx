@@ -21,13 +21,13 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-      <body className={inter.className}>
-        <Navigation />
-        {children}
-        <Toaster position="top-right" />
-        <Footer />
-      </body>
-    </html>
+        <body className={inter.className}>
+          <Navigation />
+          {children}
+          <Toaster position="top-right" />
+          <Footer />
+        </body>
+      </html>
     </ClerkProvider>
     
   );
