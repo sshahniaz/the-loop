@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-
+import prisma from "@/prisma/client";
 interface userPaymentCards {
   cards: {
+    id: string;
     name: string;
     cardNumber: string;
     expiryDate: string;
     billingAddress: string;
+    cvv: string;
     [key: string]: any;
   }[];
 }
@@ -37,8 +39,21 @@ const PaymentCards = ({ cards }: userPaymentCards) => {
     }
   };
 
-  const handleSave = () => {
-    // Implement api later
+  const handleSave = async () => {
+    // Save user data to the database using prisma
+    if (editedCardIndex !== null) {
+      await prisma.cardDetails.updateMany({
+        where: { id: editedCards[editedCardIndex].id },
+        data: {
+          name: editedCards[editedCardIndex].name,
+          cardNumber: editedCards[editedCardIndex].cardNumber,
+          expiryDate: editedCards[editedCardIndex].expiryDate,
+          billingAddress: editedCards[editedCardIndex].billingAddress,
+          cvv: editedCards[editedCardIndex].cvv,
+        },
+      });
+    }
+
     console.log("Saving data:", editedCards);
     setIsEdit(false);
     setEditedCardIndex(null);
@@ -98,6 +113,16 @@ const PaymentCards = ({ cards }: userPaymentCards) => {
                     onChange={handleChange}
                   />
                 </div>
+                <div>
+                  <label htmlFor={`cvv-${index}`}>CVV:</label>
+                  <input
+                    type="text"
+                    id={`cvv-${index}`}
+                    name="cvv"
+                    value={card.cvv}
+                    onChange={handleChange}
+                  /> 
+                </div>
                 <button type="button" onClick={handleSave}>
                   Save
                 </button>
@@ -119,6 +144,9 @@ const PaymentCards = ({ cards }: userPaymentCards) => {
                 </p>
                 <p>
                   <strong>Billing Address:</strong> {card.billingAddress}
+                  </p>
+                  <p>
+                  <strong>CVV:</strong> {card.cvv}
                 </p>
                 <button type="button" onClick={() => handleEdit(index)}>
                   Edit

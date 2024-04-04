@@ -1,15 +1,16 @@
 import React, { useState, ChangeEvent } from "react";
 import prisma from "@/prisma/client";
+
 interface UserAddressInfo {
   addressData: {
     id: string;
     firstName: string;
     lastName: string;
-    address: string | null;
+    address: string | null ;
   };
 }
 
-const AddressInfo = ({
+const BillingAddress = ({
   addressData: { id,firstName, lastName, address },
 }: UserAddressInfo) => {
   const [isEdit, setIsEdit] = useState(false);
@@ -111,4 +112,4 @@ const AddressInfo = ({
   );
 };
 
-export default AddressInfo;
+export default BillingAddress;
