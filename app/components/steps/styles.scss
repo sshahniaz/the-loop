@@ -5,7 +5,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 1rem;
+  padding: 0.5rem;
   border-radius: 14px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   /* margin-bottom: 1rem; */
@@ -17,16 +17,20 @@
 }
 
 .card h3 {
-  margin-bottom: 4rem;
+  font-family: $montserrat-font !important;
+  font-weight: 400;
+  margin-bottom: 2rem;
 }
 
 .card-link {
   display: inline-block;
-  padding: 0.5rem 1rem;
-  border: 1px solid #ccc;
+  padding: 0 1rem;
+  font-size: 30px;
+  /* border: 1px solid #ccc; */
   border-radius: 4px;
   text-decoration: none;
   color: #03300a;
+  /* color: $primary-color; */
   cursor: pointer;
 }
 

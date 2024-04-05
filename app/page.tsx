@@ -7,6 +7,7 @@ import PersonalDetails from "./components/profile/PersonalDetails";
 import QuickLinks from "./components/navigation/QuickLinks";
 import Card from './components/steps/Card';
 import { SvgIcon } from '@mui/material';
+import HowToRegIcon from '@mui/icons-material/HowToReg';
 
 export default async function Home() {
   return (
@@ -52,7 +53,7 @@ export default async function Home() {
       <div className="stepsSection">
         <h2>Money in your pocket in four steps!</h2>
         <div className="steps-card">
-        <Card title="Sign-up For a Free Account" href="https://example.com/article" linkItem="Sign-up" />
+        <Card title="Sign-up For a Free Account" href="https://example.com/article" linkItem={HowToRegIcon} />
         <Card title="Upload your Loved Goodies" href="https://example.com/resource" linkItem="Learn More"/>
         <Card title="Post Items To New Home" href="https://example.com/article" linkItem="Learn More" />
         <Card title="Get Paid" href="https://example.com/resource" linkItem="Learn More" />
