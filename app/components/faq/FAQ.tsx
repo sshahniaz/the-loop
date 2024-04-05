@@ -1,5 +1,6 @@
+"use client";
 import React, { useState } from "react";
-import styles from "./FAQ.module.css";
+import styles from "./FAQ.module.scss";
 
 interface FAQItem {
   question: string;
@@ -17,8 +18,11 @@ const FAQ: React.FC<Props> = ({ data }) => {
     setExpandedIdx(index === expandedIdx ? null : index);
   };
 
+  const getIcon = (index: number) => (expandedIdx === index ? "-" : "+");
+
   return (
     <div className={styles.faq}>
+      <h1>Frequently Asked Questions</h1>
       <div className={styles.grid}>
         {data.map((item, index) => (
           <div key={index} className={styles.accordion}>
@@ -28,7 +32,7 @@ const FAQ: React.FC<Props> = ({ data }) => {
               }
               onClick={() => handleToggle(index)}
             >
-              {item.question}
+              {getIcon(index)} {item.question}
             </button>
             {expandedIdx === index && (
               <div className={styles.content}>{item.answer}</div>

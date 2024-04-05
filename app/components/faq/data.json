@@ -1,0 +1,10 @@
+[
+  {
+    "question": "What is Next.js?",
+    "answer": "Next.js is a React framework for building server-rendered and statically generated web applications."
+  },
+  {
+    "question": "How does this FAQ component work with JSON data?",
+    "answer": "The component now reads questions and answers from the provided JSON file."
+  }
+]
