@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import prisma from '@/prisma/client';
+import { fetchProfileData, updateWithlist } from '@/app/actions/WishlistActions';
 interface AddToWishlistProps {
   productId: string;
   userId?: string; // Optional user ID
@@ -17,9 +17,8 @@ const AddToWishList = ({ productId, userId, onUpdateWishlist }: AddToWishlistPro
     setIsAdding(true)
     try {
       // Fetch user profile
-      const userProfile = await prisma.profile.findUnique({
-        where: { customerId: userId }
-      })
+      const userProfile: any = await fetchProfileData(userId)  
+      
       
       // Check if product is already in wishlist
       if (userProfile?.wishlist.includes(productId)) {
@@ -31,12 +30,8 @@ const AddToWishList = ({ productId, userId, onUpdateWishlist }: AddToWishlistPro
       const updatedWishlist = [...(userProfile?.wishlist || []), productId]
 
       // Update the wishlist in the database  
-      await prisma.profile.update({
-        where: { customerId: userId },
-        data: {
-          wishlist: updatedWishlist
-        }
-      })  
+      await updateWithlist(updatedWishlist, userId)
+      
 
       // Call the callback function to update the wishlist state in the parent component
     if (onUpdateWishlist) {

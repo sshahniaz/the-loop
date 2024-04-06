@@ -36,6 +36,9 @@ export const fetchProfileData = async (userId: string) => {
       where: {
         id: userId,
       },
+      select: {
+        email: true,
+      },
     });
 
     return { profileData, email };

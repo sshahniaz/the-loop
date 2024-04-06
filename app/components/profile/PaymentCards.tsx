@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { updatePaymentCards } from "@/app/actions/ProfilePageActions";
-interface userPaymentCards {
+interface UserPaymentCards {
   cards: {
     id: string;
     name: string;
@@ -12,11 +12,11 @@ interface userPaymentCards {
   }[];
 }
 
-const PaymentCards = ({ cards }: userPaymentCards) => {
+const PaymentCards = ({ cards }: UserPaymentCards) => {
   const [isEdit, setIsEdit] = useState(false);
   const [editedCardIndex, setEditedCardIndex] = useState<number | null>(null);
   const [editedCards, setEditedCards] =
-    useState<userPaymentCards["cards"]>(cards); // Renamed to editedCards
+    useState<UserPaymentCards["cards"]>(cards); // Renamed to editedCards
 
   const handleEdit = (index: number) => {
     setIsEdit(true);
@@ -58,7 +58,7 @@ const PaymentCards = ({ cards }: userPaymentCards) => {
           card,
           index // Use editedCards here
         ) => (
-          <li key={index}>
+          <li key={`card-${index}`}>
             {isEdit && editedCardIndex === index ? ( // Check for edit and matching index
               <form>
                 <div>

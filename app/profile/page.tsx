@@ -1,5 +1,5 @@
-"use client";
-import { useState, useEffect, use } from "react";
+'use client'
+import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import PersonalDetails from "../components/profile/PersonalDetails";
 // import SellingComponent from "../components/profile/Selling";
@@ -45,7 +45,7 @@ export default function ProfilePage() {
     <>
       <PersonalDetails details={details} />
 
-      {/* <Link href={`/shipping/${customerid}`}> SHIPPING </Link> */}
+      <Link href={`../../shipping/${customerid}`}> SHIPPING </Link>
       <h1>{pathname}</h1>
       <h1>Hello</h1>
       <ul>
