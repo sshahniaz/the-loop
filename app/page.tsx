@@ -8,11 +8,22 @@ import QuickLinks from "./components/navigation/QuickLinks";
 import Card from './components/steps/Card';
 import { SvgIcon } from '@mui/material';
 import HowToRegIcon from '@mui/icons-material/HowToReg';
+import Carousel from "./components/carousel/Carousel";
+
+const images = [
+  { url: '/assets/hero/hero-1.jpeg', alt: 'Black headphones.' },
+  { url: '/assets/hero/hero-2.jpeg', alt: 'Android watch with white straps.' },
+  { url: '/assets/hero/hero-3.jpeg', alt: 'Multi coloured kids football artificial turf boots.' },
+];
 
 export default async function Home() {
   return (
     <main className="homepageContainer">
       {/* <div className="quickLinkContainer"> */}
+      <div>
+        {/* <Carousel images={images} autoplay /> */}
+        <Carousel images={images} autoplay={true} autoplayInterval={5000} /> {/* Adjust autoplay settings */}
+      </div>
       <QuickLinks />
       {/* </div> */}
       <div className="firstSecondInfoCard">
@@ -45,9 +56,6 @@ export default async function Home() {
         />
 
         <SocialMediaCard />
-        <div>
-        {/* <Slider /> */}
-      </div>
       </div>
       {/* Steps Section */}
       <div className="stepsSection">
