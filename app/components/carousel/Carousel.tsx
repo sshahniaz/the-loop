@@ -54,12 +54,6 @@ const Carousel: React.FC<CarouselProps> = ({ images, autoplay = true, autoplayIn
       <button className={`${styles.arrows} ${styles.prev}`} onClick={prevSlide}>
           <ArrowBackIosNew />
         </button>
-      {/* <button className={`${styles.arrows} ${styles.prev}`} onClick={prevSlide}>
-        <i className="fas fa-chevron-left"></i>
-      </button> */}
-      {/* <button className={`${styles.arrows} ${styles.next}`} onClick={nextSlide}>
-        <i className="fas fa-chevron-right"></i>
-      </button> */}
       <button className={`${styles.arrows} ${styles.next}`} onClick={nextSlide}>
           <ArrowForwardIos />
         </button>
