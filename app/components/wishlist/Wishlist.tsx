@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import WishlistItem from "./WishlistItem";
 import WishlistEmpty from "./WishlistEmpty";
-import prisma from "@/prisma/client";
+
+import { fetchWishList, updateWithlist } from '@/app/actions/WishlistActions';
 
 interface WishlistProps { userId: string; }
 
@@ -11,17 +12,13 @@ const Wishlist = ({ userId }: WishlistProps) => {
   const [wishlistItems, setWishlistItems] = useState<string[]>([]);
   
   useEffect(() => {
-    const fetchWishlist = async () => {
+    const getWishlist = async () => {
       if (userId) {
-        const wishlist =
-          await prisma.profile.findUnique({
-            where: { customerId: userId },
-            select: { wishlist: true }, // Select only the wishlist field
-          });
-        setWishlistItems(wishlist?.wishlist || []);
+        const wishlist = await fetchWishList(userId);
+        setWishlistItems(wishlist || []);
       }
     };
-    fetchWishlist();
+    getWishlist();
   }, []);
 
   const handleRemoveFromWishlist = async (itemId: string) => {
@@ -31,12 +28,10 @@ const Wishlist = ({ userId }: WishlistProps) => {
 
     // Update wishlist on server using prisma 
     if (userId) {
-      await prisma.profile.update({
-        where: { customerId: userId },
-        data: { wishlist: updatedWishlist },
-      });
+      await updateWithlist(updatedWishlist, userId);
     }
   };
+
 
   return (
     <div className="wishlist">

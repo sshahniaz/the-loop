@@ -1,5 +1,6 @@
 import React from "react";
 import prisma from "@/prisma/client";
+import { fetchProductDetails } from "@/app/actions/WishlistActions";
 
 interface WListItemProps {
   wLItem: string;
@@ -9,9 +10,7 @@ interface WListItemProps {
 const WishlistItem = async ({ wLItem, onRemove }: WListItemProps) => {
 
   // Add product details to the wishlist item
-  const productItem = await prisma.product.findUnique({
-    where: { id: wLItem },
-  });
+  const productItem = await fetchProductDetails(wLItem);
 
 // If productItem is not found, return null
 if (!productItem) {

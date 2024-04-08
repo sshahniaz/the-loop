@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import PersonalDetails from "../components/profile/PersonalDetails";
 // import SellingComponent from "../components/profile/Selling";
 import Link from "next/link";
+import Wishlist from "../components/wishlist/Wishlist";
 interface ProductApiResponse {
   products: Product[];
 }
@@ -46,6 +47,8 @@ export default function ProfilePage() {
       <PersonalDetails details={details} />
 
       <Link href={`../../shipping/${customerid}`}> SHIPPING </Link>
+
+      <Wishlist userId={customerid } />
       <h1>{pathname}</h1>
       <h1>Hello</h1>
       <ul>

@@ -57,3 +57,34 @@ export const updateWithlist = async (updatedWishlist: any, userId: string) => {
     console.error(error);
   }
 }
+
+export const fetchWishList = async (userId: string) => {
+  try {
+    // Fetch the wishlist from the database using prisma
+    const wishlist =
+      await prisma.profile.findUnique({
+        where: { customerId: userId },
+        select: { wishlist: true }, // Select only the wishlist field
+      });
+
+    return wishlist?.wishlist || [];
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+}
+
+//fetch product details
+export const fetchProductDetails = async (productId: string) => {
+  try {
+    // Fetch the product details from the database using prisma
+    const productDetails = await prisma.product.findUnique({
+      where: { id: productId },
+    });
+
+    return productDetails;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+}
