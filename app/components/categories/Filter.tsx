@@ -49,6 +49,9 @@ const Filter = ({ type, options, onFilterChange }: FilterProps) => {
   const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const value = event.target.type === 'checkbox' ? (event.target as HTMLInputElement).checked : event.target.value;
     setSelected(value);
+
+    
+    
     onFilterChange(type, value);
   }  
 
