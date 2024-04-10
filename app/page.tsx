@@ -12,8 +12,8 @@ import Carousel from "./components/carousel/Carousel";
 
 const images = [
   { url: '/assets/hero/hero-1.jpg', alt: 'Antique 1970s pink radio.' },
-  { url: '/assets/hero/hero-2.jpeg', alt: 'Android watch with white straps.' },
-  { url: '/assets/hero/hero-3.jpeg', alt: 'Multi coloured kids football artificial turf boots.' },
+  { url: '/assets/hero/hero-2.jpg', alt: 'Adidas white retro trainers.' },
+  { url: '/assets/hero/hero-3.jpg', alt: 'Hummel multi coloured kids football artificial turf boots.' },
 ];
 
 export default async function Home() {
