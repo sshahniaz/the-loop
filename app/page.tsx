@@ -11,7 +11,7 @@ import HowToRegIcon from '@mui/icons-material/HowToReg';
 import Carousel from "./components/carousel/Carousel";
 
 const images = [
-  { url: '/assets/hero/hero-1.jpeg', alt: 'Black headphones.' },
+  { url: '/assets/hero/hero-1.jpg', alt: 'Antique 1970s pink radio.' },
   { url: '/assets/hero/hero-2.jpeg', alt: 'Android watch with white straps.' },
   { url: '/assets/hero/hero-3.jpeg', alt: 'Multi coloured kids football artificial turf boots.' },
 ];
