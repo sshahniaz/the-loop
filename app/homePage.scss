@@ -119,12 +119,8 @@ body {
     grid-template-columns: repeat(2, 1fr);
     gap: 5px;
     width: 100%;
-  }
-
-  .stepsFirstSecond,
-  .stepsThirdFourth {
-    display: flex;
-    flex-direction: row;
+    margin: 0.5em;
+    justify-items: center;
   }
 
   .card {
@@ -147,5 +143,10 @@ body {
     width: 85%;
     flex-direction: column;
     margin: 0 auto;
+  }
+  .steps-card {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+    width: 100%;
   }
 }

@@ -15,11 +15,10 @@ import { CldVideoPlayer } from "next-cloudinary";
 export default async function Home() {
   return (
     <>
-      <Carousel />
       <main className="homepageContainer">
-        {/* <div className="quickLinkContainer"> */}
-        <div>{/* <Carousel images={images} autoplay /> */}</div>
-        {/* <QuickLinks /> */}
+        <Carousel />
+
+        <QuickLinks />
         {/* </div> */}
         <div className="firstSecondInfoCard">
           <HomePageCard
