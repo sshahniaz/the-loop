@@ -107,3 +107,13 @@
     }
   }
 }
+
+@media screen and (min-width: 992px) and (max-width: 1200px) {
+  .quickLinkItem {
+    padding: 1.25em 1.25em;
+    img {
+      width: 125px;
+      height: 125px;
+    }
+  }
+}
