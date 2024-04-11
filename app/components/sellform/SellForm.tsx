@@ -42,6 +42,7 @@ export default function Form() {
       price: formData.get("price"),
       colour: formData.get("colour"),
       material: formData.get("material"),
+      imageLink: formData.get("image"),
     };
 
     const result = ListItemSchema.safeParse(newListItem);
