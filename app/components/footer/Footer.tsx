@@ -36,16 +36,16 @@ const Footer = () => {
           <h4>Help</h4>
           <ul>
             <li>
-              <Link href="#">How To Sell</Link>
+              <Link href="/faq">How To Sell</Link>
             </li>
             <li>
-              <Link href="#">Contact Us</Link>
+              <Link href="/faq">Contact Us</Link>
             </li>
             <li>
-              <Link href="#">Terms & Conditions</Link>
+              <Link href="/faq">Terms & Conditions</Link>
             </li>
             <li>
-              <Link href="#">FAQ's</Link>
+              <Link href="/faq">FAQ's</Link>
             </li>
           </ul>
           <div className="icons">
