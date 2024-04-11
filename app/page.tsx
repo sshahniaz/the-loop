@@ -1,5 +1,4 @@
 import Image from "next/image";
-import styles from "./page.module.css";
 import "./homePage.scss";
 import HomePageCard from "./components/homepagecards/HomePageCard";
 import SocialMediaCard from "./components/homepagecards/SocialMediaCard";
@@ -8,7 +7,10 @@ import QuickLinks from "./components/navigation/QuickLinks";
 import Card from "./components/steps/Card";
 import { SvgIcon } from "@mui/material";
 import HowToRegIcon from "@mui/icons-material/HowToReg";
+import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
+import ArchiveIcon from "@mui/icons-material/Archive";
 import Carousel from "./components/carousel/Carousel";
+import CurrencyPoundIcon from "@mui/icons-material/CurrencyPound";
 
 const images = [
   { url: "/assets/hero/hero-1.jpg", alt: "Antique 1970s pink radio." },
@@ -71,30 +73,30 @@ export default async function Home() {
         <h2>Money in your pocket in four steps!</h2>
         <div className="steps-card">
           <Card
-            title="Sign-up For a Free Account"
+            title="Sign-up For a Free Account."
             href="https://example.com/article"
             linkItem={HowToRegIcon}
           />
           <Card
-            title="Upload your Loved Goodies"
+            title="Upload your Pre-loved Goodies."
             href="https://example.com/resource"
-            linkItem="Learn More"
+            linkItem={AddPhotoAlternateIcon}
           />
           <Card
-            title="Post Items To New Home"
+            title="Post Items To New Home."
             href="https://example.com/article"
-            linkItem="Learn More"
+            linkItem={ArchiveIcon}
           />
           <Card
-            title="Get Paid"
+            title="Get Paid!"
             href="https://example.com/resource"
-            linkItem="Learn More"
+            linkItem={CurrencyPoundIcon}
           />
         </div>
-        <div>
-          <h6>
+        <div className="tcs">
+          <h5>
             <span>*</span>Terms &amp; Conditions apply.
-          </h6>
+          </h5>
         </div>
       </div>
     </main>
