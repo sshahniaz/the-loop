@@ -99,3 +99,10 @@ $text-weight: 200;
   margin: 0.75em;
   border-radius: 8px;
 }
+
+// Styling for sign-in container
+@mixin signInContainer(){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
