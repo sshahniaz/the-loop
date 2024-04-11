@@ -1,6 +1,7 @@
 "use server";
 import prisma from "@/prisma/client";
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
 interface ProductData {
   name: string;
@@ -48,7 +49,10 @@ export async function listItem(formData: FormData) {
     },
   });
 
+  // ideally re-direct to profile page
   revalidatePath("/sell/form");
+  redirect("/");
+  // redirect('/dashboard/invoices')
 
   console.log("data:", formData);
 }

@@ -1,11 +1,15 @@
 @import "/public/styles/mixins.scss";
 
+.sellFormMain {
+  margin-top: 3em;
+}
 .sellFormTitle {
   font-family: $kansas-font;
   text-align: center;
   font-weight: 600;
   color: $primary-color;
   font-size: 30px;
+  margin: 2em;
 }
 
 .sellersForm form {

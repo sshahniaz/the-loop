@@ -8,12 +8,16 @@ body {
 //   margin: auto;
 // }
 .homepageContainer {
+  margin-top: 2em;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+.firstSecondInfoCard {
+  margin-top: 2.5em;
+}
 .firstSecondInfoCard,
 .thirdFourthInfoCard {
   display: flex;

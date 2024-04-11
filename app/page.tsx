@@ -5,6 +5,7 @@ import HomePageCard from "./components/homepagecards/HomePageCard";
 import SocialMediaCard from "./components/homepagecards/SocialMediaCard";
 import PersonalDetails from "./components/profile/PersonalDetails";
 import QuickLinks from "./components/navigation/QuickLinks";
+
 export default async function Home() {
   return (
     <main className="homepageContainer">

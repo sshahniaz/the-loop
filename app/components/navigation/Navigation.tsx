@@ -6,13 +6,6 @@ import { NavigateAction } from "next/dist/client/components/router-reducer/route
 import { NavigationAction } from "@/app/actions/NavigationAction";
 
 export default async function Navigation() {
-  // const navType = await prisma.nav.findMany({
-  //   select: {
-  //     name: true,
-  //     catagory: true,
-  //   },
-  // });
-
   const navType = await NavigationAction();
 
   return (
