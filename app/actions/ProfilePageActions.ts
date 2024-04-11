@@ -71,3 +71,14 @@ export async function updateBillingAddress(userData: any) {
 
   return userData;
 }
+
+//get ratings/stars from profile
+export async function fetchRatings(customerId: string) {
+  const ratings = await prisma.profile.findUnique({
+    where: { customerId },
+    select: {
+      stars: true,
+    },
+      });
+  return ratings;
+}
