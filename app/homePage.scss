@@ -19,6 +19,49 @@ body {
   display: flex;
 }
 
+// Steps Section
+.stepsSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  // flex-wrap: wrap;
+  background-color: $secondary-color;
+  gap: 0.2rem;
+  // padding: 2rem;
+  // border-radius: 5px;
+  // text-align: center;
+  width: 82%;
+  max-width: 90vw;
+  // margin: 3rem auto;
+  h2{
+    // font: $montserrat-font;
+    font-family: $montserrat-font;
+    font-size: 2.4rem;
+    font-style: italic;
+    font-weight: 400;
+    margin-top: 3rem;
+    // border: 1px solid blue;
+  }
+}
+
+.steps-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  height: 60%;
+  gap: 2rem;
+  padding: 2rem;
+  border-radius: 5px;
+  text-align: center;
+  max-width: 90vw;
+  margin: 1.5rem auto;
+  // border: 1px solid limegreen;
+}
+
+// ------------ Media Queries -----------------
+
 @media screen and (max-width: 576px) {
   .firstSecondInfoCard,
   .thirdFourthInfoCard {
