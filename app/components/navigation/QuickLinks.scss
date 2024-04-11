@@ -48,16 +48,31 @@
 // ***************** media queries ***************
 
 @media screen and (max-width: 576px) {
+  .quickLinkText {
+    a {
+      font-size: 14px;
+      font-family: $montserrat-font;
+      color: $primary-color;
+      text-decoration: none;
+    }
+  }
   .quickLinksMaster {
     h2 {
-      font-size: 24px;
+      font-size: 21px;
+      margin: 1.5em;
     }
   }
   .quickLinkContainer {
     grid-template-columns: repeat(2, 1fr);
+    margin-bottom: 0;
 
     .quickLinkItem {
-      padding: 1em 1em;
+      padding: 0.5em;
+      img {
+        width: 125px;
+        height: 125px;
+        border-radius: 50%;
+      }
     }
   }
 }

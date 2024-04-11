@@ -23,7 +23,7 @@ const Card: React.FC<CardProps> = ({
         {typeof linkItem === "string" ? (
           linkItem
         ) : (
-          <SvgIcon component={linkItem} sx={{ width: 100, height: 100 }} />
+          <SvgIcon component={linkItem} sx={{ width: 95, height: 95 }} />
         )}
       </Link>
     </div>
