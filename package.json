@@ -13,12 +13,16 @@
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.15.14",
     "@mui/material": "^5.15.14",
-    "@prisma/client": "^5.11.0",
+    "@prisma/client": "^5.12.1",
+    "@prisma/extension-read-replicas": "^0.3.0",
+    "axios": "^1.6.8",
+    "generate": "^0.10.0",
     "icons": "^1.0.0",
     "next": "14.1.4",
+    "npx": "^3.0.0",
     "react": "^18.2.0",
     "react-dom": "^18",
-    "sass": "^1.72.0",
+    "sass": "^1.74.1",
     "swr": "^2.2.5",
     "zod": "^3.22.4"
   },
@@ -31,7 +35,7 @@
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "14.1.4",
-    "prisma": "^5.11.0",
+    "prisma": "^5.12.1",
     "typescript": "^5"
   }
 }
