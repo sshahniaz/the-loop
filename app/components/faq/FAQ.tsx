@@ -22,7 +22,7 @@ const FAQ: React.FC<Props> = ({ data }) => {
 
   return (
     <div className={styles.faq}>
-      <h1>Frequently Asked Questions</h1>
+      <h1 className={styles.faqHeading}>Frequently Asked Questions</h1>
       <div className={styles.grid}>
         {data.map((item, index) => (
           <div key={index} className={styles.accordion}>

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev & npx next-video sync -w",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -20,6 +20,7 @@
     "react": "^18.2.0",
     "react-dom": "^18",
     "react-hot-toast": "^2.4.1",
+    "react-player": "^2.16.0",
     "sass": "^1.72.0",
     "swr": "^2.2.5",
     "zod": "^3.22.4"
