@@ -5,6 +5,7 @@ import React from "react";
 import "./SearchResults.scss";
 import AddToWishList from "../components/wishlist/AddToWishList";
 import ImageHover from "../components/ImageHover";
+import { updateWithlist } from "../actions/WishlistActions";
 
 interface Product {
   id: string;
@@ -40,6 +41,16 @@ const page = () => {
     // console.log(data.products);
   }
 
+  const handlwWishlistupdate = async () => {
+    // Update wishlist on server using prisma
+    // await updateWithlist(
+    //   product,
+    //   "6602aa1c8accbc27af3e4a6a"
+    // );
+    console.log("wishlist updated");
+  };
+
+
   return (
     <>
       <div className="pageContainer">
@@ -57,7 +68,8 @@ const page = () => {
                 <h3 className="productHeading">{product.name}</h3>
                 <AddToWishList
                   productId={product.id}
-                  userId="65fc1d82bffb6b8984064dd3"
+                  userId="6602aa1c8accbc27af3e4a6a"
+                  onUpdateWishlist={handlwWishlistupdate}
                 />
                 {/* <button>
                   <FavoriteBorderOutlinedIcon />

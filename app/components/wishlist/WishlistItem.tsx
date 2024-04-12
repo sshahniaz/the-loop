@@ -1,5 +1,4 @@
 import React from "react";
-import prisma from "@/prisma/client";
 import { fetchProductDetails } from "@/app/actions/WishlistActions";
 
 interface WListItemProps {
