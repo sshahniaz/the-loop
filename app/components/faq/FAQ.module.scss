@@ -38,6 +38,7 @@
   display: flex;
   align-items: center;
   font-family: $montserrat-font;
+  font-size: 15px;
 }
 
 .expanded {
@@ -49,6 +50,13 @@
   font-family: $montserrat-font;
   background-color: $secondary-color;
   border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .faqHeading {
+    font-size: 21px !important;
+    margin: 1em !important;
+  }
 }
 
 // .faq-lower-section {
