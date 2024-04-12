@@ -9,11 +9,24 @@ interface ImageProps {
 
 const ImageToggle = ({ firstImage, secondImage }: ImageProps) => {
   //   first image by default
-
-  const [currentImage, setCurrentImage] = useState(firstImage);
+  const placeHolder = "assets/placeholder.jpeg";
+  // const handleImage = () => {
+  //     if (firstImage) {
+  //         setCurrentImage(firstImage)
+  //     } else {
+  //         setCurrentImage(placeHolder)
+  //     }
+  // }
+  const [currentImage, setCurrentImage] = useState(
+    firstImage ? firstImage : placeHolder
+  );
 
   const handleMouseOver = () => {
-    setCurrentImage(secondImage);
+    if (secondImage) {
+      setCurrentImage(secondImage);
+    } else {
+      setCurrentImage(placeHolder);
+    }
   };
 
   const handleMouseOut = () => {
