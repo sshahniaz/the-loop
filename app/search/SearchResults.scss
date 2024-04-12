@@ -2,8 +2,34 @@
 
 .searchResultContainer {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 75%;
+  margin: auto;
+  margin-top: 3em;
+  font-family: $montserrat-font;
+  color: $primary-color;
 }
 .searchResultCard {
-  width: 33%;
+  // width: 33%;
+
+  img {
+    width: 100%;
+  }
+
+  .productHeading {
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .iconFloat {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  button {
+    background-color: transparent;
+    border: none;
+  }
 }
