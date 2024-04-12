@@ -6,49 +6,28 @@ import { ArrowDropDown } from "@mui/icons-material";
 import AddToBasket from "../cart/AddToBasket";
 import { ProductAction } from "@/app/actions/ProductActions";
 
-// type productTypeModel = {
-//   product: {
-//     name: string;
-//     price: number;
-//     condition: string;
-//     material: string;
-//     colour: string;
-//     type: string;
-//     details: string;
-//     imageLink: string[];
-//     ownerId: string;
-//   };
-// };
+type productTypeModel = {
+  products: {
+    name: string;
+    price: number;
+    condition: string;
+    material: string;
+    colour: string;
+    type: string;
+    details: string;
+    imageLink: string[];
+    ownerId: string;
+  }[];
+};
 
-interface ProductProps {
-  name: string;
-  price: number;
-  condition: string;
-  material: string;
-  colour: string;
-  type: string;
-  details: string;
-  imageLink: string[];
-  ownerId: string;
-}
-export default function ProductDetails({
-  name,
-  price,
-  condition,
-  material,
-  colour,
-  type,
-  details,
-  imageLink,
-  ownerId,
-}: ProductProps) {
+export default function ProductCategoryDetails({ products }: productTypeModel) {
   return (
     <>
-      {/* {products.map((product, index) => (
-        <div key={index}> */}
-      <h2>{name}</h2>
-      {/* </div> */}
-      {/* ))} */}
+      {products.map((product, index) => (
+        <div key={index}>
+          <h2>{product.name}</h2>
+        </div>
+      ))}
     </>
     // <div>
     //   {data.map((product: Product) => (
@@ -85,5 +64,3 @@ export default function ProductDetails({
     // </div>
   );
 }
-
-// export default ProductDetails;
