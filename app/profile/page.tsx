@@ -1,9 +1,10 @@
-"use client";
-import { useState, useEffect, use } from "react";
+'use client'
+import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import PersonalDetails from "../components/profile/PersonalDetails";
 // import SellingComponent from "../components/profile/Selling";
-
+import Link from "next/link";
+import Wishlist from "../components/wishlist/Wishlist";
 interface ProductApiResponse {
   products: Product[];
 }
@@ -33,14 +34,21 @@ export default function ProfilePage() {
   }, []);
 
   const details = {
+    id: "65faf8493a25aae6e6aedda3",
     firstName: "john",
     lastName: "doe",
     email: "j.doe@mail.com",
   };
 
+  const customerid = '65faf8493a25aae6e6aedda2';
+
   return (
     <>
       <PersonalDetails details={details} />
+
+      <Link href={`../../shipping/${customerid}`}> SHIPPING </Link>
+
+      <Wishlist userId={customerid } />
       <h1>{pathname}</h1>
       <h1>Hello</h1>
       <ul>

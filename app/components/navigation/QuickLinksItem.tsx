@@ -1,40 +1,35 @@
 import React from "react";
 import Link from "next/link";
 
-interface LinkProps {
-  href: string;
-}
+type LinkProps = {
+  linkItems: {
+    quickLink: string;
+    image: string;
+  }[];
+};
 
-const QuickLinksItem = ({href}:LinkProps) => {
+const QuickLinksItem = ({ linkItems }: LinkProps) => {
   return (
     <>
-      <li>
-        <img src="" alt="" />
-        <Link href={`/categories/${href}`}>{ href }</Link>
-      </li>
-
-      {/* <ul>
-        <li>
-          <img src="" alt="" />
-          <Link href="#">Lighting</Link>
+      {/* <div className="quickLinkContainer"> */}
+      {linkItems.map((item, index) => (
+        <li key={index} className="quickLinkItem">
+          <img
+            src={item.image}
+            className="quickLinkImg"
+            alt="quick link image"
+            width={150}
+          />
+          <p className="quickLinkText">
+            <Link href={`/categories/${item.quickLink}`}>{item.quickLink}</Link>
+          </p>
         </li>
-        <li>
-          <img src="" alt="" />
-          <Link href="#">Chairs</Link>
-        </li>
-        <li>
-          <img src="" alt="" />
-          <Link href="#">Posters</Link>
-        </li>
-        <li>
-          <img src="" alt="" />
-          <Link href="#">Sofas</Link>
-        </li>
-        <li>
-          <img src="" alt="" />
-          <Link href="#">Bedroom Furniture</Link>
-        </li>
-      </ul> */}
+      ))}
+      {/* </div> */}
+      {/* <li>
+        <img src={} alt="" />
+        <Link href={`/categories/${href}`}>{href}</Link>
+      </li> */}
     </>
   );
 };

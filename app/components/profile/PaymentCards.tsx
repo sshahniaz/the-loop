@@ -1,20 +1,22 @@
 import React, { useState } from "react";
-
-interface userPaymentCards {
+import { updatePaymentCards } from "@/app/actions/ProfilePageActions";
+interface UserPaymentCards {
   cards: {
+    id: string;
     name: string;
     cardNumber: string;
     expiryDate: string;
     billingAddress: string;
+    cvv: string;
     [key: string]: any;
   }[];
 }
 
-const PaymentCards = ({ cards }: userPaymentCards) => {
+const PaymentCards = ({ cards }: UserPaymentCards) => {
   const [isEdit, setIsEdit] = useState(false);
   const [editedCardIndex, setEditedCardIndex] = useState<number | null>(null);
   const [editedCards, setEditedCards] =
-    useState<userPaymentCards["cards"]>(cards); // Renamed to editedCards
+    useState<UserPaymentCards["cards"]>(cards); // Renamed to editedCards
 
   const handleEdit = (index: number) => {
     setIsEdit(true);
@@ -37,8 +39,12 @@ const PaymentCards = ({ cards }: userPaymentCards) => {
     }
   };
 
-  const handleSave = () => {
-    // Implement api later
+  const handleSave = async () => {
+    // Save user data to the database using prisma
+    if (editedCardIndex !== null) {
+      updatePaymentCards(editedCards, editedCardIndex);
+    }
+
     console.log("Saving data:", editedCards);
     setIsEdit(false);
     setEditedCardIndex(null);
@@ -52,7 +58,7 @@ const PaymentCards = ({ cards }: userPaymentCards) => {
           card,
           index // Use editedCards here
         ) => (
-          <li key={index}>
+          <li key={`card-${index}`}>
             {isEdit && editedCardIndex === index ? ( // Check for edit and matching index
               <form>
                 <div>
@@ -98,6 +104,16 @@ const PaymentCards = ({ cards }: userPaymentCards) => {
                     onChange={handleChange}
                   />
                 </div>
+                <div>
+                  <label htmlFor={`cvv-${index}`}>CVV:</label>
+                  <input
+                    type="text"
+                    id={`cvv-${index}`}
+                    name="cvv"
+                    value={card.cvv}
+                    onChange={handleChange}
+                  /> 
+                </div>
                 <button type="button" onClick={handleSave}>
                   Save
                 </button>
@@ -119,6 +135,9 @@ const PaymentCards = ({ cards }: userPaymentCards) => {
                 </p>
                 <p>
                   <strong>Billing Address:</strong> {card.billingAddress}
+                  </p>
+                  <p>
+                  <strong>CVV:</strong> {card.cvv}
                 </p>
                 <button type="button" onClick={() => handleEdit(index)}>
                   Edit

@@ -9,7 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@clerk/nextjs": "^4.29.10",
     "@emotion/react": "^11.11.4",
+<<<<<<< HEAD
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.15.14",
     "@mui/material": "^5.15.14",
@@ -17,12 +19,23 @@
     "@prisma/extension-read-replicas": "^0.3.0",
     "axios": "^1.6.8",
     "generate": "^0.10.0",
+=======
+    "@emotion/styled": "^11.11.5",
+    "@mui/icons-material": "^5.15.15",
+    "@mui/material": "^5.15.15",
+    "@prisma/client": "^5.11.0",
+>>>>>>> origin/dev
     "icons": "^1.0.0",
     "next": "14.1.4",
     "npx": "^3.0.0",
     "react": "^18.2.0",
     "react-dom": "^18",
+<<<<<<< HEAD
     "sass": "^1.74.1",
+=======
+    "react-hot-toast": "^2.4.1",
+    "sass": "^1.72.0",
+>>>>>>> origin/dev
     "swr": "^2.2.5",
     "zod": "^3.22.4"
   },
@@ -30,12 +43,19 @@
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   },
   "devDependencies": {
+    "@types/lodash": "^4.17.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/react-slick": "^0.23.13",
     "eslint": "^8",
     "eslint-config-next": "14.1.4",
+<<<<<<< HEAD
     "prisma": "^5.12.1",
+=======
+    "mime": "^4.0.1",
+    "prisma": "^5.11.0",
+>>>>>>> origin/dev
     "typescript": "^5"
   }
 }

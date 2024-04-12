@@ -1,24 +1,26 @@
-import React, { useState } from "react";
-
+import React, { useState, ChangeEvent } from "react";
+import { updateAddressInfo } from "@/app/actions/ProfilePageActions";
 interface UserAddressInfo {
   addressData: {
+    id: string;
     firstName: string;
     lastName: string;
-    address: string;
+    address: string | null;
   };
 }
 
 const AddressInfo = ({
-  addressData: { firstName, lastName, address },
+  addressData: { id,firstName, lastName, address },
 }: UserAddressInfo) => {
   const [isEdit, setIsEdit] = useState(false);
   const [userData, setUserData] = useState({
+    id,
     firstName,
     lastName,
     address,
   });
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setUserData({ ...userData, [event.target.name]: event.target.value });
   };
 
@@ -26,14 +28,17 @@ const AddressInfo = ({
     setIsEdit(!isEdit);
   };
 
-  const handleSave = () => {
-    //impliment api later
+  const handleSave = async () => {
+    //Save user data to the database using prisma
+    updateAddressInfo(userData);
+    
+
     console.log("Saving data:", userData);
     setIsEdit(false);
   };
 
   const handleCancel = () => {
-    setUserData({ firstName, lastName, address }); // Reset to original data
+    setUserData({ id,firstName, lastName, address }); // Reset to original data
     setIsEdit(false);
   };
 
@@ -68,7 +73,7 @@ const AddressInfo = ({
               type="address"
               id="address"
               name="address"
-              value={userData.address}
+              value={userData.address ?? ""}  // Add nullish coalescing operator
               onChange={handleChange}
             />
           </div>
