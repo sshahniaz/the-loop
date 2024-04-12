@@ -50,7 +50,6 @@ const page = () => {
     console.log("wishlist updated");
   };
 
-
   return (
     <>
       <div className="pageContainer">
@@ -68,7 +67,7 @@ const page = () => {
                 <h3 className="productHeading">{product.name}</h3>
                 <AddToWishList
                   productId={product.id}
-                  userId="6602aa1c8accbc27af3e4a6a"
+                  userId="65faf8493a25aae6e6aedda2"
                   onUpdateWishlist={handlwWishlistupdate}
                 />
                 {/* <button>

@@ -11,9 +11,7 @@
   color: $primary-color;
 }
 .searchResultCard {
-  // width: 33%;
   margin: 2em;
-  // margin-bottom: 6em;
 
   img {
     width: 100%;
@@ -34,25 +32,4 @@
     background-color: transparent;
     border: none;
   }
-
-  // .imageReturn {
-  //   position: relative;
-  //   img {
-  //     position: absolute;
-
-  //     opacity: 0;
-  //     transition: opacity 0.25s ease-in-out;
-  //   }
-  // }
-  // .imageReturn img:first-child {
-  //   opacity: 1;
-  // }
-
-  // .imageReturn:hover img {
-  //   opacity: 1;
-  // }
-
-  // .imageReturn:hover img:first-child {
-  //   opacity: 0;
-  // }
 }

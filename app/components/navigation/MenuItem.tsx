@@ -13,7 +13,7 @@ const MenuItem = async ({ catagory }: MenuItemProps) => {
   return (
     <div className="menuItem">
       {catagory.map((menuCats, index) => (
-        <span className="heading">
+        <span className="heading" key={index}>
           <Link key={index} href={`/categories/${menuCats.name}`}>
             {menuCats.name}
           </Link>

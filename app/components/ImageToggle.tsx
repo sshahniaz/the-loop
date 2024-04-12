@@ -8,8 +8,6 @@ interface ImageProps {
 }
 
 const ImageToggle = ({ firstImage, secondImage }: ImageProps) => {
-  //   const imageRef = useRef<HTMLImageElement | null>();
-  //   console.log(firstImage);
   //   first image by default
 
   const [currentImage, setCurrentImage] = useState(firstImage);
@@ -32,20 +30,3 @@ const ImageToggle = ({ firstImage, secondImage }: ImageProps) => {
 };
 
 export default ImageToggle;
-
-// onMouseOver={() => {
-//     const imageElement = imageRef.current;
-//     console.log(imageRef.current);
-//     if (imageElement) {
-//       imageElement.src = secondImage;
-//     }
-//   }}
-//   onMouseOut={() => {
-//     const imageElement = imageRef.current;
-//     console.log(imageElement);
-//     if (imageElement) {
-//       imageElement.src = firstImage;
-//     }
-//   }}
-//   src={firstImage}
-//   alt=""

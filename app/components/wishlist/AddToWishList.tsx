@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import prisma from "@/prisma/client";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { updateWith } from "lodash";
-import { fetchProfileData, updateWithlist } from "@/app/actions/WishlistActions";
+import {
+  fetchProfileData,
+  updateWithlist,
+} from "@/app/actions/WishlistActions";
 
 interface AddToWishlistProps {
   productId: string;
@@ -28,13 +31,18 @@ const AddToWishList = ({
       const userProfile = await fetchProfileData(userId);
 
       // Check if product is already in wishlist
-      if ((userProfile?.profileData.wishlist || []).includes(productId as never)) {
+      if (
+        (userProfile?.profileData.wishlist || []).includes(productId as never)
+      ) {
         setIsAdding(false);
 
         return; // Product is already in wishlist
       }
 
-      const updatedWishlist = [...(userProfile?.profileData.wishlist || []), productId];
+      const updatedWishlist = [
+        ...(userProfile?.profileData.wishlist || []),
+        productId,
+      ];
 
       // Update the wishlist in the database
       updateWithlist(updatedWishlist, userId);
