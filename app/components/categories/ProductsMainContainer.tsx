@@ -137,10 +137,7 @@ const handleFilterChange = (filterName: string, value: string) => {
 
 
 
-  const resetProducts = () => {
-    setSelectedFilters({}); // Reset filter selections
-  };
-  
+ 
   
 const prevFilters = useRef(selectedFilters);
   useEffect(() => {
@@ -198,7 +195,7 @@ if (loading) {
       <Filter filterOptions={
         datafilterOptions
       } onFilterChange={handleFilterChange} />
-      <button onClick={resetProducts}>Reset</button>
+      
       {content}
     </div>
   )

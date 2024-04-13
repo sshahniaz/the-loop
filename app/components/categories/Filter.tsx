@@ -16,13 +16,21 @@ interface FilterProps {
 
 const Filter  = ({filterOptions, onFilterChange}: FilterProps) => {
   
+  function capitalizeFirstLetter(str: string): string {
+  // Handle empty strings
+  if (!str) return str;
+
+  // Return the string with the first letter capitalized and the rest lowercase
+  return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+}
+
 
   return (
      <div>
       <h2>Filters</h2>
       {Object.keys(filterOptions).map((filterName: string) => (
         <div key={filterName}>
-          <h3>{filterName}</h3>
+          <h3>{capitalizeFirstLetter(filterName)}</h3>
           {filterOptions[filterName].map((option : any) => (
             <label key={option.value}>
               <input
@@ -32,6 +40,7 @@ const Filter  = ({filterOptions, onFilterChange}: FilterProps) => {
               />
               {option.label}
             </label>
+            
           ))}
         </div>
       ))}
