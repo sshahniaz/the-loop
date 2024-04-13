@@ -88,6 +88,11 @@ const ProductsMainContainer = ({ pType }: PContainerProps) => {
   // Use initial products as base for filtering
   if (!initialProducts) return []; // Handle case where initial data fails to load
 
+    
+    // Check if all filters are empty
+  if (Object.keys(selectedFilters).length === 0) {
+    return initialProducts; // Return all products if no filters are selected
+  }
   // Check if all filter values are empty arrays (no selections)
   const allFiltersEmpty = Object.values(selectedFilters).every(
     (filterValues) => filterValues.length === 0
@@ -110,23 +115,26 @@ const ProductsMainContainer = ({ pType }: PContainerProps) => {
   }) ?? [];
 };
 
- const handleFilterChange = (filterName: string, value: string) => {
+const handleFilterChange = (filterName: string, value: string) => {
   // Update filter selections based on value (adding or removing)
   setSelectedFilters((prevSelectedFilters) => {
-    const prevSelection = prevSelectedFilters[filterName] || [];
-    const updatedSelection = value
-      ? [...(Array.isArray(prevSelection) ? prevSelection : [prevSelection]), value] // Add value if selecting
-      : (Array.isArray(prevSelection) ? prevSelection : [prevSelection]).filter((v) => v !== value); // Remove value if deselecting
+    const prevSelection = Array.isArray(prevSelectedFilters[filterName]) ? prevSelectedFilters[filterName] : [];
 
-    // Check if the update results in an empty selection and all other filters are also empty by comparing lengths
-    const isAllFiltersEmpty = Object.values({ ...prevSelectedFilters, [filterName]: updatedSelection }).every(
-      (filterValues) => filterValues.length === 0
-    );
+    // Check if value is truthy and not already present
+    const updatedSelection = value && !prevSelection.includes(value)
+      ? [...prevSelection, value] // Add value if selecting (truthy and unique)
+      : prevSelection.filter((v) => v !== value); // Remove value if deselecting
 
-    // Reset filters if all selections are empty after the update
-    return isAllFiltersEmpty ? {} : { ...prevSelectedFilters, [filterName]: updatedSelection };
+    // Check if the update results in an empty selection
+    const isFilterEmpty = updatedSelection.length === 0;
+    console.log(updatedSelection);
+
+    // Return updated filters with the new selection
+    return isFilterEmpty ? {} : { ...prevSelectedFilters, [filterName]: updatedSelection };
   });
 };
+
+
 
 
   const resetProducts = () => {
@@ -144,7 +152,7 @@ const prevFilters = useRef(selectedFilters);
         // console.log(pType)
         // Fetch products based on the category
         const data: Product[] = await fetchProducts(pType);
-        console.log(data)
+        
         setInitialProducts(data);
         setProducts(data)
       } catch (error: unknown) {
@@ -153,14 +161,22 @@ const prevFilters = useRef(selectedFilters);
         setLoading(false)
       }
     }
+
+  
+  
     // Only refetch if filters changed significantly (excluding initial render)
     if (JSON.stringify(prevFilters.current) !== JSON.stringify(selectedFilters) || !initialProducts) {
       getProducts();
     }
 
+   
+
     prevFilters.current = selectedFilters;
+
+   
   
-  }, [ pType, selectedFilters, initialProducts ])
+  }, [ pType, selectedFilters, initialProducts ,Object.keys(selectedFilters).length])
+
   
 
 const filteredData = filteredProducts(products ?? null);
