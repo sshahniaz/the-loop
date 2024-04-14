@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect, use } from "react";
+import { useState, useEffect, use, Suspense } from "react";
 import { usePathname } from "next/navigation";
 import PersonalDetails from "../components/profile/PersonalDetails";
 // import SellingComponent from "../components/profile/Selling";
@@ -82,20 +82,22 @@ console.log(userData);
     lastName: userData?.profile?.lastName ?? "",
     address: userData?.profile?.deliveryAddress ?? "",
   };
-  const customerid = '65faf8493a25aae6e6aedda2';
+  // const customerid = '65faf8493a25aae6e6aedda2';
 
   return (
     <>
-      {userData.user && <>
-      
-        <PersonalDetails details={details} />
+      {userData.user !=null && <>
+        <Suspense fallback={<div>Loading...</div>}>
+          <PersonalDetails details={details} />
         <AddressInfo addressData={primaryAddress} />
         <BillingAddress addressData={deliveryAddress} />
-        <Wishlist userId={customerid } />
+        <Wishlist userId={ userData?.user?.id } />
+          <Link href={`../../shipping/${userData?.user?.id}`}> SHIPPING </Link>
+          </Suspense>
+        
       </>
       }
 
-      <Link href={`../../shipping/${customerid}`}> SHIPPING </Link>
 
       <h1>{pathname}</h1>
       <h1>Hello { user?.fullName }</h1>
@@ -111,8 +113,3 @@ console.log(userData);
     </>
   );
 }
-
-// async function getUserDetails(customerId: string) {
-//   const response = await fetch(`/api/profile${customerId}`, { method: "GET" });
-//   return response.json();
-// }
