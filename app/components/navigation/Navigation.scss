@@ -110,6 +110,20 @@ body {
     color: #c7bfb3;
   }
 
+  .signinLink {
+    border: solid 2px $tertiary-color;
+    border-radius: 8px;
+    padding: 0.25em 1em;
+    font-size: 18px;
+    margin-top: -0.25em;
+    text-decoration: none;
+    list-style-type: none !important;
+  }
+
+  .signinLink:hover {
+    border: solid 2px #c7bfb3;
+  }
+
   .sellLink {
     border: solid 2px $tertiary-color;
     border-radius: 8px;

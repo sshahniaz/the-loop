@@ -3,7 +3,6 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import "./Input.scss";
 import Link from "next/link";
-
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
@@ -70,9 +69,9 @@ const Input = () => {
               <FavoriteBorderOutlinedIcon />
             </Link>
           </li>
-          <li>
+          <li className="signinLink">
             <Link href="/sign-in">
-              <SignIn />
+              Sign-In
             </Link>
           </li>
         </ul>
