@@ -1,0 +1,132 @@
+@import "/public/styles/mixins.scss";
+
+// card layout
+.dashboardCard {
+  font-family: $montserrat-font;
+  color: $primary-color;
+  background-color: $secondary-color;
+  padding: 1.5em;
+  //   change to 100% when adding page styling
+  //   width: 100%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  .dashboardHeading,
+  .nameHeadings {
+    font-weight: 600;
+    margin-bottom: 0.25em;
+  }
+  .headingFlex {
+    display: flex;
+    justify-content: space-between;
+    button {
+      background-color: transparent;
+      border: none;
+    }
+  }
+  input {
+    margin: 0.5em;
+    padding: 0.5em;
+    border: none;
+    border-radius: 8px;
+    width: 75%;
+  }
+}
+
+.dashboardOne {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  width: 85%;
+  margin: auto;
+}
+
+.dashboardGreeting {
+  @include pageHeadings;
+  text-align: center;
+  margin: 2em;
+}
+
+.dashboardButtons button {
+  background-color: transparent;
+  border: none;
+  padding: 1em;
+}
+
+// Wishlist styling
+
+.wishlistDisplay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  font-family: $montserrat-font;
+  color: $primary-color;
+  background-color: $secondary-color;
+  padding: 1.5em;
+  //   change to 100% when adding page styling
+  //   width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+
+  li {
+    list-style: none;
+  }
+  img {
+    width: 200px;
+  }
+
+  .wishlistIndividualItem {
+    display: flex;
+    gap: 15px;
+  }
+  .wishlistHeading {
+    font-weight: 600;
+    margin-bottom: 0.25em;
+  }
+  .headingFlex {
+    display: flex;
+    justify-content: space-between;
+    button {
+      background-color: transparent;
+      border: none;
+      padding-left: 1.5em;
+    }
+  }
+  .wishlistName {
+    text-transform: uppercase;
+    text-decoration: underline;
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 1.5em;
+    padding-top: 0.25em;
+    font-family: $montserrat-font;
+    padding-left: 1em;
+  }
+  .wishlistImg {
+    width: 40%;
+  }
+  .wishlistProductDetails {
+    width: 60%;
+  }
+}
+
+.dashboardTwo {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  width: 85%;
+  margin: auto;
+  margin-top: 1em;
+}
+
+// active listings styling
+
+.listings {
+  li {
+    list-style: none;
+  }
+  img {
+    width: 200px;
+  }
+}

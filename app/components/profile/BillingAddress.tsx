@@ -1,18 +1,21 @@
 import React, { useState, ChangeEvent } from "react";
 import prisma from "@/prisma/client";
 import { updateBillingAddress } from "@/app/actions/ProfilePageActions";
+import EditIcon from "@mui/icons-material/Edit";
+import DoneIcon from "@mui/icons-material/Done";
+import CloseIcon from "@mui/icons-material/Close";
 
 interface UserAddressInfo {
   addressData: {
     id: string;
     firstName: string;
     lastName: string;
-    address: string | null ;
+    address: string | null;
   };
 }
 
 const BillingAddress = ({
-  addressData: { id,firstName, lastName, address },
+  addressData: { id, firstName, lastName, address },
 }: UserAddressInfo) => {
   const [isEdit, setIsEdit] = useState(false);
   const [userData, setUserData] = useState({
@@ -33,20 +36,25 @@ const BillingAddress = ({
   const handleSave = async () => {
     //Save user data to the database using prisma
     updateBillingAddress(userData);
-    
 
     console.log("Saving data:", userData);
     setIsEdit(false);
   };
 
   const handleCancel = () => {
-    setUserData({ id,firstName, lastName, address }); // Reset to original data
+    setUserData({ id, firstName, lastName, address }); // Reset to original data
     setIsEdit(false);
   };
 
   return (
-    <div className="addressData">
-      <h2>Billing</h2>
+    <div className="dashboardCard">
+      {/* <div className="addressData"> */}
+      <div className="headingFlex">
+        <h2 className="dashboardHeading">My Billing</h2>
+        <button type="button" onClick={handleEdit}>
+          <EditIcon />
+        </button>
+      </div>
       {isEdit ? (
         <form>
           <div>
@@ -70,7 +78,7 @@ const BillingAddress = ({
             />
           </div>
           <div>
-            <label htmlFor="address">Email:</label>
+            <label htmlFor="address">Address:</label>
             <input
               type="address"
               id="address"
@@ -79,29 +87,26 @@ const BillingAddress = ({
               onChange={handleChange}
             />
           </div>
-          <button type="button" onClick={handleSave}>
-            Save
-          </button>
-          <button type="button" onClick={handleCancel}>
-            Cancel
-          </button>
+          <div className="dashboardButtons">
+            <button type="button" onClick={handleSave}>
+              <DoneIcon />
+            </button>
+            <button type="button" onClick={handleCancel}>
+              <CloseIcon />
+            </button>
+          </div>
         </form>
       ) : (
-        <div>
-          <p>
-            <strong>First Name:</strong> {userData.firstName}
-          </p>
-          <p>
-            <strong>Last Name:</strong> {userData.lastName}
-          </p>
-          <p>
-            <strong>Address:</strong> {userData.address}
-          </p>
-          <button type="button" onClick={handleEdit}>
-            Edit
-          </button>
+        <div className="dashboardDetailsDisplay">
+          <p className="nameHeadings">First Name</p>
+          <p>{userData.firstName}</p>
+          <p className="nameHeadings">Last Name</p>
+          <p>{userData.lastName}</p>
+          <p className="nameHeadings">Address</p>
+          <p>{userData.address}</p>
         </div>
       )}
+      {/* </div> */}
     </div>
   );
 };

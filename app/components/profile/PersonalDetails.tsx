@@ -1,5 +1,7 @@
 import React, { useState, ChangeEvent } from "react";
 import EditIcon from "@mui/icons-material/Edit";
+import DoneIcon from "@mui/icons-material/Done";
+import CloseIcon from "@mui/icons-material/Close";
 import { updatePersonalDetails } from "@/app/actions/ProfilePageActions";
 import "./PersonalDetails.scss";
 
@@ -44,9 +46,9 @@ const PersonalDetails = ({
   };
 
   return (
-    <div className="personalDetails">
+    <div className="dashboardCard">
       <div className="headingFlex">
-        <h2 className="personalDetailsHeading">My Details</h2>
+        <h2 className="dashboardHeading">My Details</h2>
         <button type="button" onClick={handleEdit}>
           <EditIcon />
         </button>
@@ -91,16 +93,18 @@ const PersonalDetails = ({
               onChange={handleChange}
             />
           </div>
-          <button type="button" onClick={handleSave}>
-            Save
-          </button>
-          <button type="button" onClick={handleCancel}>
-            Cancel
-          </button>
+          <div className="dashboardButtons">
+            <button type="button" onClick={handleSave}>
+              <DoneIcon />
+            </button>
+            <button type="button" onClick={handleCancel}>
+              <CloseIcon />
+            </button>
+          </div>
         </form>
       ) : (
-        <div className="personalDetailsDisplay">
-          <div className="personalDetailsFlex">
+        <div className="dashboardDetailsDisplay">
+          <div className="dashboardDetailsFlex">
             <p className="nameHeadings">First Name </p>
             <p>{userData.firstName}</p>
           </div>

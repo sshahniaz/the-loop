@@ -24,7 +24,14 @@ export async function checkUser(email: string) {
   }
 }
 
-
+export async function displaySelling(customerId: string) {
+  console.log(customerId)
+  const selling = await prisma.product.findMany({
+    where: {ownerId: customerId},
+  })
+  console.log(selling)
+  return selling;
+}
 //create a new user
 export async function createNewUser(email: string, firstName: string, lastName: string) {
   console.log("Creating new user:", email, firstName, lastName);
