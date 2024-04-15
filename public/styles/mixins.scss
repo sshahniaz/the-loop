@@ -29,6 +29,7 @@ $text-weight: 200;
 @mixin pageHeadings {
   font-family: $kansas-font;
   font-size: 30px;
+  color: $primary-color;
 }
 
 // styling for normal text
@@ -101,8 +102,8 @@ $text-weight: 200;
 }
 
 // Styling for sign-in container
-@mixin signInContainer(){
-    display: flex;
-    justify-content: center;
-    align-items: center;
+@mixin signInContainer() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -5,7 +5,7 @@ const data = [
   {
     question:
       "Sellers are charged two basic fees when listing an item on The Loop?",
-    answer: "Insertion fees.",
+    answer: "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..",
   },
   {
     question: "How do I sell an item on this site?",
@@ -13,7 +13,7 @@ const data = [
       "To create a listing:, click the sell button. Fill in the item form, then list the item. The Loop also allows users to create discounts on their product listings based using your account.",
   },
   {
-    question: "What is Next.js?",
+    question: "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..?",
     answer:
       "Next.js is a React framework for building server-rendered and statically generated web applications.",
   },
@@ -23,14 +23,14 @@ const data = [
       "This component dynamically renders accordions based on provided question and answer data.",
   },
   {
-    question: "What is Next.js?",
+    question: "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..?",
     answer:
       "Next.js is a React framework for building server-rendered and statically generated web applications.",
   },
   {
-    question: "How does this FAQ component work?",
+    question: "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet..?",
     answer:
-      "This component dynamically renders accordions based on provided question and answer data.",
+      "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
   },
 ];
 

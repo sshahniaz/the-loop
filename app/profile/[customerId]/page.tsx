@@ -43,16 +43,16 @@ export default function ProfilePage() {
     <>
       <div className="profilePageContainer">
         <h1>{searchParams}</h1>
-        <PersonalDetails details={details} />
+        {/* <PersonalDetails details={details} /> */}
 
         {/* pass the product data  */}
-        {/* <SellingComponent products={products} /> */}
+        <SellingComponent products={products} />
 
-      {/*TODO: Fix the wishlist component by passing dynamic userId*/}
-      {/* Wishlist hardcoded for now */}
-        <Wishlist userId="65faf8493a25aae6e6aedda3" />
-        
-      {/*TODO: Usage of AddToWishlist component 
+        {/*TODO: Fix the wishlist component by passing dynamic userId*/}
+        {/* Wishlist hardcoded for now */}
+        {/* <Wishlist userId="65faf8493a25aae6e6aedda3" /> */}
+
+        {/*TODO: Usage of AddToWishlist component 
       
        <AddToWishlist productId={product.id} userId={userId} />
       

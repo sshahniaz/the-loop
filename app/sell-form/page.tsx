@@ -7,8 +7,10 @@ import "../components/sellform/sellForm.scss";
 const SellersFormPage = () => {
   return (
     <>
-      <h1 className="sellFormTitle"> Sell an Item</h1>
-      <Form />
+      <main className="sellFormMain">
+        <h1 className="sellFormTitle"> Sell an Item</h1>
+        <Form />
+      </main>
     </>
   );
 };

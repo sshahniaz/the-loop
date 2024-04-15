@@ -1,6 +1,66 @@
 'use server'
 import prisma from "@/prisma/client";
 
+//check if user exists in the database by email
+export async function checkUser(email: string) {
+  try {
+    console.log("Checking user:", email);
+    const user = await prisma.customer.findUnique({
+      where: {
+        email: email
+        
+      },
+    });
+    const profile = await prisma.profile.findUnique({
+      where: { customerId: user?.id },
+    });
+    
+    console.log("User found:", user);
+    console.log("Profile found:", profile);
+    return {user: user, profile: profile};
+  } catch (error) {
+    console.error('Error checking user:', error);
+    return null; // Or return a specific error object
+  }
+}
+
+
+//create a new user
+export async function createNewUser(email: string, firstName: string, lastName: string) {
+  console.log("Creating new user:", email, firstName, lastName);
+
+  try {
+    // Hash the password before creating the user (replace with your hashing logic)
+    const hashedPassword = "password1"// Implement password hashing
+
+    const newUser = await prisma.customer.create({
+      data: {
+        email: email,
+        password: hashedPassword, // Use the hashed password
+      },
+    });
+
+    const profile = await prisma.profile.create({
+      data: {
+        firstName: firstName,
+        lastName: lastName,
+        active: true,
+        stars: 5,
+        marketing: false,
+        customerId: newUser.id,
+      },
+    });
+    
+
+    return { user: newUser, profile }; // Return both user and profile for potential use
+  } catch (error) {
+    console.error('Error creating user:', error);
+    throw error; // Re-throw the error for handling in the calling function
+  }
+}
+
+
+
 //update personal details
 export async function updatePersonalDetails(userData: any) {
   const { id, firstName, lastName, email } = userData;

@@ -6,6 +6,7 @@
   top: 0;
   background-color: white;
   width: 100%;
+  z-index: 99;
 }
 
 #hamburger {
@@ -49,6 +50,7 @@
   display: none;
   justify-content: start;
   font-family: $kansas-font;
+  font-size: 22px;
   padding: 1em;
   transition: 0.3s ease-in;
 }
@@ -85,7 +87,7 @@ body {
 }
 .headerFlex {
   display: flex;
-  padding: 1.5em;
+  padding: 0 1.5em;
   justify-content: space-between;
 }
 
@@ -106,6 +108,20 @@ body {
 
   a:hover {
     color: #c7bfb3;
+  }
+
+  .signinLink {
+    border: solid 2px $tertiary-color;
+    border-radius: 8px;
+    padding: 0.25em 1em;
+    font-size: 18px;
+    margin-top: -0.25em;
+    text-decoration: none;
+    list-style-type: none !important;
+  }
+
+  .signinLink:hover {
+    border: solid 2px #c7bfb3;
   }
 
   .sellLink {

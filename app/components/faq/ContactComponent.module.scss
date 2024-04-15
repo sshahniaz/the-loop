@@ -1,3 +1,5 @@
+@import "/public/styles/mixins.scss";
+
 .contact {
   display: flex;
   flex-direction: column;
@@ -5,19 +7,34 @@
   margin: 0 auto; /* Center vertically with some adjustments */
   max-width: 1660px; /* Set a maximum width for responsiveness */
   padding: 1rem;
-  background-color: antiquewhite;
+  font-family: $montserrat-font;
+  color: $primary-color;
+
   //   border: 1px solid red;
 
-  h2 {
-    margin-bottom: 0.5rem;
+  .contactHeading,
+  .termsConditionsHeading {
+    @include pageHeadings;
+    text-align: center;
+    margin: 2em 0 1em 0;
+  }
+  .telephoneSection,
+  .emailSection {
+    font-size: 21px;
+  }
+
+  .contactSubHeading {
+    height: 50px;
+    h3 {
+      font-weight: 500;
+
+      padding: 0;
+    }
   }
 
   div {
     display: flex;
     flex-direction: column;
-    margin-bottom: 0.5rem;
-    padding: 1rem;
-    // border: 1px solid #ddd;
     border-radius: 4px;
 
     h3,
@@ -28,10 +45,9 @@
     h6 {
       display: flex;
       flex-direction: column;
-      //   padding-bottom: 0.5rem;
-      //   margin: 0.3rem 0;
+      font-weight: 400;
+
       span {
-        // margin: 0.5rem 0;
         padding-top: 0.5rem;
         display: block;
         align-self: center;
@@ -50,6 +66,15 @@
   }
 
   @media (max-width: 768px) {
-    flex-direction: column; /* Stack elements on mobile */
+    flex-direction: column;
+    .contactHeading,
+    .termsConditionsHeading {
+      margin: 1.5em 0 0.75em 0;
+      font-size: 21px;
+    }
+    .telephoneSection,
+    .emailSection {
+      font-size: 16px;
+    }
   }
 }
