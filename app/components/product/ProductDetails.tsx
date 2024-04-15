@@ -1,89 +1,71 @@
-import React from "react";
-import prisma from "@/prisma/client";
-import { Product } from "@prisma/client";
-import Link from "next/link";
-import { ArrowDropDown } from "@mui/icons-material";
-import AddToBasket from "../cart/AddToBasket";
-import { ProductAction } from "@/app/actions/ProductActions";
+// // import OthersBoughtProduct from "../components/product/OthersBoughtProduct";
+// import React from "react";
+"use client";
+import { CartProductType, useCart } from "@/app/actions/CartActions";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
 
-// type productTypeModel = {
-//   product: {
-//     name: string;
-//     price: number;
-//     condition: string;
-//     material: string;
-//     colour: string;
-//     type: string;
-//     details: string;
-//     imageLink: string[];
-//     ownerId: string;
-//   };
-// };
+// import ProductMainContainer from "./ProductDetails";
+// import ProductImages from "./ProductImages";
+// // import SimilarProduct from "../components/product/SimilarProduct";
 
-interface ProductProps {
-  name: string;
-  price: number;
-  condition: string;
-  material: string;
-  colour: string;
-  type: string;
-  details: string;
-  imageLink: string[];
-  ownerId: string;
+// import { fetchProductData} from "@/app/actions/SingleProductActions";
+
+// // export default async function ProductLayout() {
+// //   const getData = await fetchProductData();
+// //   console.log(getData);
+// //   return (
+// //     <>
+// //       <div className="productContainer">
+// //         <ProductImages />
+// //         <ProductMainContainer/>
+// //       </div>
+// //     </>
+// //   );
+// // }
+interface ProductDetailsProps {
+  product: any;
 }
-export default function ProductDetails({
-  name,
-  price,
-  condition,
-  material,
-  colour,
-  type,
-  details,
-  imageLink,
-  ownerId,
-}: ProductProps) {
-  return (
-    <>
-      {/* {products.map((product, index) => (
-        <div key={index}> */}
-      <h2>{name}</h2>
-      {/* </div> */}
-      {/* ))} */}
-    </>
-    // <div>
-    //   {data.map((product: Product) => (
-    //     <div key={product.id}>
-    //       <h2>{product.name}</h2>
-    //       <p>Price: {product.price}</p>
-    //       <div className="ownerFlex">
-    //         {/* owner rating */}
-    //         <span>{product.ownerId}</span>
-    //         {/* owner name */}
-    //         <span>{product.ownerId}</span>
-    //       </div>
-    //       <div className="buttonsFlex">
-    //         <AddToBasket />
-    //         <AddToWishlist />
-    //       </div>
+const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
+  const { handleAddProductToCart, cartProducts } = useCart();
+  const [isProductInCart, setIsProductInCart] = useState(false);
+  const [cartProduct, setCartProduct] = useState<CartProductType>();
 
-    //       <p>
-    //         Description: <ArrowDropDown> {product.details}</ArrowDropDown>
-    //       </p>
-    //       <p>
-    //         Details:{" "}
-    //         <ArrowDropDown>
-    //           <div className="detailsFlex">
-    //             <p>Colour: {product.colour}</p>
-    //             <p>Material: {product.material}</p>
-    //             <p>Type: {product.type}</p>
-    //             <p>Condition: {product.condition}</p>
-    //           </div>
-    //         </ArrowDropDown>
-    //       </p>
-    //     </div>
-    //   ))}
-    // </div>
-  );
-}
+  const router = useRouter();
+  //check if you have the item in cart or not
+  useEffect(() => {
+    setIsProductInCart(false);
 
-// export default ProductDetails;
+    if (cartProducts) {
+      const existingIndex = cartProducts.findIndex(
+        (item) => item.id === product.id
+      );
+
+      if (existingIndex > -1) {
+        setIsProductInCart(true);
+      }
+    }
+  }, [cartProducts]);
+  return;
+  <>
+    <div>
+      <div className="images"></div>
+      <div className="details">
+        <h1>{product.name}</h1>
+        <h2>£{product.price}</h2>
+        <button>add to cart</button>
+        {isProductInCart ? (
+          <>
+            <span>Product added to cart</span>{" "}
+            <button onClick={() => router.push("/cart")}>View Cart</button>
+          </>
+        ) : (
+          <>
+            <span>Product already in cart</span>
+          </>
+        )}
+      </div>
+    </div>
+  </>;
+};
+export default ProductDetails;
