@@ -21,7 +21,7 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className={inter.className}>
-          <Navigation />
+          {/* <Navigation /> */}
           {children}
           <Toaster position="top-right" />
           <Footer />

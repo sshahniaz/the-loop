@@ -93,23 +93,27 @@ export default function ProfilePage() {
       ) : (
         <>
           <h1 className="dashboardGreeting">Hello {user?.fullName}</h1>
+
           {userData.user && (
             <Suspense fallback={<div>Loading...</div>}>
-              <div className="dashboardOne">
-                <PersonalDetails details={details} />
-                <AddressInfo addressData={primaryAddress} />
-                <BillingAddress addressData={deliveryAddress} />
+              <div className="dashboardContainer">
+                <div className="dashboardOne">
+                  {/* <h2>{userData?.user?.id}</h2> */}
+                  <PersonalDetails details={details} />
+                  <AddressInfo addressData={primaryAddress} />
+                  <BillingAddress addressData={deliveryAddress} />
+                </div>
+                {/* <Wishlist userId={userData?.user?.id} /> */}
+                <div className="dashboardTwo">
+                  <Wishlist userId={"65fc1d82bffb6b8984064dd3"} />
+                  {/* <SellingComponent userId={"65fc1d82bffb6b8984064dd4"} /> */}
+                  <SellingComponent userId={userData?.user?.id} />
+                </div>
+                <Link href={`../../shipping/${userData?.user?.id}`}>
+                  {" "}
+                  SHIPPING{" "}
+                </Link>
               </div>
-              {/* <Wishlist userId={userData?.user?.id} /> */}
-              <div className="dashboardTwo">
-                {/* <Wishlist userId={"65fc1d82bffb6b8984064dd3"} /> */}
-                <SellingComponent userId={"65fc1d82bffb6b8984064dd4"} />
-              </div>
-              {/* <SellingComponent products={products} /> */}
-              <Link href={`../../shipping/${userData?.user?.id}`}>
-                {" "}
-                SHIPPING{" "}
-              </Link>
             </Suspense>
           )}
         </>

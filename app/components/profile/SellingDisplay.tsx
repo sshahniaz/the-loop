@@ -15,38 +15,40 @@ type sellingModel = {
 const SellingDisplay = async ({ products, onDelete }: sellingModel) => {
   return (
     <>
-      <div className="listings">
+      <div className="listing">
         {products.map((product, index) => (
           <li key={product.id}>
-            <div className="sellingImage">
-              <img src={product.imageLink[0]} alt={product.name} />
-            </div>
-            <div className="sellingDetails">
-              <div className="detailsFlex">
-                <p className="sellingName">
-                  {product.name} - £{product.price}
-                </p>
-                <div className="listingFlex">
-                  <p>Revise Listing</p>
-                  <button>
-                    <EditIcon />
-                  </button>
-                </div>
-                <div className="listingFlex">
-                  <p>Delete Listing</p>
-                  <button
-                    onClick={() => {
-                      if (
-                        window.confirm(
-                          `Are you sure you want to delete ${product.name}?`
-                        )
-                      ) {
-                        onDelete(product.id);
-                      }
-                    }}
-                  >
-                    <DeleteIcon />
-                  </button>
+            <div className="listingFlex">
+              <div className="sellingImage">
+                <img src={product.imageLink[0]} alt={product.name} />
+              </div>
+              <div className="sellingDetails">
+                <div className="detailsFlex">
+                  <p className="sellingName">
+                    {product.name} - £{product.price}
+                  </p>
+                  <div className="listingFlex">
+                    <p>Revise Listing</p>
+                    <button>
+                      <EditIcon />
+                    </button>
+                  </div>
+                  <div className="listingFlex">
+                    <p>Delete Listing</p>
+                    <button
+                      onClick={() => {
+                        if (
+                          window.confirm(
+                            `Are you sure you want to delete ${product.name}?`
+                          )
+                        ) {
+                          onDelete(product.id);
+                        }
+                      }}
+                    >
+                      <DeleteIcon />
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>

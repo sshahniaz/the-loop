@@ -1,7 +1,7 @@
 import React from "react";
 import { fetchProductDetails } from "@/app/actions/WishlistActions";
 import { dividerClasses } from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 
 interface WListItemProps {
   wLItem: string;
@@ -29,19 +29,28 @@ const WishlistItem = async ({ wLItem, onRemove }: WListItemProps) => {
         </div>
 
         <div className="wishlistProductDetails">
-          <div className="headingFlex">
-            <p className="wishlistName">{productItem.name}</p>
-            <button onClick={() => onRemove(productItem.id)}>
-              <DeleteIcon />
-            </button>
+          <div className="headingFlex1">
+            <p className="wishlistName">{productItem.name} </p>
+            {!!productItem.price && (
+              <p className="wishlistPrice"> £{productItem.price}</p>
+            )}
           </div>
+
+          {/* <button onClick={() => onRemove(productItem.id)}>
+              <DeleteIcon />
+            </button> */}
+
           {/* Add image and price if available in product data */}
 
-          {!!productItem.price && (
-            <p className="wishlistPrice"> £{productItem.price}</p>
-          )}
+          <div className="headingFlex">
+            <p>Remove Item</p>
+            <button onClick={() => onRemove(productItem.id)}>
+              <DeleteOutlineIcon />
+            </button>
+          </div>
         </div>
       </div>
+      <hr />
     </li>
   );
 };

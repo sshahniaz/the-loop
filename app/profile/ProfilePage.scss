@@ -1,13 +1,17 @@
 @import "/public/styles/mixins.scss";
 
+// page layout
+.dashboardContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 // card layout
 .dashboardCard {
   font-family: $montserrat-font;
   color: $primary-color;
   background-color: $secondary-color;
   padding: 1.5em;
-  //   change to 100% when adding page styling
-  //   width: 100%;
   display: flex;
   flex-direction: column;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
@@ -38,7 +42,8 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 15px;
   width: 85%;
-  margin: auto;
+
+  margin: 2em auto;
 }
 
 .dashboardGreeting {
@@ -56,33 +61,42 @@
 // Wishlist styling
 
 .wishlistDisplay {
+  margin-top: 2em;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-
+  align-items: start;
+  width: 85%;
   font-family: $montserrat-font;
   color: $primary-color;
   background-color: $secondary-color;
   padding: 1.5em;
-  //   change to 100% when adding page styling
-  //   width: 100%;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 
+  ul {
+    width: 100%;
+    padding-left: 0;
+  }
   li {
+    width: 100%;
     list-style: none;
   }
   img {
-    width: 200px;
+    width: 150px;
   }
 
   .wishlistIndividualItem {
     display: flex;
+    margin: 1em;
     gap: 15px;
   }
   .wishlistHeading {
     font-weight: 600;
     margin-bottom: 0.25em;
+  }
+  .headingFlex1 {
+    display: flex;
+    flex-direction: column;
   }
   .headingFlex {
     display: flex;
@@ -93,21 +107,14 @@
       padding-left: 1.5em;
     }
   }
-  .wishlistName {
-    text-transform: uppercase;
-    text-decoration: underline;
-    font-weight: 600;
+  .wishlistName,
+  .wishlistPrice {
+    font-weight: 500;
     font-size: 18px;
-    margin-bottom: 1.5em;
-    padding-top: 0.25em;
+
+    margin: 0.5em 0 0 0;
+    text-transform: uppercase;
     font-family: $montserrat-font;
-    padding-left: 1em;
-  }
-  .wishlistImg {
-    width: 40%;
-  }
-  .wishlistProductDetails {
-    width: 60%;
   }
 }
 
@@ -122,7 +129,12 @@
 
 // active listings styling
 
-.listings {
+.listing {
+  display: flex;
+  flex-direction: column;
+  .listingFlex {
+    display: flex;
+  }
   li {
     list-style: none;
   }
