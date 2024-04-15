@@ -46,3 +46,4 @@ export const fetchProfileData = async (userId: string) => {
     console.error("Error fetching profile data:", error);
   }
 };
+

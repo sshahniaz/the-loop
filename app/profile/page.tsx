@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect, use, Suspense } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { usePathname } from "next/navigation";
 import PersonalDetails from "../components/profile/PersonalDetails";
 // import SellingComponent from "../components/profile/Selling";
@@ -61,7 +61,7 @@ export default function ProfilePage() {
   
     }
   }, [isSignedIn, user]);
-console.log(userData);
+  console.log(userData);
   const details = {
     id: userData?.user?.id ?? "",
     firstName: userData?.profile?.firstName ?? "",
@@ -86,17 +86,31 @@ console.log(userData);
 
   return (
     <>
-      {userData.user !=null && <>
+      {loading ? ( 
+        <div>Loading...</div>
+      ) : (
+          <>
+            
+              {userData.user && 
+          
         <Suspense fallback={<div>Loading...</div>}>
           <PersonalDetails details={details} />
         <AddressInfo addressData={primaryAddress} />
         <BillingAddress addressData={deliveryAddress} />
         <Wishlist userId={ userData?.user?.id } />
           <Link href={`../../shipping/${userData?.user?.id}`}> SHIPPING </Link>
-          </Suspense>
+        </Suspense>
         
-      </>
+      
       }
+          
+          </>
+      
+      )}  
+      
+
+     
+      
 
 
       <h1>{pathname}</h1>
