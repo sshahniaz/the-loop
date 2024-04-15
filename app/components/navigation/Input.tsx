@@ -3,12 +3,12 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import "./Input.scss";
 import Link from "next/link";
-
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import Image from "next/image";
+import { SignIn } from "@clerk/nextjs";
 const Input = () => {
   const [searchQuery, setSearchQuery] = useState("");
   //
@@ -67,6 +67,11 @@ const Input = () => {
           <li>
             <Link href="/favourites">
               <FavoriteBorderOutlinedIcon />
+            </Link>
+          </li>
+          <li className="signinLink">
+            <Link href="/sign-in">
+              Sign-In
             </Link>
           </li>
         </ul>

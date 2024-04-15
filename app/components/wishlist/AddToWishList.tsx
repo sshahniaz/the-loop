@@ -1,8 +1,5 @@
 import React, { useState } from "react";
-import prisma from "@/prisma/client";
-import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import { updateWith } from "lodash";
 import {
   fetchProfileData,
   updateWithlist,
