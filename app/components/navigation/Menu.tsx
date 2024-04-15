@@ -55,7 +55,7 @@ const Menu = ({ productTypes }: ProductTypesModel) => {
           </Link>
         </li>
         <li className="navigationLink">
-          <Link href="#">Contact Us </Link>
+          <Link href="/contactus">Contact Us</Link>
         </li>
       </ul>
     </nav>
