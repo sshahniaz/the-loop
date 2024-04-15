@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect } from 'react'
 
 interface Product {
   id: string;
@@ -13,6 +13,11 @@ interface Props {
 
 
 const Checkout = ({ products }: Props) => {
+  const [ basketProducts, setbasketProducts ] = useState<Product[]>([])
+  
+  useEffect(() => {
+    setbasketProducts(products)
+  }, [products])
 
   const handleCheckOut = () => {
     // Call the API to create a checkout session
@@ -35,6 +40,11 @@ const Checkout = ({ products }: Props) => {
   }
   
   const totalPrice = products.reduce((total, product) => total + product.price, 0)
+
+  const handleRemoveProduct = (id: string) => {
+    setbasketProducts(products.filter((product) => product.id !== id))
+  }
+
   return (
     <div>
       <h2>Checkout</h2>
@@ -42,6 +52,7 @@ const Checkout = ({ products }: Props) => {
         {products.map((product) => (
           <li key={product.id}>
             {product.name} - £{product.price.toFixed(2)}
+            <button onClick={() => handleRemoveProduct(product.id)}>Remove</button>
           </li>
         ))}
       </ul>
