@@ -44,7 +44,7 @@ const AddressInfo = ({
 
   return (
     <div className="addressData">
-      <h2>Billing</h2>
+      <h2>Address</h2>
       {isEdit ? (
         <form>
           <div>

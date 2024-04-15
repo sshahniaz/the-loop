@@ -53,30 +53,114 @@ const ProductsMainContainer = ({ pType }: PContainerProps) => {
 
   const datafilterOptions : FilterOptions  = {
   price: [
-    { label: 'Under $25', value: '0-25' },
-    { label: '$25 to $50', value: '25-50' },
-    { label: '$50 to $100', value: '50-100' },
-    { label: '$100 to $200', value: '100-200' },
-    { label: '$200 & Above', value: '200-999999' }
+    { label: 'Under £25', value: '0-25' },
+    { label: '£25 to £50', value: '25-50' },
+    { label: '£50 to £100', value: '50-100' },
+    { label: '£100 to £200', value: '100-200' },
+    { label: '£200 & Above', value: '200-999999' }
   ],
   colour: [
     { label: 'Red', value: 'red' },
     { label: 'Blue', value: 'blue' },
     { label: 'Green', value: 'green' },
     { label: 'Yellow', value: 'yellow' },
+    { label: 'Orange', value: 'orange' },
+    { label: 'Purple', value: 'purple' },
+    { label: 'Pink', value: 'pink' },
+    { label: 'Cyan', value: 'cyan' },
+    { label: 'Magenta', value: 'magenta' },
     { label: 'Black', value: 'black' },
-    { label: 'White', value: 'white' }
+    { label: 'White', value: 'white' },
+    { label: 'Gray', value: 'gray' },
+    { label: 'Brown', value: 'brown' },
+    { label: 'Navy', value: 'navy' },
+    { label: 'Teal', value: 'teal' },
+    { label: 'Maroon', value: 'maroon' },
+    { label: 'Olive', value: 'olive' },
+    { label: 'Lime', value: 'lime' },
+    { label: 'Silver', value: 'silver' },
+    { label: 'Gold', value: 'gold' },
+    { label: 'Indigo', value: 'indigo' },
+    { label: 'Violet', value: 'violet' },
+    { label: 'Turquoise', value: 'turquoise' },
+    { label: 'Salmon', value: 'salmon' },
+    { label: 'Ivory', value: 'ivory' },
+    { label: 'Beige', value: 'beige' },
+    { label: 'Coral', value: 'coral' },
+    { label: 'Tan', value: 'tan' },
+    { label: 'Plum', value: 'plum' },
+    { label: 'Powder Blue', value: 'powderblue' },
+    { label: 'Misty Rose', value: 'mistyrose' },
+    { label: 'Lime Green', value: 'limegreen' },
+    { label: 'Orange Red', value: 'orangered' },
+    { label: 'Pale Green', value: 'palegreen' },
+    { label: 'Sky Blue', value: 'skyblue' },
   ],
   material: [
-    { label: 'Cotton', value: 'cotton' },
-    { label: 'Polyester', value: 'polyester' },
-    { label: 'Silk', value: 'silk' },
+    { label: 'Wood', value: 'wood' },
+    { label: 'Metal', value: 'metal' },
+    { label: 'Plastic', value: 'plastic' },
     { label: 'Leather', value: 'leather' },
-    { label: 'Wool', value: 'wool' }
+    { label: 'Fabric', value: 'fabric' },
+    { label: 'Glass', value: 'glass' },
+    { label: 'Stone', value: 'stone' },
+    { label: 'Bamboo', value: 'bamboo' },
+    { label: 'Rattan', value: 'rattan' },
+    { label: 'Wicker', value: 'wicker' },
+    { label: 'Ceramic', value: 'ceramic' },
+    { label: 'Vinyl', value: 'vinyl' },
+    { label: 'Fiber', value: 'fiber' },
+    { label: 'Linen', value: 'linen' },
+    { label: 'Suede', value: 'suede' },
+    { label: 'Microfiber', value: 'microfiber' },
+    { label: 'Silk', value: 'silk' },
+    { label: 'Velvet', value: 'velvet' },
+    { label: 'Canvas', value: 'canvas' },
+    { label: 'Polyester', value: 'polyester' },
+    { label: 'Nylon', value: 'nylon' },
+    { label: 'Polypropylene', value: 'polypropylene' },
+    { label: 'Jute', value: 'jute' },
+    { label: 'Cotton', value: 'cotton' },
+    { label: 'Rubber', value: 'rubber' },
+    { label: 'Latex', value: 'latex' },
+    { label: 'Resin', value: 'resin' },
+    { label: 'Aluminum', value: 'aluminum' },
+    { label: 'Steel', value: 'steel' },
+    { label: 'Brass', value: 'brass' },
+    { label: 'Bronze', value: 'bronze' },
+    { label: 'Copper', value: 'copper' },
+    { label: 'Iron', value: 'iron' },
+    { label: 'Stainless Steel', value: 'stainless steel' },
+    { label: 'Nickel', value: 'nickel' },
+    { label: 'Chrome', value: 'chrome' },
+    { label: 'Silver', value: 'silver' },
+    { label: 'Gold', value: 'gold' },
+    { label: 'Platinum', value: 'platinum' },
+    { label: 'Titanium', value: 'titanium' },
+    { label: 'Acrylic', value: 'acrylic' },
+    { label: 'PVC', value: 'pvc' },
+    { label: 'Fiberglass', value: 'fiberglass' },
+    { label: 'Granite', value: 'granite' }, // Duplicate of "Stone" removed
+    { label: 'Marble', value: 'marble' },
+    { label: 'Quartz', value: 'quartz' },
+    { label: 'Porcelain', value: 'porcelain' },
+    { label: 'Terracotta', value: 'terracotta' },
+    { label: 'Brick', value: 'brick' },
+    { label: 'Concrete', value: 'concrete' },
+    { label: 'Clay', value: 'clay' },
+    { label: 'Gypsum', value: 'gypsum' },
+    { label: 'Plywood', value: 'plywood' },
+    { label: 'MDF', value: 'mdf' }, // Case corrected
+    { label: 'Chipboard', value: 'chipboard' },
+    { label: 'Laminates', value: 'laminates' },
+    { label: 'Veneer', value: 'veneer' },
+    { label: 'Hardwood', value: 'hardwood' },
+    { label: 'Softwood', value: 'softwood' },
   ],
   condition: [
-    { label: 'New', value: 'new' },
-    { label: 'Used', value: 'used' }
+    { label: 'New', value: 'New' },
+    { label: 'Used-Good', value: 'Used-Good' },
+    { label: 'Used-Fair', value: 'Used-Fair' }
   ]
   }
   
@@ -137,10 +221,7 @@ const handleFilterChange = (filterName: string, value: string) => {
 
 
 
-  const resetProducts = () => {
-    setSelectedFilters({}); // Reset filter selections
-  };
-  
+ 
   
 const prevFilters = useRef(selectedFilters);
   useEffect(() => {
@@ -198,7 +279,7 @@ if (loading) {
       <Filter filterOptions={
         datafilterOptions
       } onFilterChange={handleFilterChange} />
-      <button onClick={resetProducts}>Reset</button>
+      
       {content}
     </div>
   )

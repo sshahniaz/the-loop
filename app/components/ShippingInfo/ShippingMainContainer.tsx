@@ -1,8 +1,12 @@
-import React, {useState,useEffect,Suspense} from 'react'
+import React, {useState,useEffect,Suspense, useCallback, useRef, use} from 'react'
 import PersonalDetails from '@/app/components/profile/PersonalDetails'
 import AddressInfo from '@/app/components/profile/AddressInfo'
 import BillingAddress from '@/app/components/profile/BillingAddress'
 import { fetchProfileData } from '@/app/actions/ShippingPageActions'
+
+
+
+import Checkout from './Checkout'
 
 
 
@@ -27,14 +31,20 @@ const ShippingMainContainer = ({userId}: Props) => {
   
   const [ profileData, setProfileData ] = useState<ProfileData | null>(null);
   const [ email, setEmail ] = useState<Email>({ email: '' });
+  const [products, setProducts] = useState<Array<{ id: string; name: string; price: number; }>>([]);
+
+
+ 
 
   
   
+
   useEffect(() => {
     const getProfileData = async () => {
       const { profileData, email } :any = await fetchProfileData(userId);
       setProfileData(profileData);
       setEmail(email);
+      setProducts([{ id: '1', name: 'IPhonePro', price: 100 }, { id: '2', name: 'Pixel', price: 200 }]);
     };
     getProfileData();
   }, [userId]);
@@ -70,6 +80,11 @@ const ShippingMainContainer = ({userId}: Props) => {
     address: userData.address 
   };
 
+   const handlePaymentSuccess = () => {
+    // Handle successful payment (e.g., redirect to order confirmation)
+    // router.push('/order-confirmation');
+  };
+
   return (
     <>
       {profileData != null && (
@@ -78,6 +93,11 @@ const ShippingMainContainer = ({userId}: Props) => {
             <PersonalDetails details={userDataFiltered} />
             <AddressInfo addressData={{ ...userAddressDataFiltered, address: userAddressDataFiltered.address || null }} />
             <BillingAddress addressData={{ ...billingAddressDataFiltered, address: billingAddressDataFiltered.address || null }} />
+            
+            
+
+            <Checkout products={products} />
+            
           </div>
         </Suspense>
       )}
