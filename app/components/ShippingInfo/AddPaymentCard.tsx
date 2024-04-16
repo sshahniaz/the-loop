@@ -1,12 +1,16 @@
 import React, {useState,ChangeEvent,FormEvent} from 'react'
 import prisma from '@/prisma/client'
+import { add } from 'lodash';
+import { addPaymentCard } from '@/app/actions/ShippingPageActions';
 
 interface UserPaymentCard {
-  name: string;
-  cardNumber: string;
-  expiryDate: Date;
-  billingAddress: string;
-  cvv: string;
+   id: string;
+    name: string;
+    cardNumber: string;
+    expiryDate: Date;
+    billingAddress: string;
+    cvv: string;
+    profileId: string | null;
 }
 
 interface AddPaymentCardProps {
@@ -18,11 +22,13 @@ interface AddPaymentCardProps {
 const AddPaymentCard = ({onSubmit,onCancel}: AddPaymentCardProps) => {
   // AddPaymentCard components
   const [newCard, setNewCard] = useState<UserPaymentCard>({
+    id: "",
     name: "",
     cardNumber: "",
     expiryDate: new Date(),
     billingAddress: "",
     cvv: "",
+    profileId: null,
   });
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -33,24 +39,18 @@ const AddPaymentCard = ({onSubmit,onCancel}: AddPaymentCardProps) => {
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
     // Save user data to the database using prisma
-    const newCardData = await prisma.cardDetails.create({
-      data: {
-        name: newCard.name,
-        cardNumber: newCard.cardNumber,
-        expiryDate: newCard.expiryDate,
-        billingAddress: newCard.billingAddress,
-        cvv: newCard.cvv,
-      },
-    });
+    const newCardData  = await addPaymentCard(newCard);
 
     // Clear the form after submission
     console.log("Adding card:", newCard);
     setNewCard({
-      name: "",
-      cardNumber: "",
-      expiryDate: new Date(),
-      billingAddress: "",
-      cvv: "",
+      id: "",
+    name: "",
+    cardNumber: "",
+    expiryDate: new Date(),
+    billingAddress: "",
+    cvv: "",
+    profileId: null,
     });
     onSubmit(newCardData);
   };
@@ -58,11 +58,13 @@ const AddPaymentCard = ({onSubmit,onCancel}: AddPaymentCardProps) => {
   // Cancel the form submission
   const handleCancel = () => {
     setNewCard({
+      id: "",
       name: "",
       cardNumber: "",
       expiryDate: new Date(),
       billingAddress: "",
       cvv: "",
+      profileId: null,
     });
   };
   

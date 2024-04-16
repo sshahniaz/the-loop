@@ -1,5 +1,6 @@
 import React, { useState, ChangeEvent } from "react";
 import prisma from "@/prisma/client";
+import { updateBillingAddress } from "@/app/actions/ProfilePageActions";
 
 interface UserAddressInfo {
   addressData: {
@@ -31,14 +32,7 @@ const BillingAddress = ({
 
   const handleSave = async () => {
     //Save user data to the database using prisma
-    await prisma.profile.update({
-      where: { customerId: userData.id },
-      data: {
-        firstName: userData.firstName,
-        lastName: userData.lastName,
-        address: userData.address,
-      },
-    });
+    updateBillingAddress(userData);
     
 
     console.log("Saving data:", userData);
@@ -81,7 +75,7 @@ const BillingAddress = ({
               type="address"
               id="address"
               name="address"
-              value={userData.address || ""}
+              value={userData.address ?? ""}
               onChange={handleChange}
             />
           </div>

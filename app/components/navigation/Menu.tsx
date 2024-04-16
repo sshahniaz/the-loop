@@ -19,24 +19,12 @@ type ProductTypesModel = {
 };
 
 const Menu = ({ productTypes }: ProductTypesModel) => {
-  // const [isHovered, setIsHovered] = useState(false);
-
-  // useEffect(() => {
-  //   setIsHovered(false);
-  // }, []);
-
   return (
     <nav className="navbar">
       <ul className="navigationLinkContainer">
         {productTypes.map((product, index) => (
           <li className="navigationLink" key={index}>
-            <Link
-              href={`/categories/${product.name}`}
-              // onMouseEnter={() => setIsHovered(true)}
-              // onMouseLeave={() => setIsHovered(false)}
-            >
-              {product.name}
-            </Link>
+            <Link href={`/categories/${product.name}`}>{product.name}</Link>
             <div className="menuLevel2">
               <ul className="menuLv2">
                 <li>

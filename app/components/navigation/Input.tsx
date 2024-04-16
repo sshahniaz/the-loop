@@ -44,8 +44,8 @@ const Input = () => {
           <Image
             className="headerLogo"
             src="/assets/logored.svg"
-            height={100}
-            width={150}
+            height={120}
+            width={170}
             alt="main logo"
           />
         </Link>

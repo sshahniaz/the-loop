@@ -1,3 +1,4 @@
+@import "/public/styles/mixins.scss";
 .faq {
   display: flex;
   flex-direction: column;
@@ -5,6 +6,10 @@
   margin: 0 auto;
   max-width: 800px;
   padding: 1rem;
+  .faqHeading {
+    @include pageHeadings;
+    margin: 2em;
+  }
 }
 
 .grid {
@@ -17,26 +22,41 @@
   margin-bottom: 1rem;
   display: flex;
   flex-direction: column;
+  background-color: $secondary-color;
   height: 100px; /* Consistent height for accordions */
+  border-radius: 8px;
 }
 
 .collapsed,
 .expanded {
   padding: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  border: none;
+  background-color: $secondary-color;
+  border-radius: 8px;
   cursor: pointer;
   flex: 1; /* Fill available space within accordion */
   display: flex;
   align-items: center;
+  font-family: $montserrat-font;
+  font-size: 15px;
 }
 
 .expanded {
-  background-color: #f5f5f5;
+  background-color: $secondary-color;
 }
 
 .content {
   padding: 0.5rem; /* Adjust padding if needed for content spacing */
+  font-family: $montserrat-font;
+  background-color: $secondary-color;
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .faqHeading {
+    font-size: 21px !important;
+    margin: 1em !important;
+  }
 }
 
 // .faq-lower-section {

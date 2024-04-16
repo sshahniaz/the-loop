@@ -16,7 +16,7 @@ datasource db {
 model Customer {
   id           String        @id @default(auto()) @map("_id") @db.ObjectId
   email        String        @unique
-  password     String
+  password     String?
   profile      Profile?
   product      Product[]
   transactions Transaction[]

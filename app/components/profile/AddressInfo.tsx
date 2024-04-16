@@ -1,5 +1,5 @@
 import React, { useState, ChangeEvent } from "react";
-import prisma from "@/prisma/client";
+import { updateAddressInfo } from "@/app/actions/ProfilePageActions";
 interface UserAddressInfo {
   addressData: {
     id: string;
@@ -30,14 +30,7 @@ const AddressInfo = ({
 
   const handleSave = async () => {
     //Save user data to the database using prisma
-    await prisma.profile.update({
-      where: { customerId: userData.id },
-      data: {
-        firstName: userData.firstName,
-        lastName: userData.lastName,
-        address: userData.address,
-      },
-    });
+    updateAddressInfo(userData);
     
 
     console.log("Saving data:", userData);
@@ -51,7 +44,7 @@ const AddressInfo = ({
 
   return (
     <div className="addressData">
-      <h2>Billing</h2>
+      <h2>Address</h2>
       {isEdit ? (
         <form>
           <div>
@@ -80,7 +73,7 @@ const AddressInfo = ({
               type="address"
               id="address"
               name="address"
-              value={userData.address || ""}
+              value={userData.address ?? ""}  // Add nullish coalescing operator
               onChange={handleChange}
             />
           </div>

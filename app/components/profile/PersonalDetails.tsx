@@ -1,7 +1,8 @@
 import React, { useState, ChangeEvent } from "react";
 import EditIcon from "@mui/icons-material/Edit";
-import prisma from "@/prisma/client";
+import { updatePersonalDetails } from "@/app/actions/ProfilePageActions";
 import "./PersonalDetails.scss";
+
 interface UserDetailsProps {
   details: {
     id: string;
@@ -12,7 +13,7 @@ interface UserDetailsProps {
 }
 
 const PersonalDetails = ({
-  details: { id,firstName, lastName, email },
+  details: { id, firstName, lastName, email },
 }: UserDetailsProps) => {
   const [isEdit, setIsEdit] = useState(false);
   const [userData, setUserData] = useState({
@@ -32,28 +33,13 @@ const PersonalDetails = ({
 
   const handleSave = async () => {
     // Update user data using prisma
-    'use server'
-    await prisma.profile.update({
-      where: { customerId: userData.id },
-      data: {
-        firstName: userData.firstName,
-        lastName: userData.lastName,
-      },
-    });
-
-    //Update the email using prisma in customer table
-    await prisma.customer.update({
-      where: { id: userData.id },
-      data: {
-        email: userData.email,
-      },
-    });
+    updatePersonalDetails(userData);
     console.log("Saving data:", userData);
     setIsEdit(false);
   };
 
   const handleCancel = () => {
-    setUserData({ id,firstName, lastName,email }); // Reset to original data
+    setUserData({ id, firstName, lastName, email }); // Reset to original data
     setIsEdit(false);
   };
 

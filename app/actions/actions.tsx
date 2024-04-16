@@ -4,6 +4,7 @@ import mime from "mime";
 import { join } from "path";
 import { stat, mkdir, writeFile } from "fs/promises";
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
 interface ProductData {
   name: string;
@@ -35,10 +36,11 @@ export async function listItem(formData: FormData) {
     .replace(/[\s_]+/g, '-')
     .toLowerCase();
 
+  //  Section for image upload
   const buffer = Buffer.from(await imageLink.arrayBuffer());
   const extension = mime.getExtension(imageLink.type);
   const relativeUploadDir = `public/assets/${type}/${category}/${subCategory}`;
-
+  
   const uploadDir = join(process.cwd(), relativeUploadDir);
 
   try {
@@ -72,15 +74,13 @@ export async function listItem(formData: FormData) {
       sale: 0,
       condition: condition as string,
       ownerId: "65faf8493a25aae6e6aedda2",
-      // owner: {
-      //   connect: {
-      //     id: "65faf8493a25aae6e6aedda2",
-      //   },
-      // },
     },
   });
 
+  // ideally re-direct to profile page
   revalidatePath("/sell/form");
+  redirect("/");
+  // redirect('/dashboard/invoices')
 
   console.log("data:", formData);
 }

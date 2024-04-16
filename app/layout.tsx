@@ -1,7 +1,6 @@
-import { ClerkProvider } from '@clerk/nextjs'
+import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-// import "./globals.css";
 import Navigation from "./components/navigation/Navigation";
 import Footer from "./components/footer/Footer";
 import { Toaster } from "react-hot-toast";
@@ -29,6 +28,5 @@ export default function RootLayout({
         </body>
       </html>
     </ClerkProvider>
-    
   );
 }

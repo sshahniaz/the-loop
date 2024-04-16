@@ -1,64 +1,68 @@
-import React, { useState } from 'react'
-import prisma from '@/prisma/client';
+import React, { useState } from "react";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import {
+  fetchProfileData,
+  updateWithlist,
+} from "@/app/actions/WishlistActions";
+
 interface AddToWishlistProps {
   productId: string;
   userId?: string; // Optional user ID
   onUpdateWishlist?: () => void; // Optional callback to update wishlist state in parent component
 }
 
-const AddToWishList = ({ productId, userId, onUpdateWishlist }: AddToWishlistProps) => {
-  const [isAdding, setIsAdding] = useState(false)
-  
+const AddToWishList = ({
+  productId,
+  userId,
+  onUpdateWishlist,
+}: AddToWishlistProps) => {
+  const [isAdding, setIsAdding] = useState(false);
+
   const handleClick = async () => {
-    if (!userId) {  
-      return //Handle the case where userId is not available
-    
+    if (!userId) {
+      return; //Handle the case where userId is not available
     }
-    setIsAdding(true)
+    setIsAdding(true);
     try {
       // Fetch user profile
-      const userProfile = await prisma.profile.findUnique({
-        where: { customerId: userId }
-      })
-      
-      // Check if product is already in wishlist
-      if (userProfile?.wishlist.includes(productId)) {
-        setIsAdding(false)
+      const userProfile = await fetchProfileData(userId);
 
-        return // Product is already in wishlist
+      // Check if product is already in wishlist
+      if (
+        (userProfile?.profileData.wishlist || []).includes(productId as never)
+      ) {
+        setIsAdding(false);
+
+        return; // Product is already in wishlist
       }
 
-      const updatedWishlist = [...(userProfile?.wishlist || []), productId]
+      const updatedWishlist = [
+        ...(userProfile?.profileData.wishlist || []),
+        productId,
+      ];
 
-      // Update the wishlist in the database  
-      await prisma.profile.update({
-        where: { customerId: userId },
-        data: {
-          wishlist: updatedWishlist
-        }
-      })  
+      // Update the wishlist in the database
+      updateWithlist(updatedWishlist, userId);
 
       // Call the callback function to update the wishlist state in the parent component
-    if (onUpdateWishlist) {
-      onUpdateWishlist()
-    }
-
-    } catch (error) { 
-      console.error(error)
-      return // Handle the error
+      if (onUpdateWishlist) {
+        onUpdateWishlist();
+      }
+    } catch (error) {
+      console.error(error);
+      return; // Handle the error
     } finally {
-      setIsAdding(false)
+      setIsAdding(false);
     }
- 
-  }
-  
-  const buttonText = isAdding ? 'Adding...' : 'Add to Wishlist';
+  };
+
+  const buttonText = isAdding ? "Adding..." : <FavoriteBorderIcon />;
 
   return (
     <button disabled={isAdding} onClick={handleClick}>
       {buttonText}
     </button>
-  )
-}
+  );
+};
 
-export default AddToWishList
+export default AddToWishList;
