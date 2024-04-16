@@ -55,7 +55,7 @@ export async function listItem(formData: FormData, userId: string) {
   const fileName = `${kebabCase(name as string)}.${extension}`;
   const filePath = join(uploadDir, fileName);
 
-  await writeFile(kebabCase(filePath), buffer);
+  await writeFile(filePath, buffer);
   const imageLinkPath = `/assets/stock-photos/${category}/${subCategory}/${fileName}`;
 
   const product = await prisma.product.create({
