@@ -18,7 +18,7 @@ interface ProductData {
   material: string;
   ownerId: string;
 }
-
+// export async function listItem(formData: FormData, userId: string)
 export async function listItem(formData: FormData, userId: string) {
   const name = formData.get("name");
   const details = formData.get("details");

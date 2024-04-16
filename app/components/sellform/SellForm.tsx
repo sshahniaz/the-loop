@@ -40,12 +40,11 @@ interface User {
 
 interface FormProps {
   user: {
-    
     id: string;
-  }
+  };
 }
 
-export default function Form({ id }: FormProps) {
+export default function Form({ user }: FormProps) {
   // const { isSignedIn, user } = useUser();
 
   // const [userInfo, setUserInfo] = useState<User | null>(null);
@@ -71,7 +70,7 @@ export default function Form({ id }: FormProps) {
   const ref = useRef<HTMLFormElement>(null);
   const clientAction = async (formData: FormData) => {
     const newListItem = {
-      ownerId: id,
+      ownerId: user.id,
       name: formData.get("name"),
       details: formData.get("details"),
       condition: formData.get("condition"),
@@ -98,7 +97,7 @@ export default function Form({ id }: FormProps) {
       return;
     }
     ref.current?.reset();
-    await listItem(formData, id);
+    await listItem(formData, user.id);
   };
 
   return (

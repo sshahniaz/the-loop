@@ -18,7 +18,7 @@ const SellersFormPage = () => {
   const [userInfo, setUserInfo] = useState<User | null>(null);
 
   useEffect(() => {
-    if (isSignedIn && user.primaryEmailAddress) {
+    if (isSignedIn && user.primaryEmailAddress && userInfo === null) {
       const checkUserId = async () => {
         try {
           const referenceUser = await getUser(
@@ -34,12 +34,12 @@ const SellersFormPage = () => {
       checkUserId();
     }
   });
-  console.log(userInfo);
+  // console.log(userInfo);
   return (
     <main className="sellFormMain">
-      <h1>{userInfo?.id}</h1>
+      {/* <h1>{userInfo?.id}</h1> */}
       {/* <h1 className="sellFormTitle"> Sell an Item</h1> */}
-      <Form user={{id: userInfo?.id ?? ''}} />
+      <Form user={{ id: userInfo?.id ?? "" }} />
     </main>
   );
 };
