@@ -1,5 +1,3 @@
-"use server";
-
 import { error } from "console";
 import {
   createContext,
@@ -9,19 +7,6 @@ import {
   useState,
 } from "react";
 
-// import prisma from "@/prisma/client";
-
-// export const fetchProfileData = async (userId: string) => {
-//   const profileData = await prisma.profile.findUnique({
-//     where: {
-//       customerId: userId,
-//     },
-//   });
-// };
-
-// export const updateCart=async (updatedCart:any,  userId:string) => {
-
-// }
 export type CartProductType = {
   id: string;
   name: string;
@@ -29,13 +14,14 @@ export type CartProductType = {
   type: string;
   imgLink: string[];
   price: number;
-}[];
+};
 
-type CartContextType = {
+export type CartContextType = {
   cartTotalQty: number;
   cartProducts: CartProductType[] | null;
   handleAddProductToCart: (product: CartProductType) => void;
 };
+
 export const CartContext = createContext<CartContextType | null>(null);
 
 interface Props {
@@ -53,6 +39,7 @@ export const CartContextProvider = (props: Props) => {
     const cProducts: CartProductType[] | null = JSON.parse(cartItems);
     setCartProducts(cProducts);
   }, []);
+
   const handleAddProductToCart = useCallback((product: CartProductType) => {
     setCartProducts((prev) => {
       let updatedCart;
@@ -77,7 +64,8 @@ export const CartContextProvider = (props: Props) => {
 export const useCart = () => {
   const context = useContext(CartContext);
 
-  if (context === null)
-    return console.error("useCart must be used within a CartContextProvider");
+  if (context === null) {
+    throw new Error("useCart must be used within a CartContextProvider");
+  }
   return context;
 };

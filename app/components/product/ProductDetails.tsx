@@ -1,7 +1,7 @@
 // // import OthersBoughtProduct from "../components/product/OthersBoughtProduct";
 // import React from "react";
 "use client";
-import { CartProductType, useCart } from "@/app/actions/CartActions";
+import { CartProductType, useCart } from "@/app/components/cart/CartActions";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 

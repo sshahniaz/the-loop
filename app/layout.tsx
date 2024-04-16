@@ -5,6 +5,7 @@ import Navigation from "./components/navigation/Navigation";
 import Footer from "./components/footer/Footer";
 import { Toaster } from "react-hot-toast";
 import CartProvider from "./components/cart/CartProvider";
+import { styled } from "@mui/material";
 
 const inter = Inter({ subsets: ["latin"] });
 
