@@ -27,7 +27,7 @@ const fetchProducts = async (url: string) => {
   return searchResponse.json();
 };
 
-const page = () => {
+const SearchPage = () => {
   const search = useSearchParams();
   const searchQuery = search ? search?.get("q") : null;
   const encodedSearchQuery = encodeURI(searchQuery || "");
@@ -69,4 +69,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default SearchPage;
