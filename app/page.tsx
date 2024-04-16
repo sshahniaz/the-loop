@@ -10,7 +10,8 @@ import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
 import ArchiveIcon from "@mui/icons-material/Archive";
 import Carousel from "./components/carousel/Carousel";
 import CurrencyPoundIcon from "@mui/icons-material/CurrencyPound";
-import { CldVideoPlayer } from "next-cloudinary";
+// import { CldVideoPlayer } from "next-cloudinary";
+import { SignUp } from "@clerk/nextjs";
 
 export default async function Home() {
   return (
@@ -57,7 +58,7 @@ export default async function Home() {
           <div className="steps-card">
             <Card
               title="Sign-up For a Free Account."
-              href="https://example.com/article"
+              href="<SignUp />"
               linkItem={HowToRegIcon}
             />
             <Card
