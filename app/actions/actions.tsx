@@ -16,9 +16,10 @@ interface ProductData {
   price: number;
   colour: string;
   material: string;
+  ownerId: string;
 }
 
-export async function listItem(formData: FormData) {
+export async function listItem(formData: FormData, userId?: string) {
   const name = formData.get("name");
   const details = formData.get("details");
   const condition = formData.get("condition");
@@ -29,6 +30,7 @@ export async function listItem(formData: FormData) {
   const imageLink = formData.get("image") as File;
   const colour = formData.get("colour");
   const material = formData.get("material");
+  // const ownerId = formData.get("ownerId");
 
   //kebabcase
   const kebabCase = (text: string) =>
@@ -63,10 +65,6 @@ export async function listItem(formData: FormData) {
       price: Number(formData.get("price")) as number,
       discount: 0,
       imageLink: [imageLinkPath],
-      //  [ "/assets/stock-photos/lighting/ceilinglight1.png",
-      //   "/assets/stock-photos/lighting/ceilinglight1.png",
-      // ],
-
       colour: colour as string,
       material: material as string,
       type: type as string,
@@ -74,7 +72,7 @@ export async function listItem(formData: FormData) {
       subCatagory: subCategory as string,
       sale: 0,
       condition: condition as string,
-      ownerId: "65faf8493a25aae6e6aedda2",
+      ownerId: userId as string,
     },
   });
   // console.log(imageLinkPath);
@@ -83,6 +81,4 @@ export async function listItem(formData: FormData) {
   revalidatePath("/sell/form");
   redirect("/");
   // redirect('/dashboard/invoices')
-
-  console.log("data:", formData);
 }
