@@ -1,9 +1,13 @@
 "use client";
 import { listItem } from "@/app/actions/actions";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
+
 import SellButton from "./SellButton";
 import { z } from "zod";
 import toast from "react-hot-toast";
+import { checkUser } from "@/app/actions/ProfilePageActions";
+import { useUser } from "@clerk/nextjs";
+import getUser from "@/app/actions/GetUserAction";
 
 const ListItemSchema = z.object({
   name: z
@@ -29,10 +33,38 @@ const ListItemSchema = z.object({
   material: z.string().min(1, { message: "Field is required" }),
 });
 
+interface User {
+  id: string;
+  email: string;
+}
+
 export default function Form() {
+  const { isSignedIn, user } = useUser();
+
+  const [userInfo, setUserInfo] = useState<User | null>(null);
+
+  useEffect(() => {
+    if (isSignedIn && user.primaryEmailAddress) {
+      const checkUserId = async () => {
+        try {
+          const referenceUser = await getUser(
+            user.primaryEmailAddress?.emailAddress ?? ""
+          );
+          if (referenceUser) {
+            setUserInfo(referenceUser);
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      checkUserId();
+    }
+  });
+
   const ref = useRef<HTMLFormElement>(null);
   const clientAction = async (formData: FormData) => {
     const newListItem = {
+      ownerId: userInfo?.id,
       name: formData.get("name"),
       details: formData.get("details"),
       condition: formData.get("condition"),
@@ -59,7 +91,7 @@ export default function Form() {
       return;
     }
     ref.current?.reset();
-    await listItem(formData);
+    await listItem(formData, userInfo?.id);
   };
 
   return (

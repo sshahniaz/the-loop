@@ -111,12 +111,10 @@ export default function ProfilePage() {
                 </div>
                 <div className="dashboardNav">
                   <div className="shippingButton">
-                    <button>
-                      {" "}
-                      <Link href={`../../shipping/${userData?.user?.id}`}>
-                        Take me to shipping
-                      </Link>
-                    </button>
+                    {" "}
+                    <Link href={`../../shipping/${userData?.user?.id}`}>
+                      <button> Take me to shipping </button>
+                    </Link>
                   </div>
                   <div className="signoutButton">
                     <SignOutButton />
