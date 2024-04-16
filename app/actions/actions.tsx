@@ -31,16 +31,17 @@ export async function listItem(formData: FormData) {
   const material = formData.get("material");
 
   //kebabcase
-  const kebabCase = (text : string) => text
-    .replace(/([a-z])([A-Z])/g, "$1-$2")
-    .replace(/[\s_]+/g, '-')
-    .toLowerCase();
+  const kebabCase = (text: string) =>
+    text
+      .replace(/([a-z])([A-Z])/g, "$1-$2")
+      .replace(/[\s_]+/g, "-")
+      .toLowerCase();
 
   //  Section for image upload
   const buffer = Buffer.from(await imageLink.arrayBuffer());
   const extension = mime.getExtension(imageLink.type);
-  const relativeUploadDir = `public/assets/${type}/${category}/${subCategory}`;
-  
+  const relativeUploadDir = `public/assets/stock-photos/${category}/${subCategory}`;
+
   const uploadDir = join(process.cwd(), relativeUploadDir);
 
   try {
@@ -49,11 +50,11 @@ export async function listItem(formData: FormData) {
     await mkdir(uploadDir, { recursive: true });
   }
 
-  const fileName = `${(name as string)}.${extension}`;
+  const fileName = `${kebabCase(name as string)}.${extension}`;
   const filePath = join(uploadDir, fileName);
 
   await writeFile(kebabCase(filePath), buffer);
-  const imageLinkPath = `/${relativeUploadDir}/${fileName}`;
+  const imageLinkPath = `/assets/stock-photos/${category}/${subCategory}/${fileName}`;
 
   const product = await prisma.product.create({
     data: {
@@ -76,6 +77,7 @@ export async function listItem(formData: FormData) {
       ownerId: "65faf8493a25aae6e6aedda2",
     },
   });
+  // console.log(imageLinkPath);
 
   // ideally re-direct to profile page
   revalidatePath("/sell/form");

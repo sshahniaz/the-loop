@@ -1,14 +1,16 @@
-'use client'
+"use client";
 import { useState, useEffect, Suspense } from "react";
 import { usePathname } from "next/navigation";
 import PersonalDetails from "../components/profile/PersonalDetails";
-// import SellingComponent from "../components/profile/Selling";
+import SellingComponent from "../components/profile/Selling";
 import Link from "next/link";
+import "./ProfilePage.scss";
 import Wishlist from "../components/wishlist/Wishlist";
 import { SignOutButton, useUser } from "@clerk/nextjs";
-import { checkUser,createNewUser } from "../actions/ProfilePageActions";
+import { checkUser, createNewUser } from "../actions/ProfilePageActions";
 import AddressInfo from "../components/profile/AddressInfo";
 import BillingAddress from "../components/profile/BillingAddress";
+
 interface ProductApiResponse {
   products: Product[];
 }
@@ -21,22 +23,23 @@ interface Product {
 
 export default function ProfilePage() {
   const pathname = usePathname();
-  const [ products, setProducts ] = useState<any[]>([]);
-  const [ userData, setUserData ] = useState<any>({}); // user details
+  const [products, setProducts] = useState<any[]>([]);
+  const [userData, setUserData] = useState<any>({}); // user details
   const [loading, isLoading] = useState(false);
-  const [ error, setError ] = useState(null);
-  
-  const {isSignedIn, user} = useUser();
+  const [error, setError] = useState(null);
+  console.log(products);
+  const { isSignedIn, user } = useUser();
 
-
-    useEffect(() => {
+  useEffect(() => {
     if (isSignedIn && user.primaryEmailAddress) {
       const checkAndCreate = async () => {
         isLoading(true); // Set loading state
 
         try {
           // Check if user exists in the database
-          const existingUserData = await checkUser(user.primaryEmailAddress?.emailAddress ?? "");
+          const existingUserData = await checkUser(
+            user.primaryEmailAddress?.emailAddress ?? ""
+          );
 
           if (existingUserData) {
             // User exists, set user data
@@ -58,10 +61,9 @@ export default function ProfilePage() {
       };
 
       checkAndCreate();
-  
     }
   }, [isSignedIn, user]);
-  console.log(userData);
+  // console.log(userData);
   const details = {
     id: userData?.user?.id ?? "",
     firstName: userData?.profile?.firstName ?? "",
@@ -86,44 +88,45 @@ export default function ProfilePage() {
 
   return (
     <>
-      {loading ? ( 
+      {loading ? (
         <div>Loading...</div>
       ) : (
-          <>
-            
-              {userData.user && 
-          
-        <Suspense fallback={<div>Loading...</div>}>
-          <PersonalDetails details={details} />
-        <AddressInfo addressData={primaryAddress} />
-        <BillingAddress addressData={deliveryAddress} />
-        <Wishlist userId={ userData?.user?.id } />
-          <Link href={`../../shipping/${userData?.user?.id}`}> SHIPPING </Link>
-        </Suspense>
-        
-      
-      }
-          
-          </>
-      
-      )}  
-      
+        <>
+          <h1 className="dashboardGreeting">Hello {user?.fullName}</h1>
 
-     
-      
-
-
-      <h1>{pathname}</h1>
-      <h1>Hello { user?.fullName }</h1>
-      <ul>
-        {products.map((product, index) => (
-          <li key={index}>{product.name}</li>
-        ))}
-        {/* {products.map((product, index) => (
-            <li key={product.}></li>
-        ))} */}
-      </ul>
-      <SignOutButton />
+          {userData.user && (
+            <Suspense fallback={<div>Loading...</div>}>
+              <div className="dashboardContainer">
+                <div className="dashboardOne">
+                  {/* <h2>{userData?.user?.id}</h2> */}
+                  <PersonalDetails details={details} />
+                  <AddressInfo addressData={primaryAddress} />
+                  <BillingAddress addressData={deliveryAddress} />
+                </div>
+                {/* <Wishlist userId={userData?.user?.id} /> */}
+                <div className="dashboardTwo">
+                  <Wishlist userId={"65fc1d82bffb6b8984064dd3"} />
+                  {/* <SellingComponent userId={"65fc1d82bffb6b8984064dd4"} /> */}
+                  <SellingComponent userId={userData?.user?.id} />
+                </div>
+                <div className="dashboardNav">
+                  <div className="shippingButton">
+                    <button>
+                      {" "}
+                      <Link href={`../../shipping/${userData?.user?.id}`}>
+                        Take me to shipping
+                      </Link>
+                    </button>
+                  </div>
+                  <div className="signoutButton">
+                    <SignOutButton />
+                  </div>
+                </div>
+              </div>
+            </Suspense>
+          )}
+        </>
+      )}
     </>
   );
 }
