@@ -1,7 +1,7 @@
 import React, { useState, ChangeEvent } from "react";
 import prisma from "@/prisma/client";
 import { updateBillingAddress } from "@/app/actions/ProfilePageActions";
-import EditIcon from "@mui/icons-material/Edit";
+import CreateOutlinedIcon from "@mui/icons-material/CreateOutlined";
 import DoneIcon from "@mui/icons-material/Done";
 import CloseIcon from "@mui/icons-material/Close";
 
@@ -52,7 +52,7 @@ const BillingAddress = ({
       <div className="headingFlex">
         <h2 className="dashboardHeading">My Billing</h2>
         <button type="button" onClick={handleEdit}>
-          <EditIcon />
+          <CreateOutlinedIcon />
         </button>
       </div>
       {isEdit ? (

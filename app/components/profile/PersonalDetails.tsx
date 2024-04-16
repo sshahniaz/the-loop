@@ -1,5 +1,6 @@
 import React, { useState, ChangeEvent } from "react";
-import EditIcon from "@mui/icons-material/Edit";
+
+import CreateOutlinedIcon from "@mui/icons-material/CreateOutlined";
 import DoneIcon from "@mui/icons-material/Done";
 import CloseIcon from "@mui/icons-material/Close";
 import { updatePersonalDetails } from "@/app/actions/ProfilePageActions";
@@ -50,7 +51,7 @@ const PersonalDetails = ({
       <div className="headingFlex">
         <h2 className="dashboardHeading">My Details</h2>
         <button type="button" onClick={handleEdit}>
-          <EditIcon />
+          <CreateOutlinedIcon />
         </button>
       </div>
       {isEdit ? (

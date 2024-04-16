@@ -30,7 +30,7 @@ const WishlistItem = async ({ wLItem, onRemove }: WListItemProps) => {
 
         <div className="wishlistProductDetails">
           <div className="headingFlex1">
-            <p className="wishlistName">{productItem.name} </p>
+            <p className="wishlistName">{productItem.name} - </p>
             {!!productItem.price && (
               <p className="wishlistPrice"> £{productItem.price}</p>
             )}
@@ -43,7 +43,7 @@ const WishlistItem = async ({ wLItem, onRemove }: WListItemProps) => {
           {/* Add image and price if available in product data */}
 
           <div className="headingFlex">
-            <p>Remove Item</p>
+            <p className="remove">Remove Item</p>
             <button onClick={() => onRemove(productItem.id)}>
               <DeleteOutlineIcon />
             </button>

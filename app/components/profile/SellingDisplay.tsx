@@ -1,6 +1,6 @@
 import React from "react";
-import EditIcon from "@mui/icons-material/Edit";
-import DeleteIcon from "@mui/icons-material/Delete";
+import CreateOutlinedIcon from "@mui/icons-material/CreateOutlined";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { DeleteItem } from "@/app/actions/SellingActions";
 
 type sellingModel = {
@@ -23,17 +23,16 @@ const SellingDisplay = async ({ products, onDelete }: sellingModel) => {
                 <img src={product.imageLink[0]} alt={product.name} />
               </div>
               <div className="sellingDetails">
+                <p className="sellingName">{product.name} -</p>{" "}
+                <p className="sellingName">£{product.price}</p>
                 <div className="detailsFlex">
-                  <p className="sellingName">
-                    {product.name} - £{product.price}
-                  </p>
-                  <div className="listingFlex">
+                  <div className="listingFlex1">
                     <p>Revise Listing</p>
                     <button>
-                      <EditIcon />
+                      <CreateOutlinedIcon />
                     </button>
                   </div>
-                  <div className="listingFlex">
+                  <div className="listingFlex1">
                     <p>Delete Listing</p>
                     <button
                       onClick={() => {
@@ -46,12 +45,13 @@ const SellingDisplay = async ({ products, onDelete }: sellingModel) => {
                         }
                       }}
                     >
-                      <DeleteIcon />
+                      <DeleteOutlineIcon />
                     </button>
                   </div>
                 </div>
               </div>
             </div>
+            <hr />
           </li>
         ))}
       </div>

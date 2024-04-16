@@ -42,7 +42,6 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 15px;
   width: 85%;
-
   margin: 2em auto;
 }
 
@@ -66,7 +65,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: start;
-  width: 85%;
+
   font-family: $montserrat-font;
   color: $primary-color;
   background-color: $secondary-color;
@@ -75,7 +74,6 @@
 
   ul {
     width: 100%;
-    padding-left: 0;
   }
   li {
     width: 100%;
@@ -84,7 +82,9 @@
   img {
     width: 150px;
   }
-
+  .wishlistProductDetails {
+    width: 100%;
+  }
   .wishlistIndividualItem {
     display: flex;
     margin: 1em;
@@ -92,7 +92,7 @@
   }
   .wishlistHeading {
     font-weight: 600;
-    margin-bottom: 0.25em;
+    margin: 1.5em 2em;
   }
   .headingFlex1 {
     display: flex;
@@ -111,7 +111,6 @@
   .wishlistPrice {
     font-weight: 500;
     font-size: 18px;
-
     margin: 0.5em 0 0 0;
     text-transform: uppercase;
     font-family: $montserrat-font;
@@ -128,17 +127,300 @@
 }
 
 // active listings styling
-
-.listing {
+.activeListingsDisplay {
+  font-family: $montserrat-font;
+  margin-top: 2em;
   display: flex;
   flex-direction: column;
-  .listingFlex {
+  // justify-content: center;
+  align-items: start;
+  color: $primary-color;
+  background-color: $secondary-color;
+  padding: 1.5em;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  .listingsHeading {
+    font-weight: 600;
+    margin: 1.5em 2em;
+  }
+
+  .listing {
     display: flex;
+    flex-direction: column;
+
+    .listingFlex {
+      margin: 1em;
+      width: 100%;
+      gap: 15px;
+      display: flex;
+      button {
+        background-color: transparent;
+        border: none;
+      }
+    }
+    .listingFlex1 {
+      display: flex;
+
+      justify-content: space-between;
+    }
+    li {
+      list-style: none;
+    }
+    img {
+      width: 150px;
+    }
   }
-  li {
-    list-style: none;
+  .sellingName {
+    font-weight: 500;
+    font-size: 18px;
+    margin: 0.5em 0 0 0;
+    text-transform: uppercase;
   }
-  img {
-    width: 200px;
+
+  .sellingDetails {
+    width: 100%;
+  }
+}
+.dashboardNav {
+  display: flex;
+  margin: 2em;
+  button {
+    margin: 0.5em;
+    padding: 1em;
+    height: 43px;
+  }
+  a {
+    color: $secondary-color;
+    text-decoration: none;
+  }
+
+  .shippingButton {
+    button {
+      @include buttonStyles($primary-color, $secondary-color, 200px);
+    }
+    a:hover {
+      color: $primary-color;
+    }
+  }
+  .shippingButton:hover {
+    button {
+      @include buttonStyles($secondary-color, $primary-color, 200px);
+    }
+  }
+  .signoutButton {
+    button {
+      @include buttonStyles($secondary-color, $primary-color, 200px);
+    }
+  }
+  .signoutButton:hover {
+    button {
+      @include buttonStyles($primary-color, $secondary-color, 200px);
+    }
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .dashboardGreeting {
+    font-size: 25px;
+    margin: 2em 0 1em 0;
+  }
+  .dashboardOne {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 15px;
+    width: 90%;
+    margin: 1em auto;
+    h2 {
+      font-size: 20px;
+    }
+    p {
+      font-size: 15px;
+    }
+  }
+  .dashboardTwo {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 15px;
+    width: 90%;
+    margin: auto;
+
+    h2 {
+      font-size: 20px;
+    }
+  }
+
+  .wishlistHeading,
+  .listingsHeading {
+    margin: 1em 0.5em !important;
+  }
+  .wishlistDisplay,
+  .activeListingsDisplay {
+    margin-top: 0;
+    width: 87%;
+    ul {
+      padding: 0;
+    }
+    img {
+      width: 100px;
+    }
+  }
+  .wishlistName,
+  .wishlistPrice,
+  .sellingName {
+    font-size: 14px !important;
+  }
+  .remove,
+  .detailsFlex {
+    font-size: 12px;
+    line-height: 5px;
+  }
+  .wishlistInstructions {
+    font-size: 14px;
+  }
+  .sellingImage {
+    img {
+      width: 100px !important;
+    }
+  }
+  .listingFlex {
+    margin: 0 !important;
+  }
+  .dashboardNav {
+    flex-direction: column;
+  }
+}
+
+@media screen and (min-width: 650px) and (max-width: 767px) {
+  .dashboardOne {
+    gap: 15px;
+    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 1em auto;
+    h2 {
+      font-size: 20px;
+    }
+    p {
+      font-size: 15px;
+    }
+  }
+  .dashboardTwo {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 15px;
+    width: 100%;
+    margin: auto;
+
+    h2 {
+      font-size: 20px;
+    }
+  }
+
+  .wishlistHeading,
+  .listingsHeading {
+    margin: 1em 0.5em !important;
+  }
+}
+@media screen and (min-width: 767px) and (max-width: 992px) {
+  .dashboardOne {
+    gap: 15px;
+    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 1em auto;
+    h2 {
+      font-size: 20px;
+    }
+    p {
+      font-size: 15px;
+    }
+  }
+  .dashboardTwo {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    width: 100%;
+    margin: auto;
+
+    h2 {
+      font-size: 20px;
+    }
+  }
+
+  .wishlistHeading,
+  .listingsHeading {
+    margin: 1em 0.5em !important;
+  }
+  .wishlistDisplay,
+  .activeListingsDisplay {
+    margin-top: 0;
+    width: 87%;
+    ul {
+      padding: 0;
+    }
+    img {
+      width: 100px;
+    }
+  }
+  .wishlistName,
+  .wishlistPrice,
+  .sellingName {
+    font-size: 14px !important;
+  }
+  .remove,
+  .detailsFlex {
+    font-size: 12px;
+    line-height: 5px;
+  }
+  .wishlistInstructions {
+    font-size: 14px;
+  }
+  .sellingImage {
+    img {
+      width: 100px !important;
+    }
+  }
+  .listingFlex {
+    margin: 0 !important;
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1300px) {
+  .dashboardOne {
+    gap: 15px;
+    width: 100%;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 1em auto;
+    h2 {
+      font-size: 20px;
+    }
+    p {
+      font-size: 15px;
+    }
+  }
+  .dashboardTwo {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    width: 100%;
+    margin: auto;
+
+    h2 {
+      font-size: 20px;
+    }
+  }
+  .wishlistDisplay,
+  .activeListingsDisplay {
+    margin-top: 0;
+
+    ul {
+      padding: 0.5em;
+    }
+    img {
+      width: 100px;
+    }
+  }
+  .wishlistProductDetails {
+    width: 100%;
+  }
+  .wishlistIndividualItem {
+    width: 100%;
   }
 }

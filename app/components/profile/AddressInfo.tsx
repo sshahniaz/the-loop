@@ -1,6 +1,6 @@
 import React, { useState, ChangeEvent } from "react";
 import { updateAddressInfo } from "@/app/actions/ProfilePageActions";
-import EditIcon from "@mui/icons-material/Edit";
+import CreateOutlinedIcon from "@mui/icons-material/CreateOutlined";
 import DoneIcon from "@mui/icons-material/Done";
 import CloseIcon from "@mui/icons-material/Close";
 
@@ -51,7 +51,7 @@ const AddressInfo = ({
         {/* <div className="addressData"> */}
         <h2 className="dashboardHeading">My Address</h2>
         <button type="button" onClick={handleEdit}>
-          <EditIcon />
+          <CreateOutlinedIcon />
         </button>
       </div>
       {isEdit ? (

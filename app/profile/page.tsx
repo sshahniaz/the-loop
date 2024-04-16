@@ -109,27 +109,24 @@ export default function ProfilePage() {
                   {/* <SellingComponent userId={"65fc1d82bffb6b8984064dd4"} /> */}
                   <SellingComponent userId={userData?.user?.id} />
                 </div>
-                <Link href={`../../shipping/${userData?.user?.id}`}>
-                  {" "}
-                  SHIPPING{" "}
-                </Link>
+                <div className="dashboardNav">
+                  <div className="shippingButton">
+                    <button>
+                      {" "}
+                      <Link href={`../../shipping/${userData?.user?.id}`}>
+                        Take me to shipping
+                      </Link>
+                    </button>
+                  </div>
+                  <div className="signoutButton">
+                    <SignOutButton />
+                  </div>
+                </div>
               </div>
             </Suspense>
           )}
         </>
       )}
-
-      {/* <h1>{pathname}</h1> */}
-
-      <ul>
-        {products.map((product, index) => (
-          <li key={index}>{product.name}</li>
-        ))}
-        {/* {products.map((product, index) => (
-            <li key={product.}></li>
-        ))} */}
-      </ul>
-      <SignOutButton />
     </>
   );
 }

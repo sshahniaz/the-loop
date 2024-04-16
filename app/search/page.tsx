@@ -50,6 +50,7 @@ const page = () => {
         <div className="searchResultContainer">
           {data?.products?.map((product, index) => (
             <div className="searchResultCard" key={index}>
+              <p>{product.imageLink}</p>
               <ImageHover image={product.imageLink} alt={product.name} />
               <div className="iconFloat">
                 <h3 className="productHeading">{product.name}</h3>
