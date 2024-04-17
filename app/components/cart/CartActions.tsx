@@ -1,4 +1,4 @@
-import { error } from "console";
+import { CartProductType } from "../product/ProductDetails";
 import {
   createContext,
   useCallback,
@@ -7,19 +7,20 @@ import {
   useState,
 } from "react";
 
-export type CartProductType = {
-  id: string;
-  name: string;
-  details: string;
-  type: string;
-  imgLink: string[];
-  price: number;
-};
+// export type CartProductType = {
+//   id: string;
+//   name: string;
+//   details: string;
+//   type: string;
+//   imgLink: string;
+//   price: number;
+// };
 
 export type CartContextType = {
   cartTotalQty: number;
   cartProducts: CartProductType[] | null;
   handleAddProductToCart: (product: CartProductType) => void;
+  handleDeleteProductFromCart: (product: CartProductType) => void;
 };
 
 export const CartContext = createContext<CartContextType | null>(null);
@@ -40,6 +41,7 @@ export const CartContextProvider = (props: Props) => {
     setCartProducts(cProducts);
   }, []);
 
+  //add product to cart
   const handleAddProductToCart = useCallback((product: CartProductType) => {
     setCartProducts((prev) => {
       let updatedCart;
@@ -53,11 +55,29 @@ export const CartContextProvider = (props: Props) => {
       return updatedCart;
     });
   }, []);
+
+  //remove product from cart
+  const handleDeleteProductFromCart = useCallback(
+    (product: CartProductType) => {
+      if (cartProducts) {
+        const filterProducts = cartProducts.filter((item) => {
+          return item.id !== product.id;
+        });
+
+        setCartProducts(filterProducts);
+        localStorage.setItem("loopCartItems", JSON.stringify(filterProducts));
+      }
+    },
+    [cartProducts]
+  );
+
   const value = {
     cartTotalQty,
     cartProducts,
     handleAddProductToCart,
+    handleDeleteProductFromCart,
   };
+
   return <CartContext.Provider value={value} {...props} />;
 };
 

@@ -1,1 +1,59 @@
-// @import "/public/styles/mixins.scss"
+@import "/public/styles/mixins.scss";
+
+body{
+    @include bodyStyles;
+}
+
+.productContainer{
+    @include background;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 30px;
+}
+.detailsContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.detailsContainer h1{
+    @include standardText;
+    font-size:30px;
+    font-weight: 700;
+}
+.detailsContainer span{
+    @include standardText;
+    font-size: 20px;
+}
+.buttons{
+    display: flex;
+    gap: 20px;
+   
+}
+
+.addToBasket{
+    @include buttonStyles($primary-color,$secondary-color, 197px);
+    font-size: 20px;
+    padding: 5px;
+}
+button {
+    border: none;
+    background-color: transparent;
+}
+
+.dropDown{
+    display: flex;
+    flex-direction: column;
+}
+
+h3{
+    @include standardText;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+Accordion{
+    display: flex;
+    flex-direction: row;
+    width: 500px;
+}

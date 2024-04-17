@@ -1,7 +1,8 @@
 "use server";
 
-import ProductMainContainer from "../../components/product/ProductMainContainer";
+import { product } from "@/utils/product";
 import SimilarProduct from "../../components/product/SimilarProduct";
+import ProductDetails from "@/app/components/product/ProductDetails";
 
 export type CartProductType = {
   id: string;
@@ -15,16 +16,12 @@ export type CartProductType = {
 };
 
 const Page = ({ params }: { params: { productId: string } }) => {
+  console.log("params", params);
+
   return (
     <>
       <div>
-        <ProductMainContainer productId={params.productId} />
-      </div>
-      <div>
-        <SimilarProduct data={params.productId} />
-        <SimilarProduct data={params.productId} />
-        <SimilarProduct data={params.productId} />
-        <SimilarProduct data={params.productId} />
+        <ProductDetails product={product} />
       </div>
     </>
   );

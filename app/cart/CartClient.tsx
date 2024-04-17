@@ -1,11 +1,12 @@
 "use client";
 import Link from "next/link";
-import { CartProductType, useCart } from "../components/cart/CartActions";
+import { useCart } from "../components/cart/CartActions";
 import ShoppingBasketOutlinedIcon from "@mui/icons-material/ShoppingBasketOutlined";
 import { useContext } from "react";
 import { CartContext } from "../components/cart/CartActions";
 import { CartContextType } from "../components/cart/CartActions";
 import ItemCart from "./ItemCart";
+import { useRouter } from "next/router";
 
 const CartClient = () => {
   const { cartProducts } = useCart();
@@ -25,6 +26,7 @@ const CartClient = () => {
       </>
     );
   }
+
   return (
     <>
       <div className="CartProductsContainer">
@@ -46,7 +48,9 @@ const CartClient = () => {
             <span>Total</span>
             <span></span>
           </div>
-          <button onClick={() => {}}>Chechout</button>
+          <button>
+            <Link href={"../shipping/page.tsx"}> Checkout</Link>
+          </button>
           <button>
             <Link href={"../page.tsx"}>Continue Shopping</Link>
           </button>
