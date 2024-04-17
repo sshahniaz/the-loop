@@ -12,12 +12,6 @@ export default async function Navigation() {
     <>
       <div className="menu">
         <div className="navigationContainer">
-          <button id="hamburger">
-            <div className="hamburgerLine"></div>
-            <div className="hamburgerLine"></div>
-            <div className="hamburgerLine"></div>
-          </button>
-
           <Input />
           <Menu productTypes={navType} />
           {/* <Menu /> */}

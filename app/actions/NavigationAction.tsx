@@ -1,4 +1,4 @@
-"use server";
+// "use server";
 import prisma from "@/prisma/client";
 
 export async function NavigationAction() {
@@ -9,5 +9,4 @@ export async function NavigationAction() {
     },
   });
   return navType;
-  //   return { productTypes: navType };
 }

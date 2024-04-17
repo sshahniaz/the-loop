@@ -1,4 +1,4 @@
-// "use client";
+"use client";
 import React, { useEffect, useState } from "react";
 import MenuItem from "./MenuItem";
 import Link from "next/link";
@@ -19,65 +19,54 @@ type ProductTypesModel = {
         name: string;
       }[];
     })[];
-    // subCatagory: string;
   }[];
 };
 
 const Menu = ({ productTypes }: ProductTypesModel) => {
+  const [showNav, setShowNav] = useState(false);
+  function handleNav() {
+    setShowNav(true);
+  }
   return (
-    <nav className="navbar">
-      <ul className="navigationLinkContainer">
-        {productTypes.map((product, index) => (
-          <li className="navigationLink" key={index}>
-            <Link href={`/categories/${product.name}`}>{product.name}</Link>
-            <div className="menuLevel2">
-              <ul className="menuLv2">
-                <li>
-                  <MenuItem catagory={product.catagory} />
-                </li>
-              </ul>
-            </div>
+    <>
+      <button id="hamburger" onClick={handleNav}>
+        <div className="hamburgerLine"></div>
+        <div className="hamburgerLine"></div>
+        <div className="hamburgerLine"></div>
+      </button>
+      <nav className={showNav ? "showNavbar" : ""}>
+        <ul className="navigationLinkContainer">
+          {/* <div className="responsiveLinks"> */}
+          {productTypes.map((product, index) => (
+            <li className="navigationLink" key={index}>
+              <Link href={`/categories/${product.name}`}>{product.name}</Link>
+              <div className="menuLevel2">
+                <ul className="menuLv2">
+                  <li>
+                    <MenuItem catagory={product.catagory} />
+                  </li>
+                </ul>
+              </div>
+            </li>
+          ))}
+          <li className="navigationLink">
+            <Link href="#">New Arrivals</Link>
           </li>
-        ))}
-        <li className="navigationLink">
-          <Link href="#">New Arrivals</Link>
-        </li>
-        <li className="navigationLink">
-          <Link className="saleLink" href="#">
-            Sale
-          </Link>
-        </li>
-        <li className="navigationLink">
-          <Link href="#">Contact Us </Link>
-        </li>
-        <li className="signinLink">
-          <Link href="/sign-in">Sign-In</Link>
-        </li>
-      </ul>
-      {/* <ul className="headerIconsResponsive">
-        <li className="sellLink">
-          <Link href="/sell-form">Sell</Link>
-        </li>
-        <li>
-          <Link href="/profile">
-            <AccountCircleOutlinedIcon />
-          </Link>
-        </li>
-        <li>
-          <Link href="#">
-            <LocalMallOutlinedIcon />
-          </Link>
-        </li>
-        <li>
-          <Link href="/favourites">
-            <FavoriteBorderOutlinedIcon />
-          </Link>
-        </li>
-        <li className="signinLink">
-          <Link href="/sign-in">Sign-In</Link>
-        </li>
-      </ul> */}
-    </nav>
+          <li className="navigationLink">
+            <Link className="saleLink" href="#">
+              Sale
+            </Link>
+          </li>
+          <li className="navigationLink">
+            <Link href="#">Contact Us </Link>
+          </li>
+          <li className="signinLink">
+            <Link href="/sign-in">Sign-In</Link>
+          </li>
+          {/* </div> */}
+        </ul>
+      </nav>
+    </>
   );
 };
 export default Menu;

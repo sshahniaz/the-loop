@@ -16,8 +16,14 @@
 .headerIconsResponsive {
   display: none;
 }
+
 .navigationLinkContainer {
   display: flex;
+  flex-direction: row;
+}
+nav {
+  display: flex;
+  flex-direction: row;
   justify-content: space-evenly;
   font-family: $montserrat-font;
   font-size: 18px;
@@ -182,16 +188,32 @@ body {
       width: 50%;
     }
   }
-
   .navigationLinkContainer {
+    flex-direction: column;
+  }
+
+  nav {
+    align-items: center;
+    justify-content: space-evenly;
+    visibility: hidden;
+    opacity: 0;
+    font-size: 12px;
+    margin: auto;
+    padding-bottom: 1em;
+    width: 100%;
+  }
+
+  .showNavbar {
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    background-color: $secondary-color;
+    visibility: visible;
+    opacity: 1;
     font-size: 12px;
     margin: auto;
-    width: 100%;
     padding-bottom: 1em;
+    background-color: $secondary-color;
+    width: 100%;
   }
 
   .menuItem {
@@ -236,16 +258,5 @@ body {
       text-decoration: none;
       color: $tertiary-color;
     }
-
-    // .buttonsResponsive,
-    // .iconsResponsive {
-    //   width: 30%;
-    //   display: flex;
-    //   justify-content: space-evenly;
-    //   a {
-    //     text-decoration: none;
-    //     color: $tertiary-color;
-    //   }
-    // }
   }
 }
