@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import CreateOutlinedIcon from "@mui/icons-material/CreateOutlined";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { DeleteItem } from "@/app/actions/SellingActions";
@@ -12,7 +12,9 @@ type sellingModel = {
   }[];
   onDelete: (productId: string) => void;
 };
-const SellingDisplay = async ({ products, onDelete }: sellingModel) => {
+const SellingDisplay = ({ products, onDelete }: sellingModel) => {
+  const [isEdit, setIsEdit] = useState(false);
+  const [productData, setProductData] = useState(products);
   return (
     <>
       <div className="listing">
