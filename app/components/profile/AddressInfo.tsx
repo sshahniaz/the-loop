@@ -1,5 +1,9 @@
 import React, { useState, ChangeEvent } from "react";
 import { updateAddressInfo } from "@/app/actions/ProfilePageActions";
+import CreateOutlinedIcon from "@mui/icons-material/CreateOutlined";
+import DoneIcon from "@mui/icons-material/Done";
+import CloseIcon from "@mui/icons-material/Close";
+
 interface UserAddressInfo {
   addressData: {
     id: string;
@@ -10,7 +14,7 @@ interface UserAddressInfo {
 }
 
 const AddressInfo = ({
-  addressData: { id,firstName, lastName, address },
+  addressData: { id, firstName, lastName, address },
 }: UserAddressInfo) => {
   const [isEdit, setIsEdit] = useState(false);
   const [userData, setUserData] = useState({
@@ -31,24 +35,29 @@ const AddressInfo = ({
   const handleSave = async () => {
     //Save user data to the database using prisma
     updateAddressInfo(userData);
-    
 
     console.log("Saving data:", userData);
     setIsEdit(false);
   };
 
   const handleCancel = () => {
-    setUserData({ id,firstName, lastName, address }); // Reset to original data
+    setUserData({ id, firstName, lastName, address }); // Reset to original data
     setIsEdit(false);
   };
 
   return (
-    <div className="addressData">
-      <h2>Address</h2>
+    <div className="dashboardCard">
+      <div className="headingFlex">
+        {/* <div className="addressData"> */}
+        <h2 className="dashboardHeading">My Address</h2>
+        <button type="button" onClick={handleEdit}>
+          <CreateOutlinedIcon />
+        </button>
+      </div>
       {isEdit ? (
         <form>
           <div>
-            <label htmlFor="firstName">First Name:</label>
+            <label htmlFor="firstName">First Name</label>
             <input
               type="text"
               id="firstName"
@@ -58,7 +67,7 @@ const AddressInfo = ({
             />
           </div>
           <div>
-            <label htmlFor="lastName">Last Name:</label>
+            <label htmlFor="lastName">Last Name</label>
             <input
               type="text"
               id="lastName"
@@ -68,39 +77,36 @@ const AddressInfo = ({
             />
           </div>
           <div>
-            <label htmlFor="address">Email:</label>
+            <label htmlFor="address">Address</label>
             <input
               type="address"
               id="address"
               name="address"
-              value={userData.address ?? ""}  // Add nullish coalescing operator
+              value={userData.address ?? ""} // Add nullish coalescing operator
               onChange={handleChange}
             />
           </div>
-          <button type="button" onClick={handleSave}>
-            Save
-          </button>
-          <button type="button" onClick={handleCancel}>
-            Cancel
-          </button>
+          <div className="dashboardButtons">
+            <button type="button" onClick={handleSave}>
+              <DoneIcon />
+            </button>
+            <button type="button" onClick={handleCancel}>
+              <CloseIcon />
+            </button>
+          </div>
         </form>
       ) : (
         <div>
-          <p>
-            <strong>First Name:</strong> {userData.firstName}
-          </p>
-          <p>
-            <strong>Last Name:</strong> {userData.lastName}
-          </p>
-          <p>
-            <strong>Address:</strong> {userData.address}
-          </p>
-          <button type="button" onClick={handleEdit}>
-            Edit
-          </button>
+          <p className="nameHeadings">First Name</p>
+          <p>{userData.firstName}</p>
+          <p className="nameHeadings">Last Name</p>
+          <p>{userData.lastName}</p>
+          <p className="nameHeadings">Address</p>
+          <p>{userData.address}</p>
         </div>
       )}
     </div>
+    // </div>
   );
 };
 

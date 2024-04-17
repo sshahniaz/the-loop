@@ -35,18 +35,11 @@ const page = () => {
     `/api/search?q=${encodedSearchQuery}`,
     fetchProducts
   );
-  // console.log(data);
 
   if (data && data.products && data.products.length > 0) {
-    // console.log(data.products);
   }
 
   const handlwWishlistupdate = async () => {
-    // Update wishlist on server using prisma
-    // await updateWithlist(
-    //   product,
-    //   "6602aa1c8accbc27af3e4a6a"
-    // );
     console.log("wishlist updated");
   };
 
@@ -57,28 +50,20 @@ const page = () => {
         <div className="searchResultContainer">
           {data?.products?.map((product, index) => (
             <div className="searchResultCard" key={index}>
+              <p>{product.imageLink}</p>
               <ImageHover image={product.imageLink} alt={product.name} />
-              {/* <img
-                src={product.imageLink[0]}
-                alt={product.name}
-                className="searchImg"
-              /> */}
               <div className="iconFloat">
                 <h3 className="productHeading">{product.name}</h3>
                 <AddToWishList
                   productId={product.id}
-                  userId="65faf8493a25aae6e6aedda2"
+                  userId="65fc1d82bffb6b8984064dd3"
                   onUpdateWishlist={handlwWishlistupdate}
                 />
-                {/* <button>
-                  <FavoriteBorderOutlinedIcon />
-                </button> */}
               </div>
               <p>£{product.price}</p>
             </div>
           ))}
         </div>
-        .
       </div>
     </>
   );
