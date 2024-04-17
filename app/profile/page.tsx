@@ -31,7 +31,7 @@ export default function ProfilePage() {
   const { isSignedIn, user } = useUser();
 
   useEffect(() => {
-    if (isSignedIn && user.primaryEmailAddress) {
+    if (isSignedIn && user.primaryEmailAddress && !userData?.user?.id) {
       const checkAndCreate = async () => {
         isLoading(true); // Set loading state
 

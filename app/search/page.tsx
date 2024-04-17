@@ -72,7 +72,7 @@ const SearchPage = () => {
   };
 
   return (
-    <>
+
       <div className="pageContainer">
         {/* need to add filter here */}
         <div className="searchResultContainer">
@@ -83,7 +83,7 @@ const SearchPage = () => {
                 <h3 className="productHeading">{product.name}</h3>
                 <AddToWishList
                   productId={product.id}
-                  userId="65fc1d82bffb6b8984064dd3"
+                  userId={userInfo?.id}
                   onUpdateWishlist={handlwWishlistupdate}
                 />
               </div>
@@ -92,7 +92,6 @@ const SearchPage = () => {
           ))}
         </div>
       </div>
-    </>
   );
 };
 
