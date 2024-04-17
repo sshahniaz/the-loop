@@ -38,33 +38,17 @@ interface User {
   email: string;
 }
 
-export default function Form() {
-  const { isSignedIn, user } = useUser();
+interface FormProps {
+  user: {
+    id: string;
+  };
+}
 
-  const [userInfo, setUserInfo] = useState<User | null>(null);
-
-  useEffect(() => {
-    if (isSignedIn && user.primaryEmailAddress) {
-      const checkUserId = async () => {
-        try {
-          const referenceUser = await getUser(
-            user.primaryEmailAddress?.emailAddress ?? ""
-          );
-          if (referenceUser) {
-            setUserInfo(referenceUser);
-          }
-        } catch (error) {
-          console.log(error);
-        }
-      };
-      checkUserId();
-    }
-  });
-
+export default function Form({ user }: FormProps) {
   const ref = useRef<HTMLFormElement>(null);
   const clientAction = async (formData: FormData) => {
     const newListItem = {
-      ownerId: userInfo?.id,
+      ownerId: user.id,
       name: formData.get("name"),
       details: formData.get("details"),
       condition: formData.get("condition"),
@@ -91,7 +75,7 @@ export default function Form() {
       return;
     }
     ref.current?.reset();
-    await listItem(formData, userInfo?.id);
+    await listItem(formData, user.id);
   };
 
   return (

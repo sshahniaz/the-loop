@@ -6,6 +6,9 @@ import "./SearchResults.scss";
 import AddToWishList from "../components/wishlist/AddToWishList";
 import ImageHover from "../components/ImageHover";
 import { updateWithlist } from "../actions/WishlistActions";
+import { useState, useEffect } from "react";
+import { useUser } from "@clerk/nextjs";
+import getUser from "../actions/GetUserAction";
 
 interface Product {
   id: string;
@@ -13,7 +16,10 @@ interface Product {
   price: number;
   imageLink: string;
 }
-
+interface User {
+  id: string;
+  email: string;
+}
 interface AddToWishlistProps {
   productId: string;
   userId?: string; // Optional user ID
@@ -27,7 +33,29 @@ const fetchProducts = async (url: string) => {
   return searchResponse.json();
 };
 
-const page = () => {
+const SearchPage = () => {
+  const { isSignedIn, user } = useUser();
+
+  const [userInfo, setUserInfo] = useState<User | null>(null);
+
+  useEffect(() => {
+    if (isSignedIn && user.primaryEmailAddress && userInfo === null) {
+      const checkUserId = async () => {
+        try {
+          const referenceUser = await getUser(
+            user.primaryEmailAddress?.emailAddress ?? ""
+          );
+          if (referenceUser) {
+            setUserInfo(referenceUser);
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      checkUserId();
+    }
+  });
+
   const search = useSearchParams();
   const searchQuery = search ? search?.get("q") : null;
   const encodedSearchQuery = encodeURI(searchQuery || "");
@@ -44,19 +72,18 @@ const page = () => {
   };
 
   return (
-    <>
+
       <div className="pageContainer">
         {/* need to add filter here */}
         <div className="searchResultContainer">
           {data?.products?.map((product, index) => (
             <div className="searchResultCard" key={index}>
-              <p>{product.imageLink}</p>
               <ImageHover image={product.imageLink} alt={product.name} />
               <div className="iconFloat">
                 <h3 className="productHeading">{product.name}</h3>
                 <AddToWishList
                   productId={product.id}
-                  userId="65fc1d82bffb6b8984064dd3"
+                  userId={userInfo?.id}
                   onUpdateWishlist={handlwWishlistupdate}
                 />
               </div>
@@ -65,8 +92,7 @@ const page = () => {
           ))}
         </div>
       </div>
-    </>
   );
 };
 
-export default page;
+export default SearchPage;

@@ -7,6 +7,7 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
 import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
+import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import Image from "next/image";
 import { SignIn } from "@clerk/nextjs";
 const Input = () => {
@@ -69,10 +70,38 @@ const Input = () => {
               <FavoriteBorderOutlinedIcon />
             </Link>
           </li>
+
           <li className="signinLink">
-            <Link href="/sign-in">
-              Sign-In
+            <Link href="/sign-in">Sign-In</Link>
+          </li>
+        </ul>
+        {/* Responsive list
+         */}
+
+        <ul className="headerIconsResponsive">
+          <li>
+            <Link href="/profile">
+              <AccountCircleOutlinedIcon />
             </Link>
+          </li>
+          <li>
+            <Link href="#">
+              <LocalMallOutlinedIcon />
+            </Link>
+          </li>
+          <li>
+            <Link href="/favourites">
+              <FavoriteBorderOutlinedIcon />
+            </Link>
+          </li>
+          <li className="home">
+            {" "}
+            <Link href="/">
+              <HomeOutlinedIcon />
+            </Link>
+          </li>
+          <li className="signinLink">
+            <Link href="/sign-in">Sign-In</Link>
           </li>
         </ul>
       </div>

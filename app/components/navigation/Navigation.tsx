@@ -4,7 +4,7 @@ import Input from "./Input";
 import "./Navigation.scss";
 import { NavigateAction } from "next/dist/client/components/router-reducer/router-reducer-types";
 import { NavigationAction } from "@/app/actions/NavigationAction";
-
+import React, { useState, useEffect, Suspense } from "react";
 export default async function Navigation() {
   const navType = await NavigationAction();
 
@@ -12,15 +12,10 @@ export default async function Navigation() {
     <>
       <div className="menu">
         <div className="navigationContainer">
-          <button id="hamburger">
-            <div className="hamburgerLine"></div>
-            <div className="hamburgerLine"></div>
-            <div className="hamburgerLine"></div>
-          </button>
-
           <Input />
-          <Menu productTypes={navType} />
-          {/* <Menu /> */}
+          <Suspense fallback={<div>Loading...</div>}>
+            <Menu productTypes={navType} />
+          </Suspense>
         </div>
       </div>
     </>

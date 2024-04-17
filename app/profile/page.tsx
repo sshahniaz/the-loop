@@ -31,7 +31,7 @@ export default function ProfilePage() {
   const { isSignedIn, user } = useUser();
 
   useEffect(() => {
-    if (isSignedIn && user.primaryEmailAddress) {
+    if (isSignedIn && user.primaryEmailAddress && !userData?.user?.id) {
       const checkAndCreate = async () => {
         isLoading(true); // Set loading state
 
@@ -105,7 +105,7 @@ export default function ProfilePage() {
                 </div>
                 {/* <Wishlist userId={userData?.user?.id} /> */}
                 <div className="dashboardTwo">
-                  <Wishlist userId={"65fc1d82bffb6b8984064dd3"} />
+                  <Wishlist userId={userData?.user?.id} />
                   {/* <SellingComponent userId={"65fc1d82bffb6b8984064dd4"} /> */}
                   <SellingComponent userId={userData?.user?.id} />
                 </div>

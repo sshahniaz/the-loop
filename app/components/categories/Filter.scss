@@ -1,0 +1,90 @@
+@import "/public/styles/mixins.scss";
+
+.productPageFlex {
+  display: flex;
+}
+section {
+  display: flex;
+  flex-direction: column;
+  font-family: $montserrat-font;
+  padding: 1em;
+  width: 25%;
+  line-height: 30px;
+  margin: 1em;
+  h3 {
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    font-family: $montserrat-font;
+    font-weight: 500;
+    font-size: 17px;
+  }
+
+  .test {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    margin: 0.5em;
+    background-color: $secondary-color;
+    height: 200px;
+    overflow: scroll;
+  }
+}
+
+#filterResponsive {
+  display: none;
+}
+
+.showFilter {
+  display: flex;
+  // flex-direction: column;
+  font-family: $montserrat-font;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  line-height: 30px;
+  margin: 0;
+  padding: 0;
+
+  h3 {
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+}
+
+@media (max-width: 799px) {
+  .filterContainer {
+    background-color: white;
+  }
+
+  button {
+    @include buttonStyles($primary-color, $secondary-color, 80px);
+  }
+  #filterResponsive {
+    display: block;
+    margin: 0.5em;
+  }
+  input,
+  label {
+    font-size: 12px;
+  }
+  h2 {
+    display: none;
+  }
+  section {
+    display: none;
+  }
+  .test {
+    height: 100px !important;
+    width: 45%;
+    margin: 0.25em !important;
+    padding: 0 !important;
+    padding-left: 0.5em !important;
+  }
+  h3 {
+    font-size: 15px;
+    margin: 0;
+  }
+}
