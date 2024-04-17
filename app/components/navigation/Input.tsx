@@ -9,11 +9,14 @@ import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlin
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import Image from "next/image";
-import { SignIn } from "@clerk/nextjs";
+import { SignIn, useUser } from "@clerk/nextjs";
+import { SignOutButton } from "@clerk/nextjs";
+import { UserButton } from "@clerk/nextjs";
 const Input = () => {
   const [searchQuery, setSearchQuery] = useState("");
   //
   const router = useRouter();
+  const {isSignedIn} = useUser();
   //
   const onSearch = (event: React.FormEvent) => {
     event.preventDefault();
@@ -61,19 +64,24 @@ const Input = () => {
             </Link>
           </li>
           <li>
-            <Link href="#">
+            <Link href="/cart">
               <LocalMallOutlinedIcon />
             </Link>
           </li>
           <li>
-            <Link href="/favourites">
+            <Link href="#">
               <FavoriteBorderOutlinedIcon />
             </Link>
           </li>
-
+          {isSignedIn ? <li>
+            {/* <SignOutButton>
+              <button className="signinLink">Sign out</button>
+            </SignOutButton> */}
+            <UserButton />
+      </li> : 
           <li className="signinLink">
             <Link href="/sign-in">Sign-In</Link>
-          </li>
+          </li>}
         </ul>
         {/* Responsive list
          */}
