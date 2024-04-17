@@ -82,3 +82,15 @@ export async function listItem(formData: FormData, userId: string) {
   redirect("/");
   // redirect('/dashboard/invoices')
 }
+
+export async function updateProduct(productData: any) {
+  const { id, name, price } = productData;
+  await prisma.product.update({
+    where: { id: productData.id },
+
+    data: {
+      name: productData.name,
+      price: productData.price,
+    },
+  });
+}
