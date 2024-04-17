@@ -1,0 +1,104 @@
+@import "/public/styles/mixins.scss";
+.shippingDetailsPage {
+  width: 75%;
+  display: flex;
+  justify-content: center;
+  margin: 2.5em auto;
+
+  gap: 20px;
+}
+
+.shippingCardsFlex {
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboardCard {
+  font-family: $montserrat-font;
+  color: $primary-color;
+  background-color: $secondary-color;
+  padding: 1.5em;
+  display: flex;
+  margin: 0.5em;
+  flex-direction: column;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  .dashboardHeading,
+  .nameHeadings {
+    font-weight: 600;
+    margin-bottom: 0.25em;
+  }
+  .headingFlex {
+    display: flex;
+    justify-content: space-between;
+    button {
+      background-color: transparent;
+      border: none;
+    }
+  }
+  input {
+    margin: 0.5em;
+    padding: 0.5em;
+    border: none;
+    border-radius: 8px;
+    width: 75%;
+  }
+}
+
+.checkoutCard {
+  display: flex;
+  width: 350px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  flex-direction: column;
+  font-family: $montserrat-font;
+  color: $primary-color;
+  background-color: $secondary-color;
+  padding: 1.5em;
+  margin: 0.5em;
+  line-height: 15px;
+  li {
+    padding-bottom: 0.75em;
+  }
+  a {
+    color: $tertiary-color;
+  }
+
+  p {
+    font-size: 13px;
+  }
+  height: fit-content;
+  button {
+    background-color: transparent;
+    border: none;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  .checkoutItemsFlex {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  h2 {
+    font-weight: 600;
+    margin-bottom: 0.25em;
+  }
+  .buttonFlexShipping {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  #checkoutButton {
+    margin: 2em 0 0.5em 0;
+    @include buttonStyles($primary-color, $secondary-color, 250px);
+  }
+  #backButton {
+    @include buttonStyles($primary-color, $secondary-color, 250px);
+  }
+}
+
+.checkoutCardFlex {
+  display: flex;
+  flex-direction: column;
+}

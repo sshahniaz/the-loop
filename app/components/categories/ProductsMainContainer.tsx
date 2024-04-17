@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, Suspense } from "react";
 import { fetchProducts } from "@/app/actions/ProductsActions";
 import Products from "./Products";
 import Filter from "./Filter";
@@ -277,13 +277,15 @@ const ProductsMainContainer = ({ pType }: PContainerProps) => {
   }
 
   return (
-    <div>
-      <Filter
-        filterOptions={datafilterOptions}
-        onFilterChange={handleFilterChange}
-      />
+    <div className="productPageFlex">
+      <Suspense fallback={<div>Loading...</div>}>
+        <Filter
+          filterOptions={datafilterOptions}
+          onFilterChange={handleFilterChange}
+        />
 
-      {content}
+        {content}
+      </Suspense>
     </div>
   );
 };
