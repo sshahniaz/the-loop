@@ -28,7 +28,12 @@ body{
     height: 200px;
     width: 200px;
 }
-.itemCartDetails h3{
+.itemCartDetails{
+    display: flex;
+    flex-direction: column;
+    gap: 10px
+}
+#heading{
     @include standardText;
     font-size: 20px;
     font-weight: 600;

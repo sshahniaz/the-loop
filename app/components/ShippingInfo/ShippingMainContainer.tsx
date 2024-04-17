@@ -41,7 +41,7 @@ const ShippingMainContainer = ({ userId }: Props) => {
 
   //Access cart products using context
   const { cartProducts } = useContext(CartContext) || {}; // Add null check
-  console.log("cartprod:",cartProducts);
+  console.log("cartprod:", cartProducts);
   useEffect(() => {
     const getProfileData = async () => {
       const { profileData, email }: any = await fetchProfileData(userId);
@@ -88,7 +88,7 @@ const ShippingMainContainer = ({ userId }: Props) => {
     // router.push('/order-confirmation');
   };
 
-  console.log("basket:",products);
+  console.log("basket:", products);
 
   return (
     <>

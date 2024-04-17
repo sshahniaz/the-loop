@@ -5,7 +5,7 @@ interface ButtonProps {
 }
 const AddToBasket: React.FC<ButtonProps> = ({ onClick }) => {
   return (
-    <button className="addToBasket" onClick={onClick}>
+    <button className="addToBasket" onClick={() => onClick}>
       Add to Basket
     </button>
   );

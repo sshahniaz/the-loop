@@ -24,16 +24,3 @@ export default async function getProductById(params: string) {
     throw new Error(error);
   }
 }
-// ,
-//       select: {
-//         id: true,
-//         name: true,
-//         price: true,
-//         condition: true,
-//         material: true,
-//         colour: true,
-//         type: true,
-//         details: true,
-//         imageLink: true,
-//         ownerId: true,
-//       },
