@@ -4,9 +4,10 @@ import AddToWishList from "../wishlist/AddToWishList";
 import "../../product/[producId]/Product.scss";
 import { AccordionDetails, AccordionSummary } from "@mui/material";
 import Accordion from "@mui/material/Accordion";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import AddToBasket from "./AddToBasket";
 import { useCart } from "../cart/CartActions";
+import ProductImages from "./ProductImages";
 
 interface ProductDetailsProps {
   product: any;
@@ -32,7 +33,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
     material: product.material,
     condition: product.condition,
     price: product.price,
-    imageLink: product.imageLink[0],
+    imageLink: product.imageLink,
   });
 
   const { handleAddProductToCart, cartProducts } = useCart();
@@ -53,9 +54,24 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
     }
   }, [cartProducts]);
 
+  //focused image
+  const [imagePath, setImagePath] = useState(product.imageLink[0]);
+  const handleImagePath = () => {
+    if (imagePath === product.imageLink[0]) {
+      setImagePath(product.imageLink[1]);
+    } else {
+      setImagePath(product.imageLink[0]);
+    }
+  };
   return (
     <div className="productContainer">
-      <div className="imagesContainer">img</div>
+      <div className="imagesContainer">
+        <div className="thumbnails">
+          <img src={product.imageLink[0]} alt={product.name} />
+          <img src={product.imageLink[1]} alt={product.name} />
+        </div>
+        <img onClick={handleImagePath} src={imagePath}></img>
+      </div>
       <div className="detailsContainer">
         <h1>{product.name}</h1>
         <span>£{product.price}</span>

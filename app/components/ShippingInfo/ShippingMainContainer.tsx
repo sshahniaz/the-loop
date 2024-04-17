@@ -2,14 +2,18 @@ import React, {
   useState,
   useEffect,
   Suspense,
+  useCallback,
+  useRef,
+  use,
+  useContext,
 } from "react";
 import PersonalDetails from "@/app/components/profile/PersonalDetails";
 import AddressInfo from "@/app/components/profile/AddressInfo";
 import BillingAddress from "@/app/components/profile/BillingAddress";
 import { fetchProfileData } from "@/app/actions/ShippingPageActions";
-import "./ShippingDetails.scss";
+import { CartContext, CartContextType } from "../cart/CartActions";
 import Checkout from "./Checkout";
-import Link from "next/link";
+import { CartProductType } from "../product/ProductDetails";
 
 interface ProfileData {
   id: string;
@@ -34,15 +38,17 @@ const ShippingMainContainer = ({ userId }: Props) => {
     Array<{ id: string; name: string; price: number }>
   >([]);
 
+  //Access cart products using context
+  const { cartProducts } = useContext(CartContext) || {}; // Add null check
+  console.log("cartprod:", cartProducts);
   useEffect(() => {
     const getProfileData = async () => {
       const { profileData, email }: any = await fetchProfileData(userId);
       setProfileData(profileData);
       setEmail(email);
-      setProducts([
-        { id: "1", name: "IPhonePro", price: 100 },
-        { id: "2", name: "Pixel", price: 200 },
-      ]);
+      if (cartProducts) {
+        setProducts(cartProducts);
+      }
     };
     getProfileData();
   }, [userId]);
@@ -76,28 +82,28 @@ const ShippingMainContainer = ({ userId }: Props) => {
     address: userData.address,
   };
 
+  console.log("basket:", products);
 
   return (
     <>
       {profileData != null && (
         <Suspense fallback={<div>Loading...</div>}>
-          <div className="shippingDetailsPage">
-            <div className="shippingCardsFlex">
-              <PersonalDetails details={userDataFiltered} />
-              <AddressInfo
-                addressData={{
-                  ...userAddressDataFiltered,
-                  address: userAddressDataFiltered.address || null,
-                }}
-              />
-              <BillingAddress
-                addressData={{
-                  ...billingAddressDataFiltered,
-                  address: billingAddressDataFiltered.address || null,
-                }}
-              />
-            </div>
-            <Checkout products={products} />
+          <div>
+            <PersonalDetails details={userDataFiltered} />
+            <AddressInfo
+              addressData={{
+                ...userAddressDataFiltered,
+                address: userAddressDataFiltered.address || null,
+              }}
+            />
+            <BillingAddress
+              addressData={{
+                ...billingAddressDataFiltered,
+                address: billingAddressDataFiltered.address || null,
+              }}
+            />
+            {/* {cartProducts &&  />} */}
+            <Checkout products={cartProducts || []} />
           </div>
         </Suspense>
       )}

@@ -1,27 +1,30 @@
-"use server";
-
-import { product } from "@/utils/product";
+"use client";
+import getProductById from "@/app/actions/SingleProductActions";
 import SimilarProduct from "../../components/product/SimilarProduct";
 import ProductDetails from "@/app/components/product/ProductDetails";
+import ProductCard from "@/app/components/product/ProductCard";
+import React, { useEffect, useState } from "react";
 
-export type CartProductType = {
-  id: string;
-  name: string;
-  description: string;
-  category: string;
-  brand: string;
-  selectedImg: string[];
-  quantity: number;
-  price: number;
-};
 
-const Page = ({ params }: { params: { productId: string } }) => {
-  console.log("params", params);
+const Page = ({ params }: {params: {producId:string}}) => {
+  console.log(params);
+  const [product, setProduct] = useState<any>(null);
+  useEffect(() => {
+    const fetchProduct = async () => {
+      const product = await getProductById(params.producId);
+      setProduct(product);
+    };
+    fetchProduct();
+  }, [params.producId]);
+  console.log(product);
+
+  if (!product) return <p>Product doesn't exist</p>;
 
   return (
     <>
       <div>
         <ProductDetails product={product} />
+        <ProductCard product={product} />
       </div>
     </>
   );

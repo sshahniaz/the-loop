@@ -2,47 +2,25 @@
 
 import prisma from "@/prisma/client";
 
-// export async function ProductDetailsActions() {
-//   const uniqueItem = await prisma.product.findUnique({
-//     where: {
-//       id: "66018465f2635697495f4c36",
-//     },
-//   });
-//   console.log(uniqueItem);
-//   return uniqueItem;
-// }
-// select: {
-//   name: true,
-//   price: true,
-//   condition: true,
-//   material: true,
-//   colour: true,
-//   type: true,
-//   details: true,
-//   imageLink: true,
-//   ownerId: true,
-// },
+interface IParams {
+  productId: string;
+}
 
-export const fetchProductData = async (productId: string) => {
+export default async function getProductById(params: string) {
   try {
-    const productData = await prisma.product.findUnique({
+    // const { productId } = params;
+    console.log(params);
+    const product = await prisma.product.findUnique({
       where: {
-        id: productId,
-      },
-      select: {
-        name: true,
-        price: true,
-        condition: true,
-        material: true,
-        colour: true,
-        type: true,
-        details: true,
-        imageLink: true,
-        ownerId: true,
+        id: params,
       },
     });
-    return { productData };
-  } catch (error) {
-    console.error("Error fetching profile data:", error);
+    console.log(product);
+    if (!product) {
+      return null;
+    }
+    return product;
+  } catch (error: any) {
+    throw new Error(error);
   }
-};
+}
