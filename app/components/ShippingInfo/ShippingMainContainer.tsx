@@ -40,7 +40,7 @@ const ShippingMainContainer = ({ userId }: Props) => {
   >([]);
 
   //Access cart products using context
-  // const { cartProducts } = useContext(CartContext);
+  const { cartProducts }: any = useContext(CartContext);
 
   useEffect(() => {
     const getProfileData = async () => {
@@ -108,7 +108,7 @@ const ShippingMainContainer = ({ userId }: Props) => {
               }}
             />
             {/* {cartProducts &&  />} */}
-            <Checkout products={products} />
+            <Checkout products={cartProducts} />
           </div>
         </Suspense>
       )}

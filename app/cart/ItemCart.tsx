@@ -22,7 +22,7 @@ const ItemCart: React.FC<ItemCartProps> = ({ item }) => {
 
         <div className="itemCartDetails">
           <Link className="links" href={`/product/${item.id}`}>
-            <h3>{item.name}</h3>
+            <span id="heading">{item.name}</span>
           </Link>
 
           <div className="flex-column">
@@ -38,7 +38,6 @@ const ItemCart: React.FC<ItemCartProps> = ({ item }) => {
             handleDeleteProductFromCart(item);
           }}
         />
-        <Divider />
       </div>
     </div>
   );

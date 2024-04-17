@@ -30,8 +30,7 @@ const CartClient = () => {
               sx={{ color: "black", height: 40, width: 40 }}
             />
             <p>
-              Start <Link href={"../page.tsx"}>shopping</Link> to fill your
-              basket.
+              Start <Link href={"/"}>shopping</Link> to fill your basket.
             </p>
           </div>
         </div>
@@ -52,7 +51,12 @@ const CartClient = () => {
         <div className="CartProduct">
           {cartProducts &&
             cartProducts.map((item) => {
-              return <ItemCart key={item.id} item={item} />;
+              return (
+                <>
+                  <ItemCart key={item.id} item={item} />
+                  <Divider />
+                </>
+              );
             })}
         </div>
 
