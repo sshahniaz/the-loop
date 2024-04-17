@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { useCart } from "../components/cart/CartActions";
+import { CartContext, useCart } from "../components/cart/CartActions";
 import ItemCart from "./ItemCart";
 import { useRouter } from "next/navigation";
 import "./Cart.scss";
@@ -21,17 +21,23 @@ const CartClient = () => {
   const router = useRouter();
   const { isSignedIn, user } = useUser();
 
-  const [currentUser, setCurrentUser] = useState<{ id: string; email: string; password: string | null; profileId: string | null; } | null>(null);
+  const [currentUser, setCurrentUser] = useState<{
+    id: string;
+    email: string;
+    password: string | null;
+    profileId: string | null;
+  } | null>(null);
 
   useEffect(() => {
-    if(!isSignedIn) return;
+    if (!isSignedIn) return;
     const fetchUser = async () => {
-      const userProfile = await getUser(user?.primaryEmailAddress?.emailAddress ?? '');
+      const userProfile = await getUser(
+        user?.primaryEmailAddress?.emailAddress ?? ""
+      );
       setCurrentUser(userProfile);
-    }
+    };
     fetchUser();
   }, [isSignedIn]);
-
 
   if (!cartProducts || cartProducts.length === 0) {
     return (
@@ -61,60 +67,65 @@ const CartClient = () => {
     );
   };
 
-  const cartTotalAmount = cartProducts.reduce( (acc, item) => acc + item.price, 0);
+  const calcTotal = cartProducts?.reduce(
+    (total, cartProducts) => total + cartProducts.price,
+    0
+  );
 
+  console.log(calcTotal);
   return (
     <>
       <Suspense fallback={<div>Loading...</div>}>
-           <div className="CartProductsContainer">
-        <div className="CartProduct">
-          {cartProducts &&
-            cartProducts.map((item) => {
-              return (
-                <>
-                  <ItemCart key={item.id} item={item} />
-                  <Divider />
-                </>
-              );
-            })}
-        </div>
-
-        <div className="subtotal">
-          {cartProducts &&
-            cartProducts.map((item) => {
-              return (
-                <div className="flex-row">
-                  <span>{item.name}</span>
-                  <span>£{item.price}</span>
-                </div>
-              );
-            })}
-          <Divider />
-          <div className="flex-row">
-            <span id="total">Total</span>
-            <span>£{cartTotalAmount}</span>
+        <div className="CartProductsContainer">
+          <div className="CartProduct">
+            {cartProducts &&
+              cartProducts.map((item) => {
+                return (
+                  <>
+                    <ItemCart key={item.id} item={item} />
+                    <Divider />
+                  </>
+                );
+              })}
           </div>
-          <Divider />
-          {/* <Checkout products={cartProducts} /> */}
-          <div className="buttons">
-            <button className="checkout">
-              <Suspense fallback={<div>Loading...</div>}>
 
-              <Link className="btnLinkCheckout" href={`../../shipping/${currentUser?.id}`}>
-                <span>Checkout</span>
-              </Link>
-              </Suspense>
-            </button>
+          <div className="subtotal">
+            {cartProducts &&
+              cartProducts.map((item) => {
+                return (
+                  <div className="flex-row">
+                    <span>{item.name}</span>
+                    <span>£{item.price}</span>
+                  </div>
+                );
+              })}
+            <Divider />
+            <div className="flex-row">
+              <span id="total">Total</span>
+              <span>£{calcTotal}</span>
+            </div>
+            <Divider />
+            {/* <Checkout products={cartProducts} /> */}
+            <div className="buttons">
+              <button className="checkout">
+                <Suspense fallback={<div>Loading...</div>}>
+                  <Link
+                    className="btnLinkCheckout"
+                    href={`../../shipping/${currentUser?.id}`}
+                  >
+                    <span>Checkout</span>
+                  </Link>
+                </Suspense>
+              </button>
               <Link className="btnLinkContinue" href={"../app/page.tsx"}>
-            <button className="continueShopping">
-                <span>Continue Shopping</span>
-            </button>
+                <button className="continueShopping">
+                  <span>Continue Shopping</span>
+                </button>
               </Link>
+            </div>
           </div>
         </div>
-      </div>
       </Suspense>
-     
     </>
   );
 };

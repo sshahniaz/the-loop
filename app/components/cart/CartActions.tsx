@@ -43,17 +43,13 @@ export const CartContextProvider = (props: Props) => {
     const cProducts: CartProductType[] | null = JSON.parse(cartItems);
     setCartProducts(cProducts);
 
-    setCartTotalAmount(
-      cartProducts?.reduce((acc, item) => acc + item.price, 0) || 0
-    );
-    setCartTotalQty(cartProducts?.length || 0);
+    // setCartTotalAmount(
+    //   cartProducts?.reduce((acc, item) => acc + item.price, 0) || 0
+    // );
+    // setCartTotalQty(cartProducts?.length || 0);
   }, []);
   console.log(cartProducts);
-  const calcTotal = cartProducts?.reduce(
-    (total, cartProducts) => total + cartProducts.price,
-    0
-  );
-  console.log(calcTotal);
+
   //calculate cart total
   // useEffect(() => {
   //   const getTotals = () => {
@@ -75,8 +71,8 @@ export const CartContextProvider = (props: Props) => {
   //   };
   // }, []);
 
-  console.log("qty", cartTotalQty);
-  console.log("total", cartTotalAmount);
+  // console.log("qty", cartTotalQty);
+  // console.log("total", cartTotalAmount);
 
   //add product to cart
   const handleAddProductToCart = useCallback((product: CartProductType) => {
