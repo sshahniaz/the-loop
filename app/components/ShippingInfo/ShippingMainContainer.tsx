@@ -2,9 +2,6 @@ import React, {
   useState,
   useEffect,
   Suspense,
-  useCallback,
-  useRef,
-  use,
 } from "react";
 import PersonalDetails from "@/app/components/profile/PersonalDetails";
 import AddressInfo from "@/app/components/profile/AddressInfo";
@@ -79,10 +76,6 @@ const ShippingMainContainer = ({ userId }: Props) => {
     address: userData.address,
   };
 
-  const handlePaymentSuccess = () => {
-    // Handle successful payment (e.g., redirect to order confirmation)
-    // router.push('/order-confirmation');
-  };
 
   return (
     <>
