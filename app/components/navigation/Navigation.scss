@@ -184,8 +184,18 @@ body {
   }
 
   .navigationLinkContainer {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: $secondary-color;
+    font-size: 12px;
+    margin: auto;
+    width: 100%;
+    padding-bottom: 1em;
+  }
+
+  .menuItem {
     display: none;
-    width: 50%;
   }
   .headerFlex {
     width: 100%;
