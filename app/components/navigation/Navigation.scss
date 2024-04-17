@@ -132,6 +132,18 @@ body {
     border: solid 2px #c7bfb3;
   }
 
+  .signOutButton{
+    button {
+    font-size: 18px;
+    font-family: $montserrat-font;
+    text-decoration: underline;
+    background: transparent;
+    padding: 0.3em 0.5em;
+    border: 2px solid $tertiary-color;
+    border-radius: 8px;
+    }
+  }
+
   .sellLink {
     border: solid 2px $tertiary-color;
     border-radius: 8px;
