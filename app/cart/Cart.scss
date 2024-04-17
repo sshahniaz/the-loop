@@ -1,0 +1,241 @@
+@import "../../public/styles/mixins.scss";
+
+body{
+    @include bodyStyles;
+}
+
+.CartProductsContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 90%;
+    margin: auto;
+}
+
+.cartItemMainContainer{
+   padding: 15px;
+
+}
+
+.subtotalDetails{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    
+}
+
+.subtotalDetails img{
+    height: 200px;
+    width: 200px;
+}
+.itemCartDetails{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 100%
+}
+#heading{
+    @include standardText;
+    font-size: 20px;
+    font-weight: 600;
+}
+.links{
+    text-decoration: none;
+    color: $primary-color;
+}
+.itemCartDetails span{
+    @include standardText;
+
+}
+.flex-column{
+    display: flex;
+    flex-direction: column;
+    gap:25px;
+    @include standardText;
+}
+.flex-column a{
+    text-decoration: underline;
+}
+
+.subtotal{
+    @include background;
+    width: 30%;
+    padding: 20px;
+    
+}
+
+.flex-row{
+    display: flex;
+    justify-content: space-between;
+    @include standardText;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.CartProduct{
+    width: 70%
+}
+
+//another page
+
+.checkout{
+    @include buttonStyles($primary-color,$secondary-color, 300px);
+    font-size: 20px;
+    padding: 5px;
+    margin: auto;
+    font-weight: 500;
+    height: 50px;
+}
+.btnLinkCheckout{
+    text-decoration: none;
+    color: $secondary-color;
+
+}
+.buttons{
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+    @include standardText;
+    margin-top: 20px;
+}
+.continueShopping{
+    @include buttonStyles(#fff, $primary-color,300px);
+    font-size: 20px;
+    padding: 5px;
+    margin: auto;
+    font-weight: 500;
+    height: 50px;
+  
+}
+#total{
+    font-weight: 600;
+}
+
+.btnLinkContinue{
+    text-decoration: none;
+    color: $primary-color;
+
+}
+
+
+  .emptyCartMainContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+  }
+
+  .backHome{
+    @include standardText;
+    text-decoration: none;
+    color: $primary-color;
+    width: 90%;
+    margin: auto;
+  }
+
+  .emptyCartContainer{
+    width: 80%;
+    height: auto;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    @include background;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+  }
+  .emptyCartContainer h2{
+    @include standardText;
+    font-size: 30px;
+  }
+  .emptyCartContainer p{
+    @include standardText;
+    font-size: 18px;
+  }
+  .emptyCartContainer a{
+    color: $primary-color;
+  }
+
+  .successContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+  }
+  .successDetails{
+    width: 80%;
+    height: auto;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    @include background;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+  .successDetails h2{
+    @include standardText;
+    font-size: 30px;
+  }
+  .successDetails span{
+    @include standardText;
+    font-size: 18px;
+  }
+
+  .moveToWishlist {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    a{
+        color: $primary-color;
+    }
+}
+
+.cartHeadingButton{
+display: flex;
+justify-content: space-between;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+    .CartProductsContainer {
+      flex-direction: column;
+      width: 100%;
+  
+      .subtotalDetails {
+        flex-direction: column;
+        gap: 20px;
+  
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+  
+      .flex-column,
+      .buttons {
+        gap: 10px;
+      }
+  
+      .checkout,
+      .continueShopping {
+        width: 100%; /* Make buttons full width */
+      }
+    }
+  }
+  

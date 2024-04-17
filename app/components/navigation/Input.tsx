@@ -9,11 +9,13 @@ import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlin
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import Image from "next/image";
-import { SignIn } from "@clerk/nextjs";
+import { SignIn, useUser } from "@clerk/nextjs";
+import CartCount from "@/app/cart/CartCount";
 const Input = () => {
   const [searchQuery, setSearchQuery] = useState("");
   //
   const router = useRouter();
+  const { isSignedIn } = useUser();
   //
   const onSearch = (event: React.FormEvent) => {
     event.preventDefault();
@@ -61,43 +63,13 @@ const Input = () => {
             </Link>
           </li>
           <li>
-            <Link href="#">
-              <LocalMallOutlinedIcon />
+            <Link href="/cart">
+              <CartCount />
             </Link>
           </li>
           <li>
             <Link href="/favourites">
               <FavoriteBorderOutlinedIcon />
-            </Link>
-          </li>
-
-          <li className="signinLink">
-            <Link href="/sign-in">Sign-In</Link>
-          </li>
-        </ul>
-        {/* Responsive list
-         */}
-
-        <ul className="headerIconsResponsive">
-          <li>
-            <Link href="/profile">
-              <AccountCircleOutlinedIcon />
-            </Link>
-          </li>
-          <li>
-            <Link href="#">
-              <LocalMallOutlinedIcon />
-            </Link>
-          </li>
-          <li>
-            <Link href="/favourites">
-              <FavoriteBorderOutlinedIcon />
-            </Link>
-          </li>
-          <li className="home">
-            {" "}
-            <Link href="/">
-              <HomeOutlinedIcon />
             </Link>
           </li>
           <li className="signinLink">
