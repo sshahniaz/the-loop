@@ -6,7 +6,9 @@ import { useRouter } from "next/navigation";
 import "./Cart.scss";
 import { Divider } from "@mui/material";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
-
+import React, { Suspense, useEffect, useState } from "react";
+import getUser from "../actions/GetUserAction";
+import { useUser } from "@clerk/nextjs";
 // const { isSignedIn, user } = useUser();
 
 // useEffect(() => {
@@ -17,6 +19,20 @@ import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 const CartClient = () => {
   const { cartProducts, cartTotalAmount } = useCart();
   const router = useRouter();
+  const { isSignedIn, user } = useUser();
+
+  const [currentUser, setCurrentUser] = useState<{ id: string; email: string; password: string | null; profileId: string | null; } | null>(null);
+
+  useEffect(() => {
+    if(!isSignedIn) return;
+    const fetchUser = async () => {
+      const userProfile = await getUser(user?.primaryEmailAddress?.emailAddress ?? '');
+      setCurrentUser(userProfile);
+    }
+    fetchUser();
+  }, [isSignedIn]);
+
+
   if (!cartProducts || cartProducts.length === 0) {
     return (
       <>
@@ -78,16 +94,19 @@ const CartClient = () => {
           <Divider />
           {/* <Checkout products={cartProducts} /> */}
           <div className="buttons">
-            <button className="checkout" onClick={handleCheckout}>
-              <Link className="btnLinkCheckout" href={"../shipping/page.tsx"}>
+            <button className="checkout">
+              <Suspense fallback={<div>Loading...</div>}>
+
+              <Link className="btnLinkCheckout" href={`../../shipping/${currentUser?.id}`}>
                 <span>Checkout</span>
               </Link>
+              </Suspense>
             </button>
-            <button className="continueShopping">
               <Link className="btnLinkContinue" href={"../app/page.tsx"}>
+            <button className="continueShopping">
                 <span>Continue Shopping</span>
-              </Link>
             </button>
+              </Link>
           </div>
         </div>
       </div>
