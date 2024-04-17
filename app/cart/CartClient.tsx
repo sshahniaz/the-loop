@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import "./Cart.scss";
 import { Divider } from "@mui/material";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import getUser from "../actions/GetUserAction";
 import { useUser } from "@clerk/nextjs";
 // const { isSignedIn, user } = useUser();
@@ -91,9 +91,12 @@ const CartClient = () => {
           {/* <Checkout products={cartProducts} /> */}
           <div className="buttons">
             <button className="checkout">
+              <Suspense fallback={<div>Loading...</div>}>
+
               <Link className="btnLinkCheckout" href={`../../shipping/${currentUser?.id}`}>
                 <span>Checkout</span>
               </Link>
+              </Suspense>
             </button>
               <Link className="btnLinkContinue" href={"../app/page.tsx"}>
             <button className="continueShopping">
