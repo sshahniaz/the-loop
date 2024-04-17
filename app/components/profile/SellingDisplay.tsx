@@ -13,52 +13,62 @@ type sellingModel = {
   onDelete: (productId: string) => void;
 };
 const SellingDisplay = ({ products, onDelete }: sellingModel) => {
-  const [isEdit, setIsEdit] = useState(false);
-  const [productData, setProductData] = useState(products);
-  return (
-    <>
-      <div className="listing">
-        {products.map((product, index) => (
-          <li key={product.id}>
-            <div className="listingFlex">
-              <div className="sellingImage">
-                <img src={product.imageLink[0]} alt={product.name} />
-              </div>
-              <div className="sellingDetails">
-                <p className="sellingName">{product.name} -</p>{" "}
-                <p className="sellingName">£{product.price}</p>
-                <div className="detailsFlex">
-                  <div className="listingFlex1">
-                    <p>Revise Listing</p>
-                    <button>
-                      <CreateOutlinedIcon />
-                    </button>
+    const [isEdit, setIsEdit] = useState(false);
+  const [ productData, setProductData ] = useState(products);
+  
+  const handleEdit = () => {
+    setIsEdit(!isEdit);
+  }
+    return (
+      
+        <div className="listing">
+          {products.map((product, index) => (
+            <li key={product.id}>
+              {isEdit ? (
+                <div> 
+                  <p>Edit?</p>
+                </div>
+              ) : (
+                <div className="listingFlex">
+                  <div className="sellingImage">
+                    <img src={product.imageLink[0]} alt={product.name} />
                   </div>
-                  <div className="listingFlex1">
-                    <p>Delete Listing</p>
-                    <button
-                      onClick={() => {
-                        if (
-                          window.confirm(
-                            `Are you sure you want to delete ${product.name}?`
-                          )
-                        ) {
-                          onDelete(product.id);
-                        }
-                      }}
-                    >
-                      <DeleteOutlineIcon />
-                    </button>
+                  <div className="sellingDetails">
+                    <p className="sellingName">{product.name} -</p>{" "}
+                    <p className="sellingName">£{product.price}</p>
+                    <div className="detailsFlex">
+                      <div className="listingFlex1">
+                        <p>Revise Listing</p>
+                        <button onClick={handleEdit}>
+                          <CreateOutlinedIcon />
+                        </button>
+                      </div>
+                      <div className="listingFlex1">
+                        <p>Delete Listing</p>
+                        <button
+                          onClick={() => {
+                            if (
+                              window.confirm(
+                                `Are you sure you want to delete ${product.name}?`
+                              )
+                            ) {
+                              onDelete(product.id);
+                            }
+                          }}
+                        >
+                          <DeleteOutlineIcon />
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            <hr />
-          </li>
-        ))}
-      </div>
-    </>
-  );
-};
+              )}
+            </li>
+          ))}
+        </div>
+      
+    );
+  };
+                  
 
 export default SellingDisplay;
