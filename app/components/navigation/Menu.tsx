@@ -60,9 +60,7 @@ const Menu = ({ productTypes }: ProductTypesModel) => {
           <li className="navigationLink">
             <Link href="#">Contact Us </Link>
           </li>
-          <li className="signinLink">
-            <Link href="/sign-in">Sign-In</Link>
-          </li>
+          
           {/* </div> */}
         </ul>
       </nav>
