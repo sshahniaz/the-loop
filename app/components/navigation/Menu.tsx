@@ -25,7 +25,7 @@ type ProductTypesModel = {
 const Menu = ({ productTypes }: ProductTypesModel) => {
   const [showNav, setShowNav] = useState(false);
   function handleNav() {
-    setShowNav(true);
+    setShowNav(!showNav);
   }
   return (
     <>
