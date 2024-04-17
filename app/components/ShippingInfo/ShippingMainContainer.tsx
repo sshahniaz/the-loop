@@ -1,10 +1,8 @@
+"use client"
 import React, {
   useState,
   useEffect,
   Suspense,
-  useCallback,
-  useRef,
-  use,
   useContext,
 } from "react";
 import PersonalDetails from "@/app/components/profile/PersonalDetails";
