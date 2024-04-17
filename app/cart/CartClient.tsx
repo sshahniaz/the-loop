@@ -1,13 +1,11 @@
 "use client";
 import Link from "next/link";
 import { useCart } from "../components/cart/CartActions";
-import ShoppingBasketOutlinedIcon from "@mui/icons-material/ShoppingBasketOutlined";
-import { useContext, useEffect, useState } from "react";
-import { CartContext } from "../components/cart/CartActions";
-import { CartContextType } from "../components/cart/CartActions";
 import ItemCart from "./ItemCart";
 import { useRouter } from "next/navigation";
 import "./Cart.scss";
+import { Divider } from "@mui/material";
+import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 
 // const { isSignedIn, user } = useUser();
 
@@ -22,14 +20,20 @@ const CartClient = () => {
   if (!cartProducts || cartProducts.length === 0) {
     return (
       <>
-        <Link href={"../page.tsx"}>Back to home</Link>
-        <div className="emptCartContainer">
-          <h2>Your bascket is empty!</h2>
-          <ShoppingBasketOutlinedIcon sx={{ color: "black" }} />
-          <p>
-            Start <Link href={"../page.tsx"}>shopping</Link> to fill your
-            basket.
-          </p>
+        <div className="emptyCartMainContainer">
+          <Link className="backHome" href={"../page.tsx"}>
+            <span>Back To Home</span>
+          </Link>
+          <div className="emptyCartContainer">
+            <h2>Your basket is empty!</h2>
+            <ShoppingBagOutlinedIcon
+              sx={{ color: "black", height: 40, width: 40 }}
+            />
+            <p>
+              Start <Link href={"../page.tsx"}>shopping</Link> to fill your
+              basket.
+            </p>
+          </div>
         </div>
       </>
     );
@@ -56,23 +60,31 @@ const CartClient = () => {
           {cartProducts &&
             cartProducts.map((item) => {
               return (
-                <div>
+                <div className="flex-row">
                   <span>{item.name}</span>
                   <span>£{item.price}</span>
                 </div>
               );
             })}
-          <div className="subtotalDetails">
-            <span>Total</span>
+          <Divider />
+          <div className="flex-row">
+            <span id="total">Total</span>
             <span>£{cartTotalAmount}</span>
           </div>
+          <Divider />
           {/* <Checkout products={cartProducts} /> */}
-          <button onClick={handleCheckout}>
-            <Link href={"../shipping/page.tsx"}>Checkout</Link>
-          </button>
-          <button>
-            <Link href={"../app/page.tsx"}>Continue Shopping</Link>
-          </button>
+          <div className="buttons">
+            <button className="checkout" onClick={handleCheckout}>
+              <Link className="btnLinkCheckout" href={"../shipping/page.tsx"}>
+                <span>Checkout</span>
+              </Link>
+            </button>
+            <button className="continueShopping">
+              <Link className="btnLinkContinue" href={"../app/page.tsx"}>
+                <span>Continue Shopping</span>
+              </Link>
+            </button>
+          </div>
         </div>
       </div>
     </>

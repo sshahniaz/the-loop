@@ -18,7 +18,6 @@ const Page = async ({ params }: { params: IParams }) => {
     <>
       <div>
         <ProductDetails product={product} />
-        <ProductCard product={product} />
       </div>
     </>
   );
