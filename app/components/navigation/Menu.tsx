@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import MenuItem from "./MenuItem";
 import Link from "next/link";
 import { NavigationAction } from "@/app/actions/NavigationAction";
@@ -43,7 +43,10 @@ const Menu = ({ productTypes }: ProductTypesModel) => {
               <div className="menuLevel2">
                 <ul className="menuLv2">
                   <li>
+                    
+
                     <MenuItem catagory={product.catagory} />
+                    
                   </li>
                 </ul>
               </div>
@@ -60,7 +63,7 @@ const Menu = ({ productTypes }: ProductTypesModel) => {
           <li className="navigationLink">
             <Link href="#">Contact Us </Link>
           </li>
-
+          
           {/* </div> */}
         </ul>
       </nav>
