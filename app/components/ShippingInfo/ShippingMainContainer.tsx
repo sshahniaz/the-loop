@@ -1,12 +1,5 @@
-import React, {
-  useState,
-  useEffect,
-  Suspense,
-  useCallback,
-  useRef,
-  use,
-  useContext,
-} from "react";
+"use client";
+import React, { useState, useEffect, Suspense, useContext } from "react";
 import PersonalDetails from "@/app/components/profile/PersonalDetails";
 import AddressInfo from "@/app/components/profile/AddressInfo";
 import BillingAddress from "@/app/components/profile/BillingAddress";
