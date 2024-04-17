@@ -7,21 +7,21 @@ body{
 .CartProductsContainer{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    width: 80vw;
+    justify-content: space-evenly;
+    width: 90%;
     margin: auto;
 }
 
 .cartItemMainContainer{
-   padding: 20px;
+   padding: 15px;
 
 }
 
 .subtotalDetails{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    gap: 50px;
+    justify-content: space-evenly;
+    
 }
 
 .subtotalDetails img{
@@ -31,7 +31,8 @@ body{
 .itemCartDetails{
     display: flex;
     flex-direction: column;
-    gap: 10px
+    justify-content: space-evenly;
+    width: 100%
 }
 #heading{
     @include standardText;
@@ -49,7 +50,7 @@ body{
 .flex-column{
     display: flex;
     flex-direction: column;
-    gap:50px;
+    gap:25px;
     @include standardText;
 }
 .flex-column a{
@@ -70,6 +71,12 @@ body{
     margin-top: 40px;
     margin-bottom: 40px;
 }
+
+.CartProduct{
+    width: 70%
+}
+
+//another page
 
 .checkout{
     @include buttonStyles($primary-color,$secondary-color, 300px);
@@ -178,7 +185,22 @@ body{
     font-size: 18px;
   }
 
-  
+  .moveToWishlist {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    a{
+        color: $primary-color;
+    }
+}
+
+.cartHeadingButton{
+display: flex;
+justify-content: space-between;
+}
+
+
+
 
 
 

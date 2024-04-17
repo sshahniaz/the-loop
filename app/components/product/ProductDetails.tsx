@@ -55,16 +55,22 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
   }, [cartProducts]);
 
   //focused image
-  // const handleFocusedImage=useCallback((value: CartProductType)=>{
-  //   setCartProduct((prev)=>{
-  //     return {...prev, imageLink: value};
-  //   })
-  // })
-
+  const [imagePath, setImagePath] = useState(product.imageLink[0]);
+  const handleImagePath = () => {
+    if (imagePath === product.imageLink[0]) {
+      setImagePath(product.imageLink[1]);
+    } else {
+      setImagePath(product.imageLink[0]);
+    }
+  };
   return (
     <div className="productContainer">
       <div className="imagesContainer">
-        <img src={product.imageLink[0]}></img>
+        <div className="thumbnails">
+          <img src={product.imageLink[0]} alt={product.name} />
+          <img src={product.imageLink[1]} alt={product.name} />
+        </div>
+        <img onClick={handleImagePath} src={imagePath}></img>
       </div>
       <div className="detailsContainer">
         <h1>{product.name}</h1>

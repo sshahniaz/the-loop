@@ -21,23 +21,25 @@ const ItemCart: React.FC<ItemCartProps> = ({ item }) => {
         </Link>
 
         <div className="itemCartDetails">
-          <Link className="links" href={`/product/${item.id}`}>
-            <span id="heading">{item.name}</span>
-          </Link>
+          <div className="cartHeadingButton">
+            <Link className="links" href={`/product/${item.id}`}>
+              <span id="heading">{item.name}</span>
+            </Link>
+            <DeleteOutlineIcon
+              onClick={() => {
+                handleDeleteProductFromCart(item);
+              }}
+            />
+          </div>
 
           <div className="flex-column">
             <span>£{item.price}</span>
-            {/* <AddToWishList/> */}
-            <a className="links" href="">
-              Move To Whishlist
-            </a>
+            <div className="moveToWishlist">
+              <Link href="../profile">Move to wishlist</Link>
+              <AddToWishList productId={item.id} />
+            </div>
           </div>
         </div>
-        <DeleteOutlineIcon
-          onClick={() => {
-            handleDeleteProductFromCart(item);
-          }}
-        />
       </div>
     </div>
   );
