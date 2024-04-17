@@ -6,13 +6,15 @@ import React, {
   useCallback,
   useRef,
   use,
+  useContext,
 } from "react";
 import PersonalDetails from "@/app/components/profile/PersonalDetails";
 import AddressInfo from "@/app/components/profile/AddressInfo";
 import BillingAddress from "@/app/components/profile/BillingAddress";
 import { fetchProfileData } from "@/app/actions/ShippingPageActions";
-
+import { CartContext, CartContextType } from "../cart/CartActions";
 import Checkout from "./Checkout";
+import { CartProductType } from "../product/ProductDetails";
 
 interface ProfileData {
   id: string;
@@ -36,6 +38,9 @@ const ShippingMainContainer = ({ userId }: Props) => {
   const [products, setProducts] = useState<
     Array<{ id: string; name: string; price: number }>
   >([]);
+
+  //Access cart products using context
+  // const { cartProducts } = useContext(CartContext);
 
   useEffect(() => {
     const getProfileData = async () => {
@@ -102,7 +107,7 @@ const ShippingMainContainer = ({ userId }: Props) => {
                 address: billingAddressDataFiltered.address || null,
               }}
             />
-
+            {/* {cartProducts &&  />} */}
             <Checkout products={products} />
           </div>
         </Suspense>

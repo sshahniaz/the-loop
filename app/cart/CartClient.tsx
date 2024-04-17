@@ -2,15 +2,23 @@
 import Link from "next/link";
 import { useCart } from "../components/cart/CartActions";
 import ShoppingBasketOutlinedIcon from "@mui/icons-material/ShoppingBasketOutlined";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../components/cart/CartActions";
 import { CartContextType } from "../components/cart/CartActions";
 import ItemCart from "./ItemCart";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
+import "./Cart.scss";
+
+// const { isSignedIn, user } = useUser();
+
+// useEffect(() => {
+//   if (isSignedIn && user.primaryEmailAddress) {
+//   }
+// }, [isSignedIn, user]);
 
 const CartClient = () => {
-  const { cartProducts } = useCart();
-
+  const { cartProducts, cartTotalAmount } = useCart();
+  const router = useRouter();
   if (!cartProducts || cartProducts.length === 0) {
     return (
       <>
@@ -27,32 +35,43 @@ const CartClient = () => {
     );
   }
 
+  const handleCheckout = () => {
+    const { cartProducts } = useCart(); //getting the cart products from context
+    router.push(
+      `../shipping/page.tsx?cartProducts=${JSON.stringify(cartProducts)}`
+    );
+  };
+
   return (
     <>
       <div className="CartProductsContainer">
         <div className="CartProduct">
           {cartProducts &&
             cartProducts.map((item) => {
-              return <div key={item.id}>{item.name}</div>;
+              return <ItemCart key={item.id} item={item} />;
             })}
         </div>
-        <div>
-          <button onClick={() => {}}>Clear Cart</button>{" "}
-        </div>
+
         <div className="subtotal">
           {cartProducts &&
             cartProducts.map((item) => {
-              return <ItemCart key={item.id} item={item} />;
+              return (
+                <div>
+                  <span>{item.name}</span>
+                  <span>£{item.price}</span>
+                </div>
+              );
             })}
           <div className="subtotalDetails">
             <span>Total</span>
-            <span></span>
+            <span>£{cartTotalAmount}</span>
           </div>
-          <button>
-            <Link href={"../shipping/page.tsx"}> Checkout</Link>
+          {/* <Checkout products={cartProducts} /> */}
+          <button onClick={handleCheckout}>
+            <Link href={"../shipping/page.tsx"}>Checkout</Link>
           </button>
           <button>
-            <Link href={"../page.tsx"}>Continue Shopping</Link>
+            <Link href={"../app/page.tsx"}>Continue Shopping</Link>
           </button>
         </div>
       </div>

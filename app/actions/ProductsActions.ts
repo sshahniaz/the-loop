@@ -30,3 +30,30 @@ export const fetchProducts = async (ptype: string) => {
   })
   return products
 }
+
+// export interface IProductsParams{
+//   category?:string | null
+// }
+
+// export default async function getProducts(params:IProductsParams) {
+//   try{
+//     const {category}=params;
+//       const decodedPtype = decodeURIComponent(params);
+
+
+//     let query: any={};
+//     if(category){
+//       query.category=category;
+//     }
+
+//     const products=await prisma.product.findMany({
+//       where:{
+//         ...query,
+//         OR:[
+//           category: ca
+//         ]
+//       }
+//     })
+
+//   }catch{}
+// }

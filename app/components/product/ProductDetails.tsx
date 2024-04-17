@@ -4,9 +4,10 @@ import AddToWishList from "../wishlist/AddToWishList";
 import "../../product/[producId]/Product.scss";
 import { AccordionDetails, AccordionSummary } from "@mui/material";
 import Accordion from "@mui/material/Accordion";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import AddToBasket from "./AddToBasket";
 import { useCart } from "../cart/CartActions";
+import ProductImages from "./ProductImages";
 
 interface ProductDetailsProps {
   product: any;
@@ -53,9 +54,18 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
     }
   }, [cartProducts]);
 
+  //focused image
+  // const handleFocusedImage=useCallback((value: CartProductType)=>{
+  //   setCartProduct((prev)=>{
+  //     return {...prev, imageLink: value};
+  //   })
+  // })
+
   return (
     <div className="productContainer">
-      <div className="imagesContainer">img</div>
+      <div className="imagesContainer">
+        <img src={product.imageLink[0]}></img>
+      </div>
       <div className="detailsContainer">
         <h1>{product.name}</h1>
         <span>£{product.price}</span>

@@ -5,9 +5,7 @@ const Cart = () => {
   return (
     <>
       <div className="productsContainer">
-        <Container>
-          <CartClient />
-        </Container>
+        <CartClient />
       </div>
     </>
   );

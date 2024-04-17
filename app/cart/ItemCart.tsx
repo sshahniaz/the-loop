@@ -6,7 +6,7 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import Link from "next/link";
 import { Divider } from "@mui/material";
 import { CartProductType } from "../components/product/ProductDetails";
-
+import "./Cart.scss";
 interface ItemCartProps {
   item: CartProductType;
 }
@@ -17,14 +17,21 @@ const ItemCart: React.FC<ItemCartProps> = ({ item }) => {
     <div className="cartItemMainContainer">
       <div className="subtotalDetails">
         <Link href={`/product/${item.id}`}>
-          {" "}
           <img src={item.imageLink[0]} alt="placeholder" />
         </Link>
 
         <div className="itemCartDetails">
-          <Link href={`/product/${item.id}`}>{item.name}</Link>
-          <span>£{item.price}</span>
-          {/* <AddToWishList/> */}
+          <Link className="links" href={`/product/${item.id}`}>
+            <h3>{item.name}</h3>
+          </Link>
+
+          <div className="flex-column">
+            <span>£{item.price}</span>
+            {/* <AddToWishList/> */}
+            <a className="links" href="">
+              Move To Whishlist
+            </a>
+          </div>
         </div>
         <DeleteOutlineIcon
           onClick={() => {

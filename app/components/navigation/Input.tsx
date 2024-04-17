@@ -9,6 +9,7 @@ import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlin
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import Image from "next/image";
 import { SignIn } from "@clerk/nextjs";
+import CartCount from "@/app/cart/CartCount";
 const Input = () => {
   const [searchQuery, setSearchQuery] = useState("");
   //
@@ -60,8 +61,8 @@ const Input = () => {
             </Link>
           </li>
           <li>
-            <Link href="#">
-              <LocalMallOutlinedIcon />
+            <Link href="/cart">
+              <CartCount />
             </Link>
           </li>
           <li>
@@ -70,9 +71,7 @@ const Input = () => {
             </Link>
           </li>
           <li className="signinLink">
-            <Link href="/sign-in">
-              Sign-In
-            </Link>
+            <Link href="/sign-in">Sign-In</Link>
           </li>
         </ul>
       </div>

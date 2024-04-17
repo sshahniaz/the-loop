@@ -1,0 +1,54 @@
+@import "../../public/styles/mixins.scss";
+
+body{
+    @include bodyStyles;
+}
+
+.CartProductsContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 80vw;
+    margin: auto;
+}
+
+// .cartItemMainContainer{
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: space-around;
+//     width:50%;
+// }
+
+.subtotalDetails{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.subtotalDetails img{
+    height: 200px;
+    width: 300px;
+}
+.itemCartDetails h3{
+    @include standardText;
+    font-size: 20px;
+    font-weight: 600;
+}
+.links{
+    text-decoration: none;
+    color: $primary-color;
+}
+.itemCartDetails span{
+    @include standardText;
+
+}
+.flex-column{
+    display: flex;
+    flex-direction: column;
+    gap:50px;
+    @include standardText;
+}
+.flex-column a{
+    text-decoration: underline;
+}
