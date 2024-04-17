@@ -21,6 +21,7 @@ export type CartProductType = {
   material: string;
   condition: string;
   price: number;
+
   imageLink: string[];
 };
 
@@ -33,7 +34,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
     material: product.material,
     condition: product.condition,
     price: product.price,
-    imageLink: product.imageLink[0],
+    imageLink: product.imageLink,
   });
 
   const { handleAddProductToCart, cartProducts } = useCart();
@@ -64,7 +65,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
   return (
     <div className="productContainer">
       <div className="imagesContainer">
-        <img src={product.imageLink[0]}></img>
+        <img src={product.imageLink}></img>
       </div>
       <div className="detailsContainer">
         <h1>{product.name}</h1>

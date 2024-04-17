@@ -24,15 +24,7 @@ export default async function getProductById(params: IParams) {
         type: true,
         details: true,
         imageLink: true,
-        owner: {
-          select: {
-            profile: {
-              select: {
-                firstName: true,
-              },
-            },
-          },
-        },
+        ownerId: true,
       },
     });
 

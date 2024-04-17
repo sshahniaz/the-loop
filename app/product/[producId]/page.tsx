@@ -7,17 +7,25 @@ interface IParams {
   productId: string;
 }
 
-const Page = async ({ params }: { params: IParams }) => {
-  const product = await getProductById(params);
-
+const Page = ({ params }: { params: IParams }) => {
+  const fetchProducts = async () => {
+    try {
+      const product = await getProductById(params);
+      return product;
+    } catch (error) {
+      console.log(error);
+    }
+  };
   console.log("params", params);
 
-  if (!product) return <p>Product doesn't exist</p>;
+  const returnedProducts = fetchProducts();
+  if (!returnedProducts) return <p>Product doesn't exist</p>;
 
   return (
     <>
       <div>
-        <ProductDetails product={product} />
+        <ProductDetails product={returnedProducts} />
+        <ProductCard product={returnedProducts} />
       </div>
     </>
   );
