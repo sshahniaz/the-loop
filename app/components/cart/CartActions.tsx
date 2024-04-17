@@ -42,28 +42,31 @@ export const CartContextProvider = (props: Props) => {
     const cartItems: any = localStorage.getItem("loopCartItems");
     const cProducts: CartProductType[] | null = JSON.parse(cartItems);
     setCartProducts(cProducts);
+    
+    setCartTotalAmount(cartProducts?.reduce((acc, item) => acc + item.price, 0) || 0);
+    setCartTotalQty(cartProducts?.length || 0);
   }, []);
 
   //calculate cart total
-  useEffect(() => {
-    const getTotals = () => {
-      if (cartProducts) {
-        const { total, qty } = cartProducts?.reduce(
-          (acc, item) => {
-            (acc.total += item.price), acc.qty++;
-            return acc;
-          },
-          {
-            total: 0,
-            qty: 0,
-          }
-        );
-        setCartTotalQty(qty);
-        setCartTotalAmount(total);
-      }
-      getTotals;
-    };
-  }, [cartProducts]);
+  // useEffect(() => {
+  //   const getTotals = () => {
+  //     if (cartProducts) {
+  //       const { total, qty } = cartProducts?.reduce(
+  //         (acc, item) => {
+  //           (acc.total += item.price), acc.qty++;
+  //           return acc;
+  //         },
+  //         {
+  //           total: 0,
+  //           qty: 0,
+  //         }
+  //       );
+  //       setCartTotalQty(qty);
+  //       setCartTotalAmount(total);
+  //     }
+  //     getTotals;
+  //   };
+  // }, []);
 
   console.log("qty", cartTotalQty);
   console.log("total", cartTotalAmount);
