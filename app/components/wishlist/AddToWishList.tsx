@@ -8,7 +8,13 @@ import {
 interface AddToWishlistProps {
   productId: string;
   userId?: string; // Optional user ID
+
   onUpdateWishlist?: () => void; // Optional callback to update wishlist state in parent component
+}
+interface FormProps {
+  user: {
+    id: string;
+  };
 }
 
 const AddToWishList = ({

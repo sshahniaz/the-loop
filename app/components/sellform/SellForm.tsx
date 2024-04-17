@@ -45,28 +45,6 @@ interface FormProps {
 }
 
 export default function Form({ user }: FormProps) {
-  // const { isSignedIn, user } = useUser();
-
-  // const [userInfo, setUserInfo] = useState<User | null>(null);
-
-  // useEffect(() => {
-  //   if (isSignedIn && user.primaryEmailAddress) {
-  //     const checkUserId = async () => {
-  //       try {
-  //         const referenceUser = await getUser(
-  //           user.primaryEmailAddress?.emailAddress ?? ""
-  //         );
-  //         if (referenceUser) {
-  //           setUserInfo(referenceUser);
-  //         }
-  //       } catch (error) {
-  //         console.log(error);
-  //       }
-  //     };
-  //     checkUserId();
-  //   }
-  // });
-
   const ref = useRef<HTMLFormElement>(null);
   const clientAction = async (formData: FormData) => {
     const newListItem = {

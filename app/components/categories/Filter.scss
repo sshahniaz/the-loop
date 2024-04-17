@@ -1,0 +1,25 @@
+@import "/public/styles/mixins.scss";
+
+.filterContainer {
+  display: flex;
+  flex-direction: column;
+  font-family: $montserrat-font;
+  padding: 1em;
+  width: 15%;
+  line-height: 30px;
+  margin: 1em;
+  h3 {
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  .test {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    margin: 0.5em;
+    background-color: $secondary-color;
+    height: 200px;
+    overflow: scroll;
+  }
+}

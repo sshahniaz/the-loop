@@ -37,8 +37,7 @@ const SellersFormPage = () => {
   // console.log(userInfo);
   return (
     <main className="sellFormMain">
-      {/* <h1>{userInfo?.id}</h1> */}
-      {/* <h1 className="sellFormTitle"> Sell an Item</h1> */}
+      <h1 className="sellFormTitle"> Sell an Item</h1>
       <Form user={{ id: userInfo?.id ?? "" }} />
     </main>
   );
