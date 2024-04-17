@@ -13,22 +13,22 @@ const Footer = () => {
           <h4>Categories</h4>
           <ul>
             <li>
-              <Link href="#">Furniture</Link>
+              <Link href="categories/Furniture">Furniture</Link>
             </li>
             <li>
-              <Link href="#">Lighting</Link>
+              <Link href="categories/Lighting">Lighting</Link>
             </li>
             <li>
-              <Link href="#">Home Decor</Link>
+              <Link href="categories/Home Decor">Home Decor</Link>
             </li>
             <li>
-              <Link href="#">Art</Link>
+              <Link href="categories/Art">Art</Link>
             </li>
             <li>
-              <Link href="#">Kitchenware</Link>
+              <Link href="categories/Furniture">Kitchenware</Link>
             </li>
             <li>
-              <Link href="#">Sale</Link>
+              <Link href="categories/Furniture">Sale</Link>
             </li>
           </ul>
         </div>

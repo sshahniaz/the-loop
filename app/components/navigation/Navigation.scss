@@ -13,9 +13,17 @@
   background: transparent;
   border: none;
 }
+.headerIconsResponsive {
+  display: none;
+}
 
 .navigationLinkContainer {
   display: flex;
+  flex-direction: row;
+}
+nav {
+  display: flex;
+  flex-direction: row;
   justify-content: space-evenly;
   font-family: $montserrat-font;
   font-size: 18px;
@@ -164,26 +172,67 @@ body {
 // }
 @media (max-width: 799px) {
   .navigationContainer {
+    margin-top: 1.5em;
     width: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
+    ul {
+      margin: auto;
+      padding: 0;
+      list-style: none;
+    }
+    .searchForm {
+      margin: 1em 0;
+      margin-left: 2.2em;
+      width: 50%;
+    }
+  }
+  .navigationLinkContainer {
+    flex-direction: column;
   }
 
-  .navigationLinkContainer {
+  nav {
+    align-items: center;
+    justify-content: space-evenly;
+    visibility: hidden;
+    opacity: 0;
+    font-size: 12px;
+    margin: auto;
+    padding-bottom: 1em;
+    width: 100%;
+    height: 10px;
+  }
+
+  .showNavbar {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    visibility: visible;
+    opacity: 1;
+    font-size: 12px;
+    margin: auto;
+    padding-bottom: 1em;
+    background-color: $secondary-color;
+    width: 100%;
+    height: fit-content;
+  }
+
+  .menuItem {
     display: none;
   }
   .headerFlex {
     width: 100%;
-    margin-left: 3em;
-    flex-direction: row-reverse;
+    margin: 0;
+    flex-direction: column-reverse;
     align-items: start;
-    padding: 1em;
+    padding: 0;
     img {
       display: none;
     }
-    .searchForm {
-      margin: 1em;
-      margin-left: 2.5em;
+
+    .headerIcons {
+      display: none;
     }
   }
 
@@ -193,10 +242,23 @@ body {
     align-content: center;
     gap: 0.5em;
     padding: 2em;
+    position: absolute;
+    top: 15px;
+    right: 20px;
     .hamburgerLine {
       width: 40px;
       height: 5px;
       background-color: $tertiary-color;
+    }
+  }
+  .headerIconsResponsive {
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    justify-content: space-evenly;
+    a {
+      text-decoration: none;
+      color: $tertiary-color;
     }
   }
 }

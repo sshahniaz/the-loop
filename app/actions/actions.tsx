@@ -18,8 +18,8 @@ interface ProductData {
   material: string;
   ownerId: string;
 }
-
-export async function listItem(formData: FormData, userId?: string) {
+// export async function listItem(formData: FormData, userId: string)
+export async function listItem(formData: FormData, userId: string) {
   const name = formData.get("name");
   const details = formData.get("details");
   const condition = formData.get("condition");
@@ -55,7 +55,7 @@ export async function listItem(formData: FormData, userId?: string) {
   const fileName = `${kebabCase(name as string)}.${extension}`;
   const filePath = join(uploadDir, fileName);
 
-  await writeFile(kebabCase(filePath), buffer);
+  await writeFile(filePath, buffer);
   const imageLinkPath = `/assets/stock-photos/${category}/${subCategory}/${fileName}`;
 
   const product = await prisma.product.create({
@@ -72,7 +72,7 @@ export async function listItem(formData: FormData, userId?: string) {
       subCatagory: subCategory as string,
       sale: 0,
       condition: condition as string,
-      ownerId: userId as string,
+      ownerId: userId,
     },
   });
   // console.log(imageLinkPath);

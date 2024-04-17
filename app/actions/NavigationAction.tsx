@@ -9,5 +9,4 @@ export async function NavigationAction() {
     },
   });
   return navType;
-  //   return { productTypes: navType };
 }

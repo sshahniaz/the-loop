@@ -4,6 +4,8 @@ import { Inter } from "next/font/google";
 import Navigation from "./components/navigation/Navigation";
 import Footer from "./components/footer/Footer";
 import { Toaster } from "react-hot-toast";
+import CartProvider from "./components/cart/CartProvider";
+import { styled } from "@mui/material";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,14 +21,16 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="en">
-        <body className={inter.className}>
-          {/* <Navigation /> */}
-          {children}
-          <Toaster position="top-right" />
-          <Footer />
-        </body>
-      </html>
+      <CartProvider>
+        <html lang="en">
+          <body className={inter.className}>
+            <Navigation />
+            {children}
+            <Toaster position="top-right" />
+            <Footer />
+          </body>
+        </html>
+      </CartProvider>
     </ClerkProvider>
   );
 }
