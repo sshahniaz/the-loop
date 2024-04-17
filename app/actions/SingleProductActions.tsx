@@ -6,28 +6,16 @@ interface IParams {
   productId: string;
 }
 
-export default async function getProductById(params: IParams) {
+export default async function getProductById(params: string) {
   try {
-    const { productId } = params;
-
+    // const { productId } = params;
+    console.log(params);
     const product = await prisma.product.findUnique({
       where: {
-        id: productId,
-      },
-      select: {
-        id: true,
-        name: true,
-        price: true,
-        condition: true,
-        material: true,
-        colour: true,
-        type: true,
-        details: true,
-        imageLink: true,
-        ownerId: true,
+        id: params,
       },
     });
-
+    console.log(product);
     if (!product) {
       return null;
     }
@@ -36,3 +24,16 @@ export default async function getProductById(params: IParams) {
     throw new Error(error);
   }
 }
+// ,
+//       select: {
+//         id: true,
+//         name: true,
+//         price: true,
+//         condition: true,
+//         material: true,
+//         colour: true,
+//         type: true,
+//         details: true,
+//         imageLink: true,
+//         ownerId: true,
+//       },
