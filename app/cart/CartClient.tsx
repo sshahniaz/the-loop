@@ -65,7 +65,8 @@ const CartClient = () => {
 
   return (
     <>
-      <div className="CartProductsContainer">
+      <Suspense fallback={<div>Loading...</div>}>
+           <div className="CartProductsContainer">
         <div className="CartProduct">
           {cartProducts &&
             cartProducts.map((item) => {
@@ -112,6 +113,8 @@ const CartClient = () => {
           </div>
         </div>
       </div>
+      </Suspense>
+     
     </>
   );
 };
