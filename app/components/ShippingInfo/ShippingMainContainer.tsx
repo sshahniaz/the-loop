@@ -40,17 +40,16 @@ const ShippingMainContainer = ({ userId }: Props) => {
   >([]);
 
   //Access cart products using context
-  // const { cartProducts } = useContext(CartContext);
-
+  const { cartProducts } = useContext(CartContext) || {}; // Add null check
+  console.log("cartprod:",cartProducts);
   useEffect(() => {
     const getProfileData = async () => {
       const { profileData, email }: any = await fetchProfileData(userId);
       setProfileData(profileData);
       setEmail(email);
-      setProducts([
-        { id: "1", name: "IPhonePro", price: 100 },
-        { id: "2", name: "Pixel", price: 200 },
-      ]);
+      if (cartProducts) {
+        setProducts(cartProducts);
+      }
     };
     getProfileData();
   }, [userId]);
@@ -89,6 +88,8 @@ const ShippingMainContainer = ({ userId }: Props) => {
     // router.push('/order-confirmation');
   };
 
+  console.log("basket:",products);
+
   return (
     <>
       {profileData != null && (
@@ -108,7 +109,7 @@ const ShippingMainContainer = ({ userId }: Props) => {
               }}
             />
             {/* {cartProducts &&  />} */}
-            <Checkout products={products} />
+            <Checkout products={cartProducts || []} />
           </div>
         </Suspense>
       )}
