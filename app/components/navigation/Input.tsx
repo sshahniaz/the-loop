@@ -10,6 +10,7 @@ import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import Image from "next/image";
 import { SignIn, useUser } from "@clerk/nextjs";
 import { SignOutButton } from "@clerk/nextjs";
+import { UserButton } from "@clerk/nextjs";
 const Input = () => {
   const [searchQuery, setSearchQuery] = useState("");
   //
@@ -71,9 +72,12 @@ const Input = () => {
               <FavoriteBorderOutlinedIcon />
             </Link>
           </li>
-          {isSignedIn ? <li><SignOutButton>
-        <button className="signinLink">Sign out</button>
-      </SignOutButton></li> :
+          {isSignedIn ? <li>
+            {/* <SignOutButton>
+              <button className="signinLink">Sign out</button>
+            </SignOutButton> */}
+            <UserButton />
+      </li> :
           <li className="signinLink">
             <Link href="/sign-in">
               Sign-In

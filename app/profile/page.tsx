@@ -6,9 +6,11 @@ import PersonalDetails from "../components/profile/PersonalDetails";
 import Link from "next/link";
 import Wishlist from "../components/wishlist/Wishlist";
 import { SignOutButton, useUser } from "@clerk/nextjs";
+import { UserButton } from "@clerk/nextjs"
 import { checkUser,createNewUser } from "../actions/ProfilePageActions";
 import AddressInfo from "../components/profile/AddressInfo";
 import BillingAddress from "../components/profile/BillingAddress";
+import { User } from "@clerk/nextjs/server";
 interface ProductApiResponse {
   products: Product[];
 }
@@ -86,6 +88,9 @@ export default function ProfilePage() {
 
   return (
     <>
+    {/* <div className="topNavbar">
+      <UserButton />
+    </div> */}
       {loading ? ( 
         <div>Loading...</div>
       ) : (
@@ -123,7 +128,7 @@ export default function ProfilePage() {
             <li key={product.}></li>
         ))} */}
       </ul>
-      <SignOutButton />
+      {/* <SignOutButton /> */}
     </>
   );
 }
