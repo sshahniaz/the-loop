@@ -12,6 +12,8 @@ import { fetchProfileData } from "@/app/actions/ShippingPageActions";
 import { CartContext, CartContextType } from "../cart/CartActions";
 import Checkout from "./Checkout";
 import { CartProductType } from "../product/ProductDetails";
+import "./ShippingDetails.scss";
+
 
 interface ProfileData {
   id: string;
@@ -83,29 +85,31 @@ const ShippingMainContainer = ({ userId }: Props) => {
   console.log("basket:", products);
 
   return (
-    <>
+     <>
       {profileData != null && (
         <Suspense fallback={<div>Loading...</div>}>
-          <div>
-            <PersonalDetails details={userDataFiltered} />
-            <AddressInfo
-              addressData={{
-                ...userAddressDataFiltered,
-                address: userAddressDataFiltered.address || null,
-              }}
-            />
-            <BillingAddress
-              addressData={{
-                ...billingAddressDataFiltered,
-                address: billingAddressDataFiltered.address || null,
-              }}
-            />
-            {/* {cartProducts &&  />} */}
+          <div className="shippingDetailsPage">
+            <div className="shippingCardsFlex">
+              <PersonalDetails details={userDataFiltered} />
+              <AddressInfo
+                addressData={{
+                  ...userAddressDataFiltered,
+                  address: userAddressDataFiltered.address || null,
+                }}
+              />
+              <BillingAddress
+                addressData={{
+                  ...billingAddressDataFiltered,
+                  address: billingAddressDataFiltered.address || null,
+                }}
+              />
+            </div>
             <Checkout products={cartProducts || []} />
           </div>
         </Suspense>
       )}
     </>
+
   );
 };
 
