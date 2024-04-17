@@ -42,6 +42,11 @@ export const CartContextProvider = (props: Props) => {
     const cartItems: any = localStorage.getItem("loopCartItems");
     const cProducts: CartProductType[] | null = JSON.parse(cartItems);
     setCartProducts(cProducts);
+
+    setCartTotalAmount(
+      cartProducts?.reduce((acc, item) => acc + item.price, 0) || 0
+    );
+    setCartTotalQty(cartProducts?.length || 0);
   }, []);
   console.log(cartProducts);
   const calcTotal = cartProducts?.reduce(
@@ -68,7 +73,7 @@ export const CartContextProvider = (props: Props) => {
   //     }
   //     getTotals;
   //   };
-  // }, [cartProducts]);
+  // }, []);
 
   console.log("qty", cartTotalQty);
   console.log("total", cartTotalAmount);

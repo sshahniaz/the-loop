@@ -17,7 +17,7 @@ import { useUser } from "@clerk/nextjs";
 // }, [isSignedIn, user]);
 
 const CartClient = () => {
-  const { cartProducts, cartTotalAmount } = useCart();
+  const { cartProducts } = useCart();
   const router = useRouter();
   const { isSignedIn, user } = useUser();
 
@@ -61,9 +61,12 @@ const CartClient = () => {
     );
   };
 
+  const cartTotalAmount = cartProducts.reduce( (acc, item) => acc + item.price, 0);
+
   return (
     <>
-      <div className="CartProductsContainer">
+      <Suspense fallback={<div>Loading...</div>}>
+           <div className="CartProductsContainer">
         <div className="CartProduct">
           {cartProducts &&
             cartProducts.map((item) => {
@@ -110,6 +113,8 @@ const CartClient = () => {
           </div>
         </div>
       </div>
+      </Suspense>
+     
     </>
   );
 };
