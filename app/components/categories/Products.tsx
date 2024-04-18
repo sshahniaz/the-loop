@@ -82,7 +82,7 @@ const Products = ({ products }: { products: Product[] }) => {
                   <FavoriteBorderOutlinedIcon />
                 )} */}
               </div>
-              <p>£{product.price}</p>
+              <p className="productPrice">£{product.price}</p>
             </div>
           
         ))}

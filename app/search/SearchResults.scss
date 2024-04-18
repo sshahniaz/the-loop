@@ -5,7 +5,7 @@ $card-shadow-color: rgba(0, 0, 0, 0.1);
 $card-shadow-spread: 0;
 $card-shadow-blur: 10px;
 $card-shadow-offset: 5px;
-$card-border-radius: 4px;
+$card-border-radius: 8px;
 
 .searchResultContainer {
   display: grid;
@@ -42,6 +42,15 @@ $card-border-radius: 4px;
     display: flex;
     justify-content: space-between;
     padding: 0.25em 0.5em;
+    a {
+      color: $primary-color;
+      text-decoration: none;
+    }
+
+  }
+
+   .productPrice {
+    padding-left: 0.5em;
   }
 
   button {
