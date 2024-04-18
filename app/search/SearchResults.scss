@@ -17,11 +17,22 @@ $card-border-radius: 8px;
   font-family: $montserrat-font;
   color: $primary-color;
 }
+
+.searchResultContainer2 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  width: 90%;
+  margin-top: 3em;
+  font-family: $montserrat-font;
+  color: $primary-color;
+}
+
 .searchResultCard {
   margin: 2em;
-
   background-color: $card-background-color;
-  box-shadow: $card-shadow-offset $card-shadow-offset $card-shadow-blur $card-shadow-color;
+  box-shadow: $card-shadow-offset $card-shadow-offset $card-shadow-blur
+    $card-shadow-color;
   border-radius: $card-border-radius;
   img {
     width: 100%;
@@ -46,10 +57,9 @@ $card-border-radius: 8px;
       color: $primary-color;
       text-decoration: none;
     }
-
   }
 
-   .productPrice {
+  .productPrice {
     padding-left: 0.5em;
   }
 

@@ -44,7 +44,7 @@ export default async function Home() {
           <HomePageCard
             img="/assets/homedecorImg.jpg"
             imgName="homeDecor"
-            link="#"
+            link="/categories/Home%20Decor"
             heading="Make a house a home"
             paragraph="Shop the wide range of accessories available to make your home your own."
             buttonName="Shop Home Decor"

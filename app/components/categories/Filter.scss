@@ -2,13 +2,14 @@
 
 .productPageFlex {
   display: flex;
+  width: 100%;
 }
 section {
   display: flex;
   flex-direction: column;
   font-family: $montserrat-font;
   padding: 20px;
-  width: 250px;
+  width: 100%;
   line-height: 30px;
   margin: 0.5em;
   h3 {

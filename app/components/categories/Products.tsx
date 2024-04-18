@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState, useEffect, Suspense } from "react";
 import ImageHover from "../ImageHover";
 import AddToWishList from "../wishlist/AddToWishList";
@@ -42,7 +42,6 @@ const Products = ({ products }: { products: Product[] }) => {
   console.log(currentUser);
 
   const handlwWishlistupdate = async () => {
-
     if (isSignedIn) {
       console.log("updating wishlist");
     } else {
@@ -56,26 +55,23 @@ const Products = ({ products }: { products: Product[] }) => {
 
   return (
     <div className="pageContainer">
-      
-      <div className="searchResultContainer">
+      <div className="searchResultContainer2">
         {/* <h2>Products</h2> */}
         <Suspense fallback={<div>Loading...</div>}>
-            {products.map((product) => (
-          <div className="searchResultCard" key={product.id}>
-              
-                <ImageHover image={ product.imageLink } alt={product.name} />
-              
-            <div className="iconFloat">
-              <Link key={product.id} href={`../../product/${product.id}`}>
+          {products.map((product) => (
+            <div className="searchResultCard" key={product.id}>
+              <ImageHover image={product.imageLink} alt={product.name} />
 
-                <h3 className="productHeading">{product.name}</h3>
-              </Link>
+              <div className="iconFloat">
+                <Link key={product.id} href={`../../product/${product.id}`}>
+                  <h3 className="productHeading">{product.name}</h3>
+                </Link>
 
-               <AddToWishList
-                    productId={product.id}
-                    userId={currentUser?.id}
-                    onUpdateWishlist={handlwWishlistupdate}
-                  />
+                <AddToWishList
+                  productId={product.id}
+                  userId={currentUser?.id}
+                  onUpdateWishlist={handlwWishlistupdate}
+                />
                 {/* {isSignedIn ? (
                  
                 ) : (
@@ -84,10 +80,8 @@ const Products = ({ products }: { products: Product[] }) => {
               </div>
               <p className="productPrice">£{product.price}</p>
             </div>
-          
-        ))}
+          ))}
         </Suspense>
-      
       </div>
     </div>
   );
