@@ -1,8 +1,7 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import MenuItem from "./MenuItem";
 import Link from "next/link";
-import { NavigationAction } from "@/app/actions/NavigationAction";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
@@ -29,14 +28,19 @@ const Menu = ({ productTypes }: ProductTypesModel) => {
   }
   return (
     <>
+      <div className="hamburgerBtn">
+
       <button id="hamburger" onClick={handleNav}>
         <div className="hamburgerLine"></div>
         <div className="hamburgerLine"></div>
         <div className="hamburgerLine"></div>
       </button>
+      </div>
       <nav className={showNav ? "showNavbar" : ""}>
         <ul className="navigationLinkContainer">
           {/* <div className="responsiveLinks"> */}
+          <Suspense fallback={<div>Loading...</div>}>
+          
           {productTypes.map((product, index) => (
             <li className="navigationLink" key={index}>
               <Link href={`/categories/${product.name}`}>{product.name}</Link>
@@ -49,20 +53,19 @@ const Menu = ({ productTypes }: ProductTypesModel) => {
               </div>
             </li>
           ))}
+          </Suspense>
           <li className="navigationLink">
             <Link href="#">New Arrivals</Link>
           </li>
           <li className="navigationLink">
-            <Link className="saleLink" href="#">
+            <Link className="saleLink" href="/sale">
               Sale
             </Link>
           </li>
           <li className="navigationLink">
-            <Link href="#">Contact Us </Link>
+            <Link href="../contactus">Contact Us </Link>
           </li>
-          <li className="signinLink">
-            <Link href="/sign-in">Sign-In</Link>
-          </li>
+
           {/* </div> */}
         </ul>
       </nav>

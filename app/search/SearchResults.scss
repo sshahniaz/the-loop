@@ -1,10 +1,17 @@
 @import "/public/styles/mixins.scss";
 
+$card-background-color: #fff;
+$card-shadow-color: rgba(0, 0, 0, 0.1);
+$card-shadow-spread: 0;
+$card-shadow-blur: 10px;
+$card-shadow-offset: 5px;
+$card-border-radius: 4px;
+
 .searchResultContainer {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  width: 75%;
+  gap: 10px;
+  width: 85%;
   margin: auto;
   margin-top: 3em;
   font-family: $montserrat-font;
@@ -13,8 +20,16 @@
 .searchResultCard {
   margin: 2em;
 
+  background-color: $card-background-color;
+  box-shadow: $card-shadow-offset $card-shadow-offset $card-shadow-blur $card-shadow-color;
+  border-radius: $card-border-radius;
   img {
     width: 100%;
+  }
+
+  a {
+    color: $primary-color;
+    text-decoration: none;
   }
 
   .productHeading {
@@ -26,6 +41,7 @@
   .iconFloat {
     display: flex;
     justify-content: space-between;
+    padding: 0.25em 0.5em;
   }
 
   button {
@@ -46,6 +62,7 @@
 
   .iconFloat {
     font-size: 15px;
+    padding: 0.25em 0.5em;
   }
 
   .searchResultCard {

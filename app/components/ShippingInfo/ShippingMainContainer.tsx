@@ -1,19 +1,13 @@
-import React, {
-  useState,
-  useEffect,
-  Suspense,
-  useCallback,
-  useRef,
-  use,
-  useContext,
-} from "react";
+"use client";
+import React, { useState, useEffect, Suspense, useContext } from "react";
 import PersonalDetails from "@/app/components/profile/PersonalDetails";
 import AddressInfo from "@/app/components/profile/AddressInfo";
 import BillingAddress from "@/app/components/profile/BillingAddress";
 import { fetchProfileData } from "@/app/actions/ShippingPageActions";
 import { CartContext, CartContextType } from "../cart/CartActions";
 import Checkout from "./Checkout";
-import { CartProductType } from "../product/ProductDetails";
+import "./ShippingDetails.scss";
+import Link from "next/link";
 
 interface ProfileData {
   id: string;
@@ -88,21 +82,22 @@ const ShippingMainContainer = ({ userId }: Props) => {
     <>
       {profileData != null && (
         <Suspense fallback={<div>Loading...</div>}>
-          <div>
-            <PersonalDetails details={userDataFiltered} />
-            <AddressInfo
-              addressData={{
-                ...userAddressDataFiltered,
-                address: userAddressDataFiltered.address || null,
-              }}
-            />
-            <BillingAddress
-              addressData={{
-                ...billingAddressDataFiltered,
-                address: billingAddressDataFiltered.address || null,
-              }}
-            />
-            {/* {cartProducts &&  />} */}
+          <div className="shippingDetailsPage">
+            <div className="shippingCardsFlex">
+              <PersonalDetails details={userDataFiltered} />
+              <AddressInfo
+                addressData={{
+                  ...userAddressDataFiltered,
+                  address: userAddressDataFiltered.address || null,
+                }}
+              />
+              <BillingAddress
+                addressData={{
+                  ...billingAddressDataFiltered,
+                  address: billingAddressDataFiltered.address || null,
+                }}
+              />
+            </div>
             <Checkout products={cartProducts || []} />
           </div>
         </Suspense>

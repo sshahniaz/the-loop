@@ -73,14 +73,13 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
         <img onClick={handleImagePath} src={imagePath}></img>
       </div>
       <div className="detailsContainer">
-        <h1>{product.name}</h1>
-        <span>£{product.price}</span>
-        <br />
-        <span>Sold by: {product.ownerId}</span>
-        <br />
+        <div className="productHeading">
+          <h1>{product.name}</h1>
+          <span>£{product.price}</span>
+        </div>
         {isProductinCart ? (
           <>
-            <span>Product already in cart</span>
+            <span id="addedToCart">Product added to cart!</span>
           </>
         ) : (
           <>
@@ -95,7 +94,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
           </>
         )}
 
-        <Accordion>
+        <Accordion className="accordionContainer">
           <AccordionSummary id="panel-header" aria-controls="panel-content">
             Descpription
           </AccordionSummary>
@@ -103,11 +102,11 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
             <span>{product.details}</span>
           </AccordionDetails>
         </Accordion>
-        <Accordion>
+        <Accordion className="accordionContainer">
           <AccordionSummary id="panel-header" aria-controls="panel-content">
             Details
           </AccordionSummary>
-          <AccordionDetails>
+          <AccordionDetails id="detailsDropdown">
             <span>Colour: {product.colour}</span>
             <span>Material: {product.material}</span>
             <span>Condition: {product.condition}</span>

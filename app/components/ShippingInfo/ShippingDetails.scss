@@ -92,6 +92,12 @@
     margin: 2em 0 0.5em 0;
     @include buttonStyles($primary-color, $secondary-color, 250px);
   }
+  #checkoutButton:hover {
+    @include buttonStyles($secondary-color, $primary-color, 250px);
+  }
+  #backButton:hover {
+    @include buttonStyles($secondary-color, $primary-color, 250px);
+  }
   #backButton {
     @include buttonStyles($primary-color, $secondary-color, 250px);
   }

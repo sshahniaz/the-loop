@@ -25,7 +25,7 @@ export default async function Home() {
           <HomePageCard
             img="/assets/throwImg.jpg"
             imgName="throws"
-            link="#"
+            link="/categories/Chairs"
             heading="Perfect chairs for cozy days"
             paragraph="Discover the range of throws."
             buttonName="Shop Now"
@@ -34,7 +34,7 @@ export default async function Home() {
           <HomePageCard
             img="/assets/saleImg.jpg"
             imgName="sale"
-            link="#"
+            link="/sale"
             heading="S.A.L.E."
             paragraph="Grab yourself a bargain today!"
             buttonName="Shop Sale"

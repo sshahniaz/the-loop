@@ -132,6 +132,207 @@ body {
     border: solid 2px #c7bfb3;
   }
 
+  .signOutButton{
+    button {
+    font-size: 18px;
+    font-family: $montserrat-font;
+    text-decoration: underline;
+    background: transparent;
+    padding: 0.3em 0.5em;
+    border: 2px solid $tertiary-color;
+    border-radius: 8px;
+    }
+  }
+
+  .sellLink {
+    border: solid 2px $tertiary-color;
+    border-radius: 8px;
+    padding: 0.25em 1em;
+    font-size: 18px;
+    margin-top: -0.25em;
+    text-decoration: none;
+  }
+
+  .sellLink:hover {
+    border: solid 2px #c7bfb3;
+  }
+}
+
+.searchIcon {
+  color: $tertiary-color;
+  padding-top: 0.25em;
+}
+
+.searchForm {
+  display: flex;
+  align-items: start;
+  input {
+    padding: 0.5em;
+    font-family: $montserrat-font;
+    font-size: 15px;
+    border: none;
+    width: 250px;
+  }
+}
+@import "/public/styles/mixins.scss";
+
+//hamburger styling
+.menu {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  width: 100%;
+  z-index: 99;
+}
+
+#hamburger {
+  background: transparent;
+  border: none;
+}
+.headerIconsResponsive {
+  display: none;
+}
+
+.navigationLinkContainer {
+  display: flex;
+  flex-direction: row;
+}
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  font-family: $montserrat-font;
+  font-size: 18px;
+  margin: auto;
+  list-style: none;
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  .showNavbar {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    visibility: visible;
+    opacity: 1;
+    font-size: 12px;
+    margin: auto;
+    padding-bottom: 1em;
+    background-color: $secondary-color;
+    width: 100%;
+    height: fit-content;
+  }
+  .navigationLink {
+    padding: 2em;
+    a {
+      color: $tertiary-color;
+      text-decoration: none;
+    }
+
+    a:hover {
+      font-weight: 500;
+      text-decoration: underline;
+    }
+  }
+}
+// why is this not changing colour!
+.saleLink {
+  a {
+    color: $sale-color !important;
+  }
+}
+.menuLevel2 {
+  display: none;
+  justify-content: start;
+  font-family: $kansas-font;
+  font-size: 22px;
+  padding: 1em;
+  transition: 0.3s ease-in;
+}
+
+.menuItem {
+  display: flex;
+  position: absolute;
+  justify-content: start;
+  left: 0;
+  width: 100%;
+  background-color: $secondary-color;
+  padding: 1em;
+  line-height: 30px;
+}
+
+.navigationLink:hover .menuLevel2 {
+  display: flex;
+  transition: 0.3s;
+}
+.menuLevel3 {
+  font-family: $montserrat-font;
+  ul {
+    padding-left: 0;
+  }
+}
+
+.heading {
+  padding: 2em;
+}
+// searchbar & header styling
+
+body {
+  margin: auto;
+}
+.headerFlex {
+  display: flex;
+  padding: 0 1.5em;
+  justify-content: space-between;
+}
+
+.headerIcons {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: start;
+  li {
+    list-style: none;
+    padding-left: 0.75em;
+    padding-right: 0.5em;
+    font-size: 22px;
+  }
+
+  a {
+    color: $tertiary-color;
+  }
+
+  a:hover {
+    color: #c7bfb3;
+  }
+
+  .signinLink {
+    border: solid 2px $tertiary-color;
+    border-radius: 8px;
+    padding: 0.25em 1em;
+    font-size: 18px;
+    margin-top: -0.25em;
+    text-decoration: none;
+    list-style-type: none !important;
+  }
+
+  .signinLink:hover {
+    border: solid 2px #c7bfb3;
+  }
+
+  .signOutButton {
+    button {
+      font-size: 18px;
+      font-family: $montserrat-font;
+      text-decoration: underline;
+      background: transparent;
+      padding: 0.3em 0.5em;
+      border: 2px solid $tertiary-color;
+      border-radius: 8px;
+    }
+  }
+
   .sellLink {
     border: solid 2px $tertiary-color;
     border-radius: 8px;
@@ -163,6 +364,85 @@ body {
   }
 }
 
+@media (max-width: 799px) {
+  .navigationContainer {
+    margin-top: 1.5em;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    ul {
+      margin: auto;
+      padding: 0;
+      list-style: none;
+    }
+    .searchForm {
+      margin: 1em 0;
+      margin-left: 2.2em;
+      width: 50%;
+    }
+  }
+  .navigationLinkContainer {
+    flex-direction: column;
+  }
+
+  nav {
+    align-items: center;
+    justify-content: space-evenly;
+    visibility: hidden;
+    opacity: 0;
+    font-size: 12px;
+    margin: auto;
+    padding-bottom: 1em;
+    width: 100%;
+    height: 10px;
+  }
+
+  .menuItem {
+    display: none;
+  }
+  .headerFlex {
+    width: 100%;
+    margin: 0;
+    flex-direction: column-reverse;
+    align-items: start;
+    padding: 0;
+    img {
+      display: none;
+    }
+
+    .headerIcons {
+      display: none;
+    }
+  }
+
+  #hamburger {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    gap: 0.5em;
+    padding: 2em;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+
+  }
+      .hamburgerLine {
+      width: 40px;
+      height: 5px;
+      background-color: $tertiary-color !important;
+    }
+  .headerIconsResponsive {
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    justify-content: space-evenly;
+    a {
+      text-decoration: none;
+      color: $tertiary-color;
+    }
+  }
+}
 // .menuLv2 {
 //   display: none;
 // }
@@ -233,6 +513,13 @@ body {
 
     .headerIcons {
       display: none;
+    }
+  }
+
+  .hamburgerBtn {
+    button: {
+      background: $primary-color;
+
     }
   }
 

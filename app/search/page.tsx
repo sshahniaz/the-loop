@@ -9,6 +9,7 @@ import { updateWithlist } from "../actions/WishlistActions";
 import { useState, useEffect } from "react";
 import { useUser } from "@clerk/nextjs";
 import getUser from "../actions/GetUserAction";
+import Link from "next/link";
 
 interface Product {
   id: string;
@@ -72,26 +73,27 @@ const SearchPage = () => {
   };
 
   return (
-
-      <div className="pageContainer">
-        {/* need to add filter here */}
-        <div className="searchResultContainer">
-          {data?.products?.map((product, index) => (
-            <div className="searchResultCard" key={index}>
-              <ImageHover image={product.imageLink} alt={product.name} />
-              <div className="iconFloat">
+    <div className="pageContainer">
+      {/* need to add filter here */}
+      <div className="searchResultContainer">
+        {data?.products?.map((product, index) => (
+          <div className="searchResultCard" key={index}>
+            <ImageHover image={product.imageLink} alt={product.name} />
+            <div className="iconFloat">
+              <Link key={product.id} href={`../../product/${product.id}`}>
                 <h3 className="productHeading">{product.name}</h3>
-                <AddToWishList
-                  productId={product.id}
-                  userId={userInfo?.id}
-                  onUpdateWishlist={handlwWishlistupdate}
-                />
-              </div>
-              <p>£{product.price}</p>
+              </Link>
+              <AddToWishList
+                productId={product.id}
+                userId={userInfo?.id}
+                onUpdateWishlist={handlwWishlistupdate}
+              />
             </div>
-          ))}
-        </div>
+            <p>£{product.price}</p>
+          </div>
+        ))}
       </div>
+    </div>
   );
 };
 

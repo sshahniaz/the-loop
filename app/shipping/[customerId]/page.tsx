@@ -1,4 +1,4 @@
-"use server";
+"use client";
 import React, { useState, Suspense } from "react";
 import ShippingMainContainer from "@/app/components/ShippingInfo/ShippingMainContainer";
 
@@ -10,6 +10,8 @@ const Page = ({ params }: { params: { customerId: string } }) => {
       <ShippingMainContainer userId={params.customerId} />
     </div>
   );
+
+  // im so relieved
 };
 
 export default Page;
