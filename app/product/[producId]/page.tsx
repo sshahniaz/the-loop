@@ -2,11 +2,9 @@
 import getProductById from "@/app/actions/SingleProductActions";
 import SimilarProduct from "../../components/product/SimilarProduct";
 import ProductDetails from "@/app/components/product/ProductDetails";
-import ProductCard from "@/app/components/product/ProductCard";
 import React, { useEffect, useState } from "react";
 
-
-const Page = ({ params }: {params: {producId:string}}) => {
+const Page = ({ params }: { params: { producId: string } }) => {
   console.log(params);
   const [product, setProduct] = useState<any>(null);
   useEffect(() => {
@@ -24,7 +22,6 @@ const Page = ({ params }: {params: {producId:string}}) => {
     <>
       <div>
         <ProductDetails product={product} />
-        <ProductCard product={product} />
       </div>
     </>
   );

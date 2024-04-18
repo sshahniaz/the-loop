@@ -32,7 +32,8 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    width: 100%
+    width: 100%;
+    padding: 20px;
 }
 #heading{
     @include standardText;
@@ -73,13 +74,13 @@ body{
 }
 
 .CartProduct{
-    width: 70%
+    width: 80%
 }
 
 //another page
 
 .checkout{
-    @include buttonStyles($primary-color,$secondary-color, 300px);
+    @include buttonStyles($primary-color,$secondary-color, 90%);
     font-size: 20px;
     padding: 5px;
     margin: auto;
@@ -99,7 +100,7 @@ body{
     margin-top: 20px;
 }
 .continueShopping{
-    @include buttonStyles(#fff, $primary-color,300px);
+    @include buttonStyles(#fff, $primary-color,90%);
     font-size: 20px;
     padding: 5px;
     margin: auto;
@@ -198,6 +199,22 @@ body{
 display: flex;
 justify-content: space-between;
 }
+.countIcon{
+  display: flex;
+  flex-direction: row;
+  span{
+    text-decoration: none;
+    width: 15px;
+    height: 15px;
+    text-align: center;
+    background-color: $primary-color;
+    color: $secondary-color;
+    padding: 1px;
+    font-size: 12px;
+    border-radius: 60px;
+  }
+  
+}
 
 
 
@@ -210,22 +227,37 @@ justify-content: space-between;
 
 
 
-
+//media queries
 
 @media (max-width: 768px) {
     .CartProductsContainer {
       flex-direction: column;
       width: 100%;
+      align-items: center;
+     
   
       .subtotalDetails {
-        flex-direction: column;
-        gap: 20px;
-  
+        flex-direction: row;
+        gap: 10px;
+        a{
+            width: 40%;
+        }
         img {
-          width: 100%;
+          width:100%;
           height: auto;
         }
+
+        .cartHeadingButton{
+            a{
+                width: 100%;
+            }
+        }
       }
+
+      .subtotal{
+        width: 90%;
+    }
+      
   
       .flex-column,
       .buttons {

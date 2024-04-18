@@ -6,9 +6,6 @@ import BillingAddress from "@/app/components/profile/BillingAddress";
 import { fetchProfileData } from "@/app/actions/ShippingPageActions";
 import { CartContext, CartContextType } from "../cart/CartActions";
 import Checkout from "./Checkout";
-import { CartProductType } from "../product/ProductDetails";
-import "./ShippingDetails.scss";
-
 
 interface ProfileData {
   id: string;
@@ -80,7 +77,7 @@ const ShippingMainContainer = ({ userId }: Props) => {
   console.log("basket:", products);
 
   return (
-     <>
+    <>
       {profileData != null && (
         <Suspense fallback={<div>Loading...</div>}>
           <div className="shippingDetailsPage">
@@ -104,7 +101,6 @@ const ShippingMainContainer = ({ userId }: Props) => {
         </Suspense>
       )}
     </>
-
   );
 };
 
