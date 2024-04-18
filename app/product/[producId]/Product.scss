@@ -10,11 +10,13 @@ body{
     flex-direction: row;
     justify-content: space-around;
     padding: 30px;
+    gap: 20px;
 }
 .detailsContainer{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    gap: 10px;
 }
 .detailsContainer h1{
     @include standardText;
@@ -27,6 +29,7 @@ body{
 }
 .buttons{
     display: flex;
+    flex-direction: row;
     gap: 20px;
    
 }
@@ -52,4 +55,46 @@ h3{
     font-weight: 600;
 }
 
+.thumbnails{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    img{
+        width: 20%;
+    }
+}
+.imagesContainer{
+    display: flex;
+    flex-direction: row;
+    width: 75%;
+    img{
+        width: 80%;
+        height: fit-content;
+    }
+}
+.accordionContainer{
+    background: white;
+    border-radius: 12px;
+    @include standardText;
+    font-weight: 500;
 
+    span{
+        font-size: 14px;
+        font-weight: 300;
+    }
+}
+.productHeading{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+@media (max-width:736px) {
+    .productContainer{
+        flex-direction: column;
+        align-items: center;
+        width: 80%;
+        margin: auto;
+        padding: 15px;
+    }
+}

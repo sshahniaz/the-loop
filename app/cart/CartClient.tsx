@@ -9,12 +9,6 @@ import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import React, { Suspense, useEffect, useState } from "react";
 import getUser from "../actions/GetUserAction";
 import { useUser } from "@clerk/nextjs";
-// const { isSignedIn, user } = useUser();
-
-// useEffect(() => {
-//   if (isSignedIn && user.primaryEmailAddress) {
-//   }
-// }, [isSignedIn, user]);
 
 const CartClient = () => {
   const { cartProducts } = useCart();
@@ -105,7 +99,7 @@ const CartClient = () => {
               <span>£{calcTotal}</span>
             </div>
             <Divider />
-            {/* <Checkout products={cartProducts} /> */}
+
             <div className="buttons">
               <button className="checkout">
                 <Suspense fallback={<div>Loading...</div>}>
@@ -117,11 +111,12 @@ const CartClient = () => {
                   </Link>
                 </Suspense>
               </button>
-              <Link className="btnLinkContinue" href={"../app/page.tsx"}>
-                <button className="continueShopping">
+
+              <button className="continueShopping">
+                <Link className="btnLinkContinue" href={"../app/page.tsx"}>
                   <span>Continue Shopping</span>
-                </button>
-              </Link>
+                </Link>
+              </button>
             </div>
           </div>
         </div>

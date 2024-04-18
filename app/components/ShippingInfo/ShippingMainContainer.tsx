@@ -1,20 +1,11 @@
 "use client";
-import React, {
-  useState,
-  useEffect,
-  Suspense,
-  useCallback,
-  useRef,
-  use,
-  useContext,
-} from "react";
+import React, { useState, useEffect, Suspense, useContext } from "react";
 import PersonalDetails from "@/app/components/profile/PersonalDetails";
 import AddressInfo from "@/app/components/profile/AddressInfo";
 import BillingAddress from "@/app/components/profile/BillingAddress";
 import { fetchProfileData } from "@/app/actions/ShippingPageActions";
 import { CartContext, CartContextType } from "../cart/CartActions";
 import Checkout from "./Checkout";
-import { CartProductType } from "../product/ProductDetails";
 
 interface ProfileData {
   id: string;

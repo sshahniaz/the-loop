@@ -8,15 +8,6 @@ import {
   useState,
 } from "react";
 
-// export type CartProductType = {
-//   id: string;
-//   name: string;
-//   details: string;
-//   type: string;
-//   imgLink: string;
-//   price: number;
-// };
-
 export type CartContextType = {
   cartTotalQty: number;
   cartTotalAmount: number;
@@ -42,37 +33,8 @@ export const CartContextProvider = (props: Props) => {
     const cartItems: any = localStorage.getItem("loopCartItems");
     const cProducts: CartProductType[] | null = JSON.parse(cartItems);
     setCartProducts(cProducts);
-
-    // setCartTotalAmount(
-    //   cartProducts?.reduce((acc, item) => acc + item.price, 0) || 0
-    // );
-    // setCartTotalQty(cartProducts?.length || 0);
   }, []);
   console.log(cartProducts);
-
-  //calculate cart total
-  // useEffect(() => {
-  //   const getTotals = () => {
-  //     if (cartProducts) {
-  //       const { total, qty } = cartProducts?.reduce(
-  //         (acc, item) => {
-  //           (acc.total += item.price), acc.qty++;
-  //           return acc;
-  //         },
-  //         {
-  //           total: 0,
-  //           qty: 0,
-  //         }
-  //       );
-  //       setCartTotalQty(qty);
-  //       setCartTotalAmount(total);
-  //     }
-  //     getTotals;
-  //   };
-  // }, []);
-
-  // console.log("qty", cartTotalQty);
-  // console.log("total", cartTotalAmount);
 
   //add product to cart
   const handleAddProductToCart = useCallback((product: CartProductType) => {
