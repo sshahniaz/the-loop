@@ -73,9 +73,9 @@ const Checkout = ({ products }: Props) => {
               Buy Now
             </button>
 
-            <Link href="/">
+            <Link href="../../cart">
               {" "}
-              <button id="backButton">Back Home </button>
+              <button id="backButton">Back to Cart </button>
             </Link>
           </div>
           <hr />

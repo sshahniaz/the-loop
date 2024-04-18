@@ -74,22 +74,71 @@ h3{
         height: fit-content;
     }
 }
-.accordionContainer{
-    background: white;
-    border-radius: 12px;
-    @include standardText;
-    font-weight: 500;
-    width: 70%;
-
-    span{
-        font-size: 14px;
-        font-weight: 300;
+#addedToCart{
+    font-style: italic;
+    font-weight: 400;
+    a{
+        color: $primary-color;
+        font-weight: 500;
+        text-decoration: none;
     }
 }
+.accordionContainer{
+   @include standardText;
+   gap: 10px;
+   width: 50%;
+   display: flex;
+   flex-direction: column;
+}
+.css-1086bdv-MuiPaper-root-MuiAccordion-root::before{
+    background-color: transparent;
+    
+}
+
+.css-1086bdv-MuiPaper-root-MuiAccordion-root:last-of-type {
+   border: none;
+   background-color: transparent;
+   border-radius: 15px;
+  
+}
+.css-1086bdv-MuiPaper-root-MuiAccordion-root:first-of-type{
+    border: none;
+   background-color: transparent;
+   border-radius: 15px;
+}
+.css-1086bdv-MuiPaper-root-MuiAccordion-root.Mui-expanded:last-of-type, .css-1086bdv-MuiPaper-root-MuiAccordion-root.Mui-expanded:first-of-type {
+    background-color: #16552198;
+    color: $secondary-color;
+    border-radius: 15px;
+    #panel2-header, #panel1-header{
+        text-decoration: underline;
+    }
+}
+
+.productContainer{
+    height: fit-content;
+}
+.css-1086bdv-MuiPaper-root-MuiAccordion-root{
+    border-radius: 15px;
+}
+.css-bz4dnt-MuiCollapse-root{
+    border-radius: 15px;
+}
+.accordionHeader{
+    font-size: 20px;
+    font-weight: 500;
+}
+
 .productHeading{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    span{
+        font-size: 25px;
+    }
+    h1{
+        font-size: 35px;
+    }
 }
 #detailsDropdown{
     display: flex;
@@ -104,5 +153,26 @@ h3{
         width: 80%;
         margin: auto;
         padding: 15px;
+        justify-content: center;
+    }
+    .imagesContainer{
+        width: 100%;
+        justify-content: center;
+    }
+    .productHeading{
+        justify-content: center;
+        h1{
+            font-size: 25px;
+        }
+        span{
+            font-size: 20px;
+        }
+    }
+    .detailsContainer{
+        width: 100%;
+    }
+    .accordionContainer{
+        justify-content: center;
+        width: 90%;
     }
 }

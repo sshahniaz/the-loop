@@ -4,10 +4,14 @@ import AddToWishList from "../wishlist/AddToWishList";
 import "../../product/[producId]/Product.scss";
 import { AccordionDetails, AccordionSummary } from "@mui/material";
 import Accordion from "@mui/material/Accordion";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import AddToBasket from "./AddToBasket";
 import { useCart } from "../cart/CartActions";
-import ProductImages from "./ProductImages";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useUser } from "@clerk/nextjs";
+import getUser from "@/app/actions/GetUserAction";
 
 interface ProductDetailsProps {
   product: any;
@@ -22,6 +26,7 @@ export type CartProductType = {
   condition: string;
   price: number;
   imageLink: string[];
+  category: string;
 };
 
 const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
@@ -34,6 +39,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
     condition: product.condition,
     price: product.price,
     imageLink: product.imageLink,
+    category: product.category,
   });
 
   const { handleAddProductToCart, cartProducts } = useCart();
@@ -63,14 +69,72 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
       setImagePath(product.imageLink[0]);
     }
   };
+  const [imageThumbnailOne, setImageThumbnailOne] = useState(
+    product.imageLink[0]
+  );
+  const handleImageThumbnailOne = () => {
+    if (imageThumbnailOne === product.imageLink[0]) {
+      setImagePath(product.imageLink[0]);
+    }
+  };
+  const [imageThumbnailTwo, setImageThumbnailTwo] = useState(
+    product.imageLink[1]
+  );
+  const handleImageThumbnailTwo = () => {
+    if (imageThumbnailTwo === product.imageLink[1]) {
+      setImagePath(product.imageLink[1]);
+    }
+  };
+
+  //check user to update the wishlist
+  const [currentUser, setCurrentUser] = useState<{
+    id: string;
+    email: string;
+    password: string | null;
+    profileId: string | null;
+  } | null>(null);
+  const router = useRouter();
+
+  const { isSignedIn, user } = useUser();
+
+  useEffect(() => {
+    if (isSignedIn) {
+      fetchUser();
+    }
+  }, [isSignedIn]);
+
+  const fetchUser = async () => {
+    const userDb = await getUser(user?.primaryEmailAddress?.emailAddress ?? "");
+    setCurrentUser(userDb);
+  };
+  console.log(currentUser);
+
+  const handlwWishlistupdate = async () => {
+    if (isSignedIn) {
+      console.log("updating wishlist");
+    } else {
+      router.push("../../sign-in");
+    }
+
+    console.log("wishlist updated");
+  };
+
   return (
     <div className="productContainer">
       <div className="imagesContainer">
         <div className="thumbnails">
-          <img src={product.imageLink[0]} alt={product.name} />
-          <img src={product.imageLink[1]} alt={product.name} />
+          <img
+            onClick={handleImageThumbnailOne}
+            src={imageThumbnailOne}
+            alt={product.name}
+          />
+          <img
+            onClick={handleImageThumbnailTwo}
+            src={imageThumbnailTwo}
+            alt={product.name}
+          />
         </div>
-        <img onClick={handleImagePath} src={imagePath}></img>
+        <img onClick={handleImagePath} src={imagePath} alt={product.name}></img>
       </div>
       <div className="detailsContainer">
         <div className="productHeading">
@@ -79,7 +143,13 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
         </div>
         {isProductinCart ? (
           <>
-            <span id="addedToCart">Product added to cart!</span>
+            <span id="addedToCart">
+              Product added to{" "}
+              <Link href={"../../cart"}>
+                <span>Cart</span>
+              </Link>
+              !
+            </span>
           </>
         ) : (
           <>
@@ -89,29 +159,46 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
                   handleAddProductToCart(cartProduct);
                 }}
               />
-              <AddToWishList productId={product.id} />
+              <AddToWishList
+                productId={product.id}
+                userId={currentUser?.id}
+                onUpdateWishlist={handlwWishlistupdate}
+              />
             </div>
           </>
         )}
 
-        <Accordion className="accordionContainer">
-          <AccordionSummary id="panel-header" aria-controls="panel-content">
-            Descpription
-          </AccordionSummary>
-          <AccordionDetails>
-            <span>{product.details}</span>
-          </AccordionDetails>
-        </Accordion>
-        <Accordion className="accordionContainer">
-          <AccordionSummary id="panel-header" aria-controls="panel-content">
-            Details
-          </AccordionSummary>
-          <AccordionDetails id="detailsDropdown">
-            <span>Colour: {product.colour}</span>
-            <span>Material: {product.material}</span>
-            <span>Condition: {product.condition}</span>
-          </AccordionDetails>
-        </Accordion>
+        <div className="accordionContainer">
+          <Accordion>
+            <AccordionSummary
+              expandIcon={<ArrowDropDownIcon />}
+              id="panel1-header"
+              className="accordionHeader"
+              aria-controls="panel1-content"
+            >
+              Descpription
+            </AccordionSummary>
+            <AccordionDetails>
+              <span>{product.details}</span>
+            </AccordionDetails>
+          </Accordion>
+
+          <Accordion>
+            <AccordionSummary
+              expandIcon={<ArrowDropDownIcon />}
+              id="panel2-header"
+              className="accordionHeader"
+              aria-controls="panel2-content"
+            >
+              Details
+            </AccordionSummary>
+            <AccordionDetails id="detailsDropdown">
+              <span>Colour: {product.colour}</span>
+              <span>Material: {product.material}</span>
+              <span>Condition: {product.condition}</span>
+            </AccordionDetails>
+          </Accordion>
+        </div>
       </div>
     </div>
   );
