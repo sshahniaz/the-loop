@@ -17,6 +17,11 @@
     width: 100%;
   }
 
+  a {
+    color: $primary-color;
+    text-decoration: none;
+  }
+
   .productHeading {
     font-size: 15px;
     font-weight: 600;
