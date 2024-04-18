@@ -91,6 +91,11 @@ h3{
     flex-direction: column;
     justify-content: space-around;
 }
+#detailsDropdown{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
 
 @media (max-width:736px) {
     .productContainer{
