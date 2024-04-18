@@ -48,24 +48,30 @@ const Products = ({ products }: { products: Product[] }) => {
       <div className="searchResultContainer">
         <h2>Products</h2>
         {products.map((product) => (
-          <Link key={product.id} href={`../../product/${product.id}`}>
-            <div className="searchResultCard" key={product.id}>
+          <div className="searchResultCard" key={product.id}>
+              
               <ImageHover image={product.imageLink} alt={product.name} />
-              <div className="iconFloat">
+              
+            <div className="iconFloat">
+              <Link key={product.id} href={`../../product/${product.id}`}>
+
                 <h3 className="productHeading">{product.name}</h3>
-                {isSignedIn ? (
-                  <AddToWishList
+              </Link>
+
+               <AddToWishList
                     productId={product.id}
                     userId={currentUser?.id}
                     onUpdateWishlist={handlwWishlistupdate}
                   />
+                {/* {isSignedIn ? (
+                 
                 ) : (
                   <FavoriteBorderOutlinedIcon />
-                )}
+                )} */}
               </div>
               <p>£{product.price}</p>
             </div>
-          </Link>
+          
         ))}
       </div>
     </div>
