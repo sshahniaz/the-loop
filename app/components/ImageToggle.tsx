@@ -9,7 +9,7 @@ interface ImageProps {
 
 const ImageToggle = ({ firstImage, secondImage }: ImageProps) => {
   //   first image by default
-  const placeHolder = "assets/placeholder.jpeg";
+  const placeHolder = "../../assets/placeholder.jpeg";
   // const handleImage = () => {
   //     if (firstImage) {
   //         setCurrentImage(firstImage)

@@ -2,7 +2,7 @@ import React from "react";
 import ImageToggle from "./ImageToggle";
 
 interface Props {
-  image: string;
+  image: string[];
   alt: string;
 }
 

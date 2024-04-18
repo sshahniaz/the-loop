@@ -15,7 +15,7 @@ interface Product {
   colour: string;
   material: string;
   condition: string;
-  imageLink: string;
+  imageLink: string[];
 }
 
 const Products = ({ products }: { products: Product[] }) => {
@@ -52,6 +52,8 @@ const Products = ({ products }: { products: Product[] }) => {
     console.log("wishlist updated");
   };
 
+  // console.log(products);
+
   return (
     <div className="pageContainer">
       
@@ -61,7 +63,7 @@ const Products = ({ products }: { products: Product[] }) => {
             {products.map((product) => (
           <div className="searchResultCard" key={product.id}>
               
-              <ImageHover image={product.imageLink} alt={product.name} />
+                <ImageHover image={ product.imageLink } alt={product.name} />
               
             <div className="iconFloat">
               <Link key={product.id} href={`../../product/${product.id}`}>
