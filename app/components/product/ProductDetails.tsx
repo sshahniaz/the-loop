@@ -106,7 +106,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
           <AccordionSummary id="panel-header" aria-controls="panel-content">
             Details
           </AccordionSummary>
-          <AccordionDetails>
+          <AccordionDetails id="detailsDropdown">
             <span>Colour: {product.colour}</span>
             <span>Material: {product.material}</span>
             <span>Condition: {product.condition}</span>
