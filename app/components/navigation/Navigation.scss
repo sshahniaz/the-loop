@@ -95,14 +95,18 @@ body {
 }
 .headerFlex {
   display: flex;
-  padding: 0 1.5em;
+  margin-top: 1em;
   justify-content: space-between;
+  form {
+    margin-top: 0.5em;
+  }
 }
 
 .headerIcons {
   display: flex;
   justify-content: space-evenly;
   align-items: start;
+  font-family: $montserrat-font;
   li {
     list-style: none;
     padding-left: 0.75em;
@@ -123,7 +127,6 @@ body {
     border-radius: 8px;
     padding: 0.25em 1em;
     font-size: 18px;
-    margin-top: -0.25em;
     text-decoration: none;
     list-style-type: none !important;
   }
@@ -132,15 +135,16 @@ body {
     border: solid 2px #c7bfb3;
   }
 
-  .signOutButton{
+  .signOutButton {
     button {
-    font-size: 18px;
-    font-family: $montserrat-font;
-    text-decoration: underline;
-    background: transparent;
-    padding: 0.3em 0.5em;
-    border: 2px solid $tertiary-color;
-    border-radius: 8px;
+      color: $tertiary-color;
+      font-size: 18px;
+      font-family: $montserrat-font;
+      text-decoration: underline;
+      background: transparent;
+      padding: 0.3em 0.5em;
+      border: 2px solid $tertiary-color;
+      border-radius: 8px;
     }
   }
 
@@ -149,7 +153,6 @@ body {
     border-radius: 8px;
     padding: 0.25em 1em;
     font-size: 18px;
-    margin-top: -0.25em;
     text-decoration: none;
   }
 
@@ -312,7 +315,6 @@ body {
     border-radius: 8px;
     padding: 0.25em 1em;
     font-size: 18px;
-    margin-top: -0.25em;
     text-decoration: none;
     list-style-type: none !important;
   }
@@ -338,7 +340,7 @@ body {
     border-radius: 8px;
     padding: 0.25em 1em;
     font-size: 18px;
-    margin-top: -0.25em;
+
     text-decoration: none;
   }
 
@@ -425,13 +427,12 @@ body {
     position: absolute;
     top: 15px;
     right: 20px;
-
   }
-      .hamburgerLine {
-      width: 40px;
-      height: 5px;
-      background-color: $tertiary-color !important;
-    }
+  .hamburgerLine {
+    width: 40px;
+    height: 5px;
+    background-color: $tertiary-color !important;
+  }
   .headerIconsResponsive {
     width: 95%;
     display: flex;
@@ -519,7 +520,6 @@ body {
   .hamburgerBtn {
     button: {
       background: $primary-color;
-
     }
   }
 
