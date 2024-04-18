@@ -53,7 +53,7 @@ const Menu = ({ productTypes }: ProductTypesModel) => {
             <Link href="#">New Arrivals</Link>
           </li>
           <li className="navigationLink">
-            <Link className="saleLink" href="#">
+            <Link className="saleLink" href="/sale">
               Sale
             </Link>
           </li>

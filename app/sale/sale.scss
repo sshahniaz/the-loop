@@ -1,0 +1,27 @@
+@import "/public/styles/mixins.scss";
+
+.saleContainer {
+  display: flex;
+  flex-direction: column;
+  font-family: $montserrat-font;
+  text-align: center;
+}
+.saleHeading {
+  width: 100%;
+  background-color: $sale-color;
+  font-family: $kansas-font;
+  color: $secondary-color;
+  letter-spacing: 15px;
+  padding: 2em;
+  font-size: 30px;
+}
+
+.saleButton {
+  button {
+    @include buttonStyles($primary-color, $secondary-color, 25%);
+  }
+
+  button:hover {
+    @include buttonStyles($secondary-color, $primary-color, 25%);
+  }
+}
