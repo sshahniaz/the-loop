@@ -1,3 +1,4 @@
+"use client"
 import React, { useState, useEffect, Suspense } from "react";
 import ImageHover from "../ImageHover";
 import AddToWishList from "../wishlist/AddToWishList";
@@ -41,6 +42,12 @@ const Products = ({ products }: { products: Product[] }) => {
   console.log(currentUser);
 
   const handlwWishlistupdate = async () => {
+
+    if (isSignedIn) {
+      console.log("updating wishlist");
+    } else {
+      router.push("../../sign-in");
+    }
 
     console.log("wishlist updated");
   };
