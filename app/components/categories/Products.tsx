@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import ImageHover from "../ImageHover";
 import AddToWishList from "../wishlist/AddToWishList";
 import { useRouter } from "next/navigation";
@@ -28,25 +28,30 @@ const Products = ({ products }: { products: Product[] }) => {
 
   const { isSignedIn, user } = useUser();
 
+  useEffect(() => {
+    if (isSignedIn) {
+      fetchUser();
+    }
+  }, [isSignedIn]);
+
   const fetchUser = async () => {
     const userDb = await getUser(user?.primaryEmailAddress?.emailAddress ?? "");
     setCurrentUser(userDb);
   };
+  console.log(currentUser);
 
   const handlwWishlistupdate = async () => {
-    if (isSignedIn) {
-      await fetchUser();
-    } else {
-      router.push("/sign-in");
-    }
 
     console.log("wishlist updated");
   };
 
   return (
     <div className="pageContainer">
+      
       <div className="searchResultContainer">
-        {products.map((product) => (
+        {/* <h2>Products</h2> */}
+        <Suspense fallback={<div>Loading...</div>}>
+            {products.map((product) => (
           <div className="searchResultCard" key={product.id}>
               
               <ImageHover image={product.imageLink} alt={product.name} />
@@ -72,6 +77,8 @@ const Products = ({ products }: { products: Product[] }) => {
             </div>
           
         ))}
+        </Suspense>
+      
       </div>
     </div>
   );
