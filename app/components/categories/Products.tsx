@@ -8,6 +8,7 @@ interface Product{
   colour: string;
   material: string;
   condition: string;
+  imageLink: string[];
 }
 
 const Products = ({ products }: { products: Product[] }) => {
