@@ -16,6 +16,7 @@ const Input = () => {
   //
   const router = useRouter();
   const { isSignedIn } = useUser();
+  // const { sessionId } = useAuth();
   //
   const onSearch = (event: React.FormEvent) => {
     event.preventDefault();
@@ -52,7 +53,6 @@ const Input = () => {
             alt="main logo"
           />
         </Link>
-
         <ul className="headerIcons">
           <li className="sellLink">
             <Link href="/sell-form">Sell</Link>
