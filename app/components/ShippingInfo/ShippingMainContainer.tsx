@@ -6,6 +6,8 @@ import BillingAddress from "@/app/components/profile/BillingAddress";
 import { fetchProfileData } from "@/app/actions/ShippingPageActions";
 import { CartContext, CartContextType } from "../cart/CartActions";
 import Checkout from "./Checkout";
+import "./ShippingDetails.scss";
+import Link from "next/link";
 
 interface ProfileData {
   id: string;
