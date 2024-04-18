@@ -55,13 +55,19 @@ const Products = ({ products }: { products: Product[] }) => {
               <ImageHover image={product.imageLink} alt={product.name} />
               <div className="iconFloat">
                 <h3 className="productHeading">{product.name}</h3>
-                {isSignedIn ? <AddToWishList
+                {/* {isSignedIn ? <AddToWishList
                   productId={product.id}
                   userId={currentUser?.id}
                   onUpdateWishlist={handlwWishlistupdate} 
                 /> :
                   <FavoriteBorderOutlinedIcon />
-                }
+                } */}
+
+                <AddToWishList
+                  productId={product.id}
+                  userId={currentUser?.id}
+                  onUpdateWishlist={handlwWishlistupdate} 
+                />
                 
               </div>
               <p>£{product.price}</p>
