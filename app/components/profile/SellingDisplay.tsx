@@ -17,31 +17,14 @@ type sellingModel = {
   onDelete: (productId: string) => void;
 };
 const SellingDisplay = ({ products, onDelete }: sellingModel) => {
-  // const [isEdit, setIsEdit] = useState(false);
-  // const [productData, setProductData] = useState(products);
-
-  // const handleEdit = () => {
-  //   setIsEdit(!isEdit);
-  // };
-  // const handleSave = async () => {
-  //   updateProduct(productData);
-  //   setIsEdit(false);
-  // };
-
-  // const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-  //   setProductData({ ...productData, [event.target.name]: event.target.value });
-  // };
-
-  // const handleCancel = () => {
-  //   setProductData(products); // Reset to original data
-  //   setIsEdit(false);
-  // };
   return (
     <div className="listing">
       {products.map((product, index) => (
-        
-         <SellingProductContainer key={product.id} product={product} onDelete={onDelete} />
-      
+        <SellingProductContainer
+          key={product.id}
+          product={product}
+          onDelete={onDelete}
+        />
       ))}
     </div>
   );
