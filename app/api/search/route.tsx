@@ -7,7 +7,7 @@ export async function GET(request: Request) {
   if (request.method === "GET") {
     try {
       const url = request.url;
-      const parsedUrl = new URL(url, "http://localhost:3000");
+      const parsedUrl = new URL(url, `http://${request.headers.get("host")}`);
       const searchQuery = parsedUrl.searchParams.get("q");
       const queryParams = parse(request.url, true).query;
       if (typeof searchQuery !== "string") {
@@ -38,6 +38,12 @@ export async function GET(request: Request) {
             },
             {
               colour: {
+                contains: searchQuery,
+                mode: "insensitive",
+              },
+            },
+            {
+              type: {
                 contains: searchQuery,
                 mode: "insensitive",
               },
