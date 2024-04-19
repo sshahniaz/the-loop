@@ -5,7 +5,7 @@ import "../cart/Cart.scss";
 const page = () => {
   return (
     <div className="successContainer">
-      <Link className="backHome" href={"../page.tsx"}>
+      <Link className="backHome" href="/">
         <span>Back To Home</span>
       </Link>
       <div className="successDetails">

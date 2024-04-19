@@ -37,7 +37,7 @@ const CartClient = () => {
     return (
       <>
         <div className="emptyCartMainContainer">
-          <Link className="backHome" href={"../page.tsx"}>
+          <Link className="backHome" href="/">
             <span>Back To Home</span>
           </Link>
           <div className="emptyCartContainer">
@@ -46,7 +46,11 @@ const CartClient = () => {
               sx={{ color: "black", height: 40, width: 40 }}
             />
             <p>
-              Start <Link href={"/"}>shopping</Link> to fill your basket.
+              Start{" "}
+              <Link href="/">
+                <span>shopping</span>
+              </Link>{" "}
+              to fill your basket.
             </p>
           </div>
         </div>
@@ -101,22 +105,24 @@ const CartClient = () => {
             <Divider />
 
             <div className="buttons">
-              <button className="checkout">
-                <Suspense fallback={<div>Loading...</div>}>
+              <Suspense fallback={<div>Loading...</div>}>
+                <button className="checkout">
                   <Link
                     className="btnLinkCheckout"
                     href={`../../shipping/${currentUser?.id}`}
                   >
                     <span>Checkout</span>
                   </Link>
-                </Suspense>
-              </button>
+                </button>
+              </Suspense>
 
-              <button className="continueShopping">
-                <Link className="btnLinkContinue" href={"../app/page.tsx"}>
-                  <span>Continue Shopping</span>
-                </Link>
-              </button>
+              <Suspense fallback={<div>Loading...</div>}>
+                <button className="continueShopping">
+                  <Link className="btnLinkContinue" href="/">
+                    <span>Continue Shopping</span>
+                  </Link>
+                </button>
+              </Suspense>
             </div>
           </div>
         </div>

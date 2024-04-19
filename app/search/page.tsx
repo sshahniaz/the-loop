@@ -15,7 +15,7 @@ interface Product {
   id: string;
   name: string;
   price: number;
-  imageLink: string;
+  imageLink: string[];
 }
 interface User {
   id: string;
