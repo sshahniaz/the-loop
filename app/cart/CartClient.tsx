@@ -85,7 +85,7 @@ const CartClient = () => {
             {cartProducts &&
               cartProducts.map((item) => {
                 return (
-                  <div className="flex-row">
+                  <div key={item.id} className="flex-row">
                     <span>{item.name}</span>
                     <span>£{item.price}</span>
                   </div>
