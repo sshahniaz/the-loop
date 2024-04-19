@@ -64,6 +64,8 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+**Important Note:** Please allow for the page to load as the loading time may be slow due to getting slow responce form the MongoDB server. Feel free to refresh pages when encountering errors, primarily caused due to issue from before. 
+
 ## Project Structure
 
 - ``` app ``` : Contains all the application pages, components, server actions.
