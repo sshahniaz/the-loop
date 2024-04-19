@@ -58,12 +58,6 @@ const CartClient = () => {
     );
   }
 
-  const handleCheckout = () => {
-    const { cartProducts } = useCart(); //getting the cart products from context
-    router.push(
-      `../shipping/page.tsx?cartProducts=${JSON.stringify(cartProducts)}`
-    );
-  };
 
   const calcTotal = cartProducts?.reduce(
     (total, cartProducts) => total + cartProducts.price,

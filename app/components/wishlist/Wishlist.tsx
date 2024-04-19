@@ -53,7 +53,7 @@ const Wishlist = ({ userId }: WishlistProps) => {
       )}
       <p className="wishlistInstructions">
         {/* Inform user on how to add products (assuming button elsewhere) */}
-        Click "Add to Wishlist" buttons on product pages to add items.
+        Click &quot;Add to Wishlist&quot; buttons on product pages to add items.
       </p>
     </div>
   );

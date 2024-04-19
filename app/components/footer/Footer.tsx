@@ -45,7 +45,7 @@ const Footer = () => {
               <Link href="/faq">Terms & Conditions</Link>
             </li>
             <li>
-              <Link href="/faq">FAQ's</Link>
+              <Link href="/faq">FAQ&apos;s</Link>
             </li>
           </ul>
           <div className="icons">

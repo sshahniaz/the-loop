@@ -13,10 +13,10 @@ const ProductImages: React.FC<ProductImageProps> = ({
 }) => {
   return (
     <div>
-      {product.imageLink.map((imageLink: CartProductType) => {
+      {product.imageLink.map((imageLink: CartProductType, index: number) => {
         return (
-          <div onClick={() => handleFocusedImage(imageLink)}>
-            <img src={imageLink.imageLink[0]} alt="image placeholder" />;
+          <div key={index} onClick={() => handleFocusedImage(imageLink)}>
+            <img  src={imageLink.imageLink[0]} alt="image placeholder" />;
           </div>
         );
       })}

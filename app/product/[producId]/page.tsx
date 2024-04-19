@@ -16,7 +16,7 @@ const Page = ({ params }: { params: { producId: string } }) => {
   }, [params.producId]);
   console.log(product);
 
-  if (!product) return <p>Product doesn't exist</p>;
+  if (!product) return <p>Product doesn&apos;t exist</p>;
 
   return (
     <>
