@@ -1,3 +1,7 @@
+<p align="center">
+    <img src="./public/assets/logored.svg">
+ </p>
+
 ## What is ‘The Loop’?
 
 The Loop is an e-commerce site that will provide a platform for users to buy & sell pre-loved items, within a wide range of categories.
@@ -10,7 +14,7 @@ As a lot of commerce are done online today, we wanted a way for customers of thi
 
 Our group is made up of four young individuals namely :
 
-- Andreea-Irina Dica
+- Andreea-Irina Dica 
 
 - Gabriel M. Dawson-Amoah
 
