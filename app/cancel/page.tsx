@@ -16,7 +16,7 @@ const page = () => {
 
         <div className="backToCart">
           <ArrowBackIcon />
-          <Link className="backHome" href="/">
+          <Link className="backHome" href="../cart">
             <span>Back to cart</span>
           </Link>
         </div>
