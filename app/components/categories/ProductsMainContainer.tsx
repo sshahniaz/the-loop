@@ -206,15 +206,27 @@ const ProductsMainContainer = ({ pType }: PContainerProps) => {
   const handleFilterChange = (filterName: string, value: string) => {
     // Update filter selections based on value (adding or removing)
     setSelectedFilters((prevSelectedFilters) => {
-      const prevSelection = Array.isArray(prevSelectedFilters[filterName])
+      const prevSelection : string[] | string | null = Array.isArray(prevSelectedFilters[filterName])
         ? prevSelectedFilters[filterName]
         : [];
 
       // Check if value is truthy and not already present
-      const updatedSelection =
-        value && !prevSelection.includes(value)
-          ? [...prevSelection, value] // Add value if selecting (truthy and unique)
-          : prevSelection.filter((v) => v !== value); // Remove value if deselecting
+  //   const updatedSelection: string[] = value && !prevSelection.includes(value)
+  // ? [...(typeof prevSelection === 'string' ? [prevSelection] : prevSelection), value] // Add value if selecting
+  // : prevSelection.filter((v) => v !== value); // Remove value if deselecting
+
+      
+      function updateSelection(prevSelection: string | string[], value: string): string[] {
+  if (typeof prevSelection === 'string') {
+    return value ? [prevSelection, value] : []; // Handle single string case
+  } else {
+    return value ? [...prevSelection, value] : prevSelection.filter((v) => v !== value);
+  }
+      }
+      
+      const updatedSelection = updateSelection(prevSelection, value);
+
+
 
       // Check if the update results in an empty selection
       const isFilterEmpty = updatedSelection.length === 0;

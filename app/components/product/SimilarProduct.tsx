@@ -73,7 +73,25 @@ const SimilarProduct = async ({ pType }: PContainerProps) => {
         <div className="searchResultContainer2">
           <h2>Similar Products</h2>
           <Suspense fallback={<div>Loading...</div>}>
-            <div className="searchResultCard" key={product.id}>
+            {data.map((product) => (
+              <div className="searchResultCard" key={product.id}>
+                <ImageHover image={product.imageLink} alt={product.name} />
+
+                <div className="iconFloat">
+                  <Link key={product.id} href={`../../product/${product.id}`}>
+                    <h3 className="productHeading">{product.name}</h3>
+                  </Link>
+
+                  <AddToWishList
+                    productId={product.id}
+                    userId={currentUser?.id}
+                    onUpdateWishlist={handlwWishlistupdate}
+                  />
+                </div>
+                <p className="productPrice">£{product.price}</p>
+              </div>
+            ))}
+            {/* <div className="searchResultCard" key={data.id}>
               <ImageHover image={product.imageLink} alt={product.name} />
 
               <div className="iconFloat">
@@ -88,7 +106,7 @@ const SimilarProduct = async ({ pType }: PContainerProps) => {
                 />
               </div>
               <p className="productPrice">£{product.price}</p>
-            </div>
+            </div> */}
           </Suspense>
         </div>
       </div>

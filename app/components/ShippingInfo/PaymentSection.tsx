@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import PaymentMethodSelection from './PaymentMethodSelection'
-import AddPaymentCard from './AddPaymentCard'
+// import AddPaymentCard from './AddPaymentCard'
 import PaymentMethod from './PaymentMethod'
 
 interface PaymentSectionProps {
@@ -39,11 +39,11 @@ const PaymentSection = ({ paymentMethods, onPaymentMethodChange }: PaymentSectio
         selectedPaymentMethodId={selectedPaymentMethodId ?? ''}
         onPaymentMethodChange={handlePaymentMethodChange}
       />
-      {isAddingCard ? (
+      {/* {isAddingCard ? (
         <AddPaymentCard onSubmit={handleAddCard} onCancel={handleCancelAddCard} />
       ) : (
         <button onClick={() => setIsAddingCard(true)}>Add Card</button>
-      )}
+      )} */}
     </div>
   )
 
