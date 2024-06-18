@@ -216,12 +216,14 @@ const ProductsMainContainer = ({ pType }: PContainerProps) => {
   // : prevSelection.filter((v) => v !== value); // Remove value if deselecting
 
       
-      function updateSelection(prevSelection: string | string[], value: string): string[] {
-  if (typeof prevSelection === 'string') {
-    return value ? [prevSelection, value] : []; // Handle single string case
-  } else {
-    return value ? [...prevSelection, value] : prevSelection.filter((v) => v !== value);
-  }
+      function updateSelection(prevSelection: string | string[] | null, value: string): string[] {
+        if (typeof prevSelection === 'string') {
+          return value ? [prevSelection, value] : []; // Handle single string case
+        } else if (prevSelection === null) {
+          return value ? [value] : []; // Handle null case
+        } else {
+          return value ? [...prevSelection, value] : prevSelection.filter((v) => v !== value);
+        }
       }
       
       const updatedSelection = updateSelection(prevSelection, value);
