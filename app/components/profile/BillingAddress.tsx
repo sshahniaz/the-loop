@@ -1,5 +1,4 @@
 import React, { useState, ChangeEvent } from "react";
-import prisma from "@/prisma/client";
 import { updateBillingAddress } from "@/app/actions/ProfilePageActions";
 import CreateOutlinedIcon from "@mui/icons-material/CreateOutlined";
 import DoneIcon from "@mui/icons-material/Done";

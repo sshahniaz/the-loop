@@ -42,7 +42,7 @@ export default async function Home() {
         </div>
         <div className="thirdFourthInfoCard">
           <HomePageCard
-            img="/assets/homedecorImg.jpg"
+            img="../assets/homedecorImg.jpg"
             imgName="homeDecor"
             link="/categories/Home%20Decor"
             heading="Make a house a home"

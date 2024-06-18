@@ -7,7 +7,6 @@ import { useUser } from "@clerk/nextjs";
 import "../../search/SearchResults.scss";
 import Link from "next/link";
 import getUser from "@/app/actions/GetUserAction";
-import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 interface Product {
   id: string;
   name: string;
